@@ -1,0 +1,151 @@
+/* pages/index/index.wxss */
+view#sticky{
+    position: fixed;
+    width: 100%;
+    top:0;
+    z-index: 2;
+}
+.top-bar{
+    background-color: #1581D9;
+    height: 44px;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+}
+
+.top-bar image.location_icon{
+    height: 18px;
+    line-height: 44px;
+    width: 18px;
+}
+.scan{
+    width: 18px;
+    height: 18px;
+}
+.scho_name{
+    padding-left: 8px;
+    flex: 1;
+    text-align: left;
+    color: white;
+    font-size: 14px;
+}
+.scan_qrcode{
+    text-align: right;
+    color: white;
+    font-size: 12px;
+    padding-right: 8px;
+}
+
+/* 搜索栏 */
+view.search{
+    background-color: #1581D9;
+    padding: 5px 20px;
+    height: 44px;
+    line-height: 44px;
+    box-sizing: border-box;
+    position: -webkit-sticky;
+}
+view.search_inner{
+    height: 34px;
+    padding: 6px 12px 6px 18px;
+    box-sizing: border-box;
+    background-color: white;
+    border-radius: 17px;
+    display: flex;
+    align-items: center;
+}
+input{
+    display: block;
+    box-sizing: border-box;
+    height: 22px;
+    font-size: 12px;
+    flex:1;
+    /*padding-left: 8px;*/
+}
+.search_icon{
+    width: 18px;
+    height: 18px;
+}
+.none_style{
+    font-size: 12px;
+}
+
+/* 轮播图 */
+swiper{
+    padding-top: 88px;
+}
+.swiper_img{
+    width: 100%;
+    height: 100%;
+}
+
+/* 推荐项 */
+view#recommend{
+    padding: 6px 0;
+    background-color: #EFF3F7;
+}
+
+.recommend_block .header{
+    background-color: white;
+    height: 52px;
+    line-height: 52px;
+    padding: 0 16px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.recommend_block .title{
+    font-size: 15px;
+}
+.recommend_block .link{
+    color: #1581D9;
+    font-size: 14px;
+}
+
+.books{
+    background-color: white;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 0 14px 16px;
+    display: flex;
+    white-space: nowrap;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+    margin-bottom: 4px;
+}
+
+.books .book{
+    display: inline-block;
+    width: 220rpx;
+}
+.books .book .book_img{
+    width: 160rpx;
+    height: 180rpx;
+    display: block;
+    border-radius: 6px;
+}
+
+.book_title{
+    padding-top: 8px;
+    display: block;
+    font-size: 12px;
+    color: #333;
+    line-height: 18px;
+    font-weight: bold;
+    width: 100%;
+    overflow : hidden;
+    text-overflow: ellipsis;
+}
+.book_author{
+    display: block;
+    font-size: 12px;
+    color: #777;
+    line-height: 16px;
+    width: 100%;
+    overflow : hidden;
+    text-overflow: ellipsis;
+}
+.books .book image.book_img{
+    width: 200rpx;
+    height: 240rpx;
+}

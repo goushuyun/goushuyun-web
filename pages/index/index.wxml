@@ -1,0 +1,115 @@
+<view id="sticky">
+    <!-- 顶部栏 -->
+    <view class="top-bar">
+        <image class="location_icon" src="/images/location.png"></image>
+        <text class="scho_name">上海应用技术大学</text>
+        <text class="scan_qrcode">扫码搜书</text>
+        <image class="scan" src="/images/scan.png"></image>
+    </view>
+
+    <!-- 搜索栏 -->
+    <view class="search">
+        <view class="search_inner">
+            <input placeholder="搜索书名、作者或出版社" placeholder-class="none_style"></input>
+            <image class="search_icon" src="/images/search.png"></image>
+        </view>
+    </view>
+</view>
+
+<!-- 轮播图 -->
+<swiper indicator-dots="true" autoplay="true">
+    <swiper-item>
+        <image class="swiper_img" src="http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg"/>
+    </swiper-item>
+    <swiper-item>
+        <image class="swiper_img" src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg"/>
+    </swiper-item>
+</swiper>
+
+<!-- 推荐项 -->
+<view id="recommend">
+    <view class="recommend_block">
+        <view class="header">
+            <text class="title">拯救你的知识恐慌</text>
+            <navigator class="link" hover-class="none">查看全部</navigator>
+        </view>
+        <scroll-view scroll-x="true" class="books">
+            <view class="book">
+                <image class="book_img" src="https://img.alicdn.com/bao/uploaded/i2/TB1M8A1LVXXXXXhXXXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg"/>
+                <text class="book_title">ES2015权威指南</text>
+                <text class="book_author">老司机</text>
+            </view>
+            <view class="book">
+                <image class="book_img" src="https://img.alicdn.com/bao/uploaded/i2/TB1cF9ZGVXXXXa_XpXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg"/>
+                <text class="book_title">ES2015权威指S2015权威指南</text>
+                <text class="book_author">老司机2015权威指S2015权威</text>
+            </view>
+            <view class="book">
+                <image class="book_img" src="https://img.alicdn.com/bao/uploaded/i2/TB1M8A1LVXXXXXhXXXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg"/>
+                <text class="book_title">ES2015权威指南</text>
+                <text class="book_author">老司机</text>
+            </view>
+            <view class="book">
+                <image class="book_img" src="https://img.alicdn.com/bao/uploaded/i2/TB1cF9ZGVXXXXa_XpXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg"/>
+                <text class="book_title">ES2015权威指南</text>
+                <text class="book_author">老司机</text>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="recommend_block">
+        <view class="header">
+            <text class="title">拯救你的知识恐慌</text>
+            <navigator class="link">查看全部</navigator>
+        </view>
+        <scroll-view scroll-x="true" class="books">
+            <view class="book">
+                <image class="book_img" src="https://img.alicdn.com/bao/uploaded/i2/TB1M8A1LVXXXXXhXXXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg"/>
+                <text class="book_title">ES2015权威指南</text>
+                <text class="book_author">老司机</text>
+            </view>
+            <view class="book">
+                <image class="book_img" src="https://img.alicdn.com/bao/uploaded/i2/TB1cF9ZGVXXXXa_XpXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg"/>
+                <text class="book_title">ES2015权威指南</text>
+                <text class="book_author">老司机</text>
+            </view>
+            <view class="book">
+                <image class="book_img" src="https://img.alicdn.com/bao/uploaded/i2/TB1M8A1LVXXXXXhXXXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg"/>
+                <text class="book_title">ES2015权威指南</text>
+                <text class="book_author">老司机</text>
+            </view>
+            <view class="book">
+                <image class="book_img" src="https://img.alicdn.com/bao/uploaded/i2/TB1cF9ZGVXXXXa_XpXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg"/>
+                <text class="book_title">ES2015权威指南</text>
+                <text class="book_author">老司机</text>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="recommend_block">
+        <view class="header">
+            <text class="title">拯救你的知识恐慌</text>
+            <navigator class="link">查看全部</navigator>
+        </view>
+        <scroll-view scroll-x="true" class="books">
+            <view class="book">
+                <image class="book_img" src="https://img.alicdn.com/bao/uploaded/i2/TB1M8A1LVXXXXXhXXXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg"/>
+                <text class="book_title">ES2015权威指南</text>
+                <text class="book_author">老司机</text>
+            </view>
+            <view class="book">
+                <image class="book_img" src="https://img.alicdn.com/bao/uploaded/i2/TB1cF9ZGVXXXXa_XpXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg"/>
+                <text class="book_title">ES2015权威指南</text>
+                <text class="book_author">老司机</text>
+            </view>
+            <view class="book">
+                <image class="book_img" src="https://img.alicdn.com/bao/uploaded/i2/TB1M8A1LVXXXXXhXXXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg"/>
+                <text class="book_title">ES2015权威指南</text>
+                <text class="book_author">老司机</text>
+            </view>
+            <view class="book">
+                <image class="book_img" src="https://img.alicdn.com/bao/uploaded/i2/TB1cF9ZGVXXXXa_XpXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg"/>
+                <text class="book_title">ES2015权威指南</text>
+                <text class="book_author">老司机</text>
+            </view>
+        </scroll-view>
+    </view>
+</view>

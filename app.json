@@ -1,0 +1,27 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/me/me"
+    ],
+    "window": {
+        "navigationBarTitleText": "购书云",
+        "navigationBarBackgroundColor": "#E7082E"
+    },
+    "tabBar": {
+        "color": "#bfbfbf",
+        "selectedColor": "#1581D9",
+        "backgroundColor": "#FBFBFB",
+        "borderStyle": "white",
+        "list": [{
+            "pagePath": "pages/index/index",
+            "text": "购书云",
+            "iconPath": "images/books.png",
+            "selectedIconPath": "images/books_focus.png"
+        }, {
+            "pagePath": "pages/me/me",
+            "text": "购物车",
+            "iconPath": "images/cart.png",
+            "selectedIconPath": "images/cart_focus.png"
+        }]
+    }
+}
