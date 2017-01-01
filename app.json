@@ -1,7 +1,7 @@
 {
     "pages": [
-        "pages/index/index",
-        "pages/me/me"
+        "pages/me/me",
+        "pages/index/index"
     ],
     "window": {
         "navigationBarTitleText": "购书云",
@@ -22,6 +22,11 @@
             "text": "购物车",
             "iconPath": "images/cart.png",
             "selectedIconPath": "images/cart_focus.png"
+        }, {
+            "pagePath": "pages/me/me",
+            "text": "我",
+            "iconPath": "images/me.png",
+            "selectedIconPath": "images/me_focus.png"
         }]
     }
 }
