@@ -3,7 +3,7 @@
     <image class="head_img" src="http://obafjfck1.bkt.clouddn.com/FuLKg6Qgz42cE8I5AnLOqOUqn-8S"/>
 
     <view class="tabs" >
-        <view class="tab {{currentPage == index ? 'currentTab': ''}}" wx:for="{{tabs}}" data-index="{{index}}" bindtap="goToPage">{{item}}</view>
+        <view class="tab {{currentPage == index ? 'currentTab': ''}}" wx:for="{{tabs}}" data-index="{{index}}" bindtap="goToPage" wx:key="*this">{{item}}</view>
     </view>
 </view>
 

@@ -1,0 +1,45 @@
+@import "/wxSearch/wxSearch.wxss";
+
+scroll-view#booksList{
+    position: fixed;
+    top: 44px;
+    bottom: 0;
+}
+
+scroll-view#booksList .book{
+    display: flex;
+    border-top: 1px solid #F4F3F3;
+    padding: 12px 20px;
+}
+scroll-view#booksList .book .book_pic{
+    width: 80px;
+    height: 112px;
+    border-radius: 6px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+}
+scroll-view#booksList .book .book_info{
+    padding-left: 18px;
+}
+
+scroll-view#booksList .book .book_info .text_block{
+    display: block;
+}
+
+scroll-view#booksList .book .book_info .book_title{
+    color: #232323;
+    font-size: 16px;
+    font-weight: bolder;
+    line-height: 28px;
+}
+scroll-view#booksList .book .book_info .book_author{
+    color: #444;
+    font-size: 14px;
+    line-height: 22px;
+    padding-bottom: 6px;
+}
+
+.book_subtitle, .book_publisher, .book_isbn{
+    color: #888;
+    font-size: 12px;
+    line-height: 18px;
+}
