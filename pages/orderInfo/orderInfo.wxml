@@ -1,0 +1,78 @@
+<scroll-view scroll-y="true" id="container">
+    <!-- Company info -->
+    <view id="company_info">
+        <image class="comp_logo" src="http://ojrfwndal.bkt.clouddn.com/WechatIMG5.jpeg"></image>
+
+        <text class="comp_name">北京香泉书海图书有限公司</text>
+
+        <button class="orderAgain" hover-class="btn_active" plain="true">再来一单</button>
+    </view>
+
+    <!-- order info -->
+    <view id="order_Info">
+        <text class="header">订单详情</text>
+        <view class="book">
+            <image class="book_pic" src="http://ojrjlwt2h.bkt.clouddn.com/9787040343199"></image>
+            <view class="book_info">
+                <text class="text_block book_title">ES2015权威指南</text>
+                <text class="text_block book_isbn">ISBN：9787122087935</text>
+                <view class="detail">
+                    <text class="text_inline_block book_price">¥34.45</text>
+                    <text class="text_inline_block">x 7</text>
+                </view>
+            </view>
+        </view>
+        <view class="book">
+            <image class="book_pic" src="http://ojrjlwt2h.bkt.clouddn.com/9787040343199"></image>
+            <view class="book_info">
+                <text class="text_block book_title">ES2015权威指南</text>
+                <text class="text_block book_isbn">ISBN：9787122087935</text>
+                <view class="detail">
+                    <text class="text_inline_block book_price">¥34.45</text>
+                    <text class="text_inline_block">x 7</text>
+                </view>
+            </view>
+        </view>
+        <view class="book">
+            <image class="book_pic" src="http://ojrjlwt2h.bkt.clouddn.com/9787040343199"></image>
+            <view class="book_info">
+                <text class="text_block book_title">ES2015权威指南</text>
+                <text class="text_block book_isbn">ISBN：9787122087935</text>
+                <view class="detail">
+                    <text class="text_inline_block book_price">¥34.45</text>
+                    <text class="text_inline_block">x 7</text>
+                </view>
+            </view>
+        </view>
+        <view class="book">
+            <image class="book_pic" src="http://ojrjlwt2h.bkt.clouddn.com/9787508647357"></image>
+            <view class="book_info">
+                <text class="text_block book_title">ES2015权威指南</text>
+                <text class="text_block book_isbn">ISBN：9787122087935</text>
+                <view class="detail">
+                    <text class="text_inline_block book_price">¥34.45</text>
+                    <text class="text_inline_block">x 7</text>
+                </view>
+            </view>
+        </view>
+
+        <view class="fee">
+            <view class="fee_info">
+                <text class="text_inline_block label">配送费</text>
+                <text class="text_inline_block fee_price">¥7</text>
+            </view>
+            <view class="fee_info">
+                <text class="text_inline_block label">总计</text>
+                <text class="text_inline_block fee_price">¥437.34</text>
+            </view>
+        </view>
+
+        <button class="call_seller" hover-class="call_seller_active" plain="true">联系商家</button>
+
+    </view>
+
+    <view id="address_info">
+        <text class="header">配送信息</text>
+    </view>
+
+</scroll-view>

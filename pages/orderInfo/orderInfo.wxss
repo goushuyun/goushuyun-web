@@ -1,0 +1,123 @@
+#container{
+    background-color: #EFF3F7;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+}
+
+#company_info{
+    background-color: white;
+    padding: 12px 0;
+}
+
+#company_info .comp_logo{
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+}
+
+#company_info .comp_name{
+    display: block;
+    text-align: center;
+    line-height: 46px;
+    font-size: 15px;
+}
+#company_info .orderAgain{
+    width: 100px;
+    font-size: 13px;
+    height: 32px;
+    line-height: 32px;
+    border-radius: 3px;
+    background-color: #1581D9;
+    color: white;
+    border: 0;
+}
+#company_info .btn_active{
+    background-color: #32b2ff;
+}
+
+
+/* order info */
+text.header{
+    line-height: 44px;
+    border-bottom: 1px solid #F4F3F3;
+    padding-left: 20px;
+    display: block;
+}
+
+
+view#order_Info{
+    margin-top: 6px;
+    background-color: white;
+    padding-bottom: 12px;
+}
+
+view#order_Info .book{
+    padding: 6px 16px;
+    display: flex;
+    border-bottom: 1px solid #F4F3F3;
+}
+view#order_Info .book .book_pic{
+    width: 58px;
+    height: 73px;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+}
+view#order_Info .book .book_info{
+    padding-left: 16px;
+    flex-grow: 1;
+}
+view#order_Info .book .book_info .book_title{
+    font-size: 14px;
+    line-height: 28px;
+    color: #232323;
+}
+view#order_Info .book .book_info .book_isbn{
+    font-size: 12px;
+    color: #666;
+}
+view#order_Info .book .book_info .detail{
+    padding-top: 8px;
+    display: flex;
+    justify-content:space-between;
+}
+
+view#order_Info .book .book_info .book_price{
+    color: #C60C1B;
+    font-size: 14px;
+}
+
+view#order_Info view.fee .fee_info{
+    padding: 0 16px 0 26px;
+    line-height: 44px;
+    display: flex;
+    justify-content:space-between;
+}
+view#order_Info view.fee .label{
+    color: #232323;
+}
+view#order_Info view.fee .fee_price{
+    color: #C60C1B;
+}
+view#order_Info .call_seller{
+    width: 100px;
+    font-size: 13px;
+    line-height: 32px;
+    border-radius: 3px;
+    color: #1581D9;
+    border: 1px solid #1581D9;
+}
+view#order_Info .call_seller_active{
+    border: 1px solid #32b2ff;
+    color: #32b2ff;
+}
+
+
+/*地址信息*/
+view#address_info{
+    margin-top: 6px;
+    background-color: white;
+}

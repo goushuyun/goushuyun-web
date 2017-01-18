@@ -1,3 +1,11 @@
 text{
     font-size: 14px;
 }
+
+
+.text_block{
+    display: block;
+}
+.text_inline_block{
+    display: inline-block;
+}

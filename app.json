@@ -1,5 +1,6 @@
 {
     "pages": [
+        "pages/orderInfo/orderInfo",
         "pages/booksList/booksList",
         "pages/me/me",
         "pages/index/index"
