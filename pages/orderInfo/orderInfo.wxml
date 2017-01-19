@@ -73,6 +73,39 @@
 
     <view id="address_info">
         <text class="header">配送信息</text>
+        <view class="address_detail">
+            <text class="text_inline_block label">收获地址</text>
+            <view class="personal_info">
+                <text class="text_block">王凯</text>
+                <text class="text_block">18817953402</text>
+                <text class="text_block">大话清水湾 34号 201</text>
+            </view>
+        </view>
+
+        <view class="address_detail">
+            <text class="text_inline_block label">发货时间</text>
+            <text style="padding-left:20px;">2016-12-23 23:23:44</text>
+        </view>
+    </view>
+
+    <view id="order_about">
+        <text class="header">订单信息</text>
+        <view class="about">
+            <text class="text_block">订单编号</text>
+            <text class="text_block content">129467814214687</text>
+        </view>
+        <view class="about">
+            <text class="text_block">下单时间</text>
+            <text class="text_block content">2017-3-31 12:43:44</text>
+        </view>
+        <view class="about">
+            <text class="text_block">支付方式</text>
+            <text class="text_block content">在线支付</text>
+        </view>
+        <view class="about">
+            <text class="text_block">备注信息</text>
+            <text class="text_block content">阿斯顿受到粉丝的</text>
+        </view>
     </view>
 
 </scroll-view>

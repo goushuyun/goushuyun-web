@@ -120,4 +120,29 @@ view#order_Info .call_seller_active{
 view#address_info{
     margin-top: 6px;
     background-color: white;
+    line-height: 28px;
+}
+
+view#address_info .address_detail{
+    padding: 6px 0 6px 20px;
+    display: flex;
+    border-bottom: 1px solid #F4F3F3;
+}
+view#address_info .address_detail .personal_info{
+    padding-left: 16px;
+}
+
+view#order_about{
+    background-color: white;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+view#order_about .about{
+    display: flex;
+    line-height: 28px;
+    padding: 6px 0 6px 20px;
+}
+.content{
+    padding-left: 16px;
 }
