@@ -11,19 +11,161 @@
 <view id="container">
     <swiper current="{{currentPage}}" bindchange="pageChange" duration="300">
         <swiper-item>
-            <view class="container" style="background-color: red;"></view>
+            <scroll-view scroll-y="true" class="container" style="background-color: #EFF3F7;">
+
+                <view class="order">
+                    <view class="top_part">
+                        <image class="comp_logo shadow" src="http://ojrfwndal.bkt.clouddn.com/WechatIMG5.jpeg"></image>
+                        <view class="comp_info">
+                            <text class="text_block compa_name">北京香泉书海图书有限公司</text>
+                            <text class="text_block order_time">2016-12-23 13:34</text>
+                        </view>
+                        <text class="state">配送中</text>
+                    </view>
+                    <view class="detail">
+                        <view class="book">
+                            <text class="text_inline_block book_title">ES2015权威指南</text>
+                            <text class="text_inline_block book_price">¥23.40</text>
+                            <text class="text_inline_block book_amount">x7</text>
+                        </view>
+                        <view class="book">
+                            <text class="text_inline_block book_title">ES2015权威指南</text>
+                            <text class="text_inline_block book_price">¥23.40</text>
+                            <text class="text_inline_block book_amount">x7</text>
+                        </view>
+                        <view class="book">
+                            <text class="text_inline_block book_title">ES2015权威指南</text>
+                            <text class="text_inline_block book_price">¥23.40</text>
+                            <text class="text_inline_block book_amount">x7</text>
+                        </view>
+                        <view class="book">
+                            <text class="text_inline_block book_title">ES2015权威指南</text>
+                            <text class="text_inline_block book_price">¥23.40</text>
+                            <text class="text_inline_block book_amount">x7</text>
+                        </view>
+                    </view>
+                    <view class="fee">
+                        共 <text class="total"> 7 </text>件 合计：<text class="total">¥67.79   </text> <text class="mark">(含运费 ¥78.30)</text>
+                    </view>
+                </view>
+                <view class="order">
+                    <view class="top_part">
+                        <image class="comp_logo shadow" src="http://ojrfwndal.bkt.clouddn.com/WechatIMG5.jpeg"></image>
+                        <view class="comp_info">
+                            <text class="text_block compa_name">北京香泉书海图书有限公司</text>
+                            <text class="text_block order_time">2016-12-23 13:34</text>
+                        </view>
+                        <text class="state">配送中</text>
+                    </view>
+                    <view class="detail">
+                        <view class="book">
+                            <text class="text_inline_block book_title">ES2015权威指南</text>
+                            <text class="text_inline_block book_price">¥23.40</text>
+                            <text class="text_inline_block book_amount">x7</text>
+                        </view>
+                        <view class="book">
+                            <text class="text_inline_block book_title">ES2015权威指南</text>
+                            <text class="text_inline_block book_price">¥23.40</text>
+                            <text class="text_inline_block book_amount">x7</text>
+                        </view>
+                        <view class="book">
+                            <text class="text_inline_block book_title">ES2015权威指南</text>
+                            <text class="text_inline_block book_price">¥23.40</text>
+                            <text class="text_inline_block book_amount">x7</text>
+                        </view>
+                        <view class="book">
+                            <text class="text_inline_block book_title">ES2015权威指南</text>
+                            <text class="text_inline_block book_price">¥23.40</text>
+                            <text class="text_inline_block book_amount">x7</text>
+                        </view>
+                    </view>
+                    <view class="fee">
+                        共 <text class="total"> 7 </text>件 合计：<text class="total">¥67.79   </text> <text class="mark">(含运费 ¥78.30)</text>
+                    </view>
+                </view>
+                <view class="order">
+                    <view class="top_part">
+                        <image class="comp_logo shadow" src="http://ojrfwndal.bkt.clouddn.com/WechatIMG5.jpeg"></image>
+                        <view class="comp_info">
+                            <text class="text_block compa_name">北京香泉书海图书有限公司</text>
+                            <text class="text_block order_time">2016-12-23 13:34</text>
+                        </view>
+                        <text class="state">配送中</text>
+                    </view>
+                    <view class="detail">
+                        <view class="book">
+                            <text class="text_inline_block book_title">ES2015权威指南</text>
+                            <text class="text_inline_block book_price">¥23.40</text>
+                            <text class="text_inline_block book_amount">x7</text>
+                        </view>
+                        <view class="book">
+                            <text class="text_inline_block book_title">ES2015权威指南</text>
+                            <text class="text_inline_block book_price">¥23.40</text>
+                            <text class="text_inline_block book_amount">x7</text>
+                        </view>
+                        <view class="book">
+                            <text class="text_inline_block book_title">ES2015权威指南</text>
+                            <text class="text_inline_block book_price">¥23.40</text>
+                            <text class="text_inline_block book_amount">x7</text>
+                        </view>
+                        <view class="book">
+                            <text class="text_inline_block book_title">ES2015权威指南</text>
+                            <text class="text_inline_block book_price">¥23.40</text>
+                            <text class="text_inline_block book_amount">x7</text>
+                        </view>
+                    </view>
+                    <view class="fee">
+                        共 <text class="total"> 7 </text>件 合计：<text class="total">¥67.79   </text> <text class="mark">(含运费 ¥78.30)</text>
+                    </view>
+                </view>
+                <view class="order">
+                    <view class="top_part">
+                        <image class="comp_logo shadow" src="http://ojrfwndal.bkt.clouddn.com/WechatIMG5.jpeg"></image>
+                        <view class="comp_info">
+                            <text class="text_block compa_name">北京香泉书海图书有限公司</text>
+                            <text class="text_block order_time">2016-12-23 13:34</text>
+                        </view>
+                        <text class="state">配送中</text>
+                    </view>
+                    <view class="detail">
+                        <view class="book">
+                            <text class="text_inline_block book_title">ES2015权威指南</text>
+                            <text class="text_inline_block book_price">¥23.40</text>
+                            <text class="text_inline_block book_amount">x7</text>
+                        </view>
+                        <view class="book">
+                            <text class="text_inline_block book_title">ES2015权威指南</text>
+                            <text class="text_inline_block book_price">¥23.40</text>
+                            <text class="text_inline_block book_amount">x7</text>
+                        </view>
+                        <view class="book">
+                            <text class="text_inline_block book_title">ES2015权威指南</text>
+                            <text class="text_inline_block book_price">¥23.40</text>
+                            <text class="text_inline_block book_amount">x7</text>
+                        </view>
+                        <view class="book">
+                            <text class="text_inline_block book_title">ES2015权威指南</text>
+                            <text class="text_inline_block book_price">¥23.40</text>
+                            <text class="text_inline_block book_amount">x7</text>
+                        </view>
+                    </view>
+                    <view class="fee">
+                        共 <text class="total"> 7 </text>件 合计：<text class="total">¥67.79   </text> <text class="mark">(含运费 ¥78.30)</text>
+                    </view>
+                </view>
+            </scroll-view>
         </swiper-item>
         <swiper-item>
-            <view class="container" style="background-color: blue;"></view>
+            <scroll-view class="container" style="background-color: yellow;"></scroll-view>
         </swiper-item>
         <swiper-item>
-            <view class="container" style="background-color: green;"></view>
+            <scroll-view class="container" style="background-color: blue;"></scroll-view>
         </swiper-item>
         <swiper-item>
-            <view class="container" style="background-color: yellow;"></view>
+            <scroll-view class="container" style="background-color: pink;"></scroll-view>
         </swiper-item>
         <swiper-item>
-            <view class="container" style="background-color: pink;"></view>
+            <scroll-view class="container" style="background-color: green;"></scroll-view>
         </swiper-item>
     </swiper>
 </view>
