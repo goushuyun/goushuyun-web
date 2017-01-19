@@ -47,6 +47,11 @@
                     <view class="fee">
                         共 <text class="total"> 7 </text>件 合计：<text class="total">¥67.79   </text> <text class="mark">(含运费 ¥78.30)</text>
                     </view>
+                    <view class="btns">
+                        <button class="btn primary btn-small" hover-class="btnactive">去支付</button>
+                        <button bindtap="cancel_order" class="btn danger btn-small" hover-class="danger-active">取消订单</button>
+                        <button bindtap="call" class="btn success btn-small" hover-class="success-active">联系商家</button>
+                    </view>
                 </view>
                 <view class="order">
                     <view class="top_part">
