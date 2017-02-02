@@ -79,6 +79,30 @@ swiper{
     height: 100%;
 }
 
+/* icons list */
+view#iconsList{
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+}
+view#iconsList .category_icon{
+
+}
+view#iconsList .category_icon .category_name{
+    display: block;
+    text-align: center;
+    font-size: 13px;
+    color: #333;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+view#iconsList .icon_img{
+    padding-top: 6px;
+    width: 36px;
+    height: 36px;
+}
+
 /* 推荐项 */
 view#recommend{
     padding: 6px 0;

@@ -3,6 +3,15 @@ Page({
         tabs: ['全部', '待付款', '待发货', '待收货', '待评价'],
         currentPage: 0
     },
+    req(){
+        wx.request({
+            url: 'https://api.douban.com/v2/book/isbn/9787122087935',
+            success(res){
+                console.log(res)
+            }
+        })
+        console.log('My name is wang kai ....')
+    },
     goToPage(e) {
         this.setData({
             currentPage: e.target.dataset.index

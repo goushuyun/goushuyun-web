@@ -26,6 +26,30 @@
     </swiper-item>
 </swiper>
 
+<!-- icons list -->
+<view id="iconsList">
+    <view class="category_icon">
+        <image class="icon_img" src="../../images/References.png"></image>
+        <text class="category_name">教辅</text>
+    </view>
+    <view class="category_icon">
+        <image class="icon_img" src="../../images/Foreign_languages.png"></image>
+        <text class="category_name">外语</text>
+    </view>
+    <view class="category_icon">
+        <image class="icon_img" src="../../images/Reading.png"></image>
+        <text class="category_name">阅读</text>
+    </view>
+    <view class="category_icon">
+        <image class="icon_img" src="../../images/Certificate.png"></image>
+        <text class="category_name">考证</text>
+    </view>
+    <view class="category_icon">
+        <image class="icon_img" src="../../images/Teaching_materials.png"></image>
+        <text class="category_name">教材</text>
+    </view>
+</view>
+
 <!-- 推荐项 -->
 <view id="recommend">
     <view class="recommend_block">
