@@ -12,76 +12,14 @@
 
 <!-- 图书列表项 -->
 <scroll-view id="booksList" scroll-y="true">
-    <view class="book">
-        <image class="book_pic" src="http://ojrjlwt2h.bkt.clouddn.com/9787514147001"></image>
-
+    <view class="book" wx:for="{{books}}" wx:key="isbn">
+        <image class="book_pic" src="{{item.book.pic}}"></image>
         <view class="book_info">
-            <text class="text_block book_title">现代管理学（第3版)</text>
-            <text class="text_block book_author">李兴山 著</text>
-            <text class="text_block book_publisher">中共中央党校出版社</text>
-            <text class="text_block book_subtitle">管理学经典教材</text>
-            <text class="text_block book_isbn">ISBN: 9787503543449</text>
+            <text class="text_block book_title">{{item.book.title}}</text>
+            <text class="text_block book_author">{{item.book.author}}</text>
+            <text class="text_block book_publisher">{{item.book.publisher}}</text>
+            <text class="text_block book_subtitle">{{item.book.subtitle}}</text>
+            <text class="text_block book_isbn">ISBN: {{item.isbn}}</text>
         </view>
-
-    </view>
-    <view class="book">
-        <image class="book_pic" src="http://ojrjlwt2h.bkt.clouddn.com/9787569901818"></image>
-
-        <view class="book_info">
-            <text class="text_block book_title">现代管理学（第3版)</text>
-            <text class="text_block book_author">李兴山 著</text>
-            <text class="text_block book_subtitle">管理学经典教材</text>
-            <text class="text_block book_publisher">中共中央党校出版社</text>
-            <text class="text_block book_isbn">ISBN: 9787503543449</text>
-        </view>
-
-    </view>
-    <view class="book">
-        <image class="book_pic" src="http://ojrjlwt2h.bkt.clouddn.com/9787514147001"></image>
-
-        <view class="book_info">
-            <text class="text_block book_title">现代管理学（第3版)</text>
-            <text class="text_block book_author">李兴山 著</text>
-            <text class="text_block book_publisher">中共中央党校出版社</text>
-            <text class="text_block book_subtitle">管理学经典教材</text>
-            <text class="text_block book_isbn">ISBN: 9787503543449</text>
-        </view>
-
-    </view>
-    <view class="book">
-        <image class="book_pic" src="http://ojrjlwt2h.bkt.clouddn.com/9787569901818"></image>
-
-        <view class="book_info">
-            <text class="text_block book_title">现代管理学（第3版)</text>
-            <text class="text_block book_author">李兴山 著</text>
-            <text class="text_block book_subtitle">管理学经典教材</text>
-            <text class="text_block book_publisher">中共中央党校出版社</text>
-            <text class="text_block book_isbn">ISBN: 9787503543449</text>
-        </view>
-
-    </view>
-    <view class="book">
-        <image class="book_pic" src="http://ojrjlwt2h.bkt.clouddn.com/9787514147001"></image>
-
-        <view class="book_info">
-            <text class="text_block book_title">现代管理学（第3版)</text>
-            <text class="text_block book_author">李兴山 著</text>
-            <text class="text_block book_publisher">中共中央党校出版社</text>
-            <text class="text_block book_subtitle">管理学经典教材</text>
-            <text class="text_block book_isbn">ISBN: 9787503543449</text>
-        </view>
-
-    </view>
-    <view class="book">
-        <image class="book_pic" src="http://ojrjlwt2h.bkt.clouddn.com/9787569901818"></image>
-
-        <view class="book_info">
-            <text class="text_block book_title">现代管理学（第3版)</text>
-            <text class="text_block book_author">李兴山 著</text>
-            <text class="text_block book_subtitle">管理学经典教材</text>
-            <text class="text_block book_publisher">中共中央党校出版社</text>
-            <text class="text_block book_isbn">ISBN: 9787503543449</text>
-        </view>
-
     </view>
 </scroll-view>
