@@ -30,5 +30,7 @@
             "iconPath": "images/me.png",
             "selectedIconPath": "images/me_focus.png"
         }]
-    }
+    },
+
+    "shop_id": "17012600000001"
 }
