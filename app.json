@@ -4,7 +4,8 @@
         "pages/buyPage/buyPage",
         "pages/index/index",
         "pages/me/me",
-        "pages/booksList/booksList"
+        "pages/booksList/booksList",
+        "pages/shopDetail/shopDetail"
     ],
     "window": {
         "navigationBarTitleText": "购书云",

@@ -1,0 +1,32 @@
+<view id="container">
+    <view id="shopHead" class="margin">
+        <image id="shopBack" src="/images/shopDetail/shop_bc.png"></image>
+        <view class="head">
+            <image id="shopPic" src="{{shopImg}}"></image>
+            <text id="shopName">{{shopName}}</text>
+        </view>
+    </view>
+    <view id="shopInfo" class="margin back">
+        <view class="item boder">
+            <label class="left">联系商家</label>
+            <label class="center">点击右侧图标站内私信</label>
+            <image class="right" src="/images/shopDetail/message.png"></image>
+        </view>
+        <view class="item boder">
+            <label class="left">客服电话</label>
+            <label class="center">{{tell}}</label>
+            <image class="right" src="/images/shopDetail/tell.png" bindtap="callPhone"></image>
+        </view>
+        <view class="item">
+            <label class="left">联系地址</label>
+            <label class="center">{{address}}</label>
+            <image class="right" src=""></image>
+        </view>
+    </view>
+    <view id="shopDesc" class="margin back">
+        <label>商家介绍</label>
+        <view  class="center">
+            <text>{{description}}</text>
+        </view>
+    </view>
+</view>

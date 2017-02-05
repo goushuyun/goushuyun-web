@@ -1,0 +1,74 @@
+view#container{
+    display: flex;
+    flex-direction: column;
+    background-color:  #EFF3F7;
+}
+.margin{
+    margin: 10px 0;
+}
+.back{
+    background-color: white;
+}
+/* 头部分 */
+#shopBack{
+    z-index: 0;
+    width: 100%;
+    height: 160px;
+}
+.head{
+    position: absolute;
+    top: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+#shopPic{
+    width: 90px;
+    height: 90px;
+    margin-left: 30px;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+}
+#shopName{
+    margin-left: 30px;
+    color: white;
+    font-size: 16px;
+}
+
+/* 信息部分 */
+.item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px 10px;
+    font-size: 13px;
+}
+.boder{
+    padding-bottom: 5px;
+    border-bottom: 1px solid #f4f3f3;
+}
+.left{
+    flex-basis:20%;
+    color: #000;
+}
+.center{
+    flex-basis:70%;
+    color: #888888;
+}
+.right{
+    flex-basis:10%;
+    height: 30px;
+    width: 30px;
+}
+
+/*描述部分*/
+#shopDesc{
+    font-size: 13px;
+    padding: 10px;
+}
+#shopDesc .center{
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #f4f3f3;
+}
