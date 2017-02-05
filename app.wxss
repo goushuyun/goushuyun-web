@@ -44,3 +44,33 @@ button.btn-small{
     font-size: 13px;
     line-height: 26px;
 }
+
+
+
+
+/* operate group button */
+.btn_reduce{
+    box-sizing: border-box;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: inline-block;
+}
+.btn_reduce .btn_img{
+    width: 100%;
+    height: 100%;
+}
+
+.btn_plus{
+    box-sizing: border-box;
+    background-color: #1581D9;
+    width: 22px;
+    height: 22px;
+    padding: 3px;
+    border-radius: 50%;
+    display: inline-block;
+}
+.btn_plus .btn_img{
+    width: 100%;
+    height: 100%;
+}

@@ -1,0 +1,154 @@
+view#container{
+    background-color: #EFF3F7;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+view#bookInfo{
+    padding: 12px 16px;
+    background-color: white;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+    margin-bottom: 6px;
+}
+
+view#bookInfo image.bookImage{
+    width: 140px;
+    height: 197px;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+view#bookInfo .bookDetail{
+    margin-left: 16px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+view#bookInfo .bookDetail .title{
+    font-size: 16px;
+    font-weight: bolder;
+    line-height: 32px;
+}
+
+.publisher, .author, .isbn, .price{
+    font-size: 14px;
+    line-height: 22px;
+    color: #333;
+}
+.publisher{
+    margin-top: 16px;
+}
+
+/* 购买项 */
+view.buy_item{
+    background-color: white;
+    padding: 16px 16px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+    margin-bottom: 6px;
+}
+view.buy_item .info{
+    display: flex;
+    /*justify-content: center;*/
+    align-items: center;
+}
+view.buy_item .info .category{
+    font-size: 16px;
+    font-weight: bolder;
+}
+view.buy_item .info .discount{
+    color: #E64340;
+    border: 1px solid #E64340;
+    line-height: 16px;
+    padding: 0 4px;
+    margin-left: 12px;
+}
+view.buy_item .info .store{
+    text-align: right;
+    color: #555;
+    flex: 1;
+}
+
+view.operate{
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+view.operate .selling_price{
+    color: #C60C1B;
+}
+view.operate .btns{
+    text-align: right;
+    vertical-align: top;
+    display: flex;
+    align-items: center;
+    width: 100px;
+    justify-content: space-between;
+}
+
+view.operate .goods_number{
+    border: 1px solid #efefef;
+    border-radius: 4px;
+    display: inline-block;
+    width: 36px;
+    height: 22px;
+    box-sizing: border-box;
+    font-size: 13px;
+    text-align: center;
+}
+
+/* bottom bar */
+view#bottom_bar{
+    position: fixed;
+    height: 46px;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+view.shopcart_info{
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+view.shopcart {
+    display: flex;
+    height: 100%;
+    width: 44px;
+    align-items: center;
+    position: relative;
+    padding-left: 12px;
+}
+view.shopcart .total_num{
+    background-color: red;
+    color: white;
+    width: 16px;
+    font-size: 12px;
+    height: 16px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 16px;
+    position: absolute;
+    top: -4px;
+    right: -4px;
+}
+view.shopcart .shopcart_img{
+    width: 36px;
+    height: 36px;
+}
+
+view#bottom_bar .go_shopcart_btn{
+    height: 100%;
+    line-height: 46px;
+    font-size: 13px;
+    background-color: #1581D9;
+    color: white;
+    padding: 0 16px;
+}

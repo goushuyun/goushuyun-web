@@ -1,8 +1,9 @@
 {
     "pages": [
+        "pages/orderInfo/orderInfo",
+        "pages/buyPage/buyPage",
         "pages/index/index",
         "pages/me/me",
-        "pages/orderInfo/orderInfo",
         "pages/booksList/booksList"
     ],
     "window": {

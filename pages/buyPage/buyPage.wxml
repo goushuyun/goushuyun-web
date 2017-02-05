@@ -1,0 +1,66 @@
+<view id="container">
+
+    <view id="bookInfo">
+        <image class="bookImage" src="http://ojrjlwt2h.bkt.clouddn.com/9787503543449"></image>
+        <view class="bookDetail">
+            <text class="text_block title">Go语言学习笔记</text>
+            <text class="text_block publisher">出版社：中国人民大学出版社</text>
+            <text class="text_block author">     作者：咯阿斯</text>
+            <text class="text_block isbn">   ISBN：9787122087935</text>
+            <text class="text_block price">原价：22.30</text>
+        </view>
+    </view>
+
+    <view class="buy_item">
+        <view class="info">
+            <text class="text_inline_block category">新书</text>
+            <text class="text_inline_block discount">7.4</text>
+            <text class="text_inline_block store">库存34本</text>
+        </view>
+        <view class="operate">
+            <text class="selling_price">¥23.23</text>
+            <view class="btns">
+                <view class="btn_reduce">
+                    <image class="btn_img" src="/images/reduce.png"></image>
+                </view>
+                <input class="goods_number" type="number" maxlength="3" value="0"/>
+                <view class="btn_plus">
+                    <image class="btn_img" src="/images/add.png"></image>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="buy_item">
+        <view class="info">
+            <text class="text_inline_block category">二手书</text>
+            <text class="text_inline_block discount">7.4</text>
+            <text class="text_inline_block store">库存34本</text>
+        </view>
+        <view class="operate">
+            <text class="selling_price">¥23.23</text>
+            <view class="btns">
+                <view class="btn_reduce">
+                    <image class="btn_img" src="/images/reduce.png"></image>
+                </view>
+                <input class="goods_number" type="number" maxlength="3" value="0"/>
+                <view class="btn_plus">
+                    <image class="btn_img" src="/images/add.png"></image>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view id="bottom_bar">
+        <view class="shopcart_info">
+            <view class="shopcart">
+                <image src="/images/shopcart.png" class="shopcart_img"></image>
+                <text class="total_num">1</text>
+            </view>
+            <text class="text_inline_block" style="padding-left:12px;">购物车总价：<text style="color: #FF5400">¥ 78.50</text></text>
+        </view>
+
+        <text class="text_inline_block go_shopcart_btn">去购物车结算</text>
+    </view>
+
+</view>
