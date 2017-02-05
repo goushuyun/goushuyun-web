@@ -148,5 +148,14 @@ Page({
     wxSearchTap: function(e) {
         var that = this
         WxSearch.wxSearchHiddenPancel(that);
+    },
+
+    goBuyPage(e){
+        let isbn = e.currentTarget.dataset.isbn
+
+        // 跳转到 buyPage
+        wx.navigateTo({
+            url: "/pages/buyPage/buyPage?isbn=" + isbn
+        })
     }
 })

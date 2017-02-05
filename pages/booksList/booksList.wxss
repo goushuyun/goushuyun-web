@@ -29,7 +29,7 @@ scroll-view#booksList .book .book_info .book_title{
     color: #232323;
     font-size: 16px;
     font-weight: bolder;
-    line-height: 28px;
+    line-height: 22px;
 }
 scroll-view#booksList .book .book_info .book_author{
     color: #444;

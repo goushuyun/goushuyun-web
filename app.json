@@ -1,11 +1,11 @@
 {
     "pages": [
-        "pages/orderInfo/orderInfo",
-        "pages/buyPage/buyPage",
         "pages/index/index",
         "pages/me/me",
-        "pages/booksList/booksList",
         "pages/shopDetail/shopDetail"
+        "pages/orderInfo/orderInfo",
+        "pages/buyPage/buyPage",
+        "pages/booksList/booksList"
     ],
     "window": {
         "navigationBarTitleText": "购书云",

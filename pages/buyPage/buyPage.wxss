@@ -12,6 +12,7 @@ view#bookInfo{
     background-color: white;
     box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
     margin-bottom: 6px;
+    position: relative;
 }
 
 view#bookInfo image.bookImage{
@@ -22,15 +23,18 @@ view#bookInfo image.bookImage{
 }
 
 view#bookInfo .bookDetail{
-    margin-left: 16px;
+    /*margin-left: 16px;*/
     display: inline-block;
     vertical-align: top;
+    position: absolute;
+    left: 172px;
+    right: 16px;
 }
 
 view#bookInfo .bookDetail .title{
     font-size: 16px;
     font-weight: bolder;
-    line-height: 32px;
+    line-height: 22px;
 }
 
 .publisher, .author, .isbn, .price{
@@ -57,6 +61,8 @@ view.buy_item .info{
 view.buy_item .info .category{
     font-size: 16px;
     font-weight: bolder;
+    width: 48px;
+
 }
 view.buy_item .info .discount{
     color: #E64340;
