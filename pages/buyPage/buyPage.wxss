@@ -79,6 +79,7 @@ view.buy_item .info .store{
 
 view.operate{
     margin-top: 12px;
+    height: 28px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -92,7 +93,7 @@ view.operate .btns{
     display: flex;
     align-items: center;
     width: 100px;
-    justify-content: space-between;
+    justify-content:flex-end;
 }
 
 view.operate .goods_number{
@@ -104,6 +105,7 @@ view.operate .goods_number{
     box-sizing: border-box;
     font-size: 13px;
     text-align: center;
+    margin: 0 12px;
 }
 
 /* bottom bar */

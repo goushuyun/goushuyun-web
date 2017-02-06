@@ -11,21 +11,29 @@
         </view>
     </view>
 
-    <view class="buy_item" wx:for="{{goods}}">
+    <view class="buy_item" wx:for="{{goods}}" data-goodsid="{{item.id}}">
         <view class="info">
             <text class="text_inline_block category">{{item.type == 1 ? '新书':'二手书'}}</text>
             <text class="text_inline_block discount">{{item.discount}}</text>
-            <text class="text_inline_block store">库存{{item.amount}}本</text>
+            <text class="text_inline_block store">{{item.amount > 0? '库存' + item.amount + '本' : '告罄'}}</text>
         </view>
         <view class="operate">
-            <text class="selling_price">¥{{item.selling_price}}</text>
+            <text class="selling_price">¥{{item.selling_price_yuan}}</text>
             <view class="btns">
-                <view class="btn_reduce">
-                    <image class="btn_img" src="/images/reduce.png"></image>
+
+                <block wx:if="{{item.buy_amount > 0}}">
+                    <view class="btn_reduce" data-index="{{index}}" data-operate-type="reduce" bindtap="changeAmount">
+                        <image class="btn_img" src="/images/reduce.png"></image>
+                    </view>
+                    <input class="goods_number" type="number" maxlength="3" value="{{item.buy_amount}}" data-index="{{index}}" bindblur="goodsNumberInputBlur"/>
+                </block>
+
+                <view wx:if="{{item.buy_amount < item.amount}}" class="btn_plus" data-index="{{index}}" data-operate-type="add" bindtap="changeAmount">
+                    <image class="btn_img" src="{{item.buy_amount<item.amount?'/images/add.png':'/images/no_add.png'}}"></image>
                 </view>
-                <input class="goods_number" type="number" maxlength="3" value="0"/>
-                <view class="btn_plus">
-                    <image class="btn_img" src="/images/add.png"></image>
+
+                <view wx:else class="btn_reduce">
+                    <image class="btn_img" src="/images/no_add.png"></image>
                 </view>
             </view>
         </view>
@@ -40,7 +48,7 @@
             <text class="text_inline_block" style="padding-left:12px;">购物车总价：<text style="color: #FF5400">¥ 78.50</text></text>
         </view>
 
-        <text class="text_inline_block go_shopcart_btn">去购物车结算</text>
+        <text class="text_inline_block go_shopcart_btn" bindtap="goToShopCart">去购物车结算</text>
     </view>
 
 </view>

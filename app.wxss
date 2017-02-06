@@ -45,9 +45,6 @@ button.btn-small{
     line-height: 26px;
 }
 
-
-
-
 /* operate group button */
 .btn_reduce{
     box-sizing: border-box;

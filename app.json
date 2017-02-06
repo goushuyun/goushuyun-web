@@ -2,7 +2,7 @@
     "pages": [
         "pages/index/index",
         "pages/me/me",
-        "pages/shopDetail/shopDetail"
+        "pages/shopDetail/shopDetail",
         "pages/orderInfo/orderInfo",
         "pages/buyPage/buyPage",
         "pages/booksList/booksList"
