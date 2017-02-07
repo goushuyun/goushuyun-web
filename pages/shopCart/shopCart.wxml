@@ -1,6 +1,66 @@
-<view id="cart">
+<!-- 头部 -->
+<view id="carts_hearder" class="head align-center">
+  <image class="icon24 padding10" src="/images/shop.png"/>
+  {{shopName}}  >
+</view>
 
+<!-- 主体 -->
+<scroll-view scroll-y="true" id="cart-body" class="body">
+  <view wx:for="{{goods}}" class="align-center white-bc boder-top boder-top padding10 cart-item" bindtap="bindViewTap">
+    <!-- 复选框图标 -->
+    <image wx:if="{{item.selected}}" class="icon18 padding5 flex-shrink" src="/images/shopCart/success.png" bindtap="bindCheckbox" data-index="{{index}}"/>
+    <image wx:else class="icon18 padding5 flex-shrink" src="/images/shopCart/circle.png" bindtap="bindCheckbox" data-index="{{index}}"/>
+
+    <!-- 图书图片 -->
+    <view>
+      <image class="carts-image padding5" src="{{item.image}}" mode="aspectFill"/>
+    </view>
+
+    <!-- 右边描述 -->
+    <view class="padding5 item-right">
+      <view class="justify-between">
+        <view  class="direction-row wrap">
+          <text class="font16">{{item.book_title}}</text>
+          <text wx:if="{{item.type==1}}" class="text_inline_block type type_new flex-shrink font12">新书</text>
+          <text wx:if="{{item.type==2}}" class="text_inline_block type type_old flex-shrink font12">二手书</text>
+        </view>
+        <image class="icon18 flex-shrink" src="/images/shopCart/delet.png" data-index="{{index}}" bindtap="deletCart"/>
+      </view>
+      <view class="font13">ISBN：{{item.isbn}}</view>
+
+      <view class="justify-between padding-top20">
+        <view class="font16 red">￥{{item.book_price}}</view>
+        <view class="justify-end">
+          <view class="btn_reduce {{minusStatuses[index]}}" data-index="{{index}}" bindtap="bindMinus">
+            <image class="btn_img" src="/images/reduce.png"/>
+          </view>
+          <input class="goods_number" type="number" maxlength="3" value="{{item.number}}" data-index="{{index}}" bindchange="bindManual"/>
+          <view class="btn_reduce" data-index="{{index}}" bindtap="bindPlus">
+            <image class="btn_img btn_plus" src="/images/add.png"></image>
+          </view>
+        </view>
+      </view>
+
+    </view>
+  </view>
+</scroll-view>
+
+<!-- 底部 -->
+<view id="carts-footer" class="foot align-center">
+  <view class="padding-lr10 align-center" bindtap="bindSelectAll">
+    <image wx:if="{{selectedAllStatus}}" class="icon18 padding5" src="/images/shopCart/success.png"/>
+    <image wx:else class="icon18 padding5" src="/images/shopCart/circle.png"/>
+    全选
+  </view>
+  <view class="wrap align-center justify-end total-price padding-lr10">
+    <view class="justify-end">
+      合计:
+      <view class="red">￥{{total_price}}</view>
+    </view>
+    <view class="font12 font8 padding5">(不含运费)</view>
+  </view>
+  <view class="blue-bc white align-center justify-center button">结算({{total_number}})</view>
 </view>
-<view id="bottom_bar">
-    
-</view>
+
+<!-- 提示框 -->
+<modal hidden="{{hidden}}" title="亲，确定要删除吗？" confirm-text="删了它！" cancel-text="不不不！" bindcancel="cancel" bindconfirm="confirm" no-cancel="{{nocancel}}"/>
