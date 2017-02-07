@@ -1,7 +1,7 @@
 <view id="container">
     <view id="shopHead" class="margin">
         <image id="shopBack" src="/images/shopDetail/shop_bc.png"></image>
-        <view class="head">
+        <view class="head1">
             <image id="shopPic" src="{{shopImg}}"></image>
             <text id="shopName">{{shopName}}</text>
         </view>

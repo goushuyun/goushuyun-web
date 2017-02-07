@@ -1,5 +1,5 @@
 <!-- 头部 -->
-<view id="carts_hearder" class="head align-center">
+<view id="carts_hearder" class="head align-center" bindtap="chooseCategory">
   <image class="icon24 padding10" src="/images/shop.png"/>
   {{shopName}}  >
 </view>

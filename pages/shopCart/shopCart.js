@@ -50,6 +50,11 @@ Page({
       }
     })
   },
+  chooseCategory(e){
+      wx.navigateTo({
+          url: '/pages/shopDetail/shopDetail'
+      })
+  },
   cancel: function(){
     this.setData({
        hidden: true
@@ -126,7 +131,7 @@ Page({
     });
     this.sum()
   },
-   bindSelectAll: function() {
+  bindSelectAll: function() {
     // 环境中目前已选状态
     var selectedAllStatus = this.data.selectedAllStatus;
     // 取反操作
@@ -143,7 +148,7 @@ Page({
     });
     this.sum()
   },
-   bindCheckout: function() {
+  bindCheckout: function() {
     // 初始化toastStr字符串
     var toastStr = 'id:';
     // 遍历取出已勾选的cid
