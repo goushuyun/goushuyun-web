@@ -142,18 +142,6 @@ view.fee .fee_price{
     padding-right: 6px;
 }
 
-.call_seller{
-    width: 100px;
-    font-size: 13px;
-    line-height: 32px;
-    border-radius: 3px;
-    color: #1581D9;
-    border: 1px solid #1581D9;
-}
-.call_seller_active{
-    border: 1px solid #32b2ff;
-    color: #32b2ff;
-}
 
 
 /* bottom bar */

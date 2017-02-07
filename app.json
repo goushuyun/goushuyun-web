@@ -1,5 +1,6 @@
 {
     "pages": [
+        "pages/addAddress/addAddress",
         "pages/remark/remark",
         "pages/settlement/settlement",
         "pages/index/index",
