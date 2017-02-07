@@ -43,9 +43,9 @@
         <view class="shopcart_info">
             <view class="shopcart">
                 <image src="/images/shopcart.png" class="shopcart_img"></image>
-                <text class="total_num">1</text>
+                <text class="total_num">{{total_number}}</text>
             </view>
-            <text class="text_inline_block" style="padding-left:12px;">购物车总价：<text style="color: #FF5400">¥ 78.50</text></text>
+            <text class="text_inline_block" style="padding-left:12px;">购物车总价：<text style="color: #FF5400">¥ {{total_price}}</text></text>
         </view>
 
         <text class="text_inline_block go_shopcart_btn" bindtap="goToShopCart">去购物车结算</text>

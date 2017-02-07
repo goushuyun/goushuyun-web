@@ -2,8 +2,8 @@ Page({
     data: {
         goods: [],
         pre_price: 0,
-        newBook_price: 0,
-        oldBook_price: 0
+        total_price: 0,
+        total_number: 0
     },
     addToShopCart(){
         let user_id = wx.getStorageSync('user').id, items = []
@@ -13,10 +13,12 @@ Page({
             let el = this.data.goods[i]
             if(el.buy_amount > 0){
                 let item = {user_id: user_id}
-                item.book_title = el.book.title
-                item.book_price = el.selling_price
-                item.number = el.buy_amount
-                item.goods_id = el.id
+                item.book_title = el.book.title     //书名
+                item.type = el.type                 //类型
+                item.isbn = el.isbn                 //ISBN
+                item.book_price = el.selling_price  //售价
+                item.number = el.buy_amount         //购买数量
+                item.goods_id = el.id               //商品ID
                 items.push(item)
             }
         }
@@ -53,25 +55,37 @@ Page({
     goodsNumberInputBlur(e){
         var index = e.currentTarget.dataset.index, value = e.detail.value, goods = this.data.goods
 
+        var change = value - goods[index].buy_amount, goods_price = goods[index].selling_price_yuan
+
         goods[index].buy_amount = value
 
         this.setData({
-            "goods": goods
+            "goods": goods,
+            "total_price": (parseFloat(this.data.total_price) + parseFloat(change * goods_price)).toFixed(2),
+            "total_number": this.data.total_number + change
         })
     },
     changeAmount(e){
         let index = e.currentTarget.dataset.index, goods = this.data.goods, type = e.currentTarget.dataset.operateType
 
+        var goods_price = 0, change = 0
+
         if(type == 'add'){
             if(goods[index].buy_amount < goods[index].amount){
                 goods[index].buy_amount++
+                goods_price = goods[index].selling_price_yuan
+                change = 1
             }
         }else if(type == 'reduce'){
             goods[index].buy_amount--
+            change = -1
+            goods_price = goods[index].selling_price_yuan
         }
 
         this.setData({
-            "goods": goods
+            "goods": goods,
+            total_price: (parseFloat(this.data.total_price) + parseFloat(change * goods_price)).toFixed(2) ,
+            total_number: this.data.total_number + change
         })
     },
     onLoad(option){
@@ -120,6 +134,32 @@ Page({
                 }
             }
         })
+
+        //get shopcart info
+        let user = wx.getStorageSync('user')
+        if(user == undefined){
+            return
+        }
+
+
+        wx.request({
+            url: 'https://app.cumpusbox.com/v1/orders/GetShopcart',
+            method: "POST",
+            data: {'user_id': user.id},
+            success(res){
+                if(res.data.code == '00000'){
+                    self.setData({
+                        "total_number": res.data.total_number,
+                        "total_price": (res.data.total_price/100).toFixed(2)
+                    })
+                }
+
+                console.log(res)
+            }
+        })
+
+
+
     },
     onReady(){
         console.log('-------------------------')
