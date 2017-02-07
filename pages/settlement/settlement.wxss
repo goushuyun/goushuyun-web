@@ -1,0 +1,179 @@
+scroll-view#container{
+    position: fixed;
+    top: 0;
+    bottom: 46px;
+    width: 100%;
+    background-color: #EFF3F7;
+}
+
+image.right_arrow_icon{
+    width: 16px;
+    height: 16px;
+}
+
+/* contact info part */
+view#contact{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+    margin-top: 6px;
+}
+view#contact .icon{
+    width: 22px;
+    height: 22px;
+}
+view#contact  .contact_info{
+    flex: 1;
+    font-size: 13px;
+    line-height: 20px;
+    padding-left: 16px;
+}
+view#contact  .contact_info .name_tel{
+    color: black;
+}
+view#contact  .contact_info .address{
+    color: #555;
+}
+
+/* order part */
+view#order{
+    background-color: white;
+    margin-top: 10px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+}
+view#order .shop_title{
+    display: flex;
+    align-items: center;
+    padding: 4px 16px;
+}
+
+view#order .shop_title .logo{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+}
+view#order .shop_title .shop_name{
+    padding: 0 16px;
+}
+
+view#order .order_item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 16px;
+    border-top: 1px solid #f4f3f3;
+    /*background-color: #F4F3F3;*/
+}
+view#order .order_item .book_image{
+    width: 58px;
+    height: 73px;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+}
+view#order .order_item .book_info{
+    flex: 1;
+    padding-left: 16px;
+    height: 73px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+view#order .order_item .book_info .title{
+    font-size: 16px;
+    color: #232323;
+}
+view#order .order_item .book_info .type{
+    margin-left: 12px;
+    font-size: 12px;
+    padding: 1px;
+}
+.type_new{
+    color: #F1501E;
+    border: 1px solid #F1501E;
+}
+.type_old{
+    color: #7CB342;
+    border: 1px solid #7CB342;
+}
+view#order .order_item .book_info .isbn{
+    font-size: 12px;
+    color: #666;
+}
+view#order .order_item .book_info .price{
+    color: #C60C1B;
+    font-size: 14px;
+}
+view#order .order_item .number{
+    height: 73px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 12px;
+}
+
+/* fee part */
+view.fee .fee_info{
+    padding: 0 16px 0 16px;
+    height: 40px;
+    /*line-height: 36px;*/
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    border-top: 1px solid #f4f3f3;
+}
+view.fee .label{
+    color: #232323;
+}
+view.fee .fee_price{
+    color: #C60C1B;
+}
+
+.remark_info{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.remark_info .remark_content{
+    color: #888;
+    padding-right: 6px;
+}
+
+.call_seller{
+    width: 100px;
+    font-size: 13px;
+    line-height: 32px;
+    border-radius: 3px;
+    color: #1581D9;
+    border: 1px solid #1581D9;
+}
+.call_seller_active{
+    border: 1px solid #32b2ff;
+    color: #32b2ff;
+}
+
+
+/* bottom bar */
+view#bottom_bar{
+    position: fixed;
+    height: 46px;
+    background-color: white;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+}
+view#bottom_bar .order_btn{
+    height: 100%;
+    line-height: 46px;
+    font-size: 13px;
+    background-color: #1581D9;
+    color: white;
+    padding: 0 20px;
+}
