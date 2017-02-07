@@ -1,17 +1,9 @@
 Page({
   data:{
     shopName:"新华书店",
-    goods:[
-      {id:"18a36dab-4b80-4f51-9577-60f7ffe76fa2",goods_id:"5d47d4bd-68cc-4bc8-9379-6cc910e59ead",image:"/images/shopCart/book1.png",order_id:"",book_title:"机械制图",book_price:23423,number:1,type:1,isbn:"9787122087935",selected:true},
-      {id:"14736c6b-8868-4044-956d-93cf1ca58062",goods_id:"f77e8c78-105e-4dbf-92eb-3092a64c8b25",image:"/images/shopCart/book1.png",order_id:"",book_title:"Linux设备驱动开发详解",book_price:8000,number:2,type:2,isbn:"9787111507895",selected:true},
-      {id:"8796ff02-d915-40fb-bd0a-e8dd8c07f3ff",goods_id:"5d47d4bd-68cc-4bc8-9379-6cc910e59ead",image:"/images/shopCart/book1.png",order_id:"",book_title:"机械制图",book_price:23423,number:1,type:1,isbn:"9787122087935",selected:true},
-      {id:"7a83c22b-2c65-4f05-a59e-81d729acb38f",goods_id:"f77e8c78-105e-4dbf-92eb-3092a64c8b25",image:"/images/shopCart/book1.png",order_id:"",book_title:"Linux设备驱动开发详解",book_price:8000,number:2,type:2,isbn:"9787111507895",selected:true},
-      {id:"7a83c22b-2c65-4f05-a59e-81d729acb38f",goods_id:"f77e8c78-105e-4dbf-92eb-3092a64c8b25",image:"/images/shopCart/book1.png",order_id:"",book_title:"Linux设备驱动开发详解",book_price:8000,number:2,type:2,isbn:"9787111507895",selected:true},
-      {id:"7a83c22b-2c65-4f05-a59e-81d729acb38f",goods_id:"f77e8c78-105e-4dbf-92eb-3092a64c8b25",image:"/images/shopCart/book1.png",order_id:"",book_title:"Linux设备驱动开发详解",book_price:8000,number:2,type:2,isbn:"9787111507895",selected:true},
-      {id:"7a83c22b-2c65-4f05-a59e-81d729acb38f",goods_id:"f77e8c78-105e-4dbf-92eb-3092a64c8b25",image:"/images/shopCart/book1.png",order_id:"",book_title:"Linux设备驱动开发详解",book_price:8000,number:2,type:2,isbn:"9787111507895",selected:true}
-    ],
-    total_price:781111.11,
-    total_number:6,
+    goods:[],
+    total_price:0,
+    total_number:0,
 
     minusStatuses: ['disabled', 'disabled', 'normal', 'normal', 'disabled'],
     selectedAllStatus: false,
@@ -21,7 +13,42 @@ Page({
     temp_index:-1
   },
   onLoad:function(e){
-    this.sum()
+    var self = this;
+    wx.request({
+      url: 'https://app.cumpusbox.com/v1/orders/GetShopcart', //仅为示例，并非真实的接口地址
+      data: {
+         user_id : 'aa9254c9-0a13-45df-8bf1-10a57802b943'
+      },
+      header: {
+          'content-type': 'application/json'
+      },
+      method: 'POST',
+      success: function(res) {
+        console.log(res.data)
+        let user_id = wx.getStorageSync('user').id, items = []
+        for (var i = 0; i < res.data.items.length; i++) {
+            let el = res.data.items[i]
+            console.log(el)
+            if(res.data.total_number > 0){
+                let item = {user_id: user_id}
+                item.id = el.id
+                item.book_image = el.book_image  //图片
+                item.book_price = (el.book_price/100).toFixed(2) //售价
+                item.book_title = el.book_title  //书名
+                item.goods_id = el.goods_id      //商品ID
+                item.isbn = el.isbn              //ISBN
+                item.number = el.number          //购买数量
+                item.type = el.type              //类型
+                item.selected = true             //选中
+                items.push(item)
+            }
+        }
+        self.setData({
+          goods:items
+        })
+        self.sum()
+      }
+    })
   },
   cancel: function(){
     this.setData({

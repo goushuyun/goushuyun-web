@@ -13,7 +13,7 @@
 
     <!-- 图书图片 -->
     <view>
-      <image class="carts-image padding5" src="{{item.image}}" mode="aspectFill"/>
+      <image class="carts-image padding5" src="{{item.book_image}}" mode="aspectFill"/>
     </view>
 
     <!-- 右边描述 -->

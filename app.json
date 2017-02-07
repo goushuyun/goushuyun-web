@@ -1,10 +1,10 @@
 {
     "pages": [
+        "pages/index/index",
         "pages/shopCart/shopCart",
         "pages/settlement/settlement",
         "pages/remark/remark",
         "pages/addAddress/addAddress",
-        "pages/index/index",
         "pages/me/me",
         "pages/shopDetail/shopDetail",
         "pages/orderInfo/orderInfo",
@@ -26,7 +26,7 @@
             "iconPath": "images/books.png",
             "selectedIconPath": "images/books_focus.png"
         }, {
-            "pagePath": "pages/me/me",
+            "pagePath": "pages/shopCart/shopCart",
             "text": "购物车",
             "iconPath": "images/cart.png",
             "selectedIconPath": "images/cart_focus.png"
