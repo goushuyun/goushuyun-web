@@ -1,0 +1,30 @@
+view#container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #EFF3F7;
+}
+.remark{
+    background-color: white;
+    margin-top: 12px;
+    padding: 6px 16px 10px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+}
+.remark textarea{
+    box-sizing: border-box;
+    margin: 12px 0;
+    height: 100px;
+    width: 100%;
+    border: 1px solid #f4f3f3;
+    border-radius: 4px;
+    font-size: 13px;
+    padding: 16px 12px;
+    background-color: #EFF3F7;
+}
+
+.remark label{
+    font-size: 15px;
+    color: #333;
+}
