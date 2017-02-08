@@ -16,7 +16,7 @@
           <text class="font15 font0 padding5">{{address.tel}}</text>
         </view>
         <view class="justify-start">
-          <text class="font12 font5">{{address.address}}</text>
+          <text class="font12 font5 padding-bottom5">{{address.address}}</text>
         </view>
       </view>
     </view>
