@@ -1,1 +1,19 @@
-Page({})
+Page({
+  data:{
+    shopName:"新华书店",
+    address:{
+      user_name:"冯忠森",
+      tel:"18818000305",
+      address:"上海应用技术大学"
+    },
+    order_status:{
+      code:1,
+      massage:"等待卖家发货"
+    }
+  },
+  chooseCategory(e){
+      wx.navigateTo({
+          url: '/pages/shopDetail/shopDetail'
+      })
+  }
+})

@@ -72,7 +72,7 @@
   border-top: 1px solid #F4F3F3
 }
 /* 3.2 下边框*/
-.boder-top {
+.boder-bottom {
   border-bottom: 1px solid #F4F3F3
 }
 /* 3.2 内边距*/
@@ -235,12 +235,23 @@
   background-color: #FFFFFF;
   border-top: 2rpx solid #F4F3F3;
 }
-/* 6.3.1 底部按钮*/
+/* 6.3.1 底部右下角按钮*/
 .foot .button {
   position: fixed;
   right: 0;
   width: 78px;
   height: 46px;
+}
+
+/**** 7 特定组件样式****/
+.button-plain {
+  color: #1581D9;
+  border-color: #1581D9
+}
+.button-hover {
+  color: #FFFFFF;
+  background-color: #1581D9;
+  border: 0;
 }
 /******** end ********/
 

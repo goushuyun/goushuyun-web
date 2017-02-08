@@ -1,37 +1,39 @@
+<view class="head align-center">
+  <text class="font15">{{order_status.massage}}
+    <text wx:if="{{order_status.code==1}}" class="font12">24小时候订单将自动关闭</text>
+  </text>
+</view>
+
 <scroll-view scroll-y="true" id="container">
-    <!-- Company info -->
-    <view id="company_info">
-        <image class="comp_logo" src="http://ojrfwndal.bkt.clouddn.com/WechatIMG5.jpeg"></image>
-
-        <text class="comp_name">北京香泉书海图书有限公司</text>
-
-        <button class="orderAgain" hover-class="btn_active" plain="true">再来一单</button>
+    <!-- address -->
+    <view id="address-body" class="align-center white-bc boder-top padding-bottom5">
+      <view class="image justify-center">
+        <image class="icon30 padding10" src="/images/location_blue.png"/>
+      </view>
+      <view class="text direction-column justify-start" data-index="{{index}}">
+        <view class="justify-start align-center">
+          <text class="font15 font0">{{address.user_name}}</text>
+          <text class="font15 font0 padding5">{{address.tel}}</text>
+        </view>
+        <view class="justify-start">
+          <text class="font12 font5">{{address.address}}</text>
+        </view>
+      </view>
+    </view>
+    <!-- buy again -->
+    <view id="company_info" class="align-center justify-center white-bc border-top border-bottom">
+        <text>帮同学也买一份吧！</text>
+        <image class="icon18" src="/images/orderInfo/right_arrow.png"></image>
+        <view class="padding-lr20">
+          <button class="orderAgain" hover-class="btn_active" plain="true">再来一单</button>
+        </view>
     </view>
 
     <!-- order info -->
-    <view id="order_Info">
-        <text class="header">订单详情</text>
-        <view class="book">
-            <image class="book_pic" src="http://ojrjlwt2h.bkt.clouddn.com/9787040343199"></image>
-            <view class="book_info">
-                <text class="text_block book_title">ES2015权威指南</text>
-                <text class="text_block book_isbn">ISBN：9787122087935</text>
-                <view class="detail">
-                    <text class="text_inline_block book_price">¥34.45</text>
-                    <text class="text_inline_block">x 7</text>
-                </view>
-            </view>
-        </view>
-        <view class="book">
-            <image class="book_pic" src="http://ojrjlwt2h.bkt.clouddn.com/9787040343199"></image>
-            <view class="book_info">
-                <text class="text_block book_title">ES2015权威指南</text>
-                <text class="text_block book_isbn">ISBN：9787122087935</text>
-                <view class="detail">
-                    <text class="text_inline_block book_price">¥34.45</text>
-                    <text class="text_inline_block">x 7</text>
-                </view>
-            </view>
+    <view id="order_Info" class="white-bc">
+        <view class="shop-head align-center boder-bottom" bindtap="chooseCategory">
+          <image class="icon24 padding-lr10" src="/images/shop_blue.png"/>
+          {{shopName}}  >
         </view>
         <view class="book">
             <image class="book_pic" src="http://ojrjlwt2h.bkt.clouddn.com/9787040343199"></image>
@@ -57,38 +59,18 @@
         </view>
 
         <view class="fee">
-            <view class="fee_info">
+            <view class="fee_info boder-bottom">
                 <text class="text_inline_block label">配送费</text>
                 <text class="text_inline_block fee_price">¥7</text>
             </view>
-            <view class="fee_info">
+            <view class="fee_info  boder-bottom">
                 <text class="text_inline_block label">总计</text>
                 <text class="text_inline_block fee_price">¥437.34</text>
             </view>
         </view>
-
-        <button class="call_seller" hover-class="call_seller_active" plain="true">联系商家</button>
-
     </view>
 
-    <view id="address_info">
-        <text class="header">配送信息</text>
-        <view class="address_detail">
-            <text class="text_inline_block label">收获地址</text>
-            <view class="personal_info">
-                <text class="text_block">王凯</text>
-                <text class="text_block">18817953402</text>
-                <text class="text_block">大话清水湾 34号 201</text>
-            </view>
-        </view>
-
-        <view class="address_detail">
-            <text class="text_inline_block label">发货时间</text>
-            <text style="padding-left:20px;">2016-12-23 23:23:44</text>
-        </view>
-    </view>
-
-    <view id="order_about">
+    <view id="order_about" class="white-bc">
         <text class="header">订单信息</text>
         <view class="about">
             <text class="text_block">订单编号</text>
@@ -107,5 +89,10 @@
             <text class="text_block content">阿斯顿受到粉丝的</text>
         </view>
     </view>
-
 </scroll-view>
+
+<view id="order_foot" class="foot align-center justify-end padding-lr5">
+  <view><button size="mini" class="button-plain" hover-class="button-hover">申请售后</button></view>
+  <view><button size="mini" class="button-plain" hover-class="button-hover">提醒发货</button></view>
+  <view><button size="mini" class="button-plain" hover-class="button-hover">查看物流</button></view>
+</view>
