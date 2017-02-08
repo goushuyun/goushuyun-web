@@ -1,0 +1,12 @@
+.body {
+  top: 5px;
+}
+.item {
+  height: 78px;
+}
+#address-body .image {
+  width: 100rpx;
+}
+#address-body .text {
+  width: 550rpx;
+}
