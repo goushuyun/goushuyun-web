@@ -1,0 +1,265 @@
+/********公共类********/
+/*作者：冯忠森       */
+/*时间：2017.2.7*/
+
+/**** 1 颜色****/
+/* 1.1 红/底色红*/
+.red {
+  color: #C60C1B
+}
+.red-bc {
+  background-color: #C60C1B
+}
+/* 1.2 蓝/底色蓝*/
+.blue {
+  color: #1581D9
+}
+.blue-bc {
+  background-color: #1581D9
+}
+/* 1.3 灰/底色灰*/
+.gray {
+  color: #EFF3F7
+}
+.gray-bc {
+  background-color: #EFF3F7
+}
+/* 1.4 白/底色白*/
+.white {
+  color: #FFFFFF
+}
+.white-bc {
+  background-color: #FFFFFF
+}
+
+/**** 2 字号字色****/
+/* 2.1 16号字体*/
+.font16 {
+  font-size: 16px
+}
+/* 2.2 15号字体*/
+.font15 {
+  font-size: 15px
+}
+/* 2.3 13号字体*/
+.font13 {
+  font-size: 13px
+}
+/* 2.4 12号字体*/
+.font12 {
+  font-size: 12px
+}
+/* 2.5 一级色*/
+.font0 {
+  color: #000000
+}
+/* 2.6 二级色*/
+.font3 {
+  color: #333333
+}
+/* 2.7 三级色*/
+.font5 {
+  color: #555555
+}
+/* 2.8 四级色*/
+.font8 {
+  color: #888888
+}
+
+/**** 3 边框****/
+/* 3.1 上边框*/
+.boder-top {
+  border-top: 1px solid #F4F3F3
+}
+/* 3.2 下边框*/
+.boder-bottom {
+  border-bottom: 1px solid #F4F3F3
+}
+.box-shadow {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+}
+/* 3.2 内边距*/
+.padding5 {
+  padding: 5px
+}
+.padding-lr5 {
+  padding: 0 5px
+}
+.padding-tb5 {
+  padding: 5px 0
+}
+.padding-bottom5 {
+  padding-bottom: 5px
+}
+.padding10 {
+  padding: 10px
+}
+.padding-lr10 {
+  padding: 0 10px
+}
+.padding-tb10 {
+  padding: 10px 0
+}
+.padding-left10 {
+  padding-left: 10px
+}
+.padding-right10 {
+  padding-right: 10px
+}
+.padding20 {
+  padding: 20px
+}
+.padding-lr20 {
+  padding: 0 20px;
+}
+.padding-left20 {
+  padding-left: 20px
+}
+.padding-right20 {
+  padding-right: 20px
+}
+.padding-top20 {
+  padding-top: 20px
+}
+
+/**** 4 图标****/
+/* 4.1 小图标*/
+.icon18 {
+  height: 18px;
+  width: 18px
+}
+/* 4.2 中图标*/
+.icon24 {
+  height: 24px;
+  width: 24px
+}
+/* 4.3 大图标*/
+.icon30 {
+  height: 30px;
+  width: 30px
+}
+
+/**** 5 flex布局****/
+/*引用flex布局*/
+/* 5.1 横向排列*/
+.direction-row {
+  display: flex;
+  flex-direction: row
+}
+/* 5.1.1 左对齐*/
+.justify-start {
+  display: flex;
+  justify-content: flex-start
+}
+/* 5.1.2 右对齐*/
+.justify-end {
+  display: flex;
+  justify-content: flex-end
+}
+/* 5.1.3 左右局中*/
+.justify-center {
+  display: flex;
+  justify-content: center
+}
+/* 5.1.4 两端对齐*/
+.justify-between {
+  display: flex;
+  justify-content: space-between;
+}
+/* 5.1.5 居中对齐*/
+.justify-around {
+  display: flex;
+  justify-content: space-around;
+}
+/*自动换行*/
+/* 5.1.6 首行在上*/
+.wrap {
+  display: flex;
+  flex-wrap:wrap
+}
+/* 5.1.7 首行在下*/
+.wrap-reverse {
+  display: flex;
+  flex-wrap:wrap-reverse
+}
+
+/* 5.2 纵向排列*/
+.direction-column {
+  display: flex;
+  flex-direction: column
+}
+/* 5.2.1 上对齐*/
+.align-start {
+  display: flex;
+  align-items: flex-start
+}
+/* 5.2.2 下对齐*/
+.align-end {
+  display: flex;
+  align-items: flex-end
+}
+/* 5.2.3 上下局中*/
+.align-center {
+  display: flex;
+  align-items: center
+}
+/* 5.2.4 首行对齐*/
+.align-baseline {
+  display: flex;
+  align-items: baseline
+}
+/* 5.3 不压缩*/
+.flex-shrink {
+  flex-shrink: 0;
+}
+/**** 6 fixed布局****/
+/*使用CSS的position属性的fixed值*/
+/* 6.1 顶部*/
+.head {
+  position: fixed;
+  top: 0;
+  height: 44px;
+  width: 100%;
+  font-size: 16px;
+  color: #FFFFFF;
+  background-color: #1581D9
+}
+/* 6.2 主题部分*/
+.body {
+  position: fixed;
+  top: 44px;
+  bottom: 46px;
+  left: 0;
+  right: 0;
+  background-color: #EFF3F7
+}
+/* 6.3 底部*/
+.foot {
+  box-sizing:border-box;
+  position: fixed;
+  bottom: 0;
+  height: 46px;
+  width: 100%;
+  font-size: 16px;
+  background-color: #FFFFFF;
+  border-top: 2rpx solid #F4F3F3;
+}
+/* 6.3.1 底部右下角按钮*/
+.foot .button {
+  position: fixed;
+  right: 0;
+  width: 78px;
+  height: 46px;
+}
+
+/**** 7 特定组件样式****/
+.button-plain {
+  color: #1581D9;
+  border-color: #1581D9
+}
+.button-hover {
+  color: #FFFFFF;
+  background-color: #1581D9;
+  border: 0;
+}
+/******** end ********/

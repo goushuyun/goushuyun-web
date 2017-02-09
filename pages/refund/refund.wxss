@@ -1,0 +1,51 @@
+#containt {
+  top: 0
+}
+#orderInfo,#refundInfo,#pictures,#shopInfo {
+  margin-top: 6px
+}
+#foot_btn {
+  background-color: #1581D9
+}
+
+view.box{
+  position: relative;
+}
+
+.delet {
+  z-index: 2;
+  position: absolute;
+  right:-2px;
+  top: -2px;
+}
+.image {
+  z-index: 1
+}
+
+.left {
+  flex-basis:20%
+}
+.center {
+  flex-basis:60%
+}
+.right {
+  flex-basis:20%
+}
+.carts-image {
+  width: 58px;
+  height: 73px;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+}
+
+textarea{
+    box-sizing: border-box;
+    margin: 12px 0;
+    height: 100px;
+    width: 100%;
+    border: 1px solid #f4f3f3;
+    border-radius: 4px;
+    font-size: 13px;
+    padding: 16px 12px;
+    background-color: #EFF3F7;
+}

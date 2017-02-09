@@ -10,7 +10,8 @@
         "pages/me/me",
         "pages/shopDetail/shopDetail",
         "pages/buyPage/buyPage",
-        "pages/booksList/booksList"
+        "pages/booksList/booksList",
+        "pages/refund/refund",
     ],
     "window": {
         "navigationBarTitleText": "购书云",
