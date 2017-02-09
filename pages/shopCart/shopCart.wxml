@@ -48,18 +48,16 @@
 </scroll-view>
 
 <!-- 底部 -->
-<view id="carts-footer" class="foot align-center">
-  <view class="padding-lr10 align-center" bindtap="bindSelectAll">
-    <image wx:if="{{selectedAllStatus}}" class="icon18 padding5" src="/images/shopCart/success.png"/>
-    <image wx:else class="icon18 padding5" src="/images/shopCart/circle.png"/>
-    全选
+<view id="carts-footer">
+  <view class="select-all align-center" bindtap="bindSelectAll">
+    <image wx:if="{{selectedAllStatus}}" class="icon18" src="/images/shopCart/success.png"/>
+    <image wx:else class="icon18" src="/images/shopCart/circle.png"/>
+    <text class="font15 padding-lr5">全选</text>
   </view>
-  <view class="wrap align-center justify-end total-price padding-lr10">
-    <view class="justify-end">
-      合计:
-      <view class="red">￥{{total_price}}</view>
-    </view>
-    <view class="font12 font8 padding5">(不含运费)</view>
+  <view class="total-price">
+    <text class="font15">合计:</text>
+    <text class="font15 red">￥{{total_price}}</text>
+    <text class="font12 font8 padding-lr5">(不含运费)</text>
   </view>
-  <view class="blue-bc white align-center justify-center button">结算({{total_number}})</view>
+  <text class="font15 button">结算({{total_number}})</text>
 </view>

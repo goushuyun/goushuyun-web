@@ -244,13 +244,6 @@
   background-color: #FFFFFF;
   border-top: 2rpx solid #F4F3F3;
 }
-/* 6.3.1 底部右下角按钮*/
-.foot .button {
-  position: fixed;
-  right: 0;
-  width: 78px;
-  height: 46px;
-}
 
 /**** 7 特定组件样式****/
 .button-plain {

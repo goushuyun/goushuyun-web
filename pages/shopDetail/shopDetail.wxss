@@ -1,6 +1,4 @@
 view#container{
-    display: flex;
-    flex-direction: column;
     background-color:  #EFF3F7;
 }
 .margin{
@@ -9,6 +7,7 @@ view#container{
 .back{
     background-color: white;
 }
+
 /* 头部分 */
 #shopBack{
     z-index: 0;
@@ -38,37 +37,43 @@ view#container{
 
 /* 信息部分 */
 .item{
+    padding: 0 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 5px 10px;
+    height: 42px;
     font-size: 13px;
-}
-.boder{
-    padding-bottom: 5px;
     border-bottom: 1px solid #f4f3f3;
 }
+
 .left{
     flex-basis:20%;
     color: #000;
+    font-size: 13px;
 }
 .center{
     flex-basis:70%;
-    color: #888888;
+    color: #888;
+    font-size: 13px;
 }
 .right{
-    flex-basis:10%;
-    height: 30px;
-    width: 30px;
+    flex-basis:10%
 }
 
 /*描述部分*/
 #shopDesc{
     font-size: 13px;
-    padding: 10px;
 }
-#shopDesc .center{
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px solid #f4f3f3;
+
+#shopDesc .title{
+  padding: 0 16px;
+  height: 42px;
+  line-height: 42px;
+  border-bottom: 1px solid #f4f3f3;
+  box-sizing: border-box;
+}
+#shopDesc .content{
+    color: #888;
+    padding: 12px 16px;
+    line-height: 20px;
 }
