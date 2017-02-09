@@ -7,14 +7,7 @@ Page({
         total_number: 0, //购物车商品种类数
 
         minusStatuses: ['disabled', 'disabled', 'normal', 'normal', 'disabled'], //加减状态
-        selectedAllStatus: false, //全选状态
-
-        hidden: true,
-        nocancel: false,
-        temp_index: -1 //index临时存放
-    },
-    onLoad: function(e) {
-        this.showGoods()
+        selectedAllStatus: false //全选状态
     },
     onShow: function(e) {
         this.showGoods()
@@ -31,12 +24,10 @@ Page({
             },
             method: 'POST',
             success: function(res) {
-                console.log(res.data)
                 let user_id = wx.getStorageSync('user').id,
                     items = []
                 for (var i = 0; i < res.data.items.length; i++) {
                     let el = res.data.items[i]
-                    console.log(el)
                     if (res.data.total_number > 0) {
                         let item = {
                             user_id: user_id
@@ -48,6 +39,7 @@ Page({
                         item.goods_id = el.goods_id //商品ID
                         item.isbn = el.isbn //ISBN
                         item.number = el.number //购买数量
+                        item.store_number = el.store_number //库存数量
                         item.type = el.type //类型
                         item.selected = true //选中
                         items.push(item)
@@ -58,6 +50,9 @@ Page({
                     temp_goods: items
                 })
                 self.sum()
+            },
+            fail: function(res) {
+                console.log(res)
             }
         })
     },
@@ -89,7 +84,7 @@ Page({
                 'content-type': 'application/json'
             },
             method: 'POST',
-            success: function(res) {
+            fail: function(res) {
                 console.log(res)
             }
         })
@@ -97,52 +92,6 @@ Page({
     chooseCategory(e) {
         wx.navigateTo({
             url: '/pages/shopDetail/shopDetail'
-        })
-    },
-    cancel: function() {
-        this.setData({
-            hidden: true
-        });
-    },
-    confirm: function(e) {
-        var self = this;
-        var index = self.data.temp_index;
-        // 购物车数据
-        var goods = self.data.goods
-        var temp_goods = self.data.temp_goods
-        wx.request({
-            url: 'https://app.cumpusbox.com/v1/orders/DeleteOrderItem',
-            data: {
-                id: goods[index].id
-            },
-            header: {
-                'content-type': 'application/json'
-            },
-            method: 'POST',
-            success: function(res) {
-                if (res.data.code == "00000") {
-                    goods.splice(index, 1)
-                    temp_goods.splice(index, 1) //保证副本中商品项一致
-                    // 将数值与状态写回
-                    self.setData({
-                        hidden: true,
-                        goods: goods
-                    });
-                    self.sum()
-                    wx.showToast({
-                        title: '删除成功',
-                        icon: 'success'
-                    })
-                } else {
-                    self.setData({
-                        hidden: true
-                    });
-                    wx.showToast({
-                        title: '删除失败',
-                        icon: 'loading'
-                    })
-                }
-            }
         })
     },
     bindMinus: function(e) {
@@ -172,22 +121,32 @@ Page({
     bindPlus: function(e) {
         var index = parseInt(e.currentTarget.dataset.index);
         var number = this.data.goods[index].number;
-        // 自增
-        number++;
-        // 只有大于一件的时候，才能normal状态，否则disable状态
-        var minusStatus = number <= 1 ? 'disabled' : 'normal';
-        // 购物车数据
-        var goods = this.data.goods;
-        goods[index].number = number;
-        // 按钮可用状态
-        var minusStatuses = this.data.minusStatuses;
-        minusStatuses[index] = minusStatus;
-        // 将数值与状态写回
-        this.setData({
-            goods: goods,
-            minusStatuses: minusStatuses
-        });
-        this.sum()
+        var storeNumber = this.data.goods[index].store_number;
+        if (number <= storeNumber) {
+            // 自增
+            number++;
+            // 只有大于一件的时候，才能normal状态，否则disable状态
+            var minusStatus = number <= 1 ? 'disabled' : 'normal';
+            // 购物车数据
+            var goods = this.data.goods;
+            goods[index].number = number;
+            // 按钮可用状态
+            var minusStatuses = this.data.minusStatuses;
+            minusStatuses[index] = minusStatus;
+            // 将数值与状态写回
+            this.setData({
+                goods: goods,
+                minusStatuses: minusStatuses
+            });
+            this.sum()
+
+        } else {
+            wx.showModal({
+                title: '提示',
+                content: '已达到库存上限！',
+                showCancel: false
+            })
+        }
     },
     bindCheckbox: function(e) {
         /*绑定点击事件，将checkbox样式改变为选中与非选中*/
@@ -239,10 +198,58 @@ Page({
     },
     deletCart: function(e) {
         var index = parseInt(e.currentTarget.dataset.index);
-        this.setData({
-            hidden: false,
-            temp_index: index
-        });
+        var self = this;
+        wx.showModal({
+          title: '提示',
+          content: '亲，确定要删除这个宝贝吗？',
+          cancelText: '不不不！',
+          confirmText: '删了它！',
+          success: function(res) {
+            if (res.confirm) {
+                var index = parseInt(e.currentTarget.dataset.index);
+                self.deletConfirm(index)
+            }
+          }
+        })
+    },
+    deletConfirm: function(index) { //Model确定
+        var self = this;
+        // 购物车数据
+        var goods = self.data.goods
+        var temp_goods = self.data.temp_goods
+        wx.request({
+            url: 'https://app.cumpusbox.com/v1/orders/DeleteOrderItem',
+            data: {
+                id: goods[index].id
+            },
+            header: {
+                'content-type': 'application/json'
+            },
+            method: 'POST',
+            success: function(res) {
+                if (res.data.code == "00000") {
+                    goods.splice(index, 1)
+                    temp_goods.splice(index, 1) //保证副本中商品项一致
+                    // 将数值与状态写回
+                    self.setData({
+                        goods: goods
+                    });
+                    self.sum()
+                    wx.showToast({
+                        title: '删除成功',
+                        icon: 'success'
+                    })
+                } else {
+                    wx.showToast({
+                        title: '删除失败',
+                        icon: 'loading'
+                    })
+                }
+            },
+            fail: function(res) {
+                console.log(res)
+            }
+        })
     },
     sum: function() {
         var goods = this.data.goods;
