@@ -1,44 +1,52 @@
+/* order status */
+.head {
+  height: 60px;
+  padding-left: 100rpx;
+}
+.shop-head {
+  height: 36px;
+  width: 100%;
+  font-size: 16px;
+  color: #1581D9;
+  background-color: #FFFFFF
+}
+#order_foot button{
+  margin: 2px
+}
+#address-body {
+  margin-top: 4px
+}
+#address-body .image {
+  width: 100rpx;
+}
+
+#address-body .text {
+  width: 650rpx;
+}
+
 #container{
     background-color: #EFF3F7;
-    position: absolute;
-    top: 0;
-    bottom: 0;
+    position: fixed;
+    top: 60px;
+    bottom: 46px;
 }
 
 #company_info{
-    background-color: white;
-    padding: 12px 0;
+  height: 36px;
+  margin: 4px 0;
 }
 
-#company_info .comp_logo{
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    display: block;
-    margin: 0 auto;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
-}
-
-#company_info .comp_name{
-    display: block;
-    text-align: center;
-    line-height: 46px;
-    font-size: 15px;
-}
 #company_info .orderAgain{
-    width: 100px;
-    font-size: 13px;
-    height: 32px;
-    line-height: 32px;
-    border-radius: 3px;
+    font-size: 12px;
+    border-radius: 8px;
     background-color: #1581D9;
     color: white;
     border: 0;
 }
+
 #company_info .btn_active{
     background-color: #32b2ff;
 }
-
 
 /* order info */
 text.header{
@@ -46,13 +54,6 @@ text.header{
     border-bottom: 1px solid #F4F3F3;
     padding-left: 20px;
     display: block;
-}
-
-
-view#order_Info{
-    margin-top: 6px;
-    background-color: white;
-    padding-bottom: 12px;
 }
 
 view#order_Info .book{
@@ -115,27 +116,8 @@ view#order_Info .call_seller_active{
     color: #32b2ff;
 }
 
-
-/*地址信息*/
-view#address_info{
-    margin-top: 6px;
-    background-color: white;
-    line-height: 28px;
-}
-
-view#address_info .address_detail{
-    padding: 6px 0 6px 20px;
-    display: flex;
-    border-bottom: 1px solid #F4F3F3;
-}
-view#address_info .address_detail .personal_info{
-    padding-left: 16px;
-}
-
 view#order_about{
-    background-color: white;
-    margin-top: 6px;
-    margin-bottom: 6px;
+    margin: 4px 0
 }
 
 view#order_about .about{

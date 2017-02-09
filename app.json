@@ -2,12 +2,14 @@
     "pages": [
         "pages/test/test",
         "pages/index/index",
-        "pages/addAddress/addAddress",
-        "pages/remark/remark",
+        "pages/orderInfo/orderInfo",
+        "pages/addressList/addressList",
+        "pages/shopCart/shopCart",
         "pages/settlement/settlement",
+        "pages/remark/remark",
+        "pages/addAddress/addAddress",
         "pages/me/me",
         "pages/shopDetail/shopDetail",
-        "pages/orderInfo/orderInfo",
         "pages/buyPage/buyPage",
         "pages/booksList/booksList"
     ],
@@ -26,7 +28,7 @@
             "iconPath": "images/books.png",
             "selectedIconPath": "images/books_focus.png"
         }, {
-            "pagePath": "pages/me/me",
+            "pagePath": "pages/shopCart/shopCart",
             "text": "购物车",
             "iconPath": "images/cart.png",
             "selectedIconPath": "images/cart_focus.png"

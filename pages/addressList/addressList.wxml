@@ -1,0 +1,24 @@
+<scroll-view id="address-body" scroll-y="true" class="body">
+  <view wx:for="{{addresses}}" class="align-center white-bc item boder-top">
+    <view class="image justify-center">
+      <image wx:if="{{item.selected}}" class="icon18" src="/images/shopCart/success.png"/>
+    </view>
+    <view class="text direction-column justify-start" bindtap="bindCheckbox" data-index="{{index}}">
+      <view class="justify-start align-center">
+        <text class="font16 font0">{{item.user_name}}</text>
+        <text class="padding5 font16 font0">{{item.tel}}</text>
+      </view>
+      <view class="justify-start">
+        <text class="font13 font5">{{item.address}}</text>
+      </view>
+    </view>
+    <view class="image justify-center">
+      <image class="icon24" src="/images/edit.png" data-index="{{index}}"></image>
+    </view>
+  </view>
+</scroll-view>
+
+<view id="address-foot" class="foot justify-center align-center white-bc">
+  <image class="btn_img btn_plus" src="/images/add.png"></image>
+  <text class="padding-left10 font16">新增地址</text>
+</view>

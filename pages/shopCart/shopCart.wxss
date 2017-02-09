@@ -1,0 +1,40 @@
+.item-right {
+  width: 100%;
+}
+.total-price {
+  position: fixed;
+  right: 78px;
+}
+/*左部图片*/
+.carts-image {
+  width: 58px;
+  height: 73px;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+}
+
+.goods_number{
+  border: 2rpx solid #efefef;
+  border-radius: 8rpx;
+  display: inline-block;
+  width: 72rpx;
+  height: 44rpx;
+  box-sizing: border-box;
+  font-size: 26rpx;
+  text-align: center;
+  margin: 0 24rpx;
+}
+.type{
+    margin-left: 12px;
+    font-size: 12px;
+    padding: 1px;
+}
+
+.type_new{
+    color: #F1501E;
+    border: 1px solid #F1501E;
+}
+.type_old{
+    color: #7CB342;
+    border: 1px solid #7CB342;
+}

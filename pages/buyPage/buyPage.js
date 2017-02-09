@@ -47,8 +47,8 @@ Page({
         this.addToShopCart()
     },
     goToShopCart(){
-        wx.navigateTo({
-            url: '/pages/shopDetail/shopDetail'
+        wx.switchTab({
+            url: '/pages/shopCart/shopCart'
         })
     },
 
