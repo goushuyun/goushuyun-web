@@ -6,7 +6,7 @@
 
 <!-- 主体 -->
 <scroll-view scroll-y="true" id="cart-body" class="body">
-  <view wx:for="{{goods}}" class="align-center white-bc boder-top boder-top padding10 cart-item">
+  <view wx:for="{{goods}}" class="align-center white-bc border-top border-bottom padding10 cart-item">
     <!-- 复选框图标 -->
     <image wx:if="{{item.selected}}" class="icon18 padding5 flex-shrink" src="/images/shopCart/success.png" bindtap="bindCheckbox" data-index="{{index}}"/>
     <image wx:else class="icon18 padding5 flex-shrink" src="/images/shopCart/circle.png" bindtap="bindCheckbox" data-index="{{index}}"/>
