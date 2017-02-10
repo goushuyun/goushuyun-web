@@ -1,16 +1,16 @@
 {
     "pages": [
         "pages/index/index",
-        "pages/shopCart/shopCart",
         "pages/orderInfo/orderInfo",
         "pages/addressList/addressList",
         "pages/settlement/settlement",
         "pages/remark/remark",
         "pages/addAddress/addAddress",
         "pages/me/me",
-        "pages/shopDetail/shopDetail",
         "pages/buyPage/buyPage",
         "pages/booksList/booksList",
+        "pages/shopDetail/shopDetail",
+        "pages/shopCart/shopCart",
         "pages/refund/refund"
     ],
     "window": {

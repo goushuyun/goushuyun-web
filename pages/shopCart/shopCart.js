@@ -1,6 +1,7 @@
+var app = getApp()
 Page({
     data: {
-        shopName: "新华书店",
+        shopName: '',
         goods: [], //购物车所有商品
         temp_goods: [], //购物车副本
         total_price: 0, //购物车总价
@@ -9,23 +10,49 @@ Page({
         minusStatuses: ['disabled', 'disabled', 'normal', 'normal', 'disabled'], //加减状态
         selectedAllStatus: false //全选状态
     },
+    onLoad: function(e) {
+      var self = this
+      var shopId = app.shop_id
+      wx.request({
+          url: 'https://app.cumpusbox.com/v1/admin/getShopInfo',
+          data: {
+              id: shopId
+          },
+          header: {
+              'content-type': 'application/json'
+          },
+          method: 'POST',
+          success: function(res) {
+              if (res.data.code != '00000') {
+                  return
+              }
+              var shopInfo = res.data.data
+              self.setData({
+                  shopName: shopInfo.shop_name.trim()
+              })
+          },
+          fail: function(res) {
+              console.log(res)
+          }
+      })
+    },
     onShow: function(e) {
         this.showGoods()
     },
     showGoods: function(e) {
         var self = this;
+        var user_id = wx.getStorageSync('user').id
         wx.request({
             url: 'https://app.cumpusbox.com/v1/orders/GetShopcart',
             data: {
-                user_id: 'aa9254c9-0a13-45df-8bf1-10a57802b943'
+                user_id: user_id
             },
             header: {
                 'content-type': 'application/json'
             },
             method: 'POST',
             success: function(res) {
-                let user_id = wx.getStorageSync('user').id,
-                    items = []
+                var items = []
                 for (var i = 0; i < res.data.items.length; i++) {
                     let el = res.data.items[i]
                     if (res.data.total_number > 0) {
