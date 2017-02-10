@@ -68,11 +68,11 @@
 
 /**** 3 边框****/
 /* 3.1 上边框*/
-.boder-top {
+.border-top {
   border-top: 1px solid #F4F3F3
 }
 /* 3.2 下边框*/
-.boder-bottom {
+.border-bottom {
   border-bottom: 1px solid #F4F3F3
 }
 .box-shadow {
@@ -243,13 +243,6 @@
   font-size: 16px;
   background-color: #FFFFFF;
   border-top: 2rpx solid #F4F3F3;
-}
-/* 6.3.1 底部右下角按钮*/
-.foot .button {
-  position: fixed;
-  right: 0;
-  width: 78px;
-  height: 46px;
 }
 
 /**** 7 特定组件样式****/

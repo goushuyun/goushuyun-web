@@ -1,5 +1,5 @@
 <scroll-view id="address-body" scroll-y="true" class="body">
-  <view wx:for="{{addresses}}" class="align-center white-bc item boder-top">
+  <view wx:for="{{addresses}}" class="align-center white-bc item border-top">
     <view class="image justify-center">
       <image wx:if="{{item.selected}}" class="icon18" src="/images/shopCart/success.png"/>
     </view>

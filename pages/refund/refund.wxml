@@ -7,7 +7,7 @@
   </view>
 
   <view id="refundInfo" class="direction-column white-bc font5 padding-lr5 box-shadow">
-    <view class="padding10 boder-bottom"><text class="font15 font0">退款说明</text></view>
+    <view class="padding10 border-bottom"><text class="font15 font0">退款说明</text></view>
     <view class="padding-lr10">
       <textarea class="font13" maxlength="300" fixed="true" placeholder="请输入退款说明"/>
     </view>
@@ -15,7 +15,7 @@
   </view>
 
   <view id="pictures" class="direction-column white-bc font5 padding-lr5 box-shadow">
-    <view class="padding10 boder-bottom"><text class="font15 font0">上传照片</text></view>
+    <view class="padding10 border-bottom"><text class="font15 font0">上传照片</text></view>
     <view class="direction-row padding10">
       <view wx:for="{{images}}" class="padding5 box">
         <view class="delet icon24" data-index="{{index}}" bindtap="deletPicture"><image class="icon24" src="/images/delet.png"/></view>
@@ -31,14 +31,14 @@
   </view>
 
   <view id="shopInfo" class="direction-column white-bc font15 font5 padding10 padding-tb5 box-shadow">
-      <view class="justify-between padding5 boder-bottom">
+      <view class="justify-between padding5 border-bottom">
           <text class="left">联系商家</text>
           <text class="center">点击右侧图标站内私信</text>
           <view>
             <image class="right icon24 wrap" src="/images/shopDetail/message.png"></image>
           </view>
       </view>
-      <view class="justify-between padding5 boder-top">
+      <view class="justify-between padding5 border-top">
           <text class="left">客服电话</text>
           <text class="center">{{tell}}</text>
           <view>

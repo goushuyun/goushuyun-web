@@ -6,7 +6,7 @@
 
 <scroll-view scroll-y="true" id="container">
     <!-- address -->
-    <view id="address-body" class="align-center white-bc boder-top padding-bottom5">
+    <view id="address-body" class="align-center white-bc border-top padding-bottom5">
       <view class="image justify-center">
         <image class="icon30 padding10" src="/images/location_blue.png"/>
       </view>
@@ -31,7 +31,7 @@
 
     <!-- order info -->
     <view id="order_Info" class="white-bc">
-        <view class="shop-head align-center boder-bottom" bindtap="chooseCategory">
+        <view class="shop-head align-center border-bottom" bindtap="chooseCategory">
           <image class="icon24 padding-lr10" src="/images/shop_blue.png"/>
           {{shopName}}  >
         </view>
@@ -59,11 +59,11 @@
         </view>
 
         <view class="fee">
-            <view class="fee_info boder-bottom">
+            <view class="fee_info border-bottom">
                 <text class="text_inline_block label">配送费</text>
                 <text class="text_inline_block fee_price">¥7</text>
             </view>
-            <view class="fee_info  boder-bottom">
+            <view class="fee_info  border-bottom">
                 <text class="text_inline_block label">总计</text>
                 <text class="text_inline_block fee_price">¥437.34</text>
             </view>
