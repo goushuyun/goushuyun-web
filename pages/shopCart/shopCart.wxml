@@ -6,7 +6,7 @@
 
 <!-- 主体 -->
 <scroll-view scroll-y="true" id="cart-body" class="body">
-  <view wx:for="{{goods}}" class="align-center white-bc boder-top boder-top padding10 cart-item" bindtap="bindViewTap">
+  <view wx:for="{{goods}}" class="align-center white-bc boder-top boder-top padding10 cart-item">
     <!-- 复选框图标 -->
     <image wx:if="{{item.selected}}" class="icon18 padding5 flex-shrink" src="/images/shopCart/success.png" bindtap="bindCheckbox" data-index="{{index}}"/>
     <image wx:else class="icon18 padding5 flex-shrink" src="/images/shopCart/circle.png" bindtap="bindCheckbox" data-index="{{index}}"/>
@@ -28,13 +28,15 @@
       </view>
       <view class="font13">ISBN：{{item.isbn}}</view>
 
-      <view class="justify-between padding-top20">
+      <view class="justify-between align-center padding-top20">
         <view class="font16 red">￥{{item.book_price}}</view>
         <view class="justify-end">
           <view class="btn_reduce {{minusStatuses[index]}}" data-index="{{index}}" bindtap="bindMinus">
             <image class="btn_img" src="/images/reduce.png"/>
           </view>
-          <input class="goods_number" type="number" maxlength="3" value="{{item.number}}" data-index="{{index}}" bindchange="bindManual"/>
+          <view class="align-center">
+            <input class="goods_number" type="number" maxlength="3" value="{{item.number}}" data-index="{{index}}" bindchange="bindManual"/>
+          </view>
           <view class="btn_reduce" data-index="{{index}}" bindtap="bindPlus">
             <image class="btn_img btn_plus" src="/images/add.png"></image>
           </view>
@@ -61,6 +63,3 @@
   </view>
   <view class="blue-bc white align-center justify-center button">结算({{total_number}})</view>
 </view>
-
-<!-- 提示框 -->
-<modal hidden="{{hidden}}" title="亲，确定要删除吗？" confirm-text="删了它！" cancel-text="不不不！" bindcancel="cancel" bindconfirm="confirm" no-cancel="{{nocancel}}"/>

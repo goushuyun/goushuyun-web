@@ -1,17 +1,18 @@
 {
     "pages": [
-        "pages/test/test",
         "pages/index/index",
+        "pages/test/test",
+        "pages/shopCart/shopCart",
         "pages/orderInfo/orderInfo",
         "pages/addressList/addressList",
-        "pages/shopCart/shopCart",
         "pages/settlement/settlement",
         "pages/remark/remark",
         "pages/addAddress/addAddress",
         "pages/me/me",
         "pages/shopDetail/shopDetail",
         "pages/buyPage/buyPage",
-        "pages/booksList/booksList"
+        "pages/booksList/booksList",
+        "pages/refund/refund"
     ],
     "window": {
         "navigationBarTitleText": "购书云",
