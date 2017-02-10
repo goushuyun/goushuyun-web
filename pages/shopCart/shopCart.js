@@ -1,4 +1,3 @@
-var app = getApp()
 Page({
     data: {
         shopName: '',
@@ -11,30 +10,16 @@ Page({
         selectedAllStatus: false //全选状态
     },
     onLoad: function(e) {
-      var self = this
-      var shopId = app.shop_id
-      wx.request({
-          url: 'https://app.cumpusbox.com/v1/admin/getShopInfo',
-          data: {
-              id: shopId
-          },
-          header: {
-              'content-type': 'application/json'
-          },
-          method: 'POST',
-          success: function(res) {
-              if (res.data.code != '00000') {
-                  return
-              }
-              var shopInfo = res.data.data
-              self.setData({
-                  shopName: shopInfo.shop_name.trim()
-              })
-          },
-          fail: function(res) {
-              console.log(res)
-          }
-      })
+        var self = this
+        wx.getStorage({
+            key: 'shop',
+            success: function(res) {
+                var shop_name = res.data.shop_name.trim()
+                self.setData({
+                    shopName: shop_name
+                })
+            }
+        })
     },
     onShow: function(e) {
         this.showGoods()
@@ -227,16 +212,16 @@ Page({
         var index = parseInt(e.currentTarget.dataset.index);
         var self = this;
         wx.showModal({
-          title: '提示',
-          content: '亲，确定要删除这个宝贝吗？',
-          cancelText: '不不不！',
-          confirmText: '删了它！',
-          success: function(res) {
-            if (res.confirm) {
-                var index = parseInt(e.currentTarget.dataset.index);
-                self.deletConfirm(index)
+            title: '提示',
+            content: '亲，确定要删除这个宝贝吗？',
+            cancelText: '不不不！',
+            confirmText: '删了它！',
+            success: function(res) {
+                if (res.confirm) {
+                    var index = parseInt(e.currentTarget.dataset.index);
+                    self.deletConfirm(index)
+                }
             }
-          }
         })
     },
     deletConfirm: function(index) { //Model确定
