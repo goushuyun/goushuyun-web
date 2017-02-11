@@ -20,7 +20,6 @@
         <view class="operate">
             <text class="selling_price">¥{{item.selling_price_yuan}}</text>
             <view class="btns">
-
                 <block wx:if="{{item.buy_amount > 0}}">
                     <view class="btn_reduce" data-index="{{index}}" data-operate-type="reduce" bindtap="changeAmount">
                         <image class="btn_img" src="/images/reduce.png"></image>

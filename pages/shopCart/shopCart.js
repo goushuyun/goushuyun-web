@@ -87,6 +87,9 @@ Page({
                 items.push(item)
             }
         }
+        if (items.length == 0) {
+          return
+        }
         wx.request({
             url: 'https://app.cumpusbox.com/v1/orders/UpdateOrderItems',
             data: {

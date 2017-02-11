@@ -113,20 +113,51 @@ Page({
                         "pre_price": (goods_item.book.price_int/100).toFixed(2)
                     })
 
-                    //set newBook_price and oldBook_price
-                    var goods_items = res.data.data.map((el)=>{
-                        //set selling_price, and discount
-                        el.discount = (el.selling_price/el.book.price_int*10).toFixed(1)
-                        el.selling_price_yuan = (el.selling_price/100).toFixed(2)
+                    //get shopcart info
+                    let user = wx.getStorageSync('user')
 
-                        //set buy_amount field
-                        el.buy_amount = 0
-                        return el
-                    })
+                    wx.request({
+                        url: 'https://app.cumpusbox.com/v1/orders/GetShopcart',
+                        method: "POST",
+                        data: {'user_id': user.id},
+                        success(res){
 
+                            var shopcartItems = res.data.items
 
-                    self.setData({
-                        "goods": goods_items
+                            //set newBook_price and oldBook_price
+                            var goods_items = goods.map((el)=>{
+
+                                //如果该商品已经在购物车内了，更新库存
+                                for (var i = 0; i < shopcartItems.length; i++) {
+                                    if(shopcartItems[i].goods_id == el.id){
+                                        el.amount -= shopcartItems[i].number
+                                        break
+                                    }
+                                }
+
+                                //set selling_price, and discount
+                                el.discount = (el.selling_price/el.book.price_int*10).toFixed(1)
+                                el.selling_price_yuan = (el.selling_price/100).toFixed(2)
+
+                                //set buy_amount field
+                                el.buy_amount = 0
+                                return el
+                            })
+
+                            self.setData({
+                                "goods": goods_items
+                            })
+
+                            //设置购物车内商品总价、总数量
+                            if(res.data.code == '00000'){
+                                self.setData({
+                                    "total_number": res.data.total_number,
+                                    "total_price": (res.data.total_price/100).toFixed(2)
+                                })
+                            }
+
+                            console.log(res)
+                        }
                     })
 
                 }else{
@@ -135,28 +166,7 @@ Page({
             }
         })
 
-        //get shopcart info
-        let user = wx.getStorageSync('user')
-        if(user == undefined){
-            return
-        }
 
-
-        wx.request({
-            url: 'https://app.cumpusbox.com/v1/orders/GetShopcart',
-            method: "POST",
-            data: {'user_id': user.id},
-            success(res){
-                if(res.data.code == '00000'){
-                    self.setData({
-                        "total_number": res.data.total_number,
-                        "total_price": (res.data.total_price/100).toFixed(2)
-                    })
-                }
-
-                console.log(res)
-            }
-        })
 
 
 

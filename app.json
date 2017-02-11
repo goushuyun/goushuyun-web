@@ -1,14 +1,10 @@
 {
     "pages": [
         "pages/index/index",
-<<<<<<< HEAD
+        "pages/settlement/settlement",
         "pages/test/test",
-        "pages/shopCart/shopCart",
-=======
->>>>>>> 869a745ff89483a9f2322296ee4d2df2f1b17125
         "pages/orderInfo/orderInfo",
         "pages/addressList/addressList",
-        "pages/settlement/settlement",
         "pages/remark/remark",
         "pages/addAddress/addAddress",
         "pages/me/me",
