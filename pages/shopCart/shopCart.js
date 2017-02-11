@@ -1,6 +1,6 @@
 Page({
     data: {
-        shopName: "新华书店",
+        shopName: '',
         goods: [], //购物车所有商品
         temp_goods: [], //购物车副本
         total_price: 0, //购物车总价
@@ -9,23 +9,35 @@ Page({
         minusStatuses: ['disabled', 'disabled', 'normal', 'normal', 'disabled'], //加减状态
         selectedAllStatus: false //全选状态
     },
+    onLoad: function(e) {
+        var self = this
+        wx.getStorage({
+            key: 'shop',
+            success: function(res) {
+                var shop_name = res.data.shop_name.trim()
+                self.setData({
+                    shopName: shop_name
+                })
+            }
+        })
+    },
     onShow: function(e) {
         this.showGoods()
     },
     showGoods: function(e) {
         var self = this;
+        var user_id = wx.getStorageSync('user').id
         wx.request({
             url: 'https://app.cumpusbox.com/v1/orders/GetShopcart',
             data: {
-                user_id: 'aa9254c9-0a13-45df-8bf1-10a57802b943'
+                user_id: user_id
             },
             header: {
                 'content-type': 'application/json'
             },
             method: 'POST',
             success: function(res) {
-                let user_id = wx.getStorageSync('user').id,
-                    items = []
+                var items = []
                 for (var i = 0; i < res.data.items.length; i++) {
                     let el = res.data.items[i]
                     if (res.data.total_number > 0) {
@@ -200,16 +212,16 @@ Page({
         var index = parseInt(e.currentTarget.dataset.index);
         var self = this;
         wx.showModal({
-          title: '提示',
-          content: '亲，确定要删除这个宝贝吗？',
-          cancelText: '不不不！',
-          confirmText: '删了它！',
-          success: function(res) {
-            if (res.confirm) {
-                var index = parseInt(e.currentTarget.dataset.index);
-                self.deletConfirm(index)
+            title: '提示',
+            content: '亲，确定要删除这个宝贝吗？',
+            cancelText: '不不不！',
+            confirmText: '删了它！',
+            success: function(res) {
+                if (res.confirm) {
+                    var index = parseInt(e.currentTarget.dataset.index);
+                    self.deletConfirm(index)
+                }
             }
-          }
         })
     },
     deletConfirm: function(index) { //Model确定
