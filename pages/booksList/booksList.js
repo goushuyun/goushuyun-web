@@ -6,11 +6,58 @@ Page({
     data: {
         //books to list
         books: [],
+        category: 0,
 
         page: 1,
-        size: 10
+        size: 10,
+
+        total_number: 0
     },
 
+    getData(){
+        console.log('kaiaki')
+
+        //list all books of this category
+        var app = getApp(), data = {}
+        data.category = this.category
+        data.shop_id = app.shop_id
+        data.page = this.data.page
+        data.size = this.data.size
+
+        var self = this
+        wx.request({
+            url: 'https://app.cumpusbox.com/v1/books/listBooks',
+            method: 'POST',
+            data: data,
+            success(res){
+                if(res.data.code == '00000'){
+                    console.log(res.data.data)
+
+                    // query data success
+                    self.setData({
+                        books: self.data.books.concat(res.data.data),
+                        total_number: res.data.total
+                    })
+
+                }
+            }
+        })
+
+    },
+    getMore(){
+        let page = this.data.page+1
+
+        //判断是否去做新的请求
+        let total_page_number = Math.ceil(this.data.total_number / this.data.size)
+
+        if(page <= total_page_number) {
+            this.setData({
+                page: page
+            })
+
+            this.getData()
+        }
+    },
     onLoad: function(options) {
         console.log(options)
         var self = this
@@ -50,38 +97,8 @@ Page({
             return false
         }
 
-
-        //list all books of this category
-        var app = getApp(), data = {}
-        data.shop_id = app.shop_id
-        data.category = options.category
-        data.page = this.data.page
-        data.size = this.data.size
-        console.log(data)
-
-
-
-        wx.request({
-            url: 'https://app.cumpusbox.com/v1/books/listBooks',
-            method: 'POST',
-            data: data,
-            success(res){
-                console.log(res)
-
-                if(res.data.code == '00000'){
-                    console.log(res.data.data)
-
-
-                    // query data success
-                    self.setData({
-                        books: self.data.books.concat(res.data.data)
-                    })
-
-                    console.log(self.data)
-                }
-
-            }
-        })
+        this.category = options.category
+        this.getData()
 
         //初始化的时候渲染wxSearchdata
         WxSearch.init(self, 44, ['weappdev', '小程序', 'wxParse', 'wxSearch', 'wxNotification']);
