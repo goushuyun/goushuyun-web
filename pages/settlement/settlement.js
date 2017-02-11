@@ -6,7 +6,8 @@ Page({
         shopName: '',
         items: [],
         total_price: '',
-        freight: 0 //配送费
+        freight: 0, //配送费
+        remake: '无备注信息'
     },
     // onShow: function(e) {
     //     var self = this
@@ -82,5 +83,15 @@ Page({
         wx.navigateTo({
             url: '/pages/addressList/addressList'
         })
-    }
+    },
+    writeRemark: function(e) {
+        wx.navigateTo({
+            url: '/pages/remark/remark'
+        })
+    },
+    changeData: function(remake){
+        this.setData({
+            remake: remake
+        })
+     }
 })
