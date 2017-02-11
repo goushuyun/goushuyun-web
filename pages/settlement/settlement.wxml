@@ -1,86 +1,56 @@
-<scroll-view scroll-y="true                         " id="container">
-    <view id="contact">
-        <image class="icon location_icon" src="/images/location_blue.png"></image>
+<scroll-view scroll-y="true" id="container">
+    <view id="contact" bindtap="selectAddress">
+        <image class="icon24" src="/images/location_blue.png"></image>
         <view class="contact_info">
             <text class="text_block name_tel">赵拥军 18817953402</text>
             <text class="text_block address">上海市普陀区大话清水湾</text>
         </view>
-        <image class="icon right_arrow_icon" src="/images/right_arrow.png"></image>
+        <image class="icon24" src="/images/right_arrow.png"></image>
     </view>
 
     <view id="order">
-        <view class="shop_title">
-            <image src="http://ojrfwndal.bkt.clouddn.com/WechatIMG5.jpeg" class="logo"></image>
-            <text class="text_block shop_name">香泉书海</text>
-            <image class="right_arrow_icon" src="/images/right_arrow.png"></image>
+        <view class="shop_title blue-bc white align-center">
+            <image src="/images/shop.png" class="icon24 padding10"></image>
+            <text class="text_block shop_name">{{shopName}}</text>
+            <image class="icon24" src="/images/right_arrow.png"></image>
         </view>
 
-        <view class="order_item">
-            <image class="book_image" src="http://ojrjlwt2h.bkt.clouddn.com/9787030325402"></image>
+        <view wx:for="{{items}}" class="order_item">
+            <image class="book_image" src="{{item.book_image}}"></image>
             <view class="book_info">
                 <view>
-                    <text class="text_inline_block title">老司机开车指南</text>
-                    <text class="text_inline_block type type_old">二手书</text>
+                    <text class="text_inline_block title">{{item.book_title}}</text>
+                    <text wx:if="{{item.type==1}}" class="text_inline_block type type_new">新书</text>
+                    <text wx:if="{{item.type==2}}" class="text_inline_block type type_old">二手书</text>
                 </view>
-                <text class="text_block isbn">ISBN：9787122087935</text>
-                <text class="text_block price">¥ 34.50</text>
+                <text class="text_block isbn">ISBN：{{item.isbn}}</text>
+                <text class="text_block price">¥ {{item.book_price}}</text>
             </view>
             <view class="number">
-                <text>x 5</text>
-            </view>
-        </view>
-        <view class="order_item">
-            <image class="book_image" src="http://ojrjlwt2h.bkt.clouddn.com/9787030325402"></image>
-            <view class="book_info">
-                <view>
-                    <text class="text_inline_block title">老司机开车指南</text>
-                    <text class="text_inline_block type type_new">新书</text>
-                </view>
-                <text class="text_block isbn">ISBN：9787122087935</text>
-                <text class="text_block price">¥ 34.50</text>
-            </view>
-            <view class="number">
-                <text>x 5</text>
-            </view>
-        </view>
-        <view class="order_item">
-            <image class="book_image" src="http://ojrjlwt2h.bkt.clouddn.com/9787030325402"></image>
-            <view class="book_info">
-                <view>
-                    <text class="text_inline_block title">老司机开车指南</text>
-                    <text class="text_inline_block type type_new">新书</text>
-                </view>
-                <text class="text_block isbn">ISBN：9787122087935</text>
-                <text class="text_block price">¥ 34.50</text>
-            </view>
-            <view class="number">
-                <text>x 5</text>
+                <text>x {{item.number}}</text>
             </view>
         </view>
         <view class="fee">
             <view class="fee_info">
                 <text class="text_inline_block label">配送费</text>
-                <text class="text_inline_block fee_price">¥7</text>
+                <text class="text_inline_block fee_price">¥ {{freight}}</text>
             </view>
             <view class="fee_info">
                 <text class="text_inline_block label">订单备注</text>
                 <view class="remark_info">
                     <text class="text_inline_block remark_content">无备注信息</text>
-                    <image class="icon right_arrow_icon" src="/images/right_arrow.png"></image>
+                    <image class="icon24" src="/images/right_arrow.png"></image>
                 </view>
             </view>
             <view class="fee_info">
                 <text class="text_inline_block label">总计</text>
-                <text class="text_inline_block fee_price">¥437.34</text>
+                <text class="text_inline_block fee_price">¥ {{total_price}}</text>
             </view>
         </view>
-
-
     </view>
-
 </scroll-view>
 
 <view id="bottom_bar">
-    <text class="text_inline_block" style="padding-right:16px;">合计：<text style="color: #FF5400">¥ 543.34</text></text>
+    <text class="text_inline_block" style="padding-right:16px;">合计：<text style="color: #FF5400">¥ {{total_price}}</text></text>
     <text class="text_inline_block order_btn">提交订单</text>
 </view>

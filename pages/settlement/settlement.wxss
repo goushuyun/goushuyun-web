@@ -5,11 +5,11 @@ scroll-view#container{
     width: 100%;
     background-color: #EFF3F7;
 }
-
+/*
 image.right_arrow_icon{
     width: 16px;
     height: 16px;
-}
+}*/
 
 /* contact info part */
 view#contact{
@@ -21,10 +21,10 @@ view#contact{
     box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
     margin-top: 6px;
 }
-view#contact .icon{
+/*view#contact .icon{
     width: 22px;
     height: 22px;
-}
+}*/
 view#contact  .contact_info{
     flex: 1;
     font-size: 13px;
@@ -44,21 +44,21 @@ view#order{
     margin-top: 10px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
 }
-view#order .shop_title{
+/*view#order .shop_title{
     display: flex;
     align-items: center;
     padding: 4px 16px;
-}
+}*/
 
-view#order .shop_title .logo{
+/*view#order .shop_title .logo{
     width: 32px;
     height: 32px;
     border-radius: 50%;
     box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
-}
-view#order .shop_title .shop_name{
+}*/
+/*view#order .shop_title .shop_name{
     padding: 0 16px;
-}
+}*/
 
 view#order .order_item{
     display: flex;
