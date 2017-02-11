@@ -5,7 +5,8 @@ Page({
         address: {},
         shopName: '',
         items: [],
-        total_price: '',
+        total_price: 0,
+        total_number: 0,
         freight: 0, //配送费
         remake: '无备注信息'
     },
@@ -66,6 +67,11 @@ Page({
             total_number += items[i].number
         }
 
+        /* 回写总数量，方便提交订单使用 */
+        self.setData({
+            total_number: total_number
+        })
+
         /* 计算配送费、总金额（含配送费） */
         var first_one_fee = 6
         var after_one_fee = 2
@@ -89,9 +95,53 @@ Page({
             url: '/pages/remark/remark'
         })
     },
-    changeData: function(remake){
+    changeRemake: function(remake) {
         this.setData({
             remake: remake
         })
-     }
+    },
+    changeAddress: function(address) {
+        this.setData({
+            address: address
+        })
+    },
+    submitSettlement: function(e) {
+        var self = this
+
+        if (self.data.address == undefined || self.data.addAddress == null) {
+            wx.showModal({
+                title: '提示',
+                content: '尚未选择地址，请前往设置地址！',
+                success: function(res) {
+                    if (res.confirm) {
+                        self.selectAddress()
+                    } else {
+                        return
+                    }
+                }
+            })
+        }
+
+        var items = self.data.items
+        for (var i = 0; i < items.length; i++) {
+            items[i] *= 100
+        }
+        var order = {
+            address: self.data.address,
+            items: items,
+            total_price: this.data.total_price *= 100,
+            total_number: this.data.total_number,
+            remake: this.data.remake,
+            address: this.data.address
+        }
+
+        // wx.request({
+        //     url: 'https://app.cumpusbox.com/v1/......',
+        //     data: order,
+        //     method: 'POST'.
+        //     success: function(res) {
+        //         console.log(res);
+        //     }
+        // })
+    }
 })
