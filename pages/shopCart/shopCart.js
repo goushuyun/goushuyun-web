@@ -88,7 +88,7 @@ Page({
             }
         }
         if (items.length == 0) {
-          return
+            return
         }
         wx.request({
             url: 'https://app.cumpusbox.com/v1/orders/UpdateOrderItems',
@@ -195,21 +195,46 @@ Page({
         });
         this.sum()
     },
-    bindCheckout: function() {
-        // 初始化toastStr字符串
-        var toastStr = 'id:';
-        // 遍历取出已勾选的cid
-        for (var i = 0; i < this.data.goods.length; i++) {
-            if (this.data.goods[i].selected) {
-                toastStr += this.data.goods[i].id;
-                toastStr += ' ';
+    settlement: function() {
+        var goods_length = this.data.goods.length
+
+        /* 如果购物车没有商品 */
+        if (goods_length <= 0) {
+            wx.showModal({
+                title: '提示',
+                content: '亲！您尚未添加任何宝贝！',
+                showCancel: false
+            })
+            return
+        }
+
+        /* 如果没勾选任何商品 */
+        var selected_length = this.data.total_number
+        if (selected_length <= 0) {
+            wx.showModal({
+                title: '提示',
+                content: '亲！您尚选中选任何宝贝！',
+                showCancel: false
+            })
+            return
+        }
+
+        /* 准备数据，并调转至结算页面 */
+        var items = []
+        for (var i = 0; i < goods_length; i++) {
+            var item = this.data.goods[i]
+            if (item.selected) {
+                items.push(item)
             }
         }
-        //存回data
-        this.setData({
-            toastHidden: false,
-            toastStr: toastStr
-        });
+        var shopCartData = {
+            items: items,
+            total_price: this.data.total_price
+        }
+        var shopCartString = JSON.stringify(shopCartData)
+        wx.navigateTo({
+            url: '/pages/settlement/settlement?shopCartData='+shopCartString
+        })
     },
     deletCart: function(e) {
         var index = parseInt(e.currentTarget.dataset.index);
