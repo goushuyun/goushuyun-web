@@ -28,6 +28,8 @@ view#sticky{
     text-align: left;
     color: white;
     font-size: 14px;
+    height: 44px;
+    line-height: 44px;
 }
 .scan_qrcode{
     text-align: right;

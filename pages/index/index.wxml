@@ -1,8 +1,8 @@
 <view id="sticky">
     <!-- 顶部栏 -->
     <view class="top-bar">
-        <image class="location_icon" src="/images/location.png"></image>
-        <text class="scho_name">上海应用技术大学</text>
+        <image bindtap="chooseAddress" class="location_icon" src="/images/location.png"></image>
+        <text bindtap="chooseAddress" class="scho_name">{{school}}</text>
         <text class="scan_qrcode" bindtap="scan">扫码搜书</text>
         <image class="scan" src="/images/scan.png" bindtap="scan"></image>
     </view>
