@@ -50,7 +50,8 @@ Page({
         wx.getStorage({
             key: 'shop',
             success: function(res) {
-                var shop_name = res.shop_name
+                console.log(res);
+                var shop_name = res.data.shop_name
                 self.setData({
                     shopName: shop_name
                 })
@@ -123,7 +124,7 @@ Page({
         var order = {
             user_id: wx.getStorageSync('user').id,
             items: itemIds,
-            address: self.data.address,
+            address_info: self.data.address,
             school:wx.getStorageSync('school'),
             total_price: this.data.total_price *= 100,
             total_number: this.data.total_number,

@@ -1,7 +1,8 @@
 <!-- 头部 -->
-<view id="carts_hearder" class="head align-center" bindtap="chooseCategory">
+<view id="carts_hearder" class="head align-center font15" bindtap="chooseCategory">
   <image class="icon24 padding10" src="/images/shop.png"/>
-  {{shopName}}  >
+  <text class="text_block shop_name font15">{{shopName}}</text>
+  <image class="icon24" src="/images/right_arrow.png"></image>
 </view>
 
 <!-- 主体 -->
