@@ -2,6 +2,14 @@ Page({
     data: {
         remark: ''
     },
+    onLoad: function(option) {
+        console.log(option);
+        if (option.have_change) {
+            this.setData({
+                remark: option.remark
+            })
+        }
+    },
     bindChange: function(e) {
         this.setData({
             remark: e.detail.value
@@ -13,7 +21,7 @@ Page({
             var pages = getCurrentPages();
             if (pages.length > 1) {
                 var prePage = pages[pages.length - 2];
-                prePage.changeRemake(this.data.remark)
+                prePage.changeRemark(this.data.remark)
             }
         }
         wx.navigateBack({

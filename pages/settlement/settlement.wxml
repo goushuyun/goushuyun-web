@@ -38,7 +38,7 @@
             <view class="fee_info">
                 <view class="wrap"><text class="text_inline_block label">订单备注</text></view>
                 <view class="remark_info" bindtap="writeRemark">
-                    <text class="text_inline_block remark_content">{{remake}}</text>
+                    <text class="text_inline_block remark_content">{{remark==''?'无备注信息':remark}}</text>
                     <image class="icon24" src="/images/right_arrow.png"></image>
                 </view>
             </view>

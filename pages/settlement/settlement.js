@@ -14,7 +14,7 @@ Page({
         total_price: 0,
         total_number: 0,
         freight: 0, //配送费
-        remake: '无备注信息'
+        remark: ''
     },
     onShow: function(e) {
         var self = this
@@ -39,8 +39,6 @@ Page({
                         break
                     }
                 }
-                console.log('---------------');
-                console.log(self.data.address);
             }
         })
     },
@@ -94,13 +92,18 @@ Page({
         })
     },
     writeRemark: function(e) {
+        var have_change = false
+        console.log(this.data.remark);
+        if (this.data.remark!='') {
+            var have_change = true
+        }
         wx.navigateTo({
-            url: '/pages/remark/remark'
+            url: '/pages/remark/remark?remark='+this.data.remark+'&have_change='+have_change
         })
     },
-    changeRemake: function(remake) {
+    changeRemark: function(remark) {
         this.setData({
-            remake: remake
+            remark: remark
         })
     },
     submitSettlement: function(e) {
@@ -128,7 +131,7 @@ Page({
             school:wx.getStorageSync('school'),
             total_price: this.data.total_price *= 100,
             total_number: this.data.total_number,
-            remake: this.data.remake
+            remark: this.data.remark
         }
 
         wx.request({
