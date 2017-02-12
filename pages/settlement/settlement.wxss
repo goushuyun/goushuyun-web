@@ -5,12 +5,6 @@ scroll-view#container{
     width: 100%;
     background-color: #EFF3F7;
 }
-/*
-image.right_arrow_icon{
-    width: 16px;
-    height: 16px;
-}*/
-
 /* contact info part */
 view#contact{
     background-color: white;
@@ -21,10 +15,6 @@ view#contact{
     box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
     margin-top: 6px;
 }
-/*view#contact .icon{
-    width: 22px;
-    height: 22px;
-}*/
 view#contact  .contact_info{
     flex: 1;
     font-size: 13px;
@@ -44,22 +34,6 @@ view#order{
     margin-top: 10px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
 }
-/*view#order .shop_title{
-    display: flex;
-    align-items: center;
-    padding: 4px 16px;
-}*/
-
-/*view#order .shop_title .logo{
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
-}*/
-/*view#order .shop_title .shop_name{
-    padding: 0 16px;
-}*/
-
 view#order .order_item{
     display: flex;
     align-items: center;
@@ -127,6 +101,7 @@ view.fee .fee_info{
 }
 view.fee .label{
     color: #232323;
+    width: 60px
 }
 view.fee .fee_price{
     color: #C60C1B;
@@ -140,9 +115,12 @@ view.fee .fee_price{
 .remark_info .remark_content{
     color: #888;
     padding-right: 6px;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
-
-
 
 /* bottom bar */
 view#bottom_bar{
@@ -155,7 +133,6 @@ view#bottom_bar{
     display: flex;
     align-items: center;
     justify-content: flex-end;
-
 }
 view#bottom_bar .order_btn{
     height: 100%;

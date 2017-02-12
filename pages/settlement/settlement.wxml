@@ -36,7 +36,7 @@
                 <text class="text_inline_block fee_price">¥ {{freight}}</text>
             </view>
             <view class="fee_info">
-                <text class="text_inline_block label">订单备注</text>
+                <view class="wrap"><text class="text_inline_block label">订单备注</text></view>
                 <view class="remark_info" bindtap="writeRemark">
                     <text class="text_inline_block remark_content">{{remake}}</text>
                     <image class="icon24" src="/images/right_arrow.png"></image>
