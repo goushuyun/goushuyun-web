@@ -28,6 +28,16 @@ Page({
             method: 'POST',
             success: function(res) {
                 var addresses = res.data.data
+                var address = {
+                    name: '请选择地址',
+                    tel: '',
+                    address: '',
+                    is_default: false, //是否是默认地址
+                    id: '' //地址ID
+                }
+                self.setData({
+                    address: address
+                })
                 if (addresses.length == 0) {
                     return
                 }
@@ -94,11 +104,11 @@ Page({
     writeRemark: function(e) {
         var have_change = false
         console.log(this.data.remark);
-        if (this.data.remark!='') {
+        if (this.data.remark != '') {
             var have_change = true
         }
         wx.navigateTo({
-            url: '/pages/remark/remark?remark='+this.data.remark+'&have_change='+have_change
+            url: '/pages/remark/remark?remark=' + this.data.remark + '&have_change=' + have_change
         })
     },
     changeRemark: function(remark) {
@@ -128,7 +138,7 @@ Page({
             user_id: wx.getStorageSync('user').id,
             items: itemIds,
             address_info: self.data.address,
-            school:wx.getStorageSync('school'),
+            school: wx.getStorageSync('school'),
             total_price: this.data.total_price *= 100,
             total_number: this.data.total_number,
             remark: this.data.remark

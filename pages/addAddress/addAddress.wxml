@@ -1,30 +1,34 @@
 <view id="container">
-
+  <form bindsubmit="formSubmit">
     <view class="content">
         <view class="input_group">
             <label>收货人</label>
-            <input placeholder="姓名" bindinput="getName" value="{{name}}"/>
+            <input name="name" placeholder="姓名" value="{{name}}"/>
         </view>
         <view class="input_group">
             <label>联系电话</label>
-            <input placeholder="手机号" bindinput="getTell" value="{{tel}}"/>
+            <input  name="tel" placeholder="手机号" type="number" value="{{tel}}"/>
         </view>
 
         <view class="input_group address">
             <label>学校/小区</label>
             <view class="address_operate" bindtap="choAddress">
-                <text class="text_inline_block address_info">{{address_info}}</text>
+                <input  name="address_info" class="text_inline_block address_info" value="{{address_info}}"/>
                 <image class="icon right_arrow_icon" src="/images/right_arrow.png"></image>
             </view>
         </view>
 
         <view class="input_group">
             <label>门牌号</label>
-            <input placeholder="例：5号楼426室" bindinput="getHouse" value="{{house_num}}"/>
+            <input  name="house_num" placeholder="例：5号楼426室" value="{{house_num}}"/>
         </view>
     </view>
 
-    <view style="padding: 20px;">
-        <button bindtap="addressHandle" type="primary">确认</button>
+    <view style="padding: 20px 20px 0 20px;">
+        <button formType="submit" type="primary">确认</button>
     </view>
+    <view wx:if="{{oprate=='update'}}" style="padding: 5px 20px;">
+        <button bindtap="addressDelet" type="warn">删除</button>
+    </view>
+  </form>
 </view>
