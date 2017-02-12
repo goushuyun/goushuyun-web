@@ -18,7 +18,7 @@
   </view>
 </scroll-view>
 
-<view id="address-foot" class="foot justify-center align-center white-bc">
-  <image class="btn_img btn_plus" src="/images/add.png" bindtap="addAddress"></image>
-  <text class="padding-left10 font16" bindtap="addAddress">新增地址</text>
+<view id="address-foot" class="foot justify-center align-center white-bc" bindtap="addAddress">
+  <image class="btn_img btn_plus" src="/images/add.png"></image>
+  <text class="padding-left10 font16">新增地址</text>
 </view>
