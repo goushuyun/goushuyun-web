@@ -2,7 +2,13 @@ var app = getApp()
 Page({
     data: {
         addresses: [],
-        address: {},
+        address: {
+            name: '请选择地址',
+            tel: '',
+            address: '',
+            is_default: false, //是否是默认地址
+            id: '' //地址ID
+        },
         shopName: '',
         items: [],
         total_price: 0,
@@ -10,38 +16,34 @@ Page({
         freight: 0, //配送费
         remake: '无备注信息'
     },
-    // onShow: function(e) {
-    //     var self = this
-    //     /* 请求该用户默认地址 */
-    //     var user_id = wx.getStorageSync('user').id
-    //     wx.request({
-    //         url: 'https://app.cumpusbox.com/v1/......',
-    //         data: {
-    //             id: user_id
-    //         },
-    //         header: {
-    //             'content-type': 'application/json'
-    //         },
-    //         success: function(res) {
-    //             var addresses = res.data.addresses
-    //             if (addresses.length == 0) {
-    //                 return
-    //             }
-    //             var address;
-    //             for(var i = 0; i< addresses.length;i++){
-    //                 if (addresses[i].default) {
-    //                     address = addresses[i]
-    //                     break
-    //                 }
-    //             }
-    //
-    //             self.setData({
-    //                 addresses:
-    //             })
-    //             console.log(res.data)
-    //         }
-    //     })
-    // },
+    onShow: function(e) {
+        var self = this
+        /* 请求该用户默认地址 */
+        var user_id = wx.getStorageSync('user').id
+        wx.request({
+            url: 'https://app.cumpusbox.com/v1/address/GetMyAddresses',
+            data: {
+                user_id: user_id
+            },
+            method: 'POST',
+            success: function(res) {
+                var addresses = res.data.data
+                if (addresses.length == 0) {
+                    return
+                }
+                for (var i = 0; i < addresses.length; i++) {
+                    if (addresses[i].is_default) {
+                        self.setData({
+                            address: addresses[i]
+                        })
+                        break
+                    }
+                }
+                console.log('---------------');
+                console.log(self.data.address);
+            }
+        })
+    },
     onLoad: function(option) {
         var self = this
         /* 获得商铺信息 */
@@ -108,40 +110,38 @@ Page({
     submitSettlement: function(e) {
         var self = this
 
-        if (self.data.address == undefined || self.data.addAddress == null) {
-            wx.showModal({
-                title: '提示',
-                content: '尚未选择地址，请前往设置地址！',
-                success: function(res) {
-                    if (res.confirm) {
-                        self.selectAddress()
-                    } else {
-                        return
-                    }
-                }
-            })
+        /* 如果尚未选择低脂，自动跳转到地址列表 */
+        if (!self.data.address.is_default) {
+            self.selectAddress()
+            return
         }
 
         var items = self.data.items
+        var itemIds = []
         for (var i = 0; i < items.length; i++) {
-            items[i] *= 100
+            var item = {
+                id: items[i].id,
+                goods_id: items[i].goods_id
+            }
+            itemIds.push(item)
         }
         var order = {
+            user_id: wx.getStorageSync('user').id,
+            items: itemIds,
             address: self.data.address,
-            items: items,
+            school:wx.getStorageSync('school'),
             total_price: this.data.total_price *= 100,
             total_number: this.data.total_number,
-            remake: this.data.remake,
-            address: this.data.address
+            remake: this.data.remake
         }
 
-        // wx.request({
-        //     url: 'https://app.cumpusbox.com/v1/......',
-        //     data: order,
-        //     method: 'POST'.
-        //     success: function(res) {
-        //         console.log(res);
-        //     }
-        // })
+        wx.request({
+            url: 'https://app.cumpusbox.com/v1/orders/PlaceOrder',
+            data: order,
+            method: 'POST',
+            success: function(res) {
+                console.log(res);
+            }
+        })
     }
 })
