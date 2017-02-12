@@ -22,11 +22,19 @@ Page({
     selectAddress: function(e) {
         var index = parseInt(e.currentTarget.dataset.index)
         var address = this.data.addresses[index]
-        var pages = getCurrentPages();
-        var prePage = pages[pages.length - 2];
-        prePage.changeAddress(address)
-        wx.navigateBack({
-            delta: 1
+
+        wx.request({
+            url: 'https://app.cumpusbox.com/v1/users/SetDefaultAddress',
+            data: {
+                id: wx.getStorageSync('user').id,
+                default_address_id: address.id
+            },
+            method: 'POST',
+            success: function(res) {
+                wx.navigateBack({
+                    delta: 1
+                })
+            }
         })
     },
     addAddress: function(e) {
@@ -40,7 +48,7 @@ Page({
         var addressString = JSON.stringify(address)
         console.log(addressString);
         wx.navigateTo({
-            url: "/pages/addAddress/addAddress?opt=update&addressString="+addressString
+            url: "/pages/addAddress/addAddress?opt=update&addressString=" + addressString
         })
     }
 })

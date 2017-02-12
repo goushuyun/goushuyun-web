@@ -1,7 +1,7 @@
 {
-    "pages": ["pages/settlement/settlement",
+    "pages": [
         "pages/index/index",
-
+        "pages/settlement/settlement",
         "pages/test/test",
         "pages/orderInfo/orderInfo",
         "pages/addressList/addressList",

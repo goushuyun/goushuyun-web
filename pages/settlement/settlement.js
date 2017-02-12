@@ -102,11 +102,6 @@ Page({
             remake: remake
         })
     },
-    changeAddress: function(address) {
-        this.setData({
-            address: address
-        })
-    },
     submitSettlement: function(e) {
         var self = this
 
