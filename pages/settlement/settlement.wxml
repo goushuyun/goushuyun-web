@@ -2,8 +2,8 @@
     <view id="contact" bindtap="selectAddress">
         <image class="icon24" src="/images/location_blue.png"></image>
         <view class="contact_info">
-            <text class="text_block name_tel">赵拥军 18817953402</text>
-            <text class="text_block address">上海市普陀区大话清水湾</text>
+            <text class="text_block name_tel">{{address.name}} {{address.tel}}</text>
+            <text class="text_block address">{{address.address}}</text>
         </view>
         <image class="icon24" src="/images/right_arrow.png"></image>
     </view>
@@ -37,8 +37,8 @@
             </view>
             <view class="fee_info">
                 <text class="text_inline_block label">订单备注</text>
-                <view class="remark_info">
-                    <text class="text_inline_block remark_content">无备注信息</text>
+                <view class="remark_info" bindtap="writeRemark">
+                    <text class="text_inline_block remark_content">{{remake}}</text>
                     <image class="icon24" src="/images/right_arrow.png"></image>
                 </view>
             </view>
@@ -52,5 +52,5 @@
 
 <view id="bottom_bar">
     <text class="text_inline_block" style="padding-right:16px;">合计：<text style="color: #FF5400">¥ {{total_price}}</text></text>
-    <text class="text_inline_block order_btn">提交订单</text>
+    <text class="text_inline_block order_btn" bindtap="submitSettlement">提交订单</text>
 </view>

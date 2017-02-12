@@ -3,11 +3,11 @@
     <view class="content">
         <view class="input_group">
             <label>收货人</label>
-            <input placeholder="姓名"/>
+            <input placeholder="姓名" bindinput="getName" value="{{name}}"/>
         </view>
         <view class="input_group">
             <label>联系电话</label>
-            <input placeholder="手机号" type="number"/>
+            <input placeholder="手机号" bindinput="getTell" value="{{tel}}"/>
         </view>
 
         <view class="input_group address">
@@ -20,11 +20,11 @@
 
         <view class="input_group">
             <label>门牌号</label>
-            <input placeholder="例：5号楼426室"/>
+            <input placeholder="例：5号楼426室" bindinput="getHouse" value="{{house_no}}"/>
         </view>
     </view>
 
     <view style="padding: 20px;">
-        <button bindtap="todo" type="primary">确认</button>
+        <button bindtap="addressHandle" type="primary">确认</button>
     </view>
 </view>
