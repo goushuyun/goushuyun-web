@@ -20,7 +20,7 @@
 
         <view class="input_group">
             <label>门牌号</label>
-            <input placeholder="例：5号楼426室" bindinput="getHouse" value="{{house_no}}"/>
+            <input placeholder="例：5号楼426室" bindinput="getHouse" value="{{house_num}}"/>
         </view>
     </view>
 

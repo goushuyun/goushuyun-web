@@ -38,6 +38,7 @@ Page({
         var index = e.currentTarget.dataset.index
         var address = this.data.addresses[index]
         var addressString = JSON.stringify(address)
+        console.log(addressString);
         wx.navigateTo({
             url: "/pages/addAddress/addAddress?opt=update&addressString="+addressString
         })

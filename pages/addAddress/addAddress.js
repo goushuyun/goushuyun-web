@@ -3,7 +3,7 @@ Page({
         address_info: '点击选择',
         name: '',
         tel: '',
-        house_no: '',
+        house_num: '',
         id: '',
         oprate: ''
     },
@@ -15,18 +15,17 @@ Page({
             })
         } else {
             var addressJson = JSON.parse(option.addressString)
-            console.log(addressJson);
             var address_house = addressJson.address.split('_')
             var address_info = address_house[0]
-            var house_no = ''
+            var house_num = ''
             if (address_house.length > 1) { //未添加门牌号
-                house_no = address_house[1]
+                house_num = address_house[1]
             }
             self.setData({
                 name: addressJson.name,
-                tel: addressJson.tal,
+                tel: addressJson.tel,
                 address_info: address_info,
-                house_no: house_no,
+                house_num: house_num,
                 id: addressJson.id,
                 oprate: 'update'
             })
@@ -44,14 +43,13 @@ Page({
     },
     getHouse: function(e) {
         this.setData({
-            address: e.detail.value.replace("_", " ") //用空格替换掉门牌号中所有的“_”
+            house_num: e.detail.value.replace("_", " ") //用空格替换掉门牌号中所有的“_”
         })
     },
     choAddress() {
         var self = this
         wx.chooseLocation({
             success(res) {
-                console.log(res)
                 self.setData({
                     address_info: res.address
                 })
@@ -60,17 +58,60 @@ Page({
     },
     addressHandle: function(e) {
         var self = this
-        var data = {
-            user_id: wx.getStorageSync('user').id,
-            info: {
-                name: self.data.name,
-                tel: self.data.tel,
-                address: self.data.address_info + '_' + self.data.house_no
+
+        if (self.data.name == '') {
+            wx.showModal({
+                title: '请输入姓名',
+                showCancel: false
+            })
+            return
+        }
+        var reMobile = /^1\d{10}$/
+        if (!reMobile.test(self.data.tel)) {
+            wx.showModal({
+                title: '请输入正确的手机号码',
+                content: '例如：18818881888',
+                showCancel: false
+            })
+            return
+        }
+        if (self.data.address_info == '点击选择') {
+            wx.showModal({
+                title: '请选择地址',
+                showCancel: false
+            })
+            return
+        }
+        if (self.data.house_num == '') {
+            wx.showModal({
+                title: '请输入门牌号',
+                showCancel: false
+            })
+            return
+        }
+
+        var info = {
+            name: self.data.name,
+            tel: self.data.tel,
+            address: self.data.address_info + '_' + self.data.house_num
+        }
+        if (self.data.oprate == 'add') {
+            var url = 'https://app.cumpusbox.com/v1/address/addAddress'
+            var data = {
+                user_id: wx.getStorageSync('user').id,
+                info: info
+            }
+        } else {
+            var url = 'https://app.cumpusbox.com/v1/address/updateAddress'
+            var id = self.data.id
+            var data = {
+                id: id,
+                info: info
             }
         }
         console.log(data);
         wx.request({
-            url: 'https://app.cumpusbox.com/v1/address/addAddress',
+            url: url,
             data: data,
             method: 'POST',
             success: function(res) {
