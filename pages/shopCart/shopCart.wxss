@@ -1,3 +1,42 @@
+/* 库存信息 */
+.store_info_body {
+  margin-bottom: 6px
+}
+.store_info {
+  width: 85%
+}
+.store_info_icon {
+  width: 15%
+}
+/* 书店标题 */
+#carts_hearder {
+  height: 44px;
+  width: 100%;
+  font-size: 16px;
+  color: #FFFFFF;
+  background-color: #1581D9
+}
+.body {
+  top: 0
+}
+.store-box{
+  position: relative;
+}
+/*售完图标区域*/
+.store_area {
+  width: 90px;
+  height: 90px;
+  z-index: 2;
+  position: absolute;
+  right:25px;
+  top:10px
+}
+/*售完图标*/
+.store_icon {
+  width: 90px;
+  height: 90px
+}
+
 .item-right {
   width: 100%;
 }
