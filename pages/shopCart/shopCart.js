@@ -215,7 +215,9 @@
          var goods = this.data.goods;
          // 遍历
          for (var i = 0; i < goods.length; i++) {
-             goods[i].selected = selectedAllStatus;
+             if (goods[i].number != 0 && !goods[i].store_empty) {
+                 goods[i].selected = selectedAllStatus;
+             }
          }
          this.setData({
              selectedAllStatus: selectedAllStatus,
@@ -350,16 +352,17 @@
          var total_price = 0
          var total_number = 0
          var selectedAllStatus = false
-         var selectedNumber = 0
+         var cannotSelect_number = 0
          for (var i = 0; i < goods.length; i++) {
-             /* 如果库存 */
              if (goods[i].selected) {
                  total_price += goods[i].number * goods[i].book_price
                  total_number += 1
-                 selectedNumber += 1
+             }
+             if (goods[i].store_empty || goods[i].number == 0) {
+                 cannotSelect_number += 1
              }
          }
-         if (total_number == selectedNumber) {
+         if ((total_number + cannotSelect_number) == goods.length) {
              selectedAllStatus = true;
          }
          // 写回经点击修改后的数组

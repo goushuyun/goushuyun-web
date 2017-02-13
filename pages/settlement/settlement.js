@@ -141,7 +141,8 @@ Page({
             school: wx.getStorageSync('school'),
             total_price: this.data.total_price *= 100,
             total_number: this.data.total_number,
-            remark: this.data.remark
+            remark: this.data.remark,
+            freight: this.data.freight
         }
 
         wx.request({
