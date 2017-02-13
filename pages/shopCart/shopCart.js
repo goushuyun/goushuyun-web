@@ -82,7 +82,7 @@
                      goods: items,
                      temp_goods: items,
                      store_infos: store_infos,
-                     store_infos_show: items.length > 0 ? true : false
+                     store_infos_show: store_infos.length > 0 ? true : false
                  })
                  self.sum()
              },
