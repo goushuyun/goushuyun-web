@@ -130,7 +130,8 @@ Page({
         for (var i = 0; i < items.length; i++) {
             var item = {
                 id: items[i].id,
-                goods_id: items[i].goods_id
+                goods_id: items[i].goods_id,
+                number: items[i].number
             }
             itemIds.push(item)
         }
@@ -139,10 +140,10 @@ Page({
             items: itemIds,
             address_info: self.data.address,
             school: wx.getStorageSync('school'),
-            total_price: this.data.total_price *= 100,
+            total_price: this.data.total_price * 100,
             total_number: this.data.total_number,
             remark: this.data.remark,
-            freight: this.data.freight
+            freight: this.data.freight * 100
         }
 
         wx.request({
