@@ -138,17 +138,21 @@ Page({
             }
             itemIds.push(item)
         }
+        var shop_id = getApp().shop_id
         var order = {
             user_id: wx.getStorageSync('user').id,
             items: itemIds,
             address_info: self.data.address,
             school: wx.getStorageSync('school'),
-            total_price: this.data.total_price * 100,
+            total_price: 1, //this.data.total_price * 100,
             total_number: this.data.total_number,
             remark: this.data.remark,
             freight: this.data.freight * 100,
-            openid: wx.getStorageSync('openid')
+            openid: wx.getStorageSync('openid'),
+            shop_id: shop_id
         }
+
+        console.log(order)
 
         wx.request({
             url: 'https://app.cumpusbox.com/v1/orders/PlaceOrder',
