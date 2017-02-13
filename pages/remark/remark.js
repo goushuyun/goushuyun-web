@@ -13,7 +13,7 @@ Page({
             var pages = getCurrentPages();
             if (pages.length > 1) {
                 var prePage = pages[pages.length - 2];
-                prePage.changeData(this.data.remark)
+                prePage.changeRemake(this.data.remark)
             }
         }
         wx.navigateBack({
