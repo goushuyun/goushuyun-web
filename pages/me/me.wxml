@@ -1,6 +1,6 @@
 <view class="top">
     <navigator class="address_mag" hover-class="none">地址管理</navigator>
-    <image class="head_img" src="http://obafjfck1.bkt.clouddn.com/FuLKg6Qgz42cE8I5AnLOqOUqn-8S"/>
+    <image class="head_img" src="{{avatar}}"/>
 
     <view class="tabs" >
         <view class="tab {{currentPage == index ? 'currentTab': ''}}" wx:for="{{tabs}}" data-index="{{index}}" bindtap="goToPage" wx:key="*this">{{item}}</view>
@@ -12,7 +12,6 @@
     <swiper current="{{currentPage}}" bindchange="pageChange" duration="300">
         <swiper-item>
             <scroll-view scroll-y="true" class="container" style="background-color: #EFF3F7;">
-
                 <view class="order">
                     <view class="top_part">
                         <image class="comp_logo shadow" src="http://ojrfwndal.bkt.clouddn.com/WechatIMG5.jpeg"></image>
@@ -48,7 +47,7 @@
                         共 <text class="total"> 7 </text>件 合计：<text class="total">¥67.79   </text> <text class="mark">(含运费 ¥78.30)</text>
                     </view>
                     <view class="btns">
-                        <button class="btn primary btn-small" bindtap="req" hover-class="btnactive">去支付</button>
+                        <button class="btn primary btn-small" hover-class="btnactive">去支付</button>
                         <button bindtap="cancel_order" class="btn danger btn-small" hover-class="danger-active">取消订单</button>
                         <button bindtap="call" class="btn success btn-small" hover-class="success-active">联系商家</button>
                     </view>
