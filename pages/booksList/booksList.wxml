@@ -13,8 +13,6 @@
 <!-- 图书列表项 -->
 <scroll-view id="booksList" scroll-y="true" bindscrolltolower="getMore" lower-threshold="50">
     <view class="book" wx:for="{{books}}" wx:key="isbn" data-isbn="{{item.isbn}}" bindtap="goBuyPage">
-
-            <!-- {{books[index-1].book.title}} -->
             <image class="book_pic" src="{{item.book.pic}}"></image>
             <view class="book_info">
                 <text class="text_block book_title">{{item.book.title}}</text>
