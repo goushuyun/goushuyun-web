@@ -64,7 +64,7 @@
                          item.store_empty = el.store_number < 1 ? true : false //库存是否为空
                          item.pre_number = el.number //原购买数量
                          item.number = item.can_sale ? el.number : 0 //购买数量
-                         item.selected = item.number > 0 ? true : false //选中
+                         item.selected = (item.number != 0) ? true : false //选中
 
                          if (item.store_empty) {
                              var store_info = (store_infos.length + 1) + '.' + item.book_title + '(' + (item.type == 1 ? '新书' : '二手书') + ')' + '已售完'
@@ -149,7 +149,7 @@
          goods[index].number = number;
          //当前good数量为0 取消选中
          if (number == 0) {
-           goods[index].selected = false
+             goods[index].selected = false
          }
          // 按钮可用状态
          var minusStatuses = this.data.minusStatuses;
@@ -249,19 +249,44 @@
 
          /* 准备数据，并调转至结算页面 */
          var items = []
+         var checkItems = []
          for (var i = 0; i < goods_length; i++) {
              var item = this.data.goods[i]
+             var checkItem = {}
              if (item.selected) {
                  items.push(item)
+                 checkItem.goods_id = item.goods_id
+                 checkItem.number = item.number
+                 checkItems.push(checkItem)
              }
          }
+
          var shopCartData = {
              items: items,
              total_price: this.data.total_price
          }
-         var shopCartString = JSON.stringify(shopCartData)
-         wx.navigateTo({
-             url: '/pages/settlement/settlement?shopCartData=' + shopCartString
+
+         var checkData = {
+             items: checkItems,
+             shop_id: wx.getStorageSync('shop').id
+         }
+
+         var self = this
+         /* 下单检查 */
+         wx.request({
+             url: 'https://app.cumpusbox.com/v1/orders/CheckShopcartNumber',
+             data: checkData,
+             method: 'POST',
+             success: function(res) {
+                 if (res.data.can_place_order) {
+                     var shopCartString = JSON.stringify(shopCartData)
+                     wx.navigateTo({
+                         url: '/pages/settlement/settlement?shopCartData=' + shopCartString
+                     })
+                 } else {
+                     self.showGoods()
+                 }
+             }
          })
      },
      deletCart: function(e) {
