@@ -13,13 +13,15 @@
 <!-- 图书列表项 -->
 <scroll-view id="booksList" scroll-y="true" bindscrolltolower="getMore" lower-threshold="50">
     <view class="book" wx:for="{{books}}" wx:key="isbn" data-isbn="{{item.isbn}}" bindtap="goBuyPage">
-        <image class="book_pic" src="{{item.book.pic}}"></image>
-        <view class="book_info">
-            <text class="text_block book_title">{{item.book.title}}</text>
-            <text class="text_block book_author">{{item.book.author}}</text>
-            <text class="text_block book_publisher">{{item.book.publisher}}</text>
-            <text class="text_block book_subtitle">{{item.book.subtitle}}</text>
-            <text class="text_block book_isbn">ISBN: {{item.isbn}}</text>
-        </view>
+
+            <!-- {{books[index-1].book.title}} -->
+            <image class="book_pic" src="{{item.book.pic}}"></image>
+            <view class="book_info">
+                <text class="text_block book_title">{{item.book.title}}</text>
+                <text class="text_block book_author">{{item.book.author}}</text>
+                <text class="text_block book_publisher">{{item.book.publisher}}</text>
+                <text class="text_block book_subtitle">{{item.book.subtitle}}</text>
+                <text class="text_block book_isbn">ISBN: {{item.isbn}}</text>
+            </view>
     </view>
 </scroll-view>

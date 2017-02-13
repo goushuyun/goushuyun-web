@@ -1,10 +1,11 @@
 Page({
     data: {
-        address_info: '点击选择',
         name: '',
         tel: '',
+        address_info: '点击选择',
         house_num: '',
-        id: '',
+        address_id: '',
+        id_default: false,
         oprate: ''
     },
     onLoad: function(option) {
@@ -15,6 +16,7 @@ Page({
             })
         } else {
             var addressJson = JSON.parse(option.addressString)
+            console.log(addressJson);
             var address_house = addressJson.address.split('_')
             var address_info = address_house[0]
             var house_num = ''
@@ -26,25 +28,23 @@ Page({
                 tel: addressJson.tel,
                 address_info: address_info,
                 house_num: house_num,
-                id: addressJson.id,
+                address_id: addressJson.id,
+                id_default: addressJson.id_default,
                 oprate: 'update'
             })
         }
     },
-    getName: function(e) {
-        this.setData({
-            name: e.detail.value
+    formSubmit: function(e) {
+        console.log('form发生了submit事件，携带数据为：', e.detail.value)
+        var self = this
+        var address = e.detail.value
+        self.setData({
+            name: address.name,
+            tel: address.tel,
+            address_info: address.address_info,
+            house_num: address.house_num
         })
-    },
-    getTell: function(e) {
-        this.setData({
-            tel: e.detail.value
-        })
-    },
-    getHouse: function(e) {
-        this.setData({
-            house_num: e.detail.value.replace("_", " ") //用空格替换掉门牌号中所有的“_”
-        })
+        self.addressHandle(e)
     },
     choAddress() {
         var self = this
@@ -103,9 +103,9 @@ Page({
             }
         } else {
             var url = 'https://app.cumpusbox.com/v1/address/updateAddress'
-            var id = self.data.id
+            var id = self.data.address_id
             var data = {
-                id: id,
+                address_id: id,
                 info: info
             }
         }
@@ -118,6 +118,41 @@ Page({
                 if (res.code = '00000') {
                     wx.navigateBack({
                         delta: 1
+                    })
+                }
+            }
+        })
+    },
+    addressDelet: function(e) {
+        var self = this
+        wx.showModal({
+            title: '确认删除该地址吗？',
+            success: function(res) {
+                if (res.confirm) {
+                    var address_id = self.data.address_id
+                    wx.request({
+                        url: 'https://app.cumpusbox.com/v1/address/deleteAddress',
+                        data: {
+                            address_id: address_id
+                        },
+                        method: 'POST',
+                        success: function(res) {
+                            if (res.code = '00000') {
+                                wx.request({
+                                    url: 'https://app.cumpusbox.com/v1/users/SetDefaultAddress',
+                                    data: {
+                                        id: wx.getStorageSync('user').id,
+                                        default_address_id: 'null'
+                                    },
+                                    method: 'POST',
+                                    success: function(res) {
+                                        wx.navigateBack({
+                                            delta: 1
+                                        })
+                                    }
+                                })
+                            }
+                        }
                     })
                 }
             }

@@ -14,7 +14,7 @@ Page({
         total_price: 0,
         total_number: 0,
         freight: 0, //配送费
-        remake: '无备注信息'
+        remark: ''
     },
     onShow: function(e) {
         var self = this
@@ -28,6 +28,16 @@ Page({
             method: 'POST',
             success: function(res) {
                 var addresses = res.data.data
+                var address = {
+                    name: '请选择地址',
+                    tel: '',
+                    address: '',
+                    is_default: false, //是否是默认地址
+                    id: '' //地址ID
+                }
+                self.setData({
+                    address: address
+                })
                 if (addresses.length == 0) {
                     return
                 }
@@ -39,8 +49,6 @@ Page({
                         break
                     }
                 }
-                console.log('---------------');
-                console.log(self.data.address);
             }
         })
     },
@@ -94,13 +102,18 @@ Page({
         })
     },
     writeRemark: function(e) {
+        var have_change = false
+        console.log(this.data.remark);
+        if (this.data.remark != '') {
+            var have_change = true
+        }
         wx.navigateTo({
-            url: '/pages/remark/remark'
+            url: '/pages/remark/remark?remark=' + this.data.remark + '&have_change=' + have_change
         })
     },
-    changeRemake: function(remake) {
+    changeRemark: function(remark) {
         this.setData({
-            remake: remake
+            remark: remark
         })
     },
     submitSettlement: function(e) {
@@ -125,10 +138,10 @@ Page({
             user_id: wx.getStorageSync('user').id,
             items: itemIds,
             address_info: self.data.address,
-            school:wx.getStorageSync('school'),
+            school: wx.getStorageSync('school'),
             total_price: this.data.total_price *= 100,
             total_number: this.data.total_number,
-            remake: this.data.remake
+            remark: this.data.remark
         }
 
         wx.request({
