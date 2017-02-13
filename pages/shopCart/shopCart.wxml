@@ -1,12 +1,12 @@
 <!-- 主体 -->
 <scroll-view scroll-y="true" id="cart_body" class="body">
-  <view wx:if="{{store_infos.length>0}}" class="white-bc align-center justify-start store_info_body box-shadow">
+  <view wx:if="{{store_infos_show}}" class="white-bc align-center justify-start store_info_body box-shadow">
     <view class="store_info padding10 font16 red">
       <view wx:for="{{store_infos}}">
         <text>{{item}}</text>
       </view>
     </view>
-    <view class="store_info_icon align-center justify-center">
+    <view class="store_info_icon align-center justify-center" bindtap="unShow">
       <icon type="cancel" size="25" color="#bfbfbf"/>
     </view>
   </view>

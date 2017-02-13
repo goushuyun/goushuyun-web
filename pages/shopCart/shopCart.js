@@ -9,7 +9,9 @@
          minusStatuses: ['disabled', 'disabled', 'normal', 'normal', 'disabled'], //加减状态
          selectedAllStatus: false, //全选状态
 
-         store_infos: []
+         store_infos: [],
+
+         store_infos_show: false
      },
      onLoad: function(e) {
          var self = this
@@ -57,18 +59,19 @@
                          item.store_number = el.store_number //库存数量
                          item.type = el.type //类型
 
+                         /* 当库存为为0 或者不足 时 不可售 */
                          item.can_sale = el.number < el.store_number ? true : false //库存是否充足
                          item.store_empty = el.store_number < 1 ? true : false //库存是否为空
-                         item.selected = el.store_number < 1 ? false : true //选中
-
-                         item.number = item.can_sale?el.number:0 //购买数量
+                         item.pre_number = el.number //原购买数量
+                         item.number = item.can_sale ? el.number : 0 //购买数量
+                         item.selected = item.number > 0 ? true : false //选中
 
                          if (item.store_empty) {
-                            var store_info = (store_infos.length + 1) + '.' + item.book_title + '(' + (item.type==1?'新书':'二手书') + ')' + '已售完'
-                            store_infos.push(store_info)
+                             var store_info = (store_infos.length + 1) + '.' + item.book_title + '(' + (item.type == 1 ? '新书' : '二手书') + ')' + '已售完'
+                             store_infos.push(store_info)
                          } else if (!item.can_sale) {
-                            var store_info = (store_infos.length + 1) + '.' + item.book_title + '(' + (item.type==1?'新书':'二手书') + ')' + '库存不足' + item.number + '件，请重新选择'
-                            store_infos.push(store_info)
+                             var store_info = (store_infos.length + 1) + '.' + item.book_title + '(' + (item.type == 1 ? '新书' : '二手书') + ')' + '库存不足' + item.pre_number + '件，请重新选择'
+                             store_infos.push(store_info)
                          }
 
                          console.log(item)
@@ -78,7 +81,8 @@
                  self.setData({
                      goods: items,
                      temp_goods: items,
-                     store_infos: store_infos
+                     store_infos: store_infos,
+                     store_infos_show: items.length > 0 ? true : false
                  })
                  self.sum()
              },
@@ -315,16 +319,19 @@
      sum: function() {
          var goods = this.data.goods;
          // 计算总金额
-         var total_price = 0;
-         var total_number = 0;
-         var selectedAllStatus = false;
+         var total_price = 0
+         var total_number = 0
+         var selectedAllStatus = false
+         var selectedNumber = 0
          for (var i = 0; i < goods.length; i++) {
+             /* 如果库存 */
              if (goods[i].selected) {
-                 total_price += goods[i].number * goods[i].book_price;
-                 total_number += 1;
+                 total_price += goods[i].number * goods[i].book_price
+                 total_number += 1
+                 selectedNumber += 1
              }
          }
-         if (total_number == goods.length) {
+         if (total_number == selectedNumber) {
              selectedAllStatus = true;
          }
          // 写回经点击修改后的数组
@@ -334,5 +341,10 @@
              total_number: total_number,
              selectedAllStatus: selectedAllStatus
          });
+     },
+     unShow: function() {
+         this.setData({
+             store_infos_show: false
+         })
      }
  })
