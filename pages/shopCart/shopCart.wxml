@@ -21,8 +21,9 @@
   <view wx:for="{{goods}}" class="store-box">
     <view class="align-center white-bc border-top border-bottom padding10 cart-item">
       <!-- 复选框图标 -->
-      <image wx:if="{{!item.store_empty && item.selected}}" class="icon18 padding5 flex-shrink" src="/images/shopCart/success.png" bindtap="bindCheckbox" data-index="{{index}}"/>
-      <image wx:if="{{!item.store_empty && !item.selected}}" class="icon18 padding5 flex-shrink" src="/images/shopCart/circle.png" bindtap="bindCheckbox" data-index="{{index}}"/>
+      <image wx:if="{{item.store_empty || item.number==0}}" class="icon18 padding5 flex-shrink" src=""/>
+      <image wx:if="{{!item.store_empty && item.selected && item.number!=0}}" class="icon18 padding5 flex-shrink" src="/images/shopCart/success.png" bindtap="bindCheckbox" data-index="{{index}}"/>
+      <image wx:if="{{!item.store_empty && !item.selected && item.number!=0}}" class="icon18 padding5 flex-shrink" src="/images/shopCart/circle.png" bindtap="bindCheckbox" data-index="{{index}}"/>
       <!-- 图书图片 -->
       <view>
         <image class="carts-image padding5" src="{{item.book_image}}" mode="aspectFill"/>
@@ -35,7 +36,7 @@
             <text wx:if="{{item.type==1}}" class="text_inline_block type type_new flex-shrink font12">新书</text>
             <text wx:if="{{item.type==2}}" class="text_inline_block type type_old flex-shrink font12">二手书</text>
           </view>
-          <image class="icon18 flex-shrink" src="/images/shopCart/delet.png" data-index="{{index}}" bindtap="deletCart"/>
+          <image  wx:if="{{!item.store_empty}}" class="icon18 flex-shrink" src="/images/shopCart/delet.png" data-index="{{index}}" bindtap="deletCart"/>
         </view>
         <view class="font13">ISBN：{{item.isbn}}</view>
         <view class="justify-between align-center padding-top20">
