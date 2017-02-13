@@ -45,6 +45,9 @@ Page({
 
     },
     getMore(){
+
+        console.log('asdfagsdjkfhgaksdjfg')
+
         let page = this.data.page+1
 
         //判断是否去做新的请求

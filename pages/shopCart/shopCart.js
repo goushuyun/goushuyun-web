@@ -60,7 +60,7 @@
                          item.type = el.type //类型
 
                          /* 当库存为为0 或者不足 时 不可售 */
-                         item.can_sale = el.number < el.store_number ? true : false //库存是否充足
+                         item.can_sale = el.number <= el.store_number ? true : false //库存是否充足
                          item.store_empty = el.store_number < 1 ? true : false //库存是否为空
                          item.pre_number = el.number //原购买数量
                          item.number = item.can_sale ? el.number : 0 //购买数量
@@ -135,11 +135,10 @@
      bindMinus: function(e) {
          var index = parseInt(e.currentTarget.dataset.index);
          var number = this.data.goods[index].number;
+         var goodSelected = this.data.goods[index].selected
          // 如果只有1件了，就不允许再减了
          if (number > 0) {
              number--;
-         } else if (number > 0) {
-             this.data.goods[index].selected = false
          } else {
              this.deletCart(e)
          }
@@ -148,6 +147,10 @@
          // 购物车数据
          var goods = this.data.goods;
          goods[index].number = number;
+         //当前good数量为0 取消选中
+         if (number == 0) {
+           goods[index].selected = false
+         }
          // 按钮可用状态
          var minusStatuses = this.data.minusStatuses;
          minusStatuses[index] = minusStatus;
