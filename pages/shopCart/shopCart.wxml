@@ -6,7 +6,7 @@
         <text>{{item}}</text>
       </view>
     </view>
-    <view class="store_info_icon align-center justify-center" bindtap="unShow">
+    <view wx:if="{{store_infos_show}}" class="store_info_icon align-center justify-center" bindtap="unShow">
       <icon type="cancel" size="25" color="#bfbfbf"/>
     </view>
   </view>
