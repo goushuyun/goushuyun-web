@@ -281,9 +281,12 @@
              method: 'POST',
              success: function(res) {
                  if (res.data.can_place_order) {
-                     var shopCartString = JSON.stringify(shopCartData)
+                     wx.setStorage({
+                         key: "shopCartData",
+                         data: shopCartData
+                     })
                      wx.navigateTo({
-                         url: '/pages/settlement/settlement?shopCartData=' + shopCartString
+                         url: '/pages/settlement/settlement'
                      })
                  } else {
                      self.showGoods()

@@ -52,7 +52,7 @@ Page({
             }
         })
     },
-    onLoad: function(option) {
+    onLoad: function(e) {
         var self = this
         /* 获得商铺信息 */
         wx.getStorage({
@@ -65,9 +65,12 @@ Page({
                 })
             }
         })
-
         /* 取出购物车传过来的参数 */
-        var shopCartData = JSON.parse(option.shopCartData)
+        var shopCartData = wx.getStorageSync('shopCartData')
+        wx.removeStorage({
+            key: 'shopCartData'
+        })
+
         var items = shopCartData.items
         var total_price = parseFloat(shopCartData.total_price)
 
@@ -144,7 +147,7 @@ Page({
             total_number: this.data.total_number,
             remark: this.data.remark,
             freight: this.data.freight * 100,
-            openid:wx.getStorageSync('openid')
+            openid: wx.getStorageSync('openid')
         }
 
         wx.request({
@@ -152,7 +155,25 @@ Page({
             data: order,
             method: 'POST',
             success: function(res) {
-                console.log(res);
+                if (res.data.message == 'ok') {
+                    var payInfo = res.data.data
+                    console.log(payInfo);
+                    wx.requestPayment({
+                        'timeStamp': payInfo.timeStamp,
+                        'nonceStr': payInfo.nonceStr,
+                        'package': payInfo.package,
+                        'signType': 'MD5',
+                        'paySign': payInfo.paySign,
+                        'success': function(res) {
+                            console.log(res);
+                        },
+                        'fail': function(res) {}
+                    })
+                } else {
+                    wx.navigateBack({
+                        delta: 1
+                    })
+                }
             }
         })
     }
