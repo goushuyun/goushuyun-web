@@ -143,7 +143,8 @@ Page({
             total_price: this.data.total_price * 100,
             total_number: this.data.total_number,
             remark: this.data.remark,
-            freight: this.data.freight * 100
+            freight: this.data.freight * 100,
+            openid:wx.getStorageSync('openid')
         }
 
         wx.request({
