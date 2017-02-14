@@ -44,7 +44,7 @@ button.btn-small{
 }
 
 /* operate group button */
-.btn_reduce{
+.btn_reduce,.btn_plus{
     box-sizing: border-box;
     width: 22px;
     height: 22px;
@@ -56,7 +56,7 @@ button.btn-small{
     height: 100%;
 }
 
-.btn_plus{
+/*.btn_plus{
     box-sizing: border-box;
     background-color: #1581D9;
     width: 22px;
@@ -64,7 +64,7 @@ button.btn-small{
     padding: 3px;
     border-radius: 50%;
     display: inline-block;
-}
+}*/
 .btn_plus .btn_img{
     width: 100%;
     height: 100%;

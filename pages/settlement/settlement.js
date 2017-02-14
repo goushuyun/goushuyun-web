@@ -180,5 +180,10 @@ Page({
                 }
             }
         })
+    },
+    shopDetail(e) {
+        wx.navigateTo({
+            url: '/pages/shopDetail/shopDetail'
+        })
     }
 })

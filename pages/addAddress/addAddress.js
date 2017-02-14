@@ -35,7 +35,6 @@ Page({
         }
     },
     formSubmit: function(e) {
-        console.log('form发生了submit事件，携带数据为：', e.detail.value)
         var self = this
         var address = e.detail.value
         self.setData({
@@ -115,6 +114,8 @@ Page({
             data: data,
             method: 'POST',
             success: function(res) {
+              console.log('----------------------');
+              console.log(res);
                 if (res.code = '00000') {
                     wx.navigateBack({
                         delta: 1

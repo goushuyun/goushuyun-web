@@ -23,7 +23,7 @@ Page({
             }
         })
     },
-    chooseCategory(e) {
+    shopDetail(e) {
         wx.navigateTo({
             url: '/pages/shopDetail/shopDetail'
         })

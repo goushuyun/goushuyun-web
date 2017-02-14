@@ -1,9 +1,6 @@
 view#container{
     background-color:  #EFF3F7;
 }
-.margin{
-    margin: 10px 0;
-}
 .back{
     background-color: white;
 }
@@ -52,12 +49,13 @@ view#container{
     font-size: 13px;
 }
 .center{
-    flex-basis:70%;
+    flex-basis:73%;
     color: #888;
     font-size: 13px;
 }
 .right{
-    flex-basis:10%
+    height: 42px;
+    flex-basis:7%
 }
 
 /*描述部分*/

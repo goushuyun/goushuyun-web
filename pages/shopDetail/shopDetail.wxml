@@ -1,5 +1,5 @@
 <view id="container">
-    <view id="shopHead" class="margin">
+    <view id="shopHead">
         <image id="shopBack" src="/images/shopDetail/shop_bc.png"></image>
         <view class="head1">
             <image id="shopPic" src="{{shopImg}}"></image>
@@ -8,19 +8,14 @@
     </view>
     <view id="shopInfo" class="margin back box-shadow">
         <view class="item">
-            <label class="left">联系商家</label>
-            <label class="center">点击右侧图标站内私信</label>
-            <view><image class="right icon24" src="/images/shopDetail/message.png"></image></view>
-        </view>
-        <view class="item">
             <text class="left">客服电话</text>
-            <text class="center">{{tell}}</text>
-            <view><image class="right icon24" src="/images/shopDetail/tell.png" bindtap="callPhone"></image></view>
+            <text class="center" bindtap="callPhone">{{tell}}</text>
+            <view class="right justify-center align-center"><image class="icon24" src="/images/shopDetail/tell.png" bindtap="callPhone"></image></view>
         </view>
         <view class="item">
             <text class="left">联系地址</text>
             <text class="center">{{address}}</text>
-            <image class="right" src=""></image>
+            <view class="right"><image class="icon24" src=""></image></view>
         </view>
     </view>
     <view id="shopDesc" class="margin back box-shadow">

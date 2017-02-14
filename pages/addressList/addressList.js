@@ -22,7 +22,6 @@ Page({
     selectAddress: function(e) {
         var index = parseInt(e.currentTarget.dataset.index)
         var address = this.data.addresses[index]
-
         wx.request({
             url: 'https://app.cumpusbox.com/v1/users/SetDefaultAddress',
             data: {

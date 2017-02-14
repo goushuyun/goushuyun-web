@@ -92,7 +92,7 @@ view.operate .btns{
     vertical-align: top;
     display: flex;
     align-items: center;
-    width: 100px;
+    width: 110px;
     justify-content:flex-end;
 }
 

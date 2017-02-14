@@ -101,3 +101,14 @@
   color: white;
   padding: 0 16px;
 }
+.deletarea {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  z-index: 2;
+  right:5px;
+  top:13px
+}
+.margin-r20 {
+  margin-right: 20px
+}
