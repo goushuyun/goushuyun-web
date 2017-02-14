@@ -19,9 +19,6 @@
 .body {
   top: 0
 }
-.store-box{
-  position: relative;
-}
 /*售完图标区域*/
 .store_area {
   width: 90px;
@@ -37,16 +34,41 @@
   height: 90px
 }
 
-.item-right {
+/*图书信息*/
+.store-box{
   width: 100%;
+  position: relative;
 }
-
+/* 选择图标区域 */
+.select_icon_area {
+  width: 40px;
+  height: 40px
+}
 /*左部图片*/
-.carts-image {
+.book_image_area {
+  width: 68px
+}
+.book_image {
   width: 58px;
   height: 73px;
   border-radius: 4px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+}
+
+/* 右部描述 */
+.item_right {
+  width: 100%
+}
+.name_isbn {
+  margin: 10px 40px 0 0
+}
+.deletarea {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  z-index: 2;
+  right:0px;
+  top:4px
 }
 .number_area {
     height: 44px;
@@ -62,12 +84,16 @@
     text-align: center
 }
 .type_new{
+    display: inline-block;
     color: #F1501E;
     border: 1px solid #F1501E;
+    padding: 0 2px
 }
 .type_old{
+    display: inline-block;
     color: #7CB342;
     border: 1px solid #7CB342;
+    padding: 0 2px
 }
 
 #carts-footer{
@@ -96,15 +122,4 @@
   background-color: #1581D9;
   color: white;
   padding: 0 16px;
-}
-.deletarea {
-  width: 50px;
-  height: 50px;
-  position: absolute;
-  z-index: 2;
-  right:0px;
-  top:4px
-}
-.margin-r20 {
-  margin-right: 20px
 }
