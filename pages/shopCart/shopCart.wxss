@@ -109,7 +109,7 @@
 #carts-footer .select-all {
   height: 100%;
   line-height: 46px;
-  padding: 0 10px
+  padding: 0 11px
 }
 #carts-footer .total-price {
   height: 100%;
