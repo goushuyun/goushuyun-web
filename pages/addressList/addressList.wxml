@@ -1,6 +1,6 @@
 <scroll-view id="address-body" scroll-y="true" class="body">
   <view wx:for="{{addresses}}" class="align-center white-bc item border-top">
-    <view class="image justify-center">
+    <view class="image justify-center align-center">
       <image wx:if="{{item.is_default}}" class="icon18" src="/images/shopCart/success.png"/>
     </view>
     <view class="text direction-column justify-start" bindtap="selectAddress" data-index="{{index}}">
@@ -12,13 +12,13 @@
         <text class="font13 font5">{{item.address}}</text>
       </view>
     </view>
-    <view class="image justify-center" bindtap="updataAddress" data-index="{{index}}">
+    <view class="image justify-center align-center" bindtap="updataAddress" data-index="{{index}}">
       <image class="icon24" src="/images/edit.png"></image>
     </view>
   </view>
 </scroll-view>
 
 <view id="address-foot" class="foot justify-center align-center white-bc" bindtap="addAddress">
-  <image class="btn_img btn_plus" src="/images/add.png"></image>
-  <text class="padding-left10 font16">新增地址</text>
+  <image class="icon18 padding5" src="/images/add.png"></image>
+  <text class="font15">新增地址</text>
 </view>
