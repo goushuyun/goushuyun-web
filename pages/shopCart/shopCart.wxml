@@ -19,39 +19,39 @@
   </view>
 
   <view wx:for="{{goods}}" class="store-box">
-    <view class="align-center white-bc border-top border-bottom padding10 cart-item">
+    <view class="align-center white-bc border-top border-bottom">
       <!-- 复选框图标 -->
-      <image wx:if="{{item.store_empty || item.number==0}}" class="icon18 padding5 flex-shrink" src=""/>
-      <image wx:if="{{!item.store_empty && item.selected && item.number!=0}}" class="icon18 padding5 flex-shrink" src="/images/shopCart/success.png" bindtap="bindCheckbox" data-index="{{index}}"/>
-      <image wx:if="{{!item.store_empty && !item.selected && item.number!=0}}" class="icon18 padding5 flex-shrink" src="/images/shopCart/circle.png" bindtap="bindCheckbox" data-index="{{index}}"/>
+      <view class="select_icon_area align-center justify-center flex-shrink">
+        <image wx:if="{{item.store_empty || item.number==0}}" class="icon18" src=""/>
+        <image wx:if="{{!item.store_empty && item.selected && item.number!=0}}" class="icon18" src="/images/shopCart/success.png" bindtap="bindCheckbox" data-index="{{index}}"/>
+        <image wx:if="{{!item.store_empty && !item.selected && item.number!=0}}" class="icon18" src="/images/shopCart/circle.png" bindtap="bindCheckbox" data-index="{{index}}"/>
+      </view>
       <!-- 图书图片 -->
-      <view>
-        <image class="carts-image padding5" src="{{item.book_image}}" mode="aspectFill"/>
+      <view class="book_image_area align-center flex-shrink">
+        <image class="book_image" src="{{item.book_image}}" mode="aspectFill"/>
       </view>
       <!-- 右边描述 -->
-      <view class="padding5 item-right">
-        <view class="justify-between">
-          <view class="direction-row wrap">
-            <text class="font16 margin-r20">{{item.book_title}}</text>
-            <text wx:if="{{item.type==1}}" class="text_inline_block type type_new flex-shrink font12">新书</text>
-            <text wx:if="{{item.type==2}}" class="text_inline_block type type_old flex-shrink font12">二手书</text>
-          </view>
-          <view class="deletarea align-center justify-center" data-index="{{index}}" bindtap="deletCart">
-            <image class="icon24 flex-shrink" src="/images/shopCart/delet.png"/>
-          </view>
-
+      <view class="item_right">
+        <view class="deletarea align-center justify-center" data-index="{{index}}" bindtap="deletCart">
+          <image class="icon24 flex-shrink" src="/images/shopCart/delet.png"/>
         </view>
-        <view class="font13">ISBN：{{item.isbn}}</view>
-        <view class="justify-between align-center padding-top20">
+        <view class="name_isbn">
+          <view class="font16 book_name">{{item.book_title}}
+            <view wx:if="{{item.type==1}}" class="type_new font12">新书</view>
+            <view wx:if="{{item.type==2}}" class="type_old font12">二手书</view>
+          </view>
+          <view class="font13">ISBN：{{item.isbn}}</view>
+        </view>
+        <view class="justify-between align-center">
           <view class="font16 red">￥{{item.book_price}}</view>
           <view wx:if="{{!item.store_empty}}" class="justify-end">
-            <view class="btn_reduce {{minusStatuses[index]}}" data-index="{{index}}" bindtap="bindMinus">
+            <view class="btn_reduce align-center justify-center {{minusStatuses[index]}}" data-index="{{index}}" bindtap="bindMinus">
               <image class="btn_img" src="/images/reduce.png"/>
             </view>
-            <view class="align-center">
+            <view class="number_area align-center">
               <input class="goods_number" type="number" maxlength="3" value="{{item.number}}" data-index="{{index}}" bindchange="bindManual"/>
             </view>
-            <view class="btn_reduce" data-index="{{index}}" bindtap="bindPlus">
+            <view class="btn_reduce align-center justify-center" data-index="{{index}}" bindtap="bindPlus">
               <image class="btn_img btn_plus" src="/images/add.png"></image>
             </view>
           </view>

@@ -21,17 +21,19 @@
             <text class="selling_price">¥{{item.selling_price_yuan}}</text>
             <view class="btns">
                 <block wx:if="{{item.buy_amount > 0}}">
-                    <view class="btn_reduce" data-index="{{index}}" data-operate-type="reduce" bindtap="changeAmount">
+                    <view class="btn_reduce align-center justify-center" data-index="{{index}}" data-operate-type="reduce" bindtap="changeAmount">
                         <image class="btn_img" src="/images/reduce.png"></image>
                     </view>
-                    <input class="goods_number" type="number" maxlength="3" value="{{item.buy_amount}}" data-index="{{index}}" bindblur="goodsNumberInputBlur"/>
+                    <view class="number_area align-center">
+                        <input class="goods_number" type="number" maxlength="3" value="{{item.buy_amount}}" data-index="{{index}}" bindblur="goodsNumberInputBlur"/>
+                    </view>
                 </block>
 
-                <view wx:if="{{item.buy_amount < item.amount}}" class="btn_plus" data-index="{{index}}" data-operate-type="add" bindtap="changeAmount">
+                <view wx:if="{{item.buy_amount < item.amount}}" class="btn_plus align-center justify-center" data-index="{{index}}" data-operate-type="add" bindtap="changeAmount">
                     <image class="btn_img" src="{{item.buy_amount<item.amount?'/images/add.png':'/images/no_add.png'}}"></image>
                 </view>
 
-                <view wx:else class="btn_reduce">
+                <view wx:else class="btn_reduce align-center justify-center">
                     <image class="btn_img" src="/images/no_add.png"></image>
                 </view>
             </view>

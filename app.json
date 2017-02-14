@@ -1,5 +1,5 @@
 {
-    "pages": [
+    "pages": ["pages/shopCart/shopCart",
         "pages/index/index",
         "pages/addressList/addressList",
         "pages/settlement/settlement",
@@ -11,7 +11,7 @@
         "pages/buyPage/buyPage",
         "pages/booksList/booksList",
         "pages/shopDetail/shopDetail",
-        "pages/shopCart/shopCart",
+
         "pages/refund/refund"
     ],
     "window": {

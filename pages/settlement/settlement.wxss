@@ -66,12 +66,16 @@ view#order .order_item .book_info .type{
     padding: 1px;
 }
 .type_new{
+    display: inline-block;
     color: #F1501E;
     border: 1px solid #F1501E;
+    padding: 0 2px
 }
 .type_old{
+    display: inline-block;
     color: #7CB342;
     border: 1px solid #7CB342;
+    padding: 0 2px
 }
 view#order .order_item .book_info .isbn{
     font-size: 12px;
