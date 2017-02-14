@@ -92,10 +92,12 @@ view.operate .btns{
     vertical-align: top;
     display: flex;
     align-items: center;
-    width: 110px;
+    /*width: 110px;*/
     justify-content:flex-end;
 }
-
+.number_area{
+  height: 44px;
+}
 view.operate .goods_number{
     border: 1px solid #efefef;
     border-radius: 4px;
@@ -104,8 +106,7 @@ view.operate .goods_number{
     height: 22px;
     box-sizing: border-box;
     font-size: 13px;
-    text-align: center;
-    margin: 0 12px;
+    text-align: center
 }
 
 /* bottom bar */

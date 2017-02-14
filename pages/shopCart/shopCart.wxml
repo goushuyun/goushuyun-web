@@ -32,9 +32,10 @@
       <view class="padding5 item-right">
         <view class="justify-between">
           <view class="direction-row wrap">
-            <text class="font16 margin-r20">{{item.book_title}}</text>
-            <text wx:if="{{item.type==1}}" class="text_inline_block type type_new flex-shrink font12">新书</text>
-            <text wx:if="{{item.type==2}}" class="text_inline_block type type_old flex-shrink font12">二手书</text>
+            <view class="font16 margin-r20">{{item.book_title}}
+              <text wx:if="{{item.type==1}}" class="type_new flex-shrink font12">新书</text>
+              <text wx:if="{{item.type==2}}" class="type_old flex-shrink font12">二手书</text>
+            </view>
           </view>
           <view class="deletarea align-center justify-center" data-index="{{index}}" bindtap="deletCart">
             <image class="icon24 flex-shrink" src="/images/shopCart/delet.png"/>
@@ -45,13 +46,13 @@
         <view class="justify-between align-center padding-top20">
           <view class="font16 red">￥{{item.book_price}}</view>
           <view wx:if="{{!item.store_empty}}" class="justify-end">
-            <view class="btn_reduce {{minusStatuses[index]}}" data-index="{{index}}" bindtap="bindMinus">
+            <view class="btn_reduce align-center justify-center {{minusStatuses[index]}}" data-index="{{index}}" bindtap="bindMinus">
               <image class="btn_img" src="/images/reduce.png"/>
             </view>
-            <view class="align-center">
+            <view class="number_area align-center">
               <input class="goods_number" type="number" maxlength="3" value="{{item.number}}" data-index="{{index}}" bindchange="bindManual"/>
             </view>
-            <view class="btn_reduce" data-index="{{index}}" bindtap="bindPlus">
+            <view class="btn_reduce align-center justify-center" data-index="{{index}}" bindtap="bindPlus">
               <image class="btn_img btn_plus" src="/images/add.png"></image>
             </view>
           </view>
