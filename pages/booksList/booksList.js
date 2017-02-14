@@ -26,7 +26,7 @@ Page({
 
         var self = this
         wx.request({
-            url: 'https://app.cumpusbox.com/v1/books/listBooks',
+            url: 'https://app.cumpusbox.com/v1/books/listBooksHideSameIsbn',
             method: 'POST',
             data: data,
             success(res){
