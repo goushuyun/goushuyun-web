@@ -49,13 +49,6 @@ Page({
                         signType: 'MD5',
                         paySign: payInfo.paySign,
                         complete: function(res) {
-
-                            console.log('>>>>>>>>>>>>>>>>>>>>>>>>')
-
-                            console.log(order_id)
-
-                            console.log('>>>>>>>>>>>>>>>>>>>>>>>>')
-
                             wx.navigateTo({
                                 url: '/pages/orderInfo/orderInfo?order_id=' + order_id
                             })
