@@ -1,5 +1,5 @@
 {
-    "pages": ["pages/shopDetail/shopDetail",
+    "pages": [
         "pages/me/me",
         "pages/index/index",
         "pages/addressList/addressList",
@@ -10,7 +10,7 @@
         "pages/addAddress/addAddress",
         "pages/buyPage/buyPage",
         "pages/booksList/booksList",
-
+        "pages/shopDetail/shopDetail",
         "pages/shopCart/shopCart",
         "pages/refund/refund"
     ],
