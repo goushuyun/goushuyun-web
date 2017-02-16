@@ -1,6 +1,6 @@
 <template name="order">
-    <view class="order" wx:for="{{orders}}" wx:for-item="order" wx:key="*this" data-id="{{order.order_id}}" bindtap="viewOrderDetail">
-        <view class="top_part">
+    <view class="order" wx:for="{{orders}}" wx:for-item="order" wx:key="*this" >
+        <view class="top_part" data-id="{{order.order_id}}" bindtap="viewOrderDetail">
             <image class="comp_logo shadow" src="http://ojrfwndal.bkt.clouddn.com/WechatIMG5.jpeg"></image>
             <view class="comp_info">
                 <text class="text_block compa_name">{{order.order_at_time}}</text>
@@ -26,10 +26,10 @@
         </view>
         <view class="btns">
             <!-- 未支付的订单，显示去支付按钮 -->
-            <button wx:if="{{order.pay_status == 0}}" class="btn primary btn-small" hover-class="btnactive">去支付</button>
+            <button wx:if="{{order.order_status == 1}}" class="btn primary btn-small" hover-class="btnactive" data-id="{{order.order_id}}" bindtap="toPay">去支付</button>
 
             <!-- 确认收获 -->
-            <button wx:if="{{order.order_status == 3}}" class="btn primary btn-small" hover-class="btnactive">确认收货</button>
+            <button wx:if="{{order.order_status == 3}}" bindtap="comfirmAccept" class="btn primary btn-small" hover-class="btnactive" data-id="{{order.order_id}}">确认收货</button>
 
             <!-- 对于待支付的订单，可以取消 -->
             <button wx:if="{{order.order_status == 1}}" bindtap="cancel_order" class="btn danger btn-small" hover-class="danger-active">取消订单</button>

@@ -20,7 +20,10 @@ Page({
         total: 0,
         order_status: 0
     },
-
+    toPay(e){
+        let order_id = e.currentTarget.dataset.id
+        console.log(order_id)
+    },
     viewOrderDetail(e) {
         let order_id = e.currentTarget.dataset.id
         wx.navigateTo({
@@ -94,7 +97,6 @@ Page({
                         accepted_orders
                     })
 
-
                 }
 
             }
@@ -123,6 +125,27 @@ Page({
 
     },
 
+    comfirmAccept(e){
+        let order_id = e.currentTarget.dataset.id, self = this
+        console.log(order_id)
+
+        wx.request({
+            url: 'https://app.cumpusbox.com/v1/orders/accept_order',
+            method: 'POST',
+            data: {order_ids: [order_id]},
+            success(res){
+                if(res.data.code == '00000'){
+                    console.log(res.data)
+
+                    wx.navigateTo({
+                        url: '/pages/orderInfo/orderInfo?order_id' + order_id
+                    })
+                    this.getOrders()
+                }
+            }
+        })
+
+    },
 
 
     goToPage(e) {

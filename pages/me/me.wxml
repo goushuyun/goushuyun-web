@@ -13,27 +13,27 @@
 <view id="container">
     <swiper current="{{currentPage}}" bindchange="pageChange" duration="300">
         <swiper-item>
-            <scroll-view scroll-y="true" class="container" style="background-color: #EFF3F7;">
+            <scroll-view scroll-y="true" class="container">
                 <template is="order" data="{{orders: orders}}"></template>
             </scroll-view>
         </swiper-item>
         <swiper-item>
-            <scroll-view class="container">
+            <scroll-view scroll-y="true" class="container">
                 <template is="order" data="{{orders: wait_pay_orders}}"></template>
             </scroll-view>
         </swiper-item>
         <swiper-item>
-            <scroll-view class="container">
+            <scroll-view scroll-y="true" class="container">
                 <template is="order" data="{{orders: wait_send_orders}}"></template>
             </scroll-view>
         </swiper-item>
         <swiper-item>
-            <scroll-view class="container">
+            <scroll-view scroll-y="true" class="container">
                 <template is="order" data="{{orders: wait_accept_orders}}"></template>
             </scroll-view>
         </swiper-item>
         <swiper-item>
-            <scroll-view class="container">
+            <scroll-view scroll-y="true" class="container">
                 <template is="order" data="{{orders: accepted_orders}}"></template>
             </scroll-view>
         </swiper-item>
