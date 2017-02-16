@@ -24,7 +24,7 @@ Page({
     viewOrderDetail(e) {
         let order_id = e.currentTarget.dataset.id
         wx.navigateTo({
-            url: '/pages/me/me?order_id='+ order_id
+            url: '/pages/orderInfo/orderInfo?order_id='+ order_id
         })
     },
 
