@@ -7,6 +7,8 @@
 .head {
   height: 60px;
   padding-left: 100rpx;
+  background-color: #3c485e;
+  color: #eae8cf
 }
 .shop-head {
   height: 36px;

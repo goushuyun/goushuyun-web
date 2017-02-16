@@ -29,11 +29,11 @@
 
     <!-- order info -->
     <view id="order_Info" class="white-bc">
-        <view class="shop_title blue-bc white align-center" bindtap="shopDetail">
+        <!-- <view class="shop_title blue-bc white align-center" bindtap="shopDetail">
             <image src="/images/shop.png" class="icon24 padding10"></image>
             <text class="text_block shop_name font15">{{shop_name}}</text>
             <image class="icon24" src="/images/right_arrow.png"></image>
-        </view>
+        </view> -->
         <view wx:for="{{present_order.items}}" class="book">
             <image class="book_pic" src="{{item.book_image}}"></image>
             <view class="book_info">

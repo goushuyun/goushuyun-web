@@ -185,7 +185,6 @@
 
          } else {
              wx.showModal({
-                 title: '提示',
                  content: '已达到库存上限！',
                  showCancel: false
              })
