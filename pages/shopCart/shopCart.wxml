@@ -43,7 +43,9 @@
           <view class="font13">ISBN：{{item.isbn}}</view>
         </view>
         <view class="justify-between align-center">
-          <view class="font16 red">￥{{item.book_price}}</view>
+          <view class="price_area align-center">
+            <view class="font16 red">￥{{item.book_price}}</view>
+          </view>
           <view wx:if="{{!item.store_empty}}" class="justify-end">
             <view class="btn_reduce align-center justify-center {{minusStatuses[index]}}" data-index="{{index}}" bindtap="bindMinus">
               <image class="btn_img" src="/images/reduce.png"/>
