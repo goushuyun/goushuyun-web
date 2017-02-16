@@ -1,6 +1,6 @@
 <view class="head align-center">
-  <text class="font15">{{order_status.massage}}
-    <text wx:if="{{order_status.code==1}}" class="font12">24小时候订单将自动关闭</text>
+  <text class="font15">{{order_status_description.description}}
+    <text wx:if="{{present_order.order_status==1}}" class="font12">24小时候订单将自动关闭</text>
   </text>
 </view>
 
@@ -12,11 +12,11 @@
       </view>
       <view class="text direction-column justify-start" data-index="{{index}}">
         <view class="justify-start align-center">
-          <text class="font15 font0">{{address.user_name}}</text>
-          <text class="font15 font0 padding5">{{address.tel}}</text>
+          <text class="font15 font0">{{present_order.address_info.name}}</text>
+          <text class="font15 font0 padding5">{{present_order.address_info.tel}}</text>
         </view>
         <view class="justify-start">
-          <text class="font12 font5 padding-bottom5">{{address.address}}</text>
+          <text class="font12 font5 padding-bottom5">{{present_order.address_info.address}}</text>
         </view>
       </view>
     </view>
@@ -33,27 +33,16 @@
     <view id="order_Info" class="white-bc">
         <view class="shop-head align-center border-bottom" bindtap="chooseCategory">
           <image class="icon24 padding-lr10" src="/images/shop_blue.png"/>
-          {{shopName}}  >
+          {{shop_name}}  >
         </view>
-        <view class="book">
-            <image class="book_pic" src="http://ojrjlwt2h.bkt.clouddn.com/9787040343199"></image>
+        <view wx:for="{{present_order.items}}" class="book">
+            <image class="book_pic" src="item.book_image"></image>
             <view class="book_info">
-                <text class="text_block book_title">ES2015权威指南</text>
-                <text class="text_block book_isbn">ISBN：9787122087935</text>
+                <text class="text_block book_title">{{item.book_title}}</text>
+                <text class="text_block book_isbn">ISBN：{{item.isbn}}</text>
                 <view class="detail">
-                    <text class="text_inline_block book_price">¥34.45</text>
-                    <text class="text_inline_block">x 7</text>
-                </view>
-            </view>
-        </view>
-        <view class="book">
-            <image class="book_pic" src="http://ojrjlwt2h.bkt.clouddn.com/9787508647357"></image>
-            <view class="book_info">
-                <text class="text_block book_title">ES2015权威指南</text>
-                <text class="text_block book_isbn">ISBN：9787122087935</text>
-                <view class="detail">
-                    <text class="text_inline_block book_price">¥34.45</text>
-                    <text class="text_inline_block">x 7</text>
+                    <text class="text_inline_block book_price">¥{{item.book_price}}</text>
+                    <text class="text_inline_block">x {{item.number}}</text>
                 </view>
             </view>
         </view>
@@ -61,11 +50,11 @@
         <view class="fee">
             <view class="fee_info border-bottom">
                 <text class="text_inline_block label">配送费</text>
-                <text class="text_inline_block fee_price">¥7</text>
+                <text class="text_inline_block fee_price">¥{{present_order.freight}}</text>
             </view>
             <view class="fee_info  border-bottom">
                 <text class="text_inline_block label">总计</text>
-                <text class="text_inline_block fee_price">¥437.34</text>
+                <text class="text_inline_block fee_price">¥{{present_order.total_price}}</text>
             </view>
         </view>
     </view>
@@ -74,25 +63,27 @@
         <text class="header">订单信息</text>
         <view class="about">
             <text class="text_block">订单编号</text>
-            <text class="text_block content">129467814214687</text>
+            <text class="text_block content">{{present_order.order_id}}</text>
         </view>
         <view class="about">
             <text class="text_block">下单时间</text>
-            <text class="text_block content">2017-3-31 12:43:44</text>
+            <text class="text_block content">{{present_order.order_at}}</text>
         </view>
         <view class="about">
             <text class="text_block">支付方式</text>
-            <text class="text_block content">在线支付</text>
+            <text class="text_block content">微信支付</text>
         </view>
         <view class="about">
             <text class="text_block">备注信息</text>
-            <text class="text_block content">阿斯顿受到粉丝的</text>
+            <text class="text_block content">{{present_order.remark}}</text>
         </view>
     </view>
 </scroll-view>
 
 <view id="order_foot" class="foot align-center justify-end padding-lr5">
-  <view><button size="mini" class="button-plain" hover-class="button-hover">申请售后</button></view>
-  <view><button size="mini" class="button-plain" hover-class="button-hover">提醒发货</button></view>
-  <view><button size="mini" class="button-plain" hover-class="button-hover">查看物流</button></view>
+  <view wx:if="{{present_order.order_status==1}}"><button size="mini" class="button-plain" hover-class="button-hover">取消订单</button></view>
+  <view wx:if="{{present_order.order_status==1}}"><button size="mini" class="button-plain" hover-class="button-hover">去付款</button></view>
+  <view wx:if="{{present_order.order_status==2 || present_order.order_status==5}}"><button size="mini" class="button-plain" hover-class="button-hover">联系商家</button></view>
+  <view wx:if="{{present_order.order_status==3}}"><button size="mini" class="button-plain" hover-class="button-hover">确认收货</button></view>
+  <view wx:if="{{present_order.order_status==4}}"><button size="mini" class="button-plain" hover-class="button-hover">再来一单</button></view>
 </view>

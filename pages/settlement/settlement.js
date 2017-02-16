@@ -168,10 +168,16 @@ Page({
                         'package': payInfo.package,
                         'signType': 'MD5',
                         'paySign': payInfo.paySign,
-                        'success': function(res) {
-                            console.log(res);
-                        },
-                        'fail': function(res) {}
+                        // 'success': function(res) {
+                        //     console.log(res);
+                        // },
+                        // 'fail': function(res) {}
+                        complete: function(res) {
+                            console.log(res)
+                            wx.navigateTo({
+                                url: '/pages/orderInfo/orderInfo?order_id='+res.data.order_id
+                            })
+                        }
                     })
                 } else {
                     wx.navigateBack({
