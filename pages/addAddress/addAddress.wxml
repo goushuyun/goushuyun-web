@@ -7,7 +7,7 @@
         </view>
         <view class="input_group">
             <label>联系电话</label>
-            <input  name="tel" placeholder="手机号" type="number" value="{{tel}}"/>
+            <input  name="tel" placeholder="手机号"  value="{{tel}}"/>
         </view>
 
         <view class="input_group address">

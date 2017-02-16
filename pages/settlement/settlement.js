@@ -161,21 +161,16 @@ Page({
             success: function(res) {
                 if (res.data.message == 'ok') {
                     var payInfo = res.data.data
-                    console.log(payInfo);
+                    var order_id = res.order_id
                     wx.requestPayment({
-                        'timeStamp': payInfo.timeStamp,
-                        'nonceStr': payInfo.nonceStr,
-                        'package': payInfo.package,
-                        'signType': 'MD5',
-                        'paySign': payInfo.paySign,
-                        // 'success': function(res) {
-                        //     console.log(res);
-                        // },
-                        // 'fail': function(res) {}
+                        timeStamp: payInfo.timeStamp,
+                        nonceStr: payInfo.nonceStr,
+                        package: payInfo.package,
+                        signType: 'MD5',
+                        paySign: payInfo.paySign,
                         complete: function(res) {
-                            console.log(res)
                             wx.navigateTo({
-                                url: '/pages/orderInfo/orderInfo?order_id='+res.data.order_id
+                                url: '/pages/orderInfo/orderInfo?order_id='+order_id
                             })
                         }
                     })

@@ -14,7 +14,7 @@ Page({
             data: {
                 page: 1, //页数   required
                 size: 10, //每页大小  required
-                order_id: option.order_id, //订单号   （获取某一订单的时候必传）
+                order_id: order_id, //订单号   （获取某一订单的时候必传）
                 user_id: wx.getStorageSync('user').id //用户ID  required
             },
             method: 'POST',

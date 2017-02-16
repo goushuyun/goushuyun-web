@@ -114,14 +114,18 @@ Page({
             data: data,
             method: 'POST',
             success: function(res) {
-                console.log('----------------------');
-                console.log(res);
                 if (res.code = '00000') {
+                    console.log('----------------------------------------------');
+                    console.log('self.data.oprate---' + self.data.oprate);
+                    console.log('res.address_id---' + res.data.address_id);
+                    console.log('self.data.address_id---' + self.data.address_id);
+                    var default_address_id = (self.data.oprate == 'add') ? res.data.address_id : self.data.address_id
+                    console.log('default_address_id---'+default_address_id);
                     wx.request({
                         url: 'https://app.cumpusbox.com/v1/users/SetDefaultAddress',
                         data: {
-                            id: wx.getStorageSync('user').id,
-                            default_address_id: self.data.oprate == 'add' ? res.address_id : self.data.address_id
+                            id: user_id,
+                            default_address_id: default_address_id
                         },
                         method: 'POST',
                         success: function(res) {
