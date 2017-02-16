@@ -2,28 +2,25 @@ Page({
     data: {
         remark: ''
     },
-    onLoad: function(option) {
-        console.log(option);
-        if (option.have_change) {
+    onShow: function(e) {
+        var remark = wx.getStorageSync('remark')
+        if (remark != '') {
             this.setData({
-                remark: option.remark
+                remark: remark
             })
         }
     },
-    bindChange: function(e) {
-        this.setData({
-            remark: e.detail.value
-        })
-    },
-    prePage: function(e) {
-        var remark = this.data.remark.trim()
+    formSubmit: function(e) {
+        var remarkinfo = e.detail.value
+        var remark = remarkinfo.remark
         if (remark != '') {
             var pages = getCurrentPages();
             if (pages.length > 1) {
                 var prePage = pages[pages.length - 2];
-                prePage.changeRemark(this.data.remark)
+                prePage.changeRemark(remark)
             }
         }
+        // wx.removeStorageSync('remark')
         wx.navigateBack({
             delta: 1
         })

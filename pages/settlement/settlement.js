@@ -105,13 +105,10 @@ Page({
         })
     },
     writeRemark: function(e) {
-        var have_change = false
-        console.log(this.data.remark);
-        if (this.data.remark != '') {
-            var have_change = true
-        }
+        var remark = this.data.remark
+        wx.setStorageSync('remark', remark)
         wx.navigateTo({
-            url: '/pages/remark/remark?remark=' + this.data.remark + '&have_change=' + have_change
+            url: '/pages/remark/remark'
         })
     },
     changeRemark: function(remark) {
@@ -172,7 +169,7 @@ Page({
                         paySign: payInfo.paySign,
                         complete: function(res) {
                             wx.navigateTo({
-                                url: '/pages/orderInfo/orderInfo?order_id='+order_id
+                                url: '/pages/orderInfo/orderInfo?order_id=' + order_id
                             })
                         }
                     })

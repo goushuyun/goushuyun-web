@@ -1,8 +1,9 @@
 <view id="container">
+  <form bindsubmit="formSubmit">
     <view class="remark">
         <label>备注信息</label>
-        <textarea auto-focus maxlength="50" fixed="true"
-          placeholder="输入备注内容（可不填）" bindinput="bindChange" value="{{remark}}"/>
-        <button type="primary" bindtap="prePage">确定</button>
+        <textarea name="remark" maxlength="50" placeholder="输入备注内容（可不填）" value="{{remark}}"/>
+        <button type="primary" formType="submit" bindtap="prePage">确定</button>
     </view>
+  </form>
 </view>
