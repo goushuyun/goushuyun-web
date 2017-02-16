@@ -17,7 +17,7 @@
     <text class="text_block shop_name font15">{{shopName}}</text>
     <image class="icon24" src="/images/right_arrow.png"></image>
   </view> -->
-
+  <view wx:if="{{goods.length==0}}" id="hava_no_items" class="font15 font8 justify-center align-center"><text>空空如也~快去寻宝吧~</text></view>
   <view wx:for="{{goods}}" class="store-box">
     <view class="align-center white-bc border-top border-bottom">
       <!-- 复选框图标 -->

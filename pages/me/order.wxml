@@ -1,4 +1,5 @@
 <template name="order">
+    <view wx:if="{{orders.length==0}}" id="hava_no_items" class="font15 font8 justify-center align-center"><text>空空如也~快去寻宝吧~</text></view>
     <view class="order" wx:for="{{orders}}" wx:for-item="order" wx:key="*this" >
         <view class="top_part" data-id="{{order.order_id}}" bindtap="viewOrderDetail">
             <image class="comp_logo shadow" src="http://ojrfwndal.bkt.clouddn.com/WechatIMG5.jpeg"></image>
