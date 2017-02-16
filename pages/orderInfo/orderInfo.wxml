@@ -1,6 +1,6 @@
 <view class="head align-center">
   <text class="font15">{{order_status_description.description}}
-    <text wx:if="{{present_order.order_status==1}}" class="font12">24小时候订单将自动关闭</text>
+    <text wx:if="{{present_order.order_status==1}}" class="font12">{{out_time}}分钟后订单将自动关闭</text>
   </text>
 </view>
 
