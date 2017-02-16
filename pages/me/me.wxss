@@ -157,3 +157,7 @@ view.btns .success-active{
     border: 1px solid #91d682;
     color: #91d682;
 }
+#hava_no_items{
+  width: 100%;
+  height: 300px
+}

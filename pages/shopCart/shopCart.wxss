@@ -123,3 +123,7 @@
   color: white;
   padding: 0 16px;
 }
+#hava_no_items{
+  width: 100%;
+  height: 300px
+}
