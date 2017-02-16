@@ -1,0 +1,39 @@
+<template name="order">
+    <view class="order" wx:for="{{orders}}" wx:for-item="order" wx:key="*this">
+        <view class="top_part">
+            <image class="comp_logo shadow" src="http://ojrfwndal.bkt.clouddn.com/WechatIMG5.jpeg"></image>
+            <view class="comp_info">
+                <text class="text_block compa_name">{{order.order_at_time}}</text>
+                <text class="text_block order_time">订单号: {{order.order_id}}</text>
+            </view>
+            <!-- 订单状态 -->
+            <text class="state" wx:if="{{order.pay_status == 0}}">待支付</text>
+            <text class="state" wx:if="{{order.order_status == 2}}">待发货</text>
+            <text class="state" wx:if="{{order.order_status == 3}}">待收货</text>
+            <text class="state" wx:if="{{order.order_status == 4}}">已完成</text>
+            <text class="state" wx:if="{{order.order_status == 5}}">已关闭</text>
+        </view>
+
+        <view class="detail">
+            <view class="book" wx:for="{{order.items}}" wx:for-item="item" wx:key="*this">
+                <text class="text_inline_block book_title">{{item.book_title}}</text>
+                <text class="text_inline_block book_price">¥{{item.book_price}}</text>
+                <text class="text_inline_block book_amount">x{{item.number}}</text>
+            </view>
+        </view>
+        <view class="fee">
+            共 <text class="total"> {{order.total_amount}} </text>件 合计：<text class="total">¥{{order.total_price}}   </text> <text class="mark">(含运费 ¥{{order.freight}})</text>
+        </view>
+        <view class="btns">
+            <!-- 未支付的订单，显示去支付按钮 -->
+            <button wx:if="{{order.pay_status == 0}}" class="btn primary btn-small" hover-class="btnactive">去支付</button>
+
+            <!-- 对于待支付的订单，可以取消 -->
+            <button wx:if="{{order.order_status == 1}}" bindtap="cancel_order" class="btn danger btn-small" hover-class="danger-active">取消订单</button>
+
+            <!-- 所有订单都带联系商家按钮 -->
+            <button bindtap="callSeller" class="btn success btn-small" hover-class="success-active">联系商家</button>
+        </view>
+    </view>
+
+</template>
