@@ -118,7 +118,11 @@ Page({
     },
     submitSettlement: function(e) {
         var self = this
-
+        wx.showToast({
+            title: '加载中',
+            icon: 'loading',
+            duration: 10000
+        })
         /* 如果尚未选择低脂，自动跳转到地址列表 */
         if (!self.data.address.is_default) {
             self.selectAddress()
@@ -159,8 +163,7 @@ Page({
                 if (res.data.message == 'ok') {
                     var payInfo = res.data.data
                     var order_id = res.data.order_id
-                    console.log('-------------------------------------------------------------');
-                    console.log(order_id);
+                    wx.hideToast()
                     wx.requestPayment({
                         timeStamp: payInfo.timeStamp,
                         nonceStr: payInfo.nonceStr,
