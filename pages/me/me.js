@@ -70,20 +70,16 @@ Page({
 
 
                     //每次拿到 orders 数据之后，根据订单状态将订单拆分
+
                     for (var i = 0; i < orders.length; i++) {
-                        switch (orders[i].order_status) {
-                            case 1:
-                                wait_pay_orders.push(orders[i])
-                                break;
-                            case 2:
-                                wait_send_orders.push(orders[i])
-                                break;
-                            case 3:
-                                wait_accept_orders.push(orders[i])
-                                break;
-                            case 4:
-                                accepted_orders.push(orders[i])
-                                break;
+                        if(orders[i].order_status == 1) {
+                            wait_pay_orders.push(orders[i])
+                        }else if (orders[i].order_status == 2){
+                            wait_send_orders.push(orders[i])
+                        }else if (orders[i].order_status == 3){
+                            wait_accept_orders.push(orders[i])
+                        }else if (orders[i].order_status == 4){
+                            accepted_orders.push(orders[i])
                         }
                     }
 
@@ -100,7 +96,10 @@ Page({
                     // accepted_orders: accepted_orders
 
                     self.setData({
-                        wait_send_orders
+                        wait_pay_orders,
+                        wait_send_orders,
+                        wait_accept_orders,
+                        accepted_orders
                     })
 
 
@@ -149,7 +148,7 @@ Page({
         this.setData({
             currentPage: e.detail.current
         })
-        this.getOrders()
+        // this.getOrders()
     },
     cancel_order() {
         wx.showModal({
