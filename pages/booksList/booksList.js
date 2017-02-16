@@ -45,9 +45,6 @@ Page({
 
     },
     getMore(){
-
-        console.log('asdfagsdjkfhgaksdjfg')
-
         let page = this.data.page+1
 
         //判断是否去做新的请求
@@ -84,7 +81,7 @@ Page({
             console.log("********** The request data *********")
             console.log(data)
             wx.request({
-                url: 'https://app.cumpusbox.com/v1/books/listBooks',
+                url: 'https://app.cumpusbox.com/v1/books/listBooksHideSameIsbn',
                 method: "POST",
                 data: data,
                 success(res){
@@ -125,7 +122,7 @@ Page({
         }
 
         wx.request({
-            url: 'https://app.cumpusbox.com/v1/books/listBooks',
+            url: 'https://app.cumpusbox.com/v1/books/listBooksHideSameIsbn',
             method: "POST",
             data: data,
             success(res){

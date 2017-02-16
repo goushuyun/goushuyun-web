@@ -8,10 +8,11 @@ view.top{
 .address_mag{
     color: white;
     font-size: 14px;
-    line-height: 28px;
+    line-height: 24px;
     text-align: right;
     box-sizing: border-box;
-    padding: 6px 12px;
+    padding: 0 12px;
+    color: #F9FAFC;
 }
 .head_img{
     border-radius: 50%;
@@ -22,7 +23,7 @@ view.top{
 }
 
 view.tabs{
-    margin-top: 48rpx;
+    margin-top: 2px;
     display: flex;
     justify-content: space-around;
     font-size: 14px;
@@ -41,7 +42,7 @@ view.tabs{
 /* orders list */
 view#container{
     background-color: #EFF3F7;
-    top: 158px;
+    top: 124px;
     position: fixed;
     bottom: 0;
     width: 100%;
