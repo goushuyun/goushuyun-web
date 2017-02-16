@@ -161,7 +161,9 @@ Page({
             success: function(res) {
                 if (res.data.message == 'ok') {
                     var payInfo = res.data.data
-                    var order_id = res.order_id
+                    var order_id = res.data.order_id
+                    console.log('-------------------------------------------------------------');
+                    console.log(order_id);
                     wx.requestPayment({
                         timeStamp: payInfo.timeStamp,
                         nonceStr: payInfo.nonceStr,

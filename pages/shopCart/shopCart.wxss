@@ -23,9 +23,9 @@
 .store_area {
   width: 90px;
   height: 90px;
-  z-index: 2;
+  z-index: 1;
   position: absolute;
-  right:25px;
+  right:35px;
   top:0
 }
 /*售完图标*/
