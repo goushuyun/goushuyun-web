@@ -95,6 +95,7 @@ Page({
         let app= getApp(), data = {page: 1, size: 10}
         data.shop_id = app.shop_id
         data.isbn = option.isbn
+        data.min_number = 1
 
         console.log(data)
 

@@ -15,15 +15,13 @@ Page({
     },
 
     getData(){
-        console.log('kaiaki')
-
         //list all books of this category
         var app = getApp(), data = {}
         data.category = this.category
         data.shop_id = app.shop_id
         data.page = this.data.page
         data.size = this.data.size
-
+        data.min_number = 1
         var self = this
         wx.request({
             url: 'https://app.cumpusbox.com/v1/books/listBooksHideSameIsbn',
@@ -69,6 +67,7 @@ Page({
             data.shop_id = app.shop_id
             data.page = this.data.page
             data.size = this.data.size
+            data.min_number = 1
             //according search_val, to searching
             if(/^\d{10,13}$/.test(search_val)){
                 //the value is isbn
