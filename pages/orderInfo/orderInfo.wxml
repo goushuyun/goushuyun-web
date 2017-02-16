@@ -36,7 +36,7 @@
           {{shop_name}}  >
         </view>
         <view wx:for="{{present_order.items}}" class="book">
-            <image class="book_pic" src="item.book_image"></image>
+            <image class="book_pic" src="{{item.book_image}}"></image>
             <view class="book_info">
                 <text class="text_block book_title">{{item.book_title}}</text>
                 <text class="text_block book_isbn">ISBN：{{item.isbn}}</text>

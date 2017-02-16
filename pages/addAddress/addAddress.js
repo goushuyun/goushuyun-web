@@ -57,7 +57,7 @@ Page({
     },
     addressHandle: function(e) {
         var self = this
-
+        var user_id = wx.getStorageSync('user').id
         if (self.data.name == '') {
             wx.showModal({
                 title: '请输入姓名',
@@ -97,7 +97,7 @@ Page({
         if (self.data.oprate == 'add') {
             var url = 'https://app.cumpusbox.com/v1/address/addAddress'
             var data = {
-                user_id: wx.getStorageSync('user').id,
+                user_id: user_id,
                 info: info
             }
         } else {
@@ -114,11 +114,21 @@ Page({
             data: data,
             method: 'POST',
             success: function(res) {
-              console.log('----------------------');
-              console.log(res);
+                console.log('----------------------');
+                console.log(res);
                 if (res.code = '00000') {
-                    wx.navigateBack({
-                        delta: 1
+                    wx.request({
+                        url: 'https://app.cumpusbox.com/v1/users/SetDefaultAddress',
+                        data: {
+                            id: wx.getStorageSync('user').id,
+                            default_address_id: self.data.oprate == 'add' ? res.address_id : self.data.address_id
+                        },
+                        method: 'POST',
+                        success: function(res) {
+                            wx.navigateBack({
+                                delta: 2
+                            })
+                        }
                     })
                 }
             }
