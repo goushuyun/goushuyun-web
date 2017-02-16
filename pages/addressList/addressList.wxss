@@ -11,3 +11,8 @@
 #address-body .text {
   width: 550rpx;
 }
+.user_text_area,.user_text {
+  height: 30px;
+  line-height: 30px;
+  padding-right: 5px
+}

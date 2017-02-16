@@ -82,18 +82,10 @@ Page({
                             accepted_orders.push(orders[i])
                         }
                     }
-
-                    console.log(wait_send_orders)
-
-
                     self.setData({
                         total: respData.total,
                         orders: orders,
                     })
-                    // wait_pay_orders: wait_pay_orders,
-                    // wait_send_orders: wait_pay_orders,
-                    // wait_accept_orders: wait_accept_orders,
-                    // accepted_orders: accepted_orders
 
                     self.setData({
                         wait_pay_orders,
@@ -152,7 +144,6 @@ Page({
     },
     cancel_order() {
         wx.showModal({
-            // title: '提示',
             content: '您确定要取消该订单吗？',
             success: function(res) {
                 if (res.confirm) {
