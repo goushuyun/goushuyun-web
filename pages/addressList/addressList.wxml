@@ -4,13 +4,11 @@
       <image wx:if="{{item.is_default}}" class="icon18" src="/images/shopCart/success.png"/>
     </view>
     <view class="text direction-column justify-start" bindtap="selectAddress" data-index="{{index}}">
-      <view class="justify-start align-center">
-        <text class="font16 font0">{{item.name}}</text>
-        <text class="padding5 font16 font0">{{item.tel}}</text>
+      <view class="align-center user_text_area">
+        <text class="font15 user_text">{{item.name}}</text>
+        <text class="font15 user_text">{{item.tel}}</text>
       </view>
-      <view class="justify-start">
-        <text class="font13 font5">{{item.address}}</text>
-      </view>
+      <view class="font12 font5">{{item.address}}</view>
     </view>
     <view class="image justify-center align-center" bindtap="updataAddress" data-index="{{index}}">
       <image class="icon24" src="/images/edit.png"></image>

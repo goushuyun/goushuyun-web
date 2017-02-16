@@ -231,7 +231,6 @@
          /* 如果购物车没有商品 */
          if (goods_length <= 0) {
              wx.showModal({
-                 title: '提示',
                  content: '亲！您尚未添加任何宝贝！',
                  showCancel: false
              })
@@ -242,7 +241,6 @@
          var selected_length = this.data.total_number
          if (selected_length <= 0) {
              wx.showModal({
-                 title: '提示',
                  content: '亲！您尚选中选任何宝贝！',
                  showCancel: false
              })
@@ -298,7 +296,6 @@
          var index = parseInt(e.currentTarget.dataset.index);
          var self = this;
          wx.showModal({
-             title: '提示',
              content: '亲，确定要删除这个宝贝吗？',
              cancelText: '不不不！',
              confirmText: '删了它！',

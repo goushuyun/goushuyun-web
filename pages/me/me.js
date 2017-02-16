@@ -153,7 +153,6 @@ Page({
     },
     cancel_order() {
         wx.showModal({
-            // title: '提示',
             content: '您确定要取消该订单吗？',
             success: function(res) {
                 if (res.confirm) {

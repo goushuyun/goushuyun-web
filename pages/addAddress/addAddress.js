@@ -141,7 +141,7 @@ Page({
     addressDelet: function(e) {
         var self = this
         wx.showModal({
-            title: '确认删除该地址吗？',
+            content: '确认删除该地址吗？',
             success: function(res) {
                 if (res.confirm) {
                     var address_id = self.data.address_id
