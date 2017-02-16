@@ -21,10 +21,17 @@ Page({
         order_status: 0
     },
 
-    onShow(){
+    viewOrderDetail(e) {
+        let order_id = e.currentTarget.dataset.id
+        wx.navigateTo({
+            url: '/pages/me/me?order_id='+ order_id
+        })
+    },
+
+    onShow() {
         this.getOrders()
     },
-    getOrders(){
+    getOrders() {
         let data = {
             page: this.data.page,
             size: this.data.size,
@@ -37,18 +44,18 @@ Page({
             url: 'https://app.cumpusbox.com/v1/orders/get_my_orders',
             method: 'POST',
             data,
-            success(res){
+            success(res) {
 
                 var respData = res.data
 
-                if(respData.code == '00000'){
+                if (respData.code == '00000') {
 
-                    var orders = respData.data.map(el=>{
-                        el.total_price = (el.total_price/100).toFixed(2)
-                        el.freight = (el.freight/100).toFixed(2)
+                    var orders = respData.data.map(el => {
+                        el.total_price = (el.total_price / 100).toFixed(2)
+                        el.freight = (el.freight / 100).toFixed(2)
 
                         for (var i = 0; i < el.items.length; i++) {
-                            el.items[i].book_price = (el.items[i].book_price/100).toFixed(2)
+                            el.items[i].book_price = (el.items[i].book_price / 100).toFixed(2)
                         }
 
                         el.order_at_time = utils.unixTimestamp2DateStr(el.order_at)
@@ -116,7 +123,7 @@ Page({
 
         var shop = wx.getStorage({
             key: 'shop',
-            success(res){
+            success(res) {
                 self.setData({
                     seller_tel: res.data.tel
                 })

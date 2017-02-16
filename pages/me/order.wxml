@@ -1,5 +1,5 @@
 <template name="order">
-    <view class="order" wx:for="{{orders}}" wx:for-item="order" wx:key="*this">
+    <view class="order" wx:for="{{orders}}" wx:for-item="order" wx:key="*this" data-id="{{order.order_id}}" bindtap="viewOrderDetail">
         <view class="top_part">
             <image class="comp_logo shadow" src="http://ojrfwndal.bkt.clouddn.com/WechatIMG5.jpeg"></image>
             <view class="comp_info">
