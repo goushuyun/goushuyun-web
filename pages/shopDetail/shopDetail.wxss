@@ -39,22 +39,28 @@ view#container{
     justify-content: space-between;
     align-items: center;
     height: 42px;
+    line-height: 42px;
     font-size: 13px;
     border-bottom: 1px solid #f4f3f3;
 }
 
 .left{
+    height: 42px;
+    line-height: 42px;
     flex-basis:20%;
     color: #000;
     font-size: 13px;
 }
 .center{
+    height: 42px;
+    line-height: 42px;
     flex-basis:73%;
     color: #888;
     font-size: 13px;
 }
 .right{
     height: 42px;
+    line-height: 42px;
     flex-basis:7%
 }
 

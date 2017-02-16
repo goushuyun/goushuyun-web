@@ -10,14 +10,12 @@
       <view class="image justify-center">
         <image class="icon30 padding10" src="/images/location_blue.png"/>
       </view>
-      <view class="text direction-column justify-start" data-index="{{index}}">
-        <view class="justify-start align-center">
-          <text class="font15 font0">{{present_order.address_info.name}}</text>
-          <text class="font15 font0 padding5">{{present_order.address_info.tel}}</text>
+      <view class="text" data-index="{{index}}">
+        <view class="align-center user_text_area">
+          <text class="font15 user_text">{{present_order.address_info.name}}</text>
+          <text class="font15 user_text">{{present_order.address_info.tel}}</text>
         </view>
-        <view class="justify-start">
-          <text class="font12 font5 padding-bottom5">{{present_order.address_info.address}}</text>
-        </view>
+        <view class="font12 font5">{{present_order.address_info.address}}</view>
       </view>
     </view>
     <!-- buy again -->
@@ -31,9 +29,10 @@
 
     <!-- order info -->
     <view id="order_Info" class="white-bc">
-        <view class="shop-head align-center border-bottom" bindtap="chooseCategory">
-          <image class="icon24 padding-lr10" src="/images/shop_blue.png"/>
-          {{shop_name}}  >
+        <view class="shop_title blue-bc white align-center" bindtap="shopDetail">
+            <image src="/images/shop.png" class="icon24 padding10"></image>
+            <text class="text_block shop_name font15">{{shop_name}}</text>
+            <image class="icon24" src="/images/right_arrow.png"></image>
         </view>
         <view wx:for="{{present_order.items}}" class="book">
             <image class="book_pic" src="{{item.book_image}}"></image>
