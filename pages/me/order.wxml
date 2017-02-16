@@ -7,7 +7,7 @@
                 <text class="text_block order_time">订单号: {{order.order_id}}</text>
             </view>
             <!-- 订单状态 -->
-            <text class="state" wx:if="{{order.pay_status == 0}}">待支付</text>
+            <text class="state" wx:if="{{order.order_status == 1}}">待支付</text>
             <text class="state" wx:if="{{order.order_status == 2}}">待发货</text>
             <text class="state" wx:if="{{order.order_status == 3}}">待收货</text>
             <text class="state" wx:if="{{order.order_status == 4}}">已完成</text>
