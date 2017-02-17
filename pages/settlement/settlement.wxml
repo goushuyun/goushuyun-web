@@ -9,11 +9,11 @@
     </view>
 
     <view id="order">
-        <view class="shop_title blue-bc white align-center" bindtap="shopDetail">
+        <!-- <view class="shop_title blue-bc white align-center" bindtap="shopDetail">
             <image src="/images/shop.png" class="icon24 padding10"></image>
             <text class="text_block shop_name font15">{{shopName}}</text>
             <image class="icon24" src="/images/right_arrow.png"></image>
-        </view>
+        </view> -->
 
         <view wx:for="{{items}}" class="order_item">
             <image class="book_image" src="{{item.book_image}}"></image>
