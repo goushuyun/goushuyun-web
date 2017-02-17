@@ -20,8 +20,8 @@ var order_status = [{
     },
     {
         code: 5,
-        mark: '退款/售后',
-        description: '售后中'
+        mark: '已关闭',
+        description: '订单已关闭'
     }
 ]
 

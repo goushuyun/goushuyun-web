@@ -4,7 +4,7 @@ Page({
     data: {
         present_order: {},
         order_status_description: {},
-        shop_name: '',
+        tel: '',
         out_time: 0,
         order_id: ''
     },
@@ -54,9 +54,9 @@ Page({
         wx.getStorage({
             key: 'shop',
             success: function(res) {
-                var shop_name = res.data.shop_name.trim()
+                var tel = res.data.tel
                 self.setData({
-                    shop_name: shop_name
+                    tel: tel
                 })
             }
         })
@@ -70,5 +70,94 @@ Page({
         wx.navigateTo({
             url: '/pages/shopDetail/shopDetail'
         })
-    }
+    },
+    cancel_order(e) {
+        var self = this
+        var order_id = self.data.order_id
+        console.log(order_id)
+        wx.showModal({
+            content: '您确定要取消该订单吗？',
+            success: function(res) {
+                var order_ids = [order_id]
+
+                if (res.confirm) {
+                    console.log(order_ids)
+
+                    wx.request({
+                        url: 'https://app.cumpusbox.com/v1/orders/cancel_order',
+                        method: 'POST',
+                        data: {
+                            order_ids
+                        },
+                        success(res) {
+                            if (res.data.code == '00000') {
+                                self.loadingOrder(order_id)
+                            }
+                        }
+                    })
+                }
+            }
+        })
+    },
+    comfirmAccept(e) {
+        var self = this
+        var order_id = self.data.order_id
+        console.log(order_id)
+        wx.request({
+            url: 'https://app.cumpusbox.com/v1/orders/accept_order',
+            method: 'POST',
+            data: {
+                order_ids: [order_id]
+            },
+            success(res) {
+                if (res.data.code == '00000') {
+                    self.loadingOrder(order_id)
+                }
+            }
+        })
+    },
+    toPay(e) {
+        var self = this
+        var order_id = self.data.order_id
+            wx.showToast({
+                title: '加载中',
+                icon: 'loading',
+                duration: 10000
+            })
+        console.log(order_id)
+        wx.request({
+            url: 'https://app.cumpusbox.com/v1/payment/delayed_pay',
+            method: 'POST',
+            data: {
+                order_id
+            },
+            success(res) {
+                console.log(res.data)
+                if (res.data.message == 'ok') {
+                    var payInfo = res.data.paymentObj
+                    var order_id = res.data.order_id
+                    wx.hideToast()
+                    wx.requestPayment({
+                        timeStamp: payInfo.timeStamp,
+                        nonceStr: payInfo.nonceStr,
+                        package: payInfo.package,
+                        signType: 'MD5',
+                        paySign: payInfo.paySign,
+                        complete: function(res) {
+                            self.loadingOrder(order_id)
+                        }
+                    })
+                } else {
+                    wx.navigateBack({
+                        delta: 1
+                    })
+                }
+            }
+        })
+    },
+    callSeller() {
+        wx.makePhoneCall({
+            phoneNumber: this.data.tel
+        })
+    },
 })
