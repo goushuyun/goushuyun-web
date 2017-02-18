@@ -40,7 +40,7 @@
             <view wx:if="{{item.type==1}}" class="type_new font12">新书</view>
             <view wx:if="{{item.type==2}}" class="type_old font12">二手书</view>
           </view>
-          <view class="font12">ISBN：{{item.isbn}}</view>
+          <view class="font12 font8">ISBN：{{item.isbn}}</view>
         </view>
         <view class="justify-between align-center">
           <view class="price_area align-center">
