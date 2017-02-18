@@ -87,9 +87,15 @@ Page({
         })
 
         /* 计算配送费、总金额（含配送费） */
-        var first_one_fee = 6
-        var after_one_fee = 2
-        var freight = first_one_fee + (total_number - 1) * after_one_fee
+        // var first_one_fee = 6
+        // var after_one_fee = 2
+        // var freight = first_one_fee + (total_number - 1) * after_one_fee
+        /* 满49包邮 */
+        var freight = 0
+        if (total_price < 49) {
+            freight = 5
+        }
+
         total_price += freight
 
         /* 回写数据 */
