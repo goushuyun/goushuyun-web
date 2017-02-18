@@ -1,11 +1,73 @@
 var QQMapWX = require('../../libs/qqmap-wx-jssdk.min.js')
 var qqmapsdk
-
+var app = getApp()
 Page({
+    data: {
+        search_val: '',
+        school: '',
+        recommends: [],
+        temp_recommends: []
+    },
     onLoad: function() {
         // 实例化API核心类
         qqmapsdk = new QQMapWX({
             key: 'Q4XBZ-OV6W4-636UU-D7BLU-RI7SH-65FWN'
+        })
+
+        var self = this
+        var shop_id = app.shop_id
+        wx.request({
+            url: 'https://app.cumpusbox.com/v1/activity/list_topics',
+            data: {
+                shop_id: shop_id
+            },
+            method: 'POST',
+            success(res) {
+                if (res.data.code == '00000') {
+                    var recommend_items = res.data.data
+                    if (recommend_items.length > 0) {
+                        for (var i = 0; i < recommend_items.length; i++) {
+                            var recommend_item = recommend_items[i]
+                            if (recommend_item.recommend) {
+                                wx.request({
+                                    url: 'https://app.cumpusbox.com/v1/books/listBooks',
+                                    data: {
+                                        shop_id: shop_id,
+                                        topic_id: recommend_item.id,
+                                        page: 1,
+                                        size: 10
+                                    },
+                                    method: 'POST',
+                                    success: function(res) {
+                                        if (res.data.code == '00000') {
+                                            var book_items = res.data.data
+                                            if (book_items.length > 0) {
+                                                var books = []
+                                                for (var i = 0; i < book_items.length; i++) {
+                                                    var book_item = book_items[i]
+                                                    books.push(book_items[i].book)
+                                                }
+                                                var activity = {
+                                                    recommend: recommend_item,
+                                                    books: books
+                                                }
+                                            }
+                                            var recommends = []
+                                            if (self.data.temp_recommends.length > 0) {
+                                                recommends.push(self.data.temp_recommends)
+                                            }
+                                            recommends.push(activity)
+                                            self.setData({
+                                                recommends: recommends
+                                            })
+                                        }
+                                    }
+                                })
+                            }
+                        }
+                    }
+                }
+            }
         })
     },
     chooseAddress() {
@@ -67,12 +129,6 @@ Page({
                 console.log('---------------------------')
             }
         })
-    },
-
-
-    data: {
-        search_val: '',
-        school: ''
     },
     scan() {
         wx.scanCode({

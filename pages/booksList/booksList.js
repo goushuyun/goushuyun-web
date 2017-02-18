@@ -14,9 +14,10 @@ Page({
         total_number: 0
     },
 
-    getData(){
+    getData() {
         //list all books of this category
-        var app = getApp(), data = {}
+        var app = getApp(),
+            data = {}
         data.category = this.category
         data.shop_id = app.shop_id
         data.page = this.data.page
@@ -27,8 +28,8 @@ Page({
             url: 'https://app.cumpusbox.com/v1/books/listBooksHideSameIsbn',
             method: 'POST',
             data: data,
-            success(res){
-                if(res.data.code == '00000'){
+            success(res) {
+                if (res.data.code == '00000') {
                     console.log(res.data.data)
 
                     // query data success
@@ -42,13 +43,13 @@ Page({
         })
 
     },
-    getMore(){
-        let page = this.data.page+1
+    getMore() {
+        let page = this.data.page + 1
 
         //判断是否去做新的请求
         let total_page_number = Math.ceil(this.data.total_number / this.data.size)
 
-        if(page <= total_page_number) {
+        if (page <= total_page_number) {
             this.setData({
                 page: page
             })
@@ -59,20 +60,42 @@ Page({
     onLoad: function(options) {
         console.log(options)
         var self = this
+        var app = getApp(),
+            data = {}
+        if (options.topic_id != undefined) {
+            data.topic_id = options.topic_id
+            data.shop_id = app.shop_id
+            data.page = this.data.page
+            data.size = this.data.size
 
-        if(options.search_val != undefined){
+            wx.request({
+                url: 'https://app.cumpusbox.com/v1/books/listBooks',
+                data: data,
+                method: "POST",
+                success: function(res) {
+                    self.setData({
+                        books: res.data.data
+                    })
+                }
+            })
+            return false
+        }
+
+
+
+        if (options.search_val != undefined) {
             let search_val = options.search_val
             //search_val is not null
-            var app = getApp(), data = {}
+
             data.shop_id = app.shop_id
             data.page = this.data.page
             data.size = this.data.size
             data.min_number = 1
             //according search_val, to searching
-            if(/^\d{10,13}$/.test(search_val)){
+            if (/^\d{10,13}$/.test(search_val)) {
                 //the value is isbn
                 data.isbn = search_val
-            }else{
+            } else {
                 //the value is text, maybe title, author, publisher
                 data.author = data.publisher = data.title = search_val
             }
@@ -83,7 +106,7 @@ Page({
                 url: 'https://app.cumpusbox.com/v1/books/listBooksHideSameIsbn',
                 method: "POST",
                 data: data,
-                success(res){
+                success(res) {
                     //set new result books
                     self.setData({
                         books: res.data.data
@@ -109,13 +132,18 @@ Page({
         WxSearch.wxSearchAddHisKey(that);
 
         //the value in input is this.data.wxSearchData.value
-        let search_val = this.data.wxSearchData.value, data = {page: this.data.page, size: this.data.size}, app = getApp()
+        let search_val = this.data.wxSearchData.value,
+            data = {
+                page: this.data.page,
+                size: this.data.size
+            },
+            app = getApp()
 
         data.shop_id = app.shop_id
-        if(/^\d{10,13}$/.test(search_val)){
+        if (/^\d{10,13}$/.test(search_val)) {
             // isbn
             data.isbn = search_val
-        }else{
+        } else {
             //text
             data.title = data.author = data.publisher = search_val
         }
@@ -124,7 +152,7 @@ Page({
             url: 'https://app.cumpusbox.com/v1/books/listBooksHideSameIsbn',
             method: "POST",
             data: data,
-            success(res){
+            success(res) {
                 //set new result books
                 that.setData({
                     books: res.data.data
@@ -166,7 +194,7 @@ Page({
         WxSearch.wxSearchHiddenPancel(that);
     },
 
-    goBuyPage(e){
+    goBuyPage(e) {
         let isbn = e.currentTarget.dataset.isbn
 
         // 跳转到 buyPage
