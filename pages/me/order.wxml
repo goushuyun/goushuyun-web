@@ -15,7 +15,7 @@
             <text class="state" wx:if="{{order.order_status == 5}}">已关闭</text>
         </view>
 
-        <view class="detail">
+        <view class="detail" bindtap="viewOrderDetail" data-id="{{order.order_id}}">
             <view class="book" wx:for="{{order.items}}" wx:for-item="item" wx:key="*this">
                 <text class="text_inline_block book_title">{{item.book_title}}</text>
                 <text class="text_inline_block book_price">¥{{item.book_price}}</text>
