@@ -28,22 +28,9 @@
          }
      },
      onLoad: function(e) {
-        //  var self = this
-        //  wx.getStorage({
-        //      key: 'shop',
-        //      success: function(res) {
-        //          var shop_name = res.data.shop_name.trim()
-        //          self.setData({
-        //              shopName: shop_name
-        //          })
-        //      }
-        //  })
          this.showGoods(e)
      },
      onShow: function(e) {
-         this.showGoods(e)
-     },
-     onReady(e) {
          this.showGoods(e)
      },
      showGoods(e) {
@@ -96,6 +83,9 @@
                          items.push(item)
                      }
                  }
+                 if (store_infos.length > 0 ) {
+                    self.updateGoods()
+                 }
                  self.setData({
                      goods: items,
                      temp_goods: items,
@@ -110,10 +100,10 @@
          })
      },
      onHide: function(e) {
-         this.updateGoods()
+         this.updateGoods(e)
      },
      onUnload: function(e) {
-         this.updateGoods()
+         this.updateGoods(e)
      },
      updateGoods: function(e) {
          var items = []
