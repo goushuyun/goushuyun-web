@@ -3,7 +3,8 @@ Page({
         goods: [],
         pre_price: 0,
         total_price: 0,
-        total_number: 0
+        total_number: 0,
+        jump_cart: true
     },
     checkMaxAmount(e) {
         var input = e.detail.value
@@ -13,10 +14,10 @@ Page({
             return amount
         }
     },
-    addToShopCart() {
+    addToShopCart(callback) {
         let user_id = wx.getStorageSync('user').id,
             items = []
-
+        var self = this
         //collect order items
         for (var i = 0; i < this.data.goods.length; i++) {
             let el = this.data.goods[i]
@@ -45,7 +46,10 @@ Page({
                 success(res) {
                     console.log(res)
                     if (res.data.code == '00000') {
-
+                        self.setData({
+                            jump_cart: false
+                        })
+                        callback();
                     }
                 }
             })
@@ -54,55 +58,19 @@ Page({
 
     },
     onUnload() {
-        // this.addToShopCart()
-        console.log("onLoad");
-    },
-    onHide() {
-        // this.addToShopCart()
-        console.log("onHide");
-    },
-    goToShopCart() {
-        let user_id = wx.getStorageSync('user').id,
-            items = []
-
-        //collect order items
-        for (var i = 0; i < this.data.goods.length; i++) {
-            let el = this.data.goods[i]
-            if (el.buy_amount > 0) {
-                let item = {
-                    user_id: user_id
-                }
-                item.book_title = el.book.title //书名
-                item.type = el.type //类型
-                item.isbn = el.isbn //ISBN
-                item.book_price = el.selling_price //售价
-                item.number = el.buy_amount //购买数量
-                item.goods_id = el.id //商品ID
-                items.push(item)
-            }
-        }
-
-        if (items.length > 0) {
-            //send request to add shopcart
-            wx.request({
-                url: 'https://app.cumpusbox.com/v1/orders/AddToShopCart',
-                data: {
-                    items
-                },
-                method: 'POST',
-                success(res) {
-                    console.log(res)
-                    if (res.data.code == '00000') {
-                        wx.switchTab({
-                            url: '/pages/shopCart/shopCart'
-                        })
-                    }
-                }
+        if (this.data.jump_cart) {
+            this.addToShopCart(function() {
+                console.log('----------onUnload-------------')
             })
         }
-        console.log(items)
     },
-
+    goToShopCart() {
+        this.addToShopCart(function() {
+            wx.switchTab({
+                url: '/pages/shopCart/shopCart'
+            })
+        })
+    },
     goodsNumberInputBlur(e) {
         var index = e.currentTarget.dataset.index,
             value = e.detail.value,

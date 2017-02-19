@@ -88,10 +88,6 @@
                      store_infos_show: store_infos.length > 0 ? true : false
                  })
                  self.sum()
-                 console.log('------------------temp_goods----------------------');
-                 console.log(self.data.temp_goods)
-                 console.log('----------------------goods-------------------');
-                 console.log(self.data.goods);
              },
              fail: function(res) {
                  console.log(res)
