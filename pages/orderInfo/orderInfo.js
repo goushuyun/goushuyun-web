@@ -134,7 +134,7 @@ Page({
             success(res) {
                 console.log(res.data)
                 if (res.data.message == 'ok') {
-                    var payInfo = res.data.paymentObj
+                    var payInfo = res.data.PaymentObj
                     var order_id = res.data.order_id
                     wx.hideToast()
                     wx.requestPayment({
@@ -148,9 +148,9 @@ Page({
                         }
                     })
                 } else {
-                    wx.navigateBack({
-                        delta: 1
-                    })
+                    // wx.navigateBack({
+                    //     delta: 1
+                    // })
                 }
             }
         })

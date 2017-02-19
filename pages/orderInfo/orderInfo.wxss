@@ -37,10 +37,10 @@
   margin: 2px
 }
 #address-body {
-  margin-top: 4px
+  margin: 4px 0
 }
 #address-body .image {
-  width: 100rpx;
+  width: 80rpx;
 }
 
 #address-body .text {

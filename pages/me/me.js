@@ -39,8 +39,10 @@ Page({
             success(res){
                 console.log(res.data)
                 if (res.data.message == 'ok') {
-                    var payInfo = res.data.paymentObj
+                    var payInfo = res.data.PaymentObj
                     var order_id = res.data.order_id
+                      console.log('----------------------');
+                      console.log(payInfo);
                     wx.hideToast()
                     wx.requestPayment({
                         timeStamp: payInfo.timeStamp,
@@ -48,6 +50,10 @@ Page({
                         package: payInfo.package,
                         signType: 'MD5',
                         paySign: payInfo.paySign,
+                        fail(res) {
+                          console.log('----------------------');
+                          console.log(res);
+                        },
                         complete: function(res) {
                             wx.navigateTo({
                                 url: '/pages/orderInfo/orderInfo?order_id=' + order_id

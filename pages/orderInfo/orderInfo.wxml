@@ -6,9 +6,9 @@
 
 <scroll-view scroll-y="true" id="container">
     <!-- address -->
-    <view id="address-body" class="align-center white-bc border-top padding-bottom5">
+    <view id="address-body" class="align-center white-bc border-top border-bottom padding-bottom5">
       <view class="image justify-center">
-        <image class="icon30 padding10" src="/images/location_blue.png"/>
+        <image class="icon18 padding10" src="/images/location_blue.png"/>
       </view>
       <view class="text" data-index="{{index}}">
         <view class="align-center user_text_area">
