@@ -54,15 +54,53 @@ Page({
 
     },
     onUnload() {
-        this.addToShopCart()
+        // this.addToShopCart()
+        console.log("onLoad");
     },
     onHide() {
-        this.addToShopCart()
+        // this.addToShopCart()
+        console.log("onHide");
     },
     goToShopCart() {
-        wx.switchTab({
-            url: '/pages/shopCart/shopCart'
-        })
+        let user_id = wx.getStorageSync('user').id,
+            items = []
+
+        //collect order items
+        for (var i = 0; i < this.data.goods.length; i++) {
+            let el = this.data.goods[i]
+            if (el.buy_amount > 0) {
+                let item = {
+                    user_id: user_id
+                }
+                item.book_title = el.book.title //书名
+                item.type = el.type //类型
+                item.isbn = el.isbn //ISBN
+                item.book_price = el.selling_price //售价
+                item.number = el.buy_amount //购买数量
+                item.goods_id = el.id //商品ID
+                items.push(item)
+            }
+        }
+
+        if (items.length > 0) {
+            //send request to add shopcart
+            wx.request({
+                url: 'https://app.cumpusbox.com/v1/orders/AddToShopCart',
+                data: {
+                    items
+                },
+                method: 'POST',
+                success(res) {
+                    console.log(res)
+                    if (res.data.code == '00000') {
+                        wx.switchTab({
+                            url: '/pages/shopCart/shopCart'
+                        })
+                    }
+                }
+            })
+        }
+        console.log(items)
     },
 
     goodsNumberInputBlur(e) {

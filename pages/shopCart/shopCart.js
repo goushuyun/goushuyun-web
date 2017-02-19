@@ -50,7 +50,7 @@
                  var store_infos = []
                  for (var i = 0; i < res.data.items.length; i++) {
                      let el = res.data.items[i]
-                     if (res.data.total_number > 0) {
+                     if (res.data.total_number >= 0) {
                          let item = {
                              user_id: user_id
                          }
@@ -78,13 +78,8 @@
                              var store_info = (store_infos.length + 1) + '.' + item.book_title + '(' + (item.type == 1 ? '新书' : '二手书') + ')' + '库存不足' + item.pre_number + '件，请重新选择'
                              store_infos.push(store_info)
                          }
-
-                         console.log(item)
                          items.push(item)
                      }
-                 }
-                 if (store_infos.length > 0 ) {
-                    self.updateGoods()
                  }
                  self.setData({
                      goods: items,
@@ -93,6 +88,10 @@
                      store_infos_show: store_infos.length > 0 ? true : false
                  })
                  self.sum()
+                 console.log('------------------temp_goods----------------------');
+                 console.log(self.data.temp_goods)
+                 console.log('----------------------goods-------------------');
+                 console.log(self.data.goods);
              },
              fail: function(res) {
                  console.log(res)
@@ -110,11 +109,11 @@
          for (var i = 0; i < this.data.goods.length; i++) {
              var good = this.data.goods[i]
              var temp_good = this.data.temp_goods[i]
-             if (good.number != temp_good.number) {
+             if (good.number != temp_good.number || !good.can_sale) {
                  var item = {
-                     id: good.id
+                     id: good.id,
+                     number: good.number
                  }
-                 item.number = good.number
                  items.push(item)
              }
          }
