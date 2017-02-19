@@ -37,7 +37,10 @@
         <view wx:for="{{present_order.items}}" class="book">
             <image class="book_pic" src="{{item.book_image}}"></image>
             <view class="book_info">
-                <text class="text_block book_title">{{item.book_title}}</text>
+                <view class="text_block book_title">{{item.book_title}}
+                    <view wx:if="{{item.type==1}}" class="type_new font12">新书</view>
+                    <view wx:if="{{item.type==2}}" class="type_old font12">二手书</view>
+                </view>
                 <text class="text_block book_isbn">ISBN：{{item.isbn}}</text>
                 <view class="detail">
                     <text class="text_inline_block book_price">¥{{item.book_price}}</text>

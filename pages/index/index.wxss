@@ -139,10 +139,11 @@ view#recommend{
 
 .books .book{
     display: inline-block;
-    width: 180rpx;
+    width: 200rpx;
+    padding-right: 10px;
 }
 .books .book_img{
-    width: 170rpx;
+    width: 180rpx;
     height: 230rpx;
     display: block;
     border-radius: 6px;

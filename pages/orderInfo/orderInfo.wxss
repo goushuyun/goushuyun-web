@@ -10,6 +10,22 @@
   background-color: #3c485e;
   color: #eae8cf
 }
+.type_new{
+    display: inline-block;
+    color: #F1501E;
+    border: 1px solid #F1501E;
+    padding: 0 2px;
+    height: 16px;
+    line-height: 16px;
+}
+.type_old{
+    display: inline-block;
+    color: #7CB342;
+    border: 1px solid #7CB342;
+    padding: 0 2px;
+    height: 16px;
+    line-height: 16px;
+}
 .shop-head {
   height: 36px;
   width: 100%;
@@ -80,11 +96,12 @@ view#order_Info .book .book_info{
 }
 view#order_Info .book .book_info .book_title{
     font-size: 14px;
-    line-height: 28px;
+    /*line-height: 28px;*/
     color: #232323;
 }
 view#order_Info .book .book_info .book_isbn{
     font-size: 12px;
+    line-height: 20px;
     color: #666;
 }
 view#order_Info .book .book_info .detail{
