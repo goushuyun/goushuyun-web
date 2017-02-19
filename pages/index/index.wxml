@@ -58,7 +58,7 @@
             <navigator class="link" hover-class="none" url="/pages/booksList/booksList?topic_id={{recommend.recommend.id}}">查看全部</navigator>
         </view>
         <scroll-view scroll-x="true" class="books">
-            <view wx:for="{{recommend.books}}" wx:for-item="book" class="book">
+            <view wx:for="{{recommend.books}}" wx:for-item="book" class="book" data-isbn="{{book.isbn}}" bindtap="goBuyPage">
                 <image class="book_img" src="{{book.pic}}"/>
                 <text class="book_title">{{book.title}}</text>
                 <text class="book_author">{{book.author}}</text>

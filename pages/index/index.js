@@ -45,6 +45,7 @@ Page({
                                                 var books = []
                                                 for (var i = 0; i < book_items.length; i++) {
                                                     var book_item = book_items[i]
+                                                    book_items[i].book.isbn = book_items[i].isbn
                                                     books.push(book_items[i].book)
                                                 }
                                                 var activity = {
@@ -60,6 +61,7 @@ Page({
                                             self.setData({
                                                 recommends: recommends
                                             })
+                                            console.log(self.data.recommends);
                                         }
                                     }
                                 })
@@ -154,6 +156,14 @@ Page({
     chooseCategory(e) {
         wx.navigateTo({
             url: '/pages/booksList/booksList?category=' + e.currentTarget.dataset.category
+        })
+    },
+    goBuyPage(e) {
+        let isbn = e.currentTarget.dataset.isbn
+        console.log(isbn);
+        //跳转到 buyPage
+        wx.navigateTo({
+            url: "/pages/buyPage/buyPage?isbn=" + isbn
         })
     }
 })

@@ -62,6 +62,10 @@
 .name_isbn {
   margin: 10px 40px 0 0
 }
+.book_name {
+  height: 27px;
+  line-height: 27px;
+}
 .deletarea {
   width: 50px;
   height: 50px;
@@ -87,13 +91,17 @@
     display: inline-block;
     color: #F1501E;
     border: 1px solid #F1501E;
-    padding: 0 2px
+    padding: 0 2px;
+    height: 16px;
+    line-height: 16px;
 }
 .type_old{
     display: inline-block;
     color: #7CB342;
     border: 1px solid #7CB342;
-    padding: 0 2px
+    padding: 0 2px;
+    height: 16px;
+    line-height: 16px;
 }
 
 #carts-footer{

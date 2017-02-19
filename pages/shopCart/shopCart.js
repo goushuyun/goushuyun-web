@@ -24,6 +24,7 @@
                  })
              }
          })
+         this.showGoods()
      },
      onShow: function(e) {
          this.showGoods()

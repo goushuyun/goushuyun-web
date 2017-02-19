@@ -19,13 +19,13 @@
       </view>
     </view>
     <!-- buy again -->
-    <view id="company_info" class="align-center justify-center white-bc border-top border-bottom">
+    <!-- <view id="company_info" class="align-center justify-center white-bc border-top border-bottom">
         <text>帮同学也买一份吧！</text>
         <image class="icon18" src="/images/orderInfo/right_arrow.png"></image>
         <view class="padding-lr20">
           <button class="orderAgain" hover-class="btn_active" plain="true">再来一单</button>
         </view>
-    </view>
+    </view> -->
 
     <!-- order info -->
     <view id="order_Info" class="white-bc">
@@ -86,5 +86,5 @@
     <button size="mini" class="button-plain" hover-class="button-hover" bindtap="callSeller">联系商家</button>
   </view>
   <view wx:if="{{present_order.order_status==3}}"><button size="mini" class="button-plain" hover-class="button-hover" bindtap="comfirmAccept">确认收货</button></view>
-  <view wx:if="{{present_order.order_status==4}}"><button size="mini" class="button-plain" hover-class="button-hover">再来一单</button></view>
+  <!-- <view wx:if="{{present_order.order_status==4}}"><button size="mini" class="button-plain" hover-class="button-hover">再来一单</button></view> -->
 </view>
