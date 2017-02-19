@@ -51,7 +51,7 @@
               <image class="btn_img" src="/images/reduce.png"/>
             </view>
             <view class="number_area align-center">
-              <input class="goods_number" type="number" maxlength="3" value="{{item.number}}" data-index="{{index}}" bindchange="bindManual"/>
+              <input class="goods_number" type="number" maxlength="3" value="{{item.number}}" bindinput="checkMaxAmount" data-index="{{index}}" bindchange="bindManual"/>
             </view>
             <view class="btn_reduce align-center justify-center" data-index="{{index}}" bindtap="bindPlus">
               <image class="btn_img btn_plus" src="/images/add.png"></image>

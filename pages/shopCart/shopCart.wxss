@@ -49,8 +49,8 @@
   width: 68px
 }
 .book_image {
-  width: 58px;
-  height: 73px;
+  width: 60px;
+  height: 80px;
   border-radius: 4px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
 }
@@ -62,10 +62,10 @@
 .name_isbn {
   margin: 10px 40px 0 0
 }
-.book_name {
+/*.book_name {
   height: 27px;
   line-height: 27px;
-}
+}*/
 .deletarea {
   width: 50px;
   height: 50px;

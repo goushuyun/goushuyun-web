@@ -13,6 +13,20 @@
 
          store_infos_show: false
      },
+     checkMaxAmount(e) {
+         var input = e.detail.value
+         let index = e.currentTarget.dataset.index
+         let amount = this.data.goods[index].store_number
+         if (input > amount) {
+             wx.showModal({
+                 content: '亲~当前库存仅剩' + amount + '本！',
+                 showCancel: false
+             })
+             this.data.goods[index].number = amount
+             this.sum()
+             return amount
+         }
+     },
      onLoad: function(e) {
          var self = this
          wx.getStorage({
@@ -27,6 +41,9 @@
          this.showGoods()
      },
      onShow: function(e) {
+         this.showGoods()
+     },
+     onReady(e) {
          this.showGoods()
      },
      showGoods: function(e) {
@@ -186,7 +203,7 @@
 
          } else {
              wx.showModal({
-                 content: '已达到库存上限！',
+                 content: '亲~当前库存仅剩' + storeNumber + '本！',
                  showCancel: false
              })
          }
@@ -332,12 +349,14 @@
                      self.sum()
                      wx.showToast({
                          title: '删除成功',
-                         icon: 'success'
+                         icon: 'success',
+                         duration: 500
                      })
                  } else {
                      wx.showToast({
                          title: '删除失败',
-                         icon: 'loading'
+                         icon: 'loading',
+                         duration: 500
                      })
                  }
              },

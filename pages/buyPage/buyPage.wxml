@@ -14,7 +14,7 @@
     <view class="buy_item" wx:for="{{goods}}" data-goodsid="{{item.id}}">
         <view class="info">
             <text class="text_inline_block category">{{item.type == 1 ? '新书':'二手书'}}</text>
-            <text class="text_inline_block discount">{{item.discount}}</text>
+            <text class="text_inline_block discount">{{item.discount}}折</text>
             <text class="text_inline_block store">{{item.amount > 0? '库存' + item.amount + '本' : '告罄'}}</text>
         </view>
         <view class="operate">
@@ -25,7 +25,7 @@
                         <image class="btn_img" src="/images/reduce.png"></image>
                     </view>
                     <view class="number_area align-center">
-                        <input class="goods_number" type="number" maxlength="3" value="{{item.buy_amount}}" data-index="{{index}}" bindblur="goodsNumberInputBlur"/>
+                        <input class="goods_number" type="number" maxlength="3" value="{{item.buy_amount}}" bindinput="checkMaxAmount" data-index="{{index}}" bindblur="goodsNumberInputBlur"/>
                     </view>
                 </block>
 

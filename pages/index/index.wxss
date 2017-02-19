@@ -62,7 +62,6 @@ input{
     height: 22px;
     font-size: 12px;
     flex:1;
-    /*padding-left: 8px;*/
 }
 .search_icon{
     width: 18px;
@@ -88,19 +87,17 @@ view#iconsList{
     justify-content: space-around;
 }
 view#iconsList .category_icon{
-
+    padding: 20rpx 0;
 }
-view#iconsList .category_icon .category_name{
+view#iconsList .category_name{
     display: block;
     text-align: center;
-    font-size: 13px;
-    color: #333;
-    padding-top: 6px;
-    padding-bottom: 6px;
+    font-size: 12px;
+    color: #555;
 }
 
 view#iconsList .icon_img{
-    padding-top: 6px;
+    padding: 4px 0 2px 0;
     width: 36px;
     height: 36px;
 }
@@ -142,11 +139,11 @@ view#recommend{
 
 .books .book{
     display: inline-block;
-    width: 220rpx;
+    width: 180rpx;
 }
-.books .book .book_img{
-    width: 160rpx;
-    height: 180rpx;
+.books .book_img{
+    width: 170rpx;
+    height: 230rpx;
     display: block;
     border-radius: 6px;
 }
@@ -170,8 +167,4 @@ view#recommend{
     width: 100%;
     overflow : hidden;
     text-overflow: ellipsis;
-}
-.books .book image.book_img{
-    width: 200rpx;
-    height: 240rpx;
 }
