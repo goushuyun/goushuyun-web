@@ -12,17 +12,17 @@ scroll-view#booksList .book{
     padding: 12px 20px;
 }
 scroll-view#booksList .book .book_pic{
-    width: 80px;
+    display: inline-block;
+    min-width: 80px;
+    flex: 0;
     height: 112px;
     border-radius: 6px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+
 }
 scroll-view#booksList .book .book_info{
     padding-left: 18px;
-}
-
-scroll-view#booksList .book .book_info .text_block{
-    display: block;
+    flex: 1;
 }
 
 scroll-view#booksList .book .book_info .book_title{
