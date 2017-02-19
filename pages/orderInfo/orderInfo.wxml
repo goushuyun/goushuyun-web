@@ -1,6 +1,10 @@
 <view class="head align-center">
   <text class="font15">{{order_status_description.description}}
     <text wx:if="{{present_order.order_status==1}}" class="font12">{{out_time}}分钟后订单将自动关闭</text>
+    <text wx:if="{{present_order.order_status==2}}" class="font12">付款时间：{{present_order.pay_at}}</text>
+    <text wx:if="{{present_order.order_status==3}}" class="font12">发货时间：{{present_order.send_at}}</text>
+    <text wx:if="{{present_order.order_status==4}}" class="font12">收货时间：{{present_order.accept_at}}</text>
+    <text wx:if="{{present_order.order_status==5}}" class="font12">关闭时间：{{present_order.close_at}}</text>
   </text>
 </view>
 

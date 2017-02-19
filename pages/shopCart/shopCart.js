@@ -28,25 +28,25 @@
          }
      },
      onLoad: function(e) {
-         var self = this
-         wx.getStorage({
-             key: 'shop',
-             success: function(res) {
-                 var shop_name = res.data.shop_name.trim()
-                 self.setData({
-                     shopName: shop_name
-                 })
-             }
-         })
-         this.showGoods()
+        //  var self = this
+        //  wx.getStorage({
+        //      key: 'shop',
+        //      success: function(res) {
+        //          var shop_name = res.data.shop_name.trim()
+        //          self.setData({
+        //              shopName: shop_name
+        //          })
+        //      }
+        //  })
+         this.showGoods(e)
      },
      onShow: function(e) {
-         this.showGoods()
+         this.showGoods(e)
      },
      onReady(e) {
-         this.showGoods()
+         this.showGoods(e)
      },
-     showGoods: function(e) {
+     showGoods(e) {
          var self = this;
          var user_id = wx.getStorageSync('user').id
          wx.request({

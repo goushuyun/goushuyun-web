@@ -41,7 +41,11 @@ Page({
                 var my_date = new Date();
                 var out_time = ((30 * 60 - (my_date.getTime() / 1000 - present_order.order_at)) / 60).toFixed(0)
 
-                present_order.order_at = utils.unixTimestamp2DateStr(present_order.order_at)
+                present_order.order_at = utils.unixTimestamp2DateStr(present_order.order_at)  //send_at
+                present_order.pay_at = utils.unixTimestamp2DateStr(present_order.pay_at)  //支付时间
+                present_order.send_at = utils.unixTimestamp2DateStr(present_order.send_at) //发货时间
+                present_order.accept_at = utils.unixTimestamp2DateStr(present_order.accept_at) //收货时间
+                present_order.close_at = utils.unixTimestamp2DateStr(present_order.close_at) //关闭时间
                 var order_status_description = orderStatus.orderStatusDescription(present_order.order_status)
 
                 self.setData({
