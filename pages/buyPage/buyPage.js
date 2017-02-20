@@ -14,14 +14,14 @@ Page({
             return amount
         }
     },
-    addToShopCart(callback) {
+    addToShopCart() {
         let user_id = wx.getStorageSync('user').id,
             items = []
         var self = this
         //collect order items
         for (var i = 0; i < this.data.goods.length; i++) {
             let el = this.data.goods[i]
-            if (el.buy_amount >= 0) {
+            if (el.buy_amount > 0) {
                 let item = {
                     user_id: user_id
                 }
@@ -37,38 +37,38 @@ Page({
 
         if (items.length > 0) {
             //send request to add shopcart
-            wx.request({
+            wx.showToast({
+                title: '加入购物车...',
+                icon: 'loading',
+                duration: 100000
+            })
+
+            wx.pro.request({
                 url: 'https://app.cumpusbox.com/v1/orders/AddToShopCart',
+                method: 'POST',
                 data: {
                     items
-                },
-                method: 'POST',
-                success(res) {
-                    console.log(res)
-                    if (res.data.code == '00000') {
-                        self.setData({
-                            jump_cart: false
-                        })
-                        callback();
-                    }
                 }
             })
+            .then(res => {
+                // 2XX, 3XX
+                if (res.code == '00000') {
+                    wx.hideToast()
+                }
+            })
+            .catch(err => {
+                // 网络错误、或服务器返回 4XX、5XX
+            })
+
         }
-        console.log(items)
 
     },
     onUnload() {
-        if (this.data.jump_cart) {
-            this.addToShopCart(function() {
-                console.log('----------onUnload-------------')
-            })
-        }
+        this.addToShopCart()
     },
     goToShopCart() {
-        this.addToShopCart(function() {
-            wx.switchTab({
-                url: '/pages/shopCart/shopCart'
-            })
+        wx.switchTab({
+            url: '/pages/shopCart/shopCart'
         })
     },
     goodsNumberInputBlur(e) {
@@ -113,6 +113,7 @@ Page({
             total_number: this.data.total_number + change
         })
     },
+
     onLoad(option) {
         console.log(option)
 
@@ -205,10 +206,6 @@ Page({
 
     },
     onReady() {
-        console.log('-------------------------')
 
-        console.log(this.data.goods.length)
-
-        console.log('-------------------------')
     }
 })

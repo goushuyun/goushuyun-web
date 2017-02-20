@@ -11,7 +11,7 @@
         </view>
     </view>
 
-    <view class="buy_item" wx:for="{{goods}}" data-goodsid="{{item.id}}">
+    <view class="buy_item" wx:for="{{goods}}" data-goodsid="{{item.id}}" wx:key="*this">
         <view class="info">
             <text class="text_inline_block category">{{item.type == 1 ? '新书':'二手书'}}</text>
             <text class="text_inline_block discount">{{item.discount}}折</text>

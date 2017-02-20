@@ -111,3 +111,5 @@ App({
 // https://api.weixin.qq.com/sns/jscode2session?appid=wx34556be661dae586&secret=cd4fd24134463d81e6e0fd727c4f6d78&js_code=013e4yOh1VBg1z0P7BOh1POvOh1e4yOI&grant_type=authorization_code
 
 // curl -L -v https://api.weixin.qq.com/sns/jscode2session?appid=wx34556be661dae586&secret=cd4fd24134463d81e6e0fd727c4f6d78&js_code=003fL1Zb0QvCdv1FNDXb0i27Zb0fL1ZR&grant_type=authorization_code
+
+require('./libs/wx-pro.js')
