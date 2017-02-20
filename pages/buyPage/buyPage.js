@@ -3,7 +3,8 @@ Page({
         goods: [],
         pre_price: 0,
         total_price: 0,
-        total_number: 0
+        total_number: 0,
+        jump_cart: true
     },
     checkMaxAmount(e) {
         var input = e.detail.value
@@ -13,10 +14,10 @@ Page({
             return amount
         }
     },
-    addToShopCart() {
+    addToShopCart(callback) {
         let user_id = wx.getStorageSync('user').id,
             items = []
-
+        var self = this
         //collect order items
         for (var i = 0; i < this.data.goods.length; i++) {
             let el = this.data.goods[i]
@@ -45,7 +46,10 @@ Page({
                 success(res) {
                     console.log(res)
                     if (res.data.code == '00000') {
-
+                        self.setData({
+                            jump_cart: false
+                        })
+                        callback();
                     }
                 }
             })
@@ -54,17 +58,19 @@ Page({
 
     },
     onUnload() {
-        this.addToShopCart()
-    },
-    onHide() {
-        this.addToShopCart()
+        if (this.data.jump_cart) {
+            this.addToShopCart(function() {
+                console.log('----------onUnload-------------')
+            })
+        }
     },
     goToShopCart() {
-        wx.switchTab({
-            url: '/pages/shopCart/shopCart'
+        this.addToShopCart(function() {
+            wx.switchTab({
+                url: '/pages/shopCart/shopCart'
+            })
         })
     },
-
     goodsNumberInputBlur(e) {
         var index = e.currentTarget.dataset.index,
             value = e.detail.value,

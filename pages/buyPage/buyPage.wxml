@@ -42,7 +42,7 @@
 
     <view id="bottom_bar">
         <view class="shopcart_info">
-            <view class="shopcart">
+            <view class="shopcart" bindtap="goToShopCart">
                 <image src="/images/shopcart.png" class="shopcart_img"></image>
                 <text class="total_num">{{total_number}}</text>
             </view>

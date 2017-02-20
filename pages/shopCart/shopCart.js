@@ -28,22 +28,9 @@
          }
      },
      onLoad: function(e) {
-        //  var self = this
-        //  wx.getStorage({
-        //      key: 'shop',
-        //      success: function(res) {
-        //          var shop_name = res.data.shop_name.trim()
-        //          self.setData({
-        //              shopName: shop_name
-        //          })
-        //      }
-        //  })
          this.showGoods(e)
      },
      onShow: function(e) {
-         this.showGoods(e)
-     },
-     onReady(e) {
          this.showGoods(e)
      },
      showGoods(e) {
@@ -60,7 +47,7 @@
                  var store_infos = []
                  for (var i = 0; i < res.data.items.length; i++) {
                      let el = res.data.items[i]
-                     if (res.data.total_number > 0) {
+                     if (res.data.total_number >= 0) {
                          let item = {
                              user_id: user_id
                          }
@@ -88,8 +75,6 @@
                              var store_info = (store_infos.length + 1) + '.' + item.book_title + '(' + (item.type == 1 ? '新书' : '二手书') + ')' + '库存不足' + item.pre_number + '件，请重新选择'
                              store_infos.push(store_info)
                          }
-
-                         console.log(item)
                          items.push(item)
                      }
                  }
@@ -107,21 +92,21 @@
          })
      },
      onHide: function(e) {
-         this.updateGoods()
+         this.updateGoods(e)
      },
      onUnload: function(e) {
-         this.updateGoods()
+         this.updateGoods(e)
      },
      updateGoods: function(e) {
          var items = []
          for (var i = 0; i < this.data.goods.length; i++) {
              var good = this.data.goods[i]
              var temp_good = this.data.temp_goods[i]
-             if (good.number != temp_good.number) {
+             if (good.number != temp_good.number || !good.can_sale) {
                  var item = {
-                     id: good.id
+                     id: good.id,
+                     number: good.number
                  }
-                 item.number = good.number
                  items.push(item)
              }
          }
