@@ -148,9 +148,13 @@ Page({
         })
     },
     search(e) {
-        wx.navigateTo({
-            url: '/pages/booksList/booksList?search_val=' + this.data.search_val
-        })
+        var search_val = this.data.search_val.trim()
+
+        if(search_val != ""){
+            wx.navigateTo({
+                url: '/pages/booksList/booksList?search_val=' + search_val
+            })
+        }
     },
 
     chooseCategory(e) {

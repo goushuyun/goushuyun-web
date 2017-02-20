@@ -82,11 +82,11 @@ Page({
         }
 
 
-
         if (options.search_val != undefined) {
-            let search_val = options.search_val
-            //search_val is not null
+            let search_val = options.search_val.trim()
+            if(search_val == "") return false
 
+            //search_val is not null
             data.shop_id = app.shop_id
             data.page = this.data.page
             data.size = this.data.size
@@ -100,8 +100,6 @@ Page({
                 data.author = data.publisher = data.title = search_val
             }
 
-            console.log("********** The request data *********")
-            console.log(data)
             wx.request({
                 url: 'https://app.cumpusbox.com/v1/books/listBooksHideSameIsbn',
                 method: "POST",
@@ -111,8 +109,6 @@ Page({
                     self.setData({
                         books: res.data.data
                     })
-
-                    console.log(res)
                 }
             })
 
@@ -123,8 +119,8 @@ Page({
         this.getData()
 
         //初始化的时候渲染wxSearchdata
-        WxSearch.init(self, 44, ['weappdev', '小程序', 'wxParse', 'wxSearch', 'wxNotification']);
-        WxSearch.initMindKeys(['weappdev.com', '微信小程序开发', '微信开发', '微信小程序']);
+        WxSearch.init(self, 44, []);
+        WxSearch.initMindKeys([]);
     },
 
     wxSearchFn: function(e) {
