@@ -13,7 +13,8 @@ Page({
         qqmapsdk = new QQMapWX({
             key: 'Q4XBZ-OV6W4-636UU-D7BLU-RI7SH-65FWN'
         })
-
+    },
+    onShow: function(e) {
         var self = this
         var shop_id = app.shop_id
         wx.request({
@@ -156,7 +157,7 @@ Page({
     search(e) {
         var search_val = this.data.search_val.trim()
 
-        if(search_val != ""){
+        if (search_val != "") {
             wx.navigateTo({
                 url: '/pages/booksList/booksList?search_val=' + search_val
             })

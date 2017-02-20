@@ -30,9 +30,17 @@
 
 <!-- icons list -->
 <view id="iconsList">
+    <view class="category_icon" data-category="1" bindtap="chooseCategory">
+        <image class="icon_img" src="../../images/Teaching_materials.png"></image>
+        <text class="category_name">教材</text>
+    </view>
     <view class="category_icon" data-category="2" bindtap="chooseCategory">
         <image class="icon_img" src="../../images/References.png"></image>
         <text class="category_name">教辅</text>
+    </view>
+    <view class="category_icon" data-category="5" bindtap="chooseCategory">
+        <image class="icon_img" src="../../images/Certificate.png"></image>
+        <text class="category_name">考证</text>
     </view>
     <view class="category_icon" data-category="3" bindtap="chooseCategory">
         <image class="icon_img" src="../../images/Foreign_languages.png"></image>
@@ -41,14 +49,6 @@
     <view class="category_icon" data-category="4" bindtap="chooseCategory">
         <image class="icon_img" src="../../images/Reading.png"></image>
         <text class="category_name">阅读</text>
-    </view>
-    <view class="category_icon" data-category="5" bindtap="chooseCategory">
-        <image class="icon_img" src="../../images/Certificate.png"></image>
-        <text class="category_name">考证</text>
-    </view>
-    <view class="category_icon" data-category="1" bindtap="chooseCategory">
-        <image class="icon_img" src="../../images/Teaching_materials.png"></image>
-        <text class="category_name">教材</text>
     </view>
 </view>
 
