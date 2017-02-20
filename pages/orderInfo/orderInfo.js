@@ -35,7 +35,7 @@ Page({
                 /*未支付倒计时*/
                 var my_date = new Date();
                 var out_time = ((30 * 60 - (my_date.getTime() / 1000 - present_order.order_at)) / 60).toFixed(0)
-                if (out_time < 0) {
+                if (out_time < 0 && present_order.order_status==1) {
                     var order_ids = [order_id]
                     wx.request({
                         url: 'https://app.cumpusbox.com/v1/orders/cancel_order',
