@@ -10,8 +10,10 @@
     <!-- 搜索栏 -->
     <view class="search">
         <view class="search_inner">
-            <input placeholder="搜索书名、作者或ISBN" placeholder-class="none_style" bindchange="bindchange"></input>
-            <image class="search_icon" src="/images/search.png" bindtap="search"></image>
+            <input placeholder="搜索书名、作者或ISBN" bindconfirm="confrim_search" placeholder-class="none_style" bindchange="bindchange"></input>
+            <view class="search_btn" bindtap="search">
+                <image class="search_icon" src="/images/search.png"></image>
+            </view>
         </view>
     </view>
 </view>

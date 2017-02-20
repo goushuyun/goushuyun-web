@@ -63,6 +63,13 @@ input{
     font-size: 12px;
     flex:1;
 }
+view.search_btn{
+    min-width: 44px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .search_icon{
     width: 18px;
     height: 18px;

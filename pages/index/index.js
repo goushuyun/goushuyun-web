@@ -145,6 +145,14 @@ Page({
             search_val: e.detail.value
         })
     },
+    confrim_search(e){
+        var search_val = e.detail.value.trim()
+        if(search_val != ""){
+            wx.navigateTo({
+                url: '/pages/booksList/booksList?search_val=' + search_val
+            })
+        }
+    },
     search(e) {
         var search_val = this.data.search_val.trim()
 

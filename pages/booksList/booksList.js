@@ -7,7 +7,6 @@ Page({
         //books to list
         books: [],
         category: 0,
-
         page: 1,
         size: 10,
 
@@ -84,7 +83,7 @@ Page({
 
         if (options.search_val != undefined) {
             let search_val = options.search_val.trim()
-            if(search_val == "") return false
+            if (search_val == "") return false
 
             //search_val is not null
             data.shop_id = app.shop_id
@@ -122,6 +121,11 @@ Page({
         WxSearch.init(self, 44, []);
         WxSearch.initMindKeys([]);
     },
+    onShow(){
+        var self = this
+        WxSearch.init(self, 44, []);
+        WxSearch.initMindKeys([]);
+    },
 
     wxSearchFn: function(e) {
         var that = this
@@ -134,8 +138,12 @@ Page({
                 size: this.data.size
             },
             app = getApp()
-
         data.shop_id = app.shop_id
+
+
+        console.log(search_val)
+
+
         if (/^\d{10,13}$/.test(search_val)) {
             // isbn
             data.isbn = search_val
