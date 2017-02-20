@@ -27,9 +27,6 @@
              return amount
          }
      },
-     onLoad: function(e) {
-         this.showGoods(e)
-     },
      onShow: function(e) {
          this.showGoods(e)
      },
@@ -374,6 +371,7 @@
              selectedAllStatus: selectedAllStatus
          });
      },
+     //关闭弹框
      unShow: function() {
          this.setData({
              store_infos_show: false
