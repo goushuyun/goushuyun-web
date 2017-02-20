@@ -21,7 +21,7 @@ Page({
         //collect order items
         for (var i = 0; i < this.data.goods.length; i++) {
             let el = this.data.goods[i]
-            if (el.buy_amount > 0) {
+            if (el.buy_amount >= 0) {
                 let item = {
                     user_id: user_id
                 }

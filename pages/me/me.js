@@ -20,7 +20,7 @@ Page({
         total: 0,
         order_status: 0
     },
-    toPay(e){
+    toPay(e) {
         var self = this
         wx.showToast({
             title: '加载中',
@@ -34,15 +34,17 @@ Page({
         wx.request({
             url: 'https://app.cumpusbox.com/v1/payment/delayed_pay',
             method: 'POST',
-            data: {order_id},
+            data: {
+                order_id
+            },
 
-            success(res){
+            success(res) {
                 console.log(res.data)
                 if (res.data.message == 'ok') {
                     var payInfo = res.data.PaymentObj
                     var order_id = res.data.order_id
-                      console.log('----------------------');
-                      console.log(payInfo);
+                    console.log('----------------------');
+                    console.log(payInfo);
                     wx.hideToast()
                     wx.requestPayment({
                         timeStamp: payInfo.timeStamp,
@@ -51,8 +53,8 @@ Page({
                         signType: 'MD5',
                         paySign: payInfo.paySign,
                         fail(res) {
-                          console.log('----------------------');
-                          console.log(res);
+                            console.log('----------------------');
+                            console.log(res);
                         },
                         complete: function(res) {
                             wx.navigateTo({
@@ -60,9 +62,23 @@ Page({
                             })
                         }
                     })
+                } else if (res.data.message == 'timeout') {
+                    wx.showModal({
+                        content: '亲~该订单已超时，需要重新下单哦~',
+                        showCancel: false,
+                        success: function(res) {
+                            if (res.confirm) {
+                                wx.switchTab({
+                                    url: '/pages/me/me'
+                                })
+                            }
+                        }
+                    })
                 } else {
-                    wx.navigateBack({
-                        delta: 1
+                    wx.showToast({
+                        title: '请检查网络...',
+                        icon: 'loading',
+                        duration: 1500
                     })
                 }
             }
@@ -73,7 +89,7 @@ Page({
     viewOrderDetail(e) {
         let order_id = e.currentTarget.dataset.id
         wx.navigateTo({
-            url: '/pages/orderInfo/orderInfo?order_id='+ order_id
+            url: '/pages/orderInfo/orderInfo?order_id=' + order_id
         })
     },
 
@@ -121,13 +137,13 @@ Page({
                     //每次拿到 orders 数据之后，根据订单状态将订单拆分
 
                     for (var i = 0; i < orders.length; i++) {
-                        if(orders[i].order_status == 1) {
+                        if (orders[i].order_status == 1) {
                             wait_pay_orders.push(orders[i])
-                        }else if (orders[i].order_status == 2){
+                        } else if (orders[i].order_status == 2) {
                             wait_send_orders.push(orders[i])
-                        }else if (orders[i].order_status == 3){
+                        } else if (orders[i].order_status == 3) {
                             wait_accept_orders.push(orders[i])
-                        }else if (orders[i].order_status == 4){
+                        } else if (orders[i].order_status == 4) {
                             accepted_orders.push(orders[i])
                         }
                     }
@@ -171,16 +187,19 @@ Page({
 
     },
 
-    comfirmAccept(e){
-        let order_id = e.currentTarget.dataset.id, self = this
+    comfirmAccept(e) {
+        let order_id = e.currentTarget.dataset.id,
+            self = this
         console.log(order_id)
 
         wx.request({
             url: 'https://app.cumpusbox.com/v1/orders/accept_order',
             method: 'POST',
-            data: {order_ids: [order_id]},
-            success(res){
-                if(res.data.code == '00000'){
+            data: {
+                order_ids: [order_id]
+            },
+            success(res) {
+                if (res.data.code == '00000') {
                     console.log(res.data)
 
                     wx.navigateTo({
@@ -211,7 +230,8 @@ Page({
         })
     },
     cancel_order(e) {
-        let order_id = e.currentTarget.dataset.id, self = this
+        let order_id = e.currentTarget.dataset.id,
+            self = this
         console.log(order_id)
         wx.showModal({
             content: '您确定要取消该订单吗？',
@@ -224,8 +244,10 @@ Page({
                     wx.request({
                         url: 'https://app.cumpusbox.com/v1/orders/cancel_order',
                         method: 'POST',
-                        data: {order_ids},
-                        success(res){
+                        data: {
+                            order_ids
+                        },
+                        success(res) {
                             self.getOrders()
                         }
                     })

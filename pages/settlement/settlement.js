@@ -182,9 +182,23 @@ Page({
                             })
                         }
                     })
+                } else if (res.data.message == 'timeout') {
+                    wx.showModal({
+                        content: '亲~该订单已超时，需要重新下单哦~',
+                        showCancel: false,
+                        success: function(res) {
+                            if (res.confirm) {
+                                wx.switchTab({
+                                    url: '/pages/me/me'
+                                })
+                            }
+                        }
+                    })
                 } else {
-                    wx.navigateBack({
-                        delta: 1
+                    wx.showToast({
+                        title: '请检查网络...',
+                        icon: 'loading',
+                        duration: 1500
                     })
                 }
             }
