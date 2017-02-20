@@ -35,7 +35,8 @@ Page({
                                         shop_id: shop_id,
                                         topic_id: recommend_item.id,
                                         page: 1,
-                                        size: 10
+                                        size: 10,
+                                        min_number: 1
                                     },
                                     method: 'POST',
                                     success: function(res) {
@@ -73,9 +74,6 @@ Page({
         })
     },
     chooseAddress() {
-
-        console.log('kaiakiakaiu')
-
         var self = this,
             school
 
