@@ -3,8 +3,7 @@ Page({
         goods: [],
         pre_price: 0,
         total_price: 0,
-        total_number: 0,
-        jump_cart: true
+        total_number: 0
     },
     checkMaxAmount(e) {
         var input = e.detail.value
