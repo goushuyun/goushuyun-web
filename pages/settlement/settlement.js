@@ -196,7 +196,7 @@ Page({
                     })
                 } else {
                     wx.showToast({
-                        title: '请检查网络...',
+                        title: '服务器出Bug了',
                         icon: 'loading',
                         duration: 1500
                     })
