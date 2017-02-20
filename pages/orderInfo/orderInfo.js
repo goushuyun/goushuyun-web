@@ -32,17 +32,32 @@ Page({
             method: 'POST',
             success: function(res) {
                 var present_order = res.data.data[0]
+                /*未支付倒计时*/
+                var my_date = new Date();
+                var out_time = ((30 * 60 - (my_date.getTime() / 1000 - present_order.order_at)) / 60).toFixed(0)
+                if (out_time < 0) {
+                    var order_ids = [order_id]
+                    wx.request({
+                        url: 'https://app.cumpusbox.com/v1/orders/cancel_order',
+                        method: 'POST',
+                        data: {
+                            order_ids
+                        },
+                        success(res) {
+                            if (res.data.code == '00000') {
+                                self.loadingOrder(order_id)
+                            }
+                        }
+                    })
+                }
+
                 for (var i = 0; i < present_order.items.length; i++) {
                     present_order.items[i].book_price = (present_order.items[i].book_price / 100).toFixed(2)
                 }
                 present_order.total_price = (present_order.total_price / 100).toFixed(2)
                 present_order.freight = (present_order.freight / 100).toFixed(2)
-                /*未支付倒计时*/
-                var my_date = new Date();
-                var out_time = ((30 * 60 - (my_date.getTime() / 1000 - present_order.order_at)) / 60).toFixed(0)
-
-                present_order.order_at = utils.unixTimestamp2DateStr(present_order.order_at)  //send_at
-                present_order.pay_at = utils.unixTimestamp2DateStr(present_order.pay_at)  //支付时间
+                present_order.order_at = utils.unixTimestamp2DateStr(present_order.order_at) //send_at
+                present_order.pay_at = utils.unixTimestamp2DateStr(present_order.pay_at) //支付时间
                 present_order.send_at = utils.unixTimestamp2DateStr(present_order.send_at) //发货时间
                 present_order.accept_at = utils.unixTimestamp2DateStr(present_order.accept_at) //收货时间
                 present_order.close_at = utils.unixTimestamp2DateStr(present_order.close_at) //关闭时间
@@ -123,11 +138,11 @@ Page({
     toPay(e) {
         var self = this
         var order_id = self.data.order_id
-            wx.showToast({
-                title: '加载中',
-                icon: 'loading',
-                duration: 10000
-            })
+        wx.showToast({
+            title: '加载中',
+            icon: 'loading',
+            duration: 10000
+        })
         console.log(order_id)
         wx.request({
             url: 'https://app.cumpusbox.com/v1/payment/delayed_pay',
