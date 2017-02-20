@@ -54,9 +54,6 @@
              data: {
                  user_id: user_id
              },
-             header: {
-                 'content-type': 'application/json'
-             },
              method: 'POST',
              success: function(res) {
                  var items = []
