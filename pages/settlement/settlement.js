@@ -152,10 +152,10 @@ Page({
             address_info: self.data.address,
             school: wx.getStorageSync('school'),
             // total_price: 1,
-            total_price: this.data.total_price * 100,
-            total_amount: this.data.total_number,
+            total_price: parseInt(this.data.total_price * 100),
+            total_amount: parseInt(this.data.total_number),
             remark: this.data.remark,
-            freight: this.data.freight * 100,
+            freight: parseInt(this.data.freight * 100),
             openid: wx.getStorageSync('openid'),
             shop_id: shop_id
         }
