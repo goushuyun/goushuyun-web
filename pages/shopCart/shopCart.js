@@ -33,6 +33,8 @@
      showGoods(e) {
          var self = this;
          var user_id = wx.getStorageSync('user').id
+         console.log('-----------------------');
+         console.log(user_id);
          wx.request({
              url: 'https://app.cumpusbox.com/v1/orders/GetShopcart',
              data: {

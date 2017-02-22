@@ -2,7 +2,6 @@ App({
     onLaunch() {
         //while app onLaunch, user login and get user info
         console.log('onLaunch')
-
         //user login
         wx.login({
             success(res) {
@@ -24,6 +23,11 @@ App({
                                 return
                             }
 
+                            //save user info into localstorage
+                            wx.setStorage({
+                                key: 'user',
+                                data: {id:res.data.user.id}
+                            })
                             var session_key = res.data.session_key
 
                             // get user info and save them to db

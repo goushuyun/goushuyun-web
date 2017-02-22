@@ -170,9 +170,14 @@ Page({
 
         //页面初始加载后即刻拿到该用户【全部】类型的订单
         var user = wx.getStorageSync('user')
-
+        var avatarUrl = ''
+        if (!user.avatarUrl) {
+            avatarUrl = '/images/default_avatar.png'
+        } else {
+            avatarUrl = user.avatarUrl
+        }
         self.setData({
-            avatar: user.avatarUrl,
+            avatar: avatarUrl,
             user_id: user.id
         })
 
