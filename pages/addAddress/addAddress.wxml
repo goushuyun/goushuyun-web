@@ -2,7 +2,7 @@
   <form bindsubmit="formSubmit">
     <view class="content">
         <view class="input_group">
-            <label>收货人</label>
+            <label class="name">收货人</label>
             <input name="name" placeholder="姓名" value="{{name}}"/>
         </view>
         <view class="input_group">
@@ -19,7 +19,7 @@
         </view>
 
         <view class="input_group">
-            <label>门牌号</label>
+            <label>楼号/门牌号</label>
             <input  name="house_num" placeholder="例：5号楼426室" value="{{house_num}}"/>
         </view>
     </view>

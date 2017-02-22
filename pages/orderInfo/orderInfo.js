@@ -35,21 +35,23 @@ Page({
                 /*未支付倒计时*/
                 var my_date = new Date();
                 var out_time = ((30 * 60 - (my_date.getTime() / 1000 - present_order.order_at)) / 60).toFixed(0)
-                if (out_time < 0 && present_order.order_status==1) {
-                    var order_ids = [order_id]
-                    wx.request({
-                        url: 'https://app.cumpusbox.com/v1/orders/cancel_order',
-                        method: 'POST',
-                        data: {
-                            order_ids
-                        },
-                        success(res) {
-                            if (res.data.code == '00000') {
-                                self.loadingOrder(order_id)
-                            }
-                        }
-                    })
-                }
+
+                /* 在前端修改了操作限制，故注释该段代码 */
+                // if (out_time < 0 && present_order.order_status==1) {
+                //     var order_ids = [order_id]
+                //     wx.request({
+                //         url: 'https://app.cumpusbox.com/v1/orders/cancel_order',
+                //         method: 'POST',
+                //         data: {
+                //             order_ids
+                //         },
+                //         success(res) {
+                //             if (res.data.code == '00000') {
+                //                 self.loadingOrder(order_id)
+                //             }
+                //         }
+                //     })
+                // }
 
                 for (var i = 0; i < present_order.items.length; i++) {
                     present_order.items[i].book_price = (present_order.items[i].book_price / 100).toFixed(2)

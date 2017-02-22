@@ -1,6 +1,6 @@
 <view class="head align-center">
   <text class="font15">{{order_status_description.description}}
-    <text wx:if="{{present_order.order_status==1}}" class="font12">{{out_time}}分钟后订单将自动关闭</text>
+    <text wx:if="{{present_order.order_status==1}}" class="font12">{{out_time>0?(out_time+'分钟后订单将自动关闭'):'订单即将关闭'}}</text>
     <text wx:if="{{present_order.order_status==2}}" class="font12">付款时间：{{present_order.pay_at}}</text>
     <text wx:if="{{present_order.order_status==3}}" class="font12">发货时间：{{present_order.send_at}}</text>
     <text wx:if="{{present_order.order_status==4}}" class="font12">交易成功时间：{{present_order.accept_at}}</text>
@@ -88,7 +88,7 @@
 
 <view id="order_foot" class="foot align-center justify-end padding-lr5">
   <view wx:if="{{present_order.order_status==1}}"><button size="mini" class="button-plain" hover-class="button-hover" bindtap="cancel_order">取消订单</button></view>
-  <view wx:if="{{present_order.order_status==1}}"><button size="mini" class="button-plain" hover-class="button-hover" bindtap="toPay">去付款</button></view>
+  <view wx:if="{{present_order.order_status==1 && out_time>0}}"><button size="mini" class="button-plain" hover-class="button-hover" bindtap="toPay">去付款</button></view>
   <view wx:if="{{present_order.order_status==2 || present_order.order_status==5}}">
     <button size="mini" class="button-plain" hover-class="button-hover" bindtap="callSeller">联系商家</button>
   </view>

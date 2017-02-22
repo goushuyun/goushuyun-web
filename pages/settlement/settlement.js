@@ -102,7 +102,7 @@ Page({
         self.setData({
             items: items,
             total_price: total_price.toFixed(2),
-            freight: freight
+            freight: freight.toFixed(2)
         })
     },
     selectAddress: function(e) {

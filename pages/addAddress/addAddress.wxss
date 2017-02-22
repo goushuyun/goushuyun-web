@@ -14,9 +14,8 @@ view.input_group{
     border-bottom: 1px solid #f4f3f3
 }
 view.input_group label{
-    width: 66px;
+    width: 80px;
 }
-
 view.input_group input{
     /*padding-left: 16px;*/
     flex: 1;
