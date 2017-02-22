@@ -68,7 +68,7 @@ App({
                             // save openid & session_key into localstorage
                             wx.setStorage({
                                 key: "openid",
-                                data: res.data.openid
+                                data: res.data.user.openId
                             })
 
                             wx.setStorage({
