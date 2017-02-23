@@ -14,27 +14,27 @@
     <swiper current="{{currentPage}}" bindchange="pageChange" duration="300">
         <swiper-item>
             <scroll-view scroll-y="true" class="container">
-                <template is="order" data="{{orders: orders}}"></template>
+                <template is="order" data="{{orders: orders, shop_logo}}"></template>
             </scroll-view>
         </swiper-item>
         <swiper-item>
             <scroll-view scroll-y="true" class="container">
-                <template is="order" data="{{orders: wait_pay_orders}}"></template>
+                <template is="order" data="{{orders: wait_pay_orders, shop_logo}}"></template>
             </scroll-view>
         </swiper-item>
         <swiper-item>
             <scroll-view scroll-y="true" class="container">
-                <template is="order" data="{{orders: wait_send_orders}}"></template>
+                <template is="order" data="{{orders: wait_send_orders, shop_logo}}"></template>
             </scroll-view>
         </swiper-item>
         <swiper-item>
             <scroll-view scroll-y="true" class="container">
-                <template is="order" data="{{orders: wait_accept_orders}}"></template>
+                <template is="order" data="{{orders: wait_accept_orders, shop_logo}}"></template>
             </scroll-view>
         </swiper-item>
         <swiper-item>
             <scroll-view scroll-y="true" class="container">
-                <template is="order" data="{{orders: accepted_orders}}"></template>
+                <template is="order" data="{{orders: accepted_orders, shop_logo}}"></template>
             </scroll-view>
         </swiper-item>
     </swiper>

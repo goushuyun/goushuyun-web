@@ -18,7 +18,10 @@ Page({
         page: 1,
         size: 100,
         total: 0,
-        order_status: 0
+        order_status: 0,
+
+        //shop info
+        shop_logo: ''
     },
     toPay(e) {
         var self = this
@@ -189,6 +192,25 @@ Page({
                 })
             }
         })
+
+
+        //获取商户头像
+        var shop = wx.getStorageSync('shop')
+
+        console.log(shop.logo)
+
+        self.setData({
+            shop_logo: shop.logo
+        })
+
+        // wx.getStorage({
+        //     key: 'shop',
+        //     success(res){
+        //         console.log(res.data.logo)
+        //
+        //     }
+        // })
+
 
     },
 
