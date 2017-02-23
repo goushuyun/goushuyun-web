@@ -172,5 +172,12 @@ Page({
                 }
             }
         })
+    },
+    onShareAppMessage(e) {
+      return {
+           title: '购书云',
+           desc: '新书、二手书售卖及配送',
+           path: '/pages/index'
+       }
     }
 })
