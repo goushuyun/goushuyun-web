@@ -54,16 +54,16 @@
 
 <!-- 推荐项 -->
 <view id="recommend">
-    <view wx:for="{{recommends}}" wx:for-item="recommend" class="recommend_block" wx:key="*this">
+    <view wx:for="{{topics}}" wx:for-item="topic" class="recommend_block" wx:key="*this">
         <view class="header">
-            <text class="title">{{recommend.recommend.title}}</text>
-            <navigator class="link" hover-class="none" url="/pages/booksList/booksList?topic_id={{recommend.recommend.id}}">查看全部</navigator>
+            <text class="title">{{topic.title}}</text>
+            <navigator class="link" hover-class="none" url="/pages/booksList/booksList?topic_id={{topic.id}}">查看全部</navigator>
         </view>
         <scroll-view scroll-x="true" class="books">
-            <view wx:for="{{recommend.books}}" wx:for-item="book" class="book" data-isbn="{{book.isbn}}" bindtap="goBuyPage" wx:key="*this">
-                <image class="book_img" src="{{book.pic}}"/>
-                <text class="book_title">{{book.title}}</text>
-                <text class="book_author">{{book.author}}</text>
+            <view wx:for="{{topic.books}}" wx:for-item="book" class="book" data-isbn="{{book.isbn}}" bindtap="goBuyPage" wx:key="*this">
+                <image class="book_img" src="{{book.book.pic}}"/>
+                <text class="book_title">{{book.book.title}}</text>
+                <text class="book_author">{{book.book.author}}</text>
             </view>
         </scroll-view>
     </view>

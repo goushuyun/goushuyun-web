@@ -5,7 +5,6 @@ Page({
     data: {
         search_val: '',
         school: '',
-        recommends: [],
         topics: []
     },
     onLoad: function(e) {
