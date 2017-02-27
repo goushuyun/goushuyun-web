@@ -6,72 +6,52 @@ Page({
         search_val: '',
         school: '',
         recommends: [],
-        temp_recommends: []
+        topics: []
     },
-    onLoad: function() {
+    onLoad: function(e) {
+        var self = this
+        var shop_id = app.shop_id
+        var tmp_topics = []
+        wx.pro.request({
+                url: 'https://app.cumpusbox.com/v1/activity/list_topics',
+                data: {
+                    shop_id: shop_id
+                },
+                method: 'POST'
+            })
+            .then(res => {
+                for (var i = 0; i < res.data.length; i++) {
+                    if (!res.data[i].recommend) continue
+
+                    //被推荐的话题
+                    (function(topic) {
+
+                        wx.pro.request({
+                            url: 'https://app.cumpusbox.com/v1/books/listBooksHideSameIsbn',
+                            data: {
+                                shop_id: shop_id,
+                                topic_id: topic.id,
+                                min_number: 1,
+                                page: 1,
+                                size: 10
+                            },
+                            method: "POST"
+                        }).then(res => {
+                            topic.books = res.data
+                            tmp_topics.push(topic)
+
+                            self.setData({
+                                topics: tmp_topics
+                            })
+
+                        })
+
+                    })(res.data[i])
+                }
+            })
         // 实例化API核心类
         qqmapsdk = new QQMapWX({
             key: 'Q4XBZ-OV6W4-636UU-D7BLU-RI7SH-65FWN'
-        })
-    },
-    onShow: function(e) {
-        var self = this
-        var shop_id = app.shop_id
-        wx.request({
-            url: 'https://app.cumpusbox.com/v1/activity/list_topics',
-            data: {
-                shop_id: shop_id
-            },
-            method: 'POST',
-            success(res) {
-                if (res.data.code == '00000') {
-                    var recommend_items = res.data.data
-                    if (recommend_items.length > 0) {
-                        for (var i = 0; i < recommend_items.length; i++) {
-                            var recommend_item = recommend_items[i]
-                            if (recommend_item.recommend) {
-                                wx.request({
-                                    url: 'https://app.cumpusbox.com/v1/books/listBooks',
-                                    data: {
-                                        shop_id: shop_id,
-                                        topic_id: recommend_item.id,
-                                        page: 1,
-                                        size: 10,
-                                        min_number: 1
-                                    },
-                                    method: 'POST',
-                                    success: function(res) {
-                                        if (res.data.code == '00000') {
-                                            var book_items = res.data.data
-                                            if (book_items.length > 0) {
-                                                var books = []
-                                                for (var i = 0; i < book_items.length; i++) {
-                                                    var book_item = book_items[i]
-                                                    book_items[i].book.isbn = book_items[i].isbn
-                                                    books.push(book_items[i].book)
-                                                }
-                                                var activity = {
-                                                    recommend: recommend_item,
-                                                    books: books
-                                                }
-                                            }
-                                            var recommends = []
-                                            if (self.data.temp_recommends.length > 0) {
-                                                recommends.push(self.data.temp_recommends)
-                                            }
-                                            recommends.push(activity)
-                                            self.setData({
-                                                recommends: recommends
-                                            })
-                                            console.log(self.data.recommends);
-                                        }
-                                    }
-                                })
-                            }
-                        }
-                    }
-                }
-            }
         })
     },
     chooseAddress() {
@@ -146,9 +126,9 @@ Page({
             search_val: e.detail.value
         })
     },
-    confrim_search(e){
+    confrim_search(e) {
         var search_val = e.detail.value.trim()
-        if(search_val != ""){
+        if (search_val != "") {
             wx.navigateTo({
                 url: '/pages/booksList/booksList?search_val=' + search_val
             })
@@ -178,9 +158,9 @@ Page({
         })
     },
     onShareAppMessage(e) {
-      return {
-           title: '新书、二手书售卖及配送',
-           path: '/pages/index/index'
-       }
+        return {
+            title: '新书、二手书售卖及配送',
+            path: '/pages/index/index'
+        }
     }
 })

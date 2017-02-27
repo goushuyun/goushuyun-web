@@ -68,7 +68,7 @@ Page({
             data.size = this.data.size
 
             wx.request({
-                url: 'https://app.cumpusbox.com/v1/books/listBooks',
+                url: 'https://app.cumpusbox.com/v1/books/listBooksHideSameIsbn',
                 data: data,
                 method: "POST",
                 success: function(res) {

@@ -157,7 +157,8 @@ Page({
             remark: this.data.remark,
             freight: parseInt(this.data.freight * 100),
             openid: wx.getStorageSync('openid'),
-            shop_id: shop_id
+            shop_id: shop_id,
+            sales_channel: 1
         }
 
         console.log(order)
