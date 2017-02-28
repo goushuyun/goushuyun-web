@@ -37,13 +37,14 @@ Page({
                             },
                             method: "POST"
                         }).then(res => {
-                            topic.books = res.data
-                            tmp_topics.push(topic)
+                            if(res.total > 0){
+                                topic.books = res.data
+                                tmp_topics.push(topic)
 
-                            self.setData({
-                                topics: tmp_topics
-                            })
-
+                                self.setData({
+                                    topics: tmp_topics
+                                })
+                            }
                         })
 
                     })(res.data[i])

@@ -24,7 +24,7 @@
         "borderStyle": "white",
         "list": [{
             "pagePath": "pages/index/index",
-            "text": "购书云",
+            "text": "首页",
             "iconPath": "images/books.png",
             "selectedIconPath": "images/books_focus.png"
         }, {

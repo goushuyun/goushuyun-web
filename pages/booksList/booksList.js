@@ -57,11 +57,13 @@ Page({
     onLoad: function(options) {
         console.log(options)
         var self = this
+        var search_input_default_val = ''
         var app = getApp(),
-            data = {}
+            data = {shop_id: app.shop_id}
         if (options.topic_id != undefined) {
+            //话题罗列
+
             data.topic_id = options.topic_id
-            data.shop_id = app.shop_id
             data.page = this.data.page
             data.size = this.data.size
             data.min_number = 1
@@ -75,16 +77,12 @@ Page({
                     })
                 }
             })
-            return false
-        }
-
-
-        if (options.search_val != undefined) {
-            let search_val = options.search_val.trim()
-            if (search_val == "") return false
+        }else if (options.search_val != undefined){
+            //搜索罗列
+            let search_val = options.search_val
+            search_input_default_val = search_val
 
             //search_val is not null
-            data.shop_id = app.shop_id
             data.page = this.data.page
             data.size = this.data.size
             data.min_number = 1
@@ -109,19 +107,15 @@ Page({
                 }
             })
 
-            return false
+        }else {
+            //类别罗列
+            
+            this.category = options.category
+            this.getData()
         }
 
-        this.category = options.category
-        this.getData()
-
         //初始化的时候渲染wxSearchdata
-        WxSearch.init(self, 44, []);
-        WxSearch.initMindKeys([]);
-    },
-    onShow(){
-        var self = this
-        WxSearch.init(self, 44, []);
+        WxSearch.init(self, search_input_default_val, 44, []);
         WxSearch.initMindKeys([]);
     },
 
@@ -133,14 +127,11 @@ Page({
         let search_val = this.data.wxSearchData.value,
             data = {
                 page: this.data.page,
-                size: this.data.size
+                size: this.data.size,
+                min_number: 1
             },
             app = getApp()
         data.shop_id = app.shop_id
-
-
-        console.log(search_val)
-
 
         if (/^\d{10,13}$/.test(search_val)) {
             // isbn

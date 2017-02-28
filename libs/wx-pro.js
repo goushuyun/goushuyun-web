@@ -98,6 +98,4 @@ function promisify() {
 
 promisify()
 
-console.log('kaikai')
-
 module.exports = Promise

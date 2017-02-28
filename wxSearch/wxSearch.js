@@ -1,7 +1,7 @@
 // 定义数据格式
 
 /***
- * 
+ *
  * "wxSearchData":{
  *  configconfig:{
  *    style: "wxSearchNormal"
@@ -14,8 +14,8 @@
  *  his:[]//历史搜索关键字
  *  value
  * }
- * 
- * 
+ *
+ *
  */
 var __keysColor = [];
 
@@ -29,13 +29,15 @@ function initMindKeys(keys){
     __mindKeys = keys;
 }
 
-function init(that, barHeight, keys, isShowKey, isShowHis, callBack) {
-    var temData = {};
+function init(that, default_val, barHeight, keys, isShowKey, isShowHis, callBack) {
+    var temData = {
+        value: default_val
+    };
     var view = {
         barHeight: barHeight,
         isShow: false
     }
-    
+
     if(typeof(isShowKey) == 'undefined'){
         view.isShowSearchKey = true;
     }else{
@@ -58,11 +60,11 @@ function init(that, barHeight, keys, isShowKey, isShowHis, callBack) {
             });
         }
     })
-    
+
     if (typeof (callBack) == "function") {
         callBack();
     }
-    
+
     getHisKeys(that);
 }
 
@@ -71,7 +73,7 @@ function wxSearchInput(e, that, callBack){
     var text = e.detail.value;
     var mindKeys = [];
     if(typeof(text) == "undefined" || text.length == 0){
-        
+
     }else{
         for(var i = 0; i < __mindKeys.length; i++){
             var mindKey = __mindKeys[i];
@@ -151,7 +153,7 @@ function getHisKeys(that) {
     } catch (e) {
         // Do something when catch error
     }
-    
+
 }
 function wxSearchAddHisKey(that) {
     wxSearchHiddenPancel(that);
@@ -180,8 +182,8 @@ function wxSearchAddHisKey(that) {
             }
         })
     }
-    
-    
+
+
 }
 function wxSearchDeleteKey(e,that) {
     var text = e.target.dataset.key;
@@ -205,7 +207,7 @@ function wxSearchDeleteAll(that){
             that.setData({
                 wxSearchData: temData
             });
-        } 
+        }
     })
 }
 
