@@ -91,12 +91,12 @@ Page({
 
         if (items.length > 0) {
 
-              //send request to add shopcart
-              wx.showToast({
-                  title: '加入购物车...',
-                  icon: 'loading',
-                  duration: 10000
-              })
+            //send request to add shopcart
+            wx.showToast({
+                title: '加入购物车...',
+                icon: 'loading',
+                duration: 10000
+            })
             wx.pro.request({
                     url: app.url + '/v1/orders/AddToShopCart',
                     method: 'POST',
@@ -168,7 +168,11 @@ Page({
 
     onLoad(option) {
         console.log(option)
-
+        wx.showToast({
+            title: '加载中...',
+            icon: 'loading',
+            duration: 10000
+        })
         //request goodsId and get this goods detail info
         let app = getApp(),
             data = {
@@ -207,7 +211,7 @@ Page({
                             'user_id': user.id
                         },
                         success(res) {
-
+                            wx.hideToast()
                             var shopcartItems = res.data.items
 
                             //set newBook_price and oldBook_price
