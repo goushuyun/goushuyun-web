@@ -111,10 +111,10 @@ App({
     // shareTitle: '让买卖教材简单点', //购书宝+
     // url: 'https://app.boxcumpus.com', //购书宝+
     // banners: ['http://okxy9gsls.bkt.clouddn.com/banner1.jpg','http://okxy9gsls.bkt.clouddn.com/banner2.jpg'],
-    
+
     url: 'https://app.cumpusbox.com', //购书云
     shareTitle: '新书、二手书售卖及配送', //购书云
-    banners: ['http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg','http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg'],
+    banners: ['http://okxy9gsls.bkt.clouddn.com/banner4.jpg','http://http://okxy9gsls.bkt.clouddn.com/banner3.jpg'],
 
     shop_id: "17012600000001"
 })

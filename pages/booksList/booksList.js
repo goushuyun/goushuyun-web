@@ -40,11 +40,9 @@ Page({
                 }
             }
         })
-
     },
     getMore() {
         let page = this.data.page + 1
-
         //判断是否去做新的请求
         let total_page_number = Math.ceil(this.data.total_number / this.data.size)
 
@@ -66,7 +64,7 @@ Page({
             data.shop_id = app.shop_id
             data.page = this.data.page
             data.size = this.data.size
-
+            data.min_number = 1
             wx.request({
                 url: app.url + '/v1/books/listBooksHideSameIsbn',
                 data: data,
@@ -165,9 +163,6 @@ Page({
                 console.log(res)
             }
         })
-
-
-
     },
     wxSearchInput: function(e) {
         var that = this

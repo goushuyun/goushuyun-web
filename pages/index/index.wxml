@@ -20,12 +20,11 @@
 
 <!-- 轮播图 -->
 <swiper indicator-dots="true" autoplay="true">
-    <swiper-item>
-        <image class="swiper_img" src="{{banners[1]}}"/>
-    </swiper-item>
-    <swiper-item>
-        <image class="swiper_img" src="{{banners[2]}}"/>
-    </swiper-item>
+    <block wx:for="{{banners}}">
+      <swiper-item>
+        <image src="{{item}}" class="swiper_img"/>
+      </swiper-item>
+    </block>
 </swiper>
 
 <!-- icons list -->

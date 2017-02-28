@@ -12,9 +12,9 @@
 
         <view class="input_group address">
             <label>学校/小区</label>
-            <view class="address_operate" bindtap="choAddress">
-                <input  name="address_info" class="text_inline_block address_info" bindfocus="choAddress" value="{{address_info}}"/>
-                <image class="icon right_arrow_icon" src="/images/right_arrow.png"></image>
+            <view class="address_operate">
+                <input  name="address_info" class="text_inline_block" value="{{address_info}}"/>
+                <image class="icon right_arrow_icon" src="/images/location_blue.png" bindtap="choAddress"></image>
             </view>
         </view>
 
