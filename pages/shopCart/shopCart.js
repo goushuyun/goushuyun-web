@@ -1,4 +1,5 @@
- Page({
+var app = getApp()
+Page({
      data: {
          shopName: '',
          goods: [], //购物车所有商品
@@ -36,7 +37,7 @@
          console.log('-----------------------');
          console.log(user_id);
          wx.request({
-             url: 'https://app.cumpusbox.com/v1/orders/GetShopcart',
+             url: app.url + '/v1/orders/GetShopcart',
              data: {
                  user_id: user_id
              },
@@ -113,7 +114,7 @@
              return
          }
          wx.request({
-             url: 'https://app.cumpusbox.com/v1/orders/UpdateOrderItems',
+             url: app.url + '/v1/orders/UpdateOrderItems',
              data: {
                  items: items
              },
@@ -272,7 +273,7 @@
          var self = this
          /* 下单检查 */
          wx.request({
-             url: 'https://app.cumpusbox.com/v1/orders/CheckShopcartNumber',
+             url: app.url + '/v1/orders/CheckShopcartNumber',
              data: checkData,
              method: 'POST',
              success: function(res) {
@@ -311,7 +312,7 @@
          var goods = self.data.goods
          var temp_goods = self.data.temp_goods
          wx.request({
-             url: 'https://app.cumpusbox.com/v1/orders/DeleteOrderItem',
+             url: app.url + '/v1/orders/DeleteOrderItem',
              data: {
                  id: goods[index].id
              },
@@ -381,7 +382,7 @@
      },
      onShareAppMessage(e) {
        return {
-            title: '新书、二手书售卖及配送',
+            title: app.shareTitle,
             path: '/pages/index/index'
         }
      }

@@ -1,3 +1,4 @@
+var app = getApp()
 Page({
     data: {
         remark: ''
@@ -27,7 +28,7 @@ Page({
     },
     onShareAppMessage(e) {
       return {
-           title: '新书、二手书售卖及配送',
+           title: app.shareTitle,
            path: '/pages/index/index'
        }
     }

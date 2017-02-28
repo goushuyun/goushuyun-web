@@ -21,10 +21,10 @@
 <!-- 轮播图 -->
 <swiper indicator-dots="true" autoplay="true">
     <swiper-item>
-        <image class="swiper_img" src="http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg"/>
+        <image class="swiper_img" src="{{banners[1]}}"/>
     </swiper-item>
     <swiper-item>
-        <image class="swiper_img" src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg"/>
+        <image class="swiper_img" src="{{banners[2]}}"/>
     </swiper-item>
 </swiper>
 

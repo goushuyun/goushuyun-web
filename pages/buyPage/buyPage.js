@@ -1,9 +1,11 @@
+var app = getApp()
 Page({
     data: {
         goods: [],
         pre_price: 0,
         total_price: 0,
-        total_number: 0
+        total_number: 0,
+        execute_flag: true
     },
     checkMaxAmount(e) {
         var input = e.detail.value
@@ -43,32 +45,83 @@ Page({
             })
 
             wx.pro.request({
-                url: 'https://app.cumpusbox.com/v1/orders/AddToShopCart',
-                method: 'POST',
-                data: {
-                    items
-                }
-            })
-            .then(res => {
-                // 2XX, 3XX
-                if (res.code == '00000') {
-                    wx.hideToast()
-                }
-            })
-            .catch(err => {
-                // 网络错误、或服务器返回 4XX、5XX
-            })
-
+                    url: app.url + '/v1/orders/AddToShopCart',
+                    method: 'POST',
+                    data: {
+                        items
+                    }
+                })
+                .then(res => {
+                    // 2XX, 3XX
+                    if (res.code == '00000') {
+                        wx.hideToast()
+                    }
+                })
+                .catch(err => {
+                    // 网络错误、或服务器返回 4XX、5XX
+                })
         }
-
     },
     onUnload() {
-        this.addToShopCart()
+        if (this.data.execute_flag) {
+            this.addToShopCart()
+        }
     },
     goToShopCart() {
-        wx.switchTab({
-            url: '/pages/shopCart/shopCart'
-        })
+
+        let user_id = wx.getStorageSync('user').id,
+            items = []
+        var self = this
+        //collect order items
+        for (var i = 0; i < self.data.goods.length; i++) {
+            let el = self.data.goods[i]
+            if (el.buy_amount > 0) {
+                let item = {
+                    user_id: user_id
+                }
+                item.book_title = el.book.title //书名
+                item.type = el.type //类型
+                item.isbn = el.isbn //ISBN
+                item.book_price = el.selling_price //售价
+                item.number = el.buy_amount //购买数量
+                item.goods_id = el.id //商品ID
+                items.push(item)
+            }
+        }
+
+        if (items.length > 0) {
+
+              //send request to add shopcart
+              wx.showToast({
+                  title: '加入购物车...',
+                  icon: 'loading',
+                  duration: 10000
+              })
+            wx.pro.request({
+                    url: app.url + '/v1/orders/AddToShopCart',
+                    method: 'POST',
+                    data: {
+                        items
+                    }
+                })
+                .then(res => {
+                    // 2XX, 3XX
+                    if (res.code == '00000') {
+                        wx.hideToast()
+                        self.data.execute_flag = false
+                        wx.switchTab({
+                            url: '/pages/shopCart/shopCart'
+                        })
+                    }
+                })
+                .catch(err => {
+                    // 网络错误、或服务器返回 4XX、5XX
+                })
+        } else {
+            wx.switchTab({
+                url: '/pages/shopCart/shopCart'
+            })
+        }
     },
     goodsNumberInputBlur(e) {
         var index = e.currentTarget.dataset.index,
@@ -131,7 +184,7 @@ Page({
         var self = this
 
         wx.request({
-            url: 'https://app.cumpusbox.com/v1/books/listBooks',
+            url: app.url + '/v1/books/listBooks',
             method: "POST",
             data: data,
 
@@ -148,7 +201,7 @@ Page({
                     let user = wx.getStorageSync('user')
 
                     wx.request({
-                        url: 'https://app.cumpusbox.com/v1/orders/GetShopcart',
+                        url: app.url + '/v1/orders/GetShopcart',
                         method: "POST",
                         data: {
                             'user_id': user.id
@@ -200,9 +253,9 @@ Page({
         })
     },
     onShareAppMessage(e) {
-      return {
-           title: '新书、二手书售卖及配送',
-           path: '/pages/index/index'
-       }
+        return {
+            title: app.shareTitle,
+            path: '/pages/index/index'
+        }
     }
 })

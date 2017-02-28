@@ -1,3 +1,4 @@
+var app = getApp()
 Page({
     data: {
         name: '',
@@ -95,13 +96,13 @@ Page({
             address: self.data.address_info + '_' + self.data.house_num
         }
         if (self.data.oprate == 'add') {
-            var url = 'https://app.cumpusbox.com/v1/address/addAddress'
+            var url = app.url + '/v1/address/addAddress'
             var data = {
                 user_id: user_id,
                 info: info
             }
         } else {
-            var url = 'https://app.cumpusbox.com/v1/address/updateAddress'
+            var url = app.url + '/v1/address/updateAddress'
             var id = self.data.address_id
             var data = {
                 address_id: id,
@@ -122,7 +123,7 @@ Page({
                     var default_address_id = (self.data.oprate == 'add') ? res.data.address_id : self.data.address_id
                     console.log('default_address_id---'+default_address_id);
                     wx.request({
-                        url: 'https://app.cumpusbox.com/v1/users/SetDefaultAddress',
+                        url: app.url + '/v1/users/SetDefaultAddress',
                         data: {
                             id: user_id,
                             default_address_id: default_address_id
@@ -146,7 +147,7 @@ Page({
                 if (res.confirm) {
                     var address_id = self.data.address_id
                     wx.request({
-                        url: 'https://app.cumpusbox.com/v1/address/deleteAddress',
+                        url: app.url + '/v1/address/deleteAddress',
                         data: {
                             address_id: address_id
                         },
@@ -154,7 +155,7 @@ Page({
                         success: function(res) {
                             if (res.code = '00000') {
                                 wx.request({
-                                    url: 'https://app.cumpusbox.com/v1/users/SetDefaultAddress',
+                                    url: app.url + '/v1/users/SetDefaultAddress',
                                     data: {
                                         id: wx.getStorageSync('user').id,
                                         default_address_id: 'null'
@@ -175,7 +176,7 @@ Page({
     },
     onShareAppMessage(e) {
       return {
-           title: '新书、二手书售卖及配送',
+           title: app.shareTitle,
            path: '/pages/index/index'
        }
     }

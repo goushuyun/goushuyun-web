@@ -5,14 +5,15 @@ Page({
     data: {
         search_val: '',
         school: '',
-        topics: []
+        topics: [],
+        banners: app.banners
     },
     onLoad: function(e) {
         var self = this
         var shop_id = app.shop_id
         var tmp_topics = []
         wx.pro.request({
-                url: 'https://app.cumpusbox.com/v1/activity/list_topics',
+                url: app.url + '/v1/activity/list_topics',
                 data: {
                     shop_id: shop_id
                 },
@@ -26,7 +27,7 @@ Page({
                     (function(topic) {
 
                         wx.pro.request({
-                            url: 'https://app.cumpusbox.com/v1/books/listBooksHideSameIsbn',
+                            url: app.url + '/v1/books/listBooksHideSameIsbn',
                             data: {
                                 shop_id: shop_id,
                                 topic_id: topic.id,
@@ -158,7 +159,7 @@ Page({
     },
     onShareAppMessage(e) {
         return {
-            title: '新书、二手书售卖及配送',
+            title: app.shareTitle,
             path: '/pages/index/index'
         }
     }

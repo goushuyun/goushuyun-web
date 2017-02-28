@@ -1,6 +1,5 @@
 var utils = require('../../libs/utils')
-
-
+var app = getApp()
 Page({
     data: {
         tabs: ['全部', '待付款', '待发货', '待收货', '已完成'],
@@ -35,7 +34,7 @@ Page({
         console.log(order_id)
 
         wx.request({
-            url: 'https://app.cumpusbox.com/v1/payment/delayed_pay',
+            url: app.url + '/v1/payment/delayed_pay',
             method: 'POST',
             data: {
                 order_id
@@ -109,7 +108,7 @@ Page({
 
         var self = this
         wx.request({
-            url: 'https://app.cumpusbox.com/v1/orders/get_my_orders',
+            url: app.url + '/v1/orders/get_my_orders',
             method: 'POST',
             data,
             success(res) {
@@ -220,7 +219,7 @@ Page({
         console.log(order_id)
 
         wx.request({
-            url: 'https://app.cumpusbox.com/v1/orders/accept_order',
+            url: app.url + '/v1/orders/accept_order',
             method: 'POST',
             data: {
                 order_ids: [order_id]
@@ -269,7 +268,7 @@ Page({
                     console.log(order_ids)
 
                     wx.request({
-                        url: 'https://app.cumpusbox.com/v1/orders/cancel_order',
+                        url: app.url + '/v1/orders/cancel_order',
                         method: 'POST',
                         data: {
                             order_ids
@@ -285,7 +284,7 @@ Page({
     },
     onShareAppMessage(e) {
       return {
-           title: '新书、二手书售卖及配送',
+           title: app.shareTitle,
            path: '/pages/index/index'
        }
     }

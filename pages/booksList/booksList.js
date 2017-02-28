@@ -24,7 +24,7 @@ Page({
         data.min_number = 1
         var self = this
         wx.request({
-            url: 'https://app.cumpusbox.com/v1/books/listBooksHideSameIsbn',
+            url: app.url + '/v1/books/listBooksHideSameIsbn',
             method: 'POST',
             data: data,
             success(res) {
@@ -68,7 +68,7 @@ Page({
             data.size = this.data.size
 
             wx.request({
-                url: 'https://app.cumpusbox.com/v1/books/listBooksHideSameIsbn',
+                url: app.url + '/v1/books/listBooksHideSameIsbn',
                 data: data,
                 method: "POST",
                 success: function(res) {
@@ -100,7 +100,7 @@ Page({
             }
 
             wx.request({
-                url: 'https://app.cumpusbox.com/v1/books/listBooksHideSameIsbn',
+                url: app.url + '/v1/books/listBooksHideSameIsbn',
                 method: "POST",
                 data: data,
                 success(res) {
@@ -153,7 +153,7 @@ Page({
         }
 
         wx.request({
-            url: 'https://app.cumpusbox.com/v1/books/listBooksHideSameIsbn',
+            url: app.url + '/v1/books/listBooksHideSameIsbn',
             method: "POST",
             data: data,
             success(res) {
@@ -208,7 +208,7 @@ Page({
     },
     onShareAppMessage(e) {
       return {
-           title: '新书、二手书售卖及配送',
+           title: app.shareTitle,
            path: '/pages/index/index'
        }
     }

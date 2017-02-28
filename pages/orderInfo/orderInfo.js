@@ -1,5 +1,6 @@
 var orderStatus = require('../../common/js/orderStatus.js')
 var utils = require('../../libs/utils.js')
+var app = getApp()
 Page({
     data: {
         present_order: {},
@@ -22,7 +23,7 @@ Page({
         var self = this
         var order_id = order_id
         wx.request({
-            url: 'https://app.cumpusbox.com/v1/orders/get_my_orders',
+            url: app.url + '/v1/orders/get_my_orders',
             data: {
                 page: 1, //页数   required
                 size: 10, //每页大小  required
@@ -40,7 +41,7 @@ Page({
                 // if (out_time < 0 && present_order.order_status==1) {
                 //     var order_ids = [order_id]
                 //     wx.request({
-                //         url: 'https://app.cumpusbox.com/v1/orders/cancel_order',
+                //         url: app.url + '/v1/orders/cancel_order',
                 //         method: 'POST',
                 //         data: {
                 //             order_ids
@@ -105,7 +106,7 @@ Page({
                     console.log(order_ids)
 
                     wx.request({
-                        url: 'https://app.cumpusbox.com/v1/orders/cancel_order',
+                        url: app.url + '/v1/orders/cancel_order',
                         method: 'POST',
                         data: {
                             order_ids
@@ -125,7 +126,7 @@ Page({
         var order_id = self.data.order_id
         console.log(order_id)
         wx.request({
-            url: 'https://app.cumpusbox.com/v1/orders/accept_order',
+            url: app.url + '/v1/orders/accept_order',
             method: 'POST',
             data: {
                 order_ids: [order_id]
@@ -147,7 +148,7 @@ Page({
         })
         console.log(order_id)
         wx.request({
-            url: 'https://app.cumpusbox.com/v1/payment/delayed_pay',
+            url: app.url + '/v1/payment/delayed_pay',
             method: 'POST',
             data: {
                 order_id
@@ -183,7 +184,7 @@ Page({
     },
     onShareAppMessage(e) {
       return {
-           title: '新书、二手书售卖及配送',
+           title: app.shareTitle,
            path: '/pages/index/index'
        }
     }

@@ -21,7 +21,7 @@ Page({
         /* 请求该用户默认地址 */
         var user_id = wx.getStorageSync('user').id
         wx.request({
-            url: 'https://app.cumpusbox.com/v1/address/GetMyAddresses',
+            url: app.url + '/v1/address/GetMyAddresses',
             data: {
                 user_id: user_id
             },
@@ -164,7 +164,7 @@ Page({
         console.log(order)
 
         wx.request({
-            url: 'https://app.cumpusbox.com/v1/orders/PlaceOrder',
+            url: app.url + '/v1/orders/PlaceOrder',
             data: order,
             method: 'POST',
             success: function(res) {
@@ -213,7 +213,7 @@ Page({
     },
     onShareAppMessage(e) {
       return {
-           title: '新书、二手书售卖及配送',
+           title: app.shareTitle,
            path: '/pages/index/index'
        }
     }

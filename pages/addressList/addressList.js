@@ -1,3 +1,4 @@
+var app = getApp()
 Page({
     data: {
         addresses: []
@@ -5,7 +6,7 @@ Page({
     onShow: function(e) {
         var self = this
         wx.request({
-            url: 'https://app.cumpusbox.com/v1/address/GetMyAddresses',
+            url: app.url + '/v1/address/GetMyAddresses',
             data: {
                 user_id: wx.getStorageSync('user').id
             },
@@ -23,7 +24,7 @@ Page({
         var index = parseInt(e.currentTarget.dataset.index)
         var address = this.data.addresses[index]
         wx.request({
-            url: 'https://app.cumpusbox.com/v1/users/SetDefaultAddress',
+            url: app.url + '/v1/users/SetDefaultAddress',
             data: {
                 id: wx.getStorageSync('user').id,
                 default_address_id: address.id
@@ -52,7 +53,7 @@ Page({
     },
     onShareAppMessage(e) {
       return {
-           title: '新书、二手书售卖及配送',
+           title: app.shareTitle,
            path: '/pages/index/index'
        }
     }

@@ -1,4 +1,5 @@
 var orderStatus = require('../../common/js/orderStatus.js')
+var app = getApp()
 Page({
     data: {
         order: {
@@ -54,7 +55,7 @@ Page({
     },
     onShareAppMessage(e) {
       return {
-           title: '新书、二手书售卖及配送',
+           title: app.shareTitle,
            path: '/pages/index/index'
        }
     }

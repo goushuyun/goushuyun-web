@@ -2,6 +2,7 @@ App({
     onLaunch() {
         //while app onLaunch, user login and get user info
         console.log('onLaunch')
+        var self = this
         //user login
         wx.login({
             success(res) {
@@ -10,7 +11,7 @@ App({
                 if (res.code) {
                     // login success
                     wx.request({
-                        url: "https://app.cumpusbox.com/v1/weixin/getKeyAndOpenid",
+                        url: self.url + '/v1/weixin/getKeyAndOpenid',
                         data: {
                             code: res.code
                         },
@@ -42,7 +43,7 @@ App({
                                     console.log("**********************")
 
                                     wx.request({
-                                        url: "https://app.cumpusbox.com/v1/weixin/DecryptUserInfo",
+                                        url: self.url + '/v1/weixin/DecryptUserInfo',
                                         data: data,
                                         method: "POST",
                                         success(res) {
@@ -78,7 +79,7 @@ App({
 
                             // save shop name into localstorage
                             wx.request({
-                                url: 'https://app.cumpusbox.com/v1/admin/getShopInfo',
+                                url: self.url + '/v1/admin/getShopInfo',
                                 data: {
                                     id: shop_id
                                 },
@@ -106,6 +107,14 @@ App({
             }
         })
     },
+
+    // shareTitle: '让买卖教材简单点', //购书宝+
+    // url: 'https://app.boxcumpus.com', //购书宝+
+    // banners: ['http://okxy9gsls.bkt.clouddn.com/banner1.jpg','http://okxy9gsls.bkt.clouddn.com/banner2.jpg'],
+    
+    url: 'https://app.cumpusbox.com', //购书云
+    shareTitle: '新书、二手书售卖及配送', //购书云
+    banners: ['http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg','http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg'],
 
     shop_id: "17012600000001"
 })
