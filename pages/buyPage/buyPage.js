@@ -211,7 +211,6 @@ Page({
                             'user_id': user.id
                         },
                         success(res) {
-                            wx.hideToast()
                             var shopcartItems = res.data.items
 
                             //set newBook_price and oldBook_price
@@ -238,6 +237,7 @@ Page({
                                 "goods": goods_items
                             })
 
+                            wx.hideToast()
                             //设置购物车内商品总价、总数量
                             if (res.data.code == '00000') {
                                 self.setData({

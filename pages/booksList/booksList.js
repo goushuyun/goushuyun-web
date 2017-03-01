@@ -13,6 +13,10 @@ Page({
         total_number: 0
     },
 
+    enterSearch(e){
+        this.standardSearch(e.detail.value)
+    },
+
     getData() {
         //list all books of this category
         var app = getApp(),
@@ -109,7 +113,7 @@ Page({
 
         }else {
             //类别罗列
-            
+
             this.category = options.category
             this.getData()
         }
@@ -119,19 +123,16 @@ Page({
         WxSearch.initMindKeys([]);
     },
 
-    wxSearchFn: function(e) {
-        var that = this
-        WxSearch.wxSearchAddHisKey(that);
+    standardSearch(search_val){
+        if(search_val.trim == '') return
 
-        //the value in input is this.data.wxSearchData.value
-        let search_val = this.data.wxSearchData.value,
-            data = {
-                page: this.data.page,
-                size: this.data.size,
-                min_number: 1
-            },
-            app = getApp()
-        data.shop_id = app.shop_id
+        var app = getApp(), self = this
+        let data = {
+            shop_id: app.shop_id,
+            page: this.data.page,
+            size: this.data.size,
+            min_number: 1
+        }
 
         if (/^\d{10,13}$/.test(search_val)) {
             // isbn
@@ -147,13 +148,31 @@ Page({
             data: data,
             success(res) {
                 //set new result books
-                that.setData({
+                self.setData({
                     books: res.data.data
+
                 })
 
+                var temData = self.data.wxSearchData;
+                temData.view.isShow = false;
+                self.setData({
+                    wxSearchData: temData
+                });
                 console.log(res)
             }
         })
+
+    },
+
+
+    wxSearchFn: function(e) {
+        var that = this
+        WxSearch.wxSearchAddHisKey(that);
+
+        //the value in input is this.data.wxSearchData.value
+        let search_val = this.data.wxSearchData.value
+
+        this.standardSearch(search_val)
     },
     wxSearchInput: function(e) {
         var that = this
