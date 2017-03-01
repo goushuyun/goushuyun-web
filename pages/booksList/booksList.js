@@ -18,6 +18,11 @@ Page({
     },
 
     getData() {
+        wx.showToast({
+            title: '加载中...',
+            icon: 'loading',
+            duration: 10000
+        })
         //list all books of this category
         var app = getApp(),
             data = {}
@@ -40,8 +45,8 @@ Page({
                         books: self.data.books.concat(res.data.data),
                         total_number: res.data.total
                     })
-
                 }
+                wx.hideToast()
             }
         })
     },
