@@ -7,6 +7,14 @@ Page({
         total_number: 0,
         execute_flag: true
     },
+    showBigPic(e) {
+        var urls = []
+        urls.push(this.data.goods[0].book.pic)
+        wx.previewImage({
+            current: '', // 当前显示图片的http链接
+            urls: urls // 需要预览的图片http链接列表
+        })
+    },
     checkMaxAmount(e) {
         var input = e.detail.value
         let index = e.currentTarget.dataset.index

@@ -18,11 +18,6 @@ Page({
     },
 
     getData() {
-        wx.showToast({
-            title: '加载中...',
-            icon: 'loading',
-            duration: 10000
-        })
         //list all books of this category
         var app = getApp(),
             data = {}
@@ -56,11 +51,17 @@ Page({
         let total_page_number = Math.ceil(this.data.total_number / this.data.size)
 
         if (page <= total_page_number) {
+            wx.showToast({
+                title: '加载中...',
+                icon: 'loading',
+                duration: 10000
+            })
             this.setData({
                 page: page
             })
 
             this.getData()
+            wx.hideToast()
         }
     },
     onLoad: function(options) {
