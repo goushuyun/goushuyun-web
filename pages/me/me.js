@@ -4,7 +4,6 @@ Page({
     data: {
         tabs: ['全部', '待付款', '待发货', '待收货', '已完成'],
         currentPage: 0,
-        avatar: '',
         seller_tel: '',
 
         //订单信息
@@ -167,19 +166,14 @@ Page({
         })
 
     },
-    onLoad() {
+    onLoad(options) {
         var self = this
-
+        self.setData({
+          currentPage:options.currentPage
+        })
         //页面初始加载后即刻拿到该用户【全部】类型的订单
         var user = wx.getStorageSync('user')
-        var avatarUrl = ''
-        if (!user.avatarUrl) {
-            avatarUrl = '/images/default_avatar.png'
-        } else {
-            avatarUrl = user.avatarUrl
-        }
         self.setData({
-            avatar: avatarUrl,
             user_id: user.id
         })
 

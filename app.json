@@ -1,6 +1,8 @@
 {
     "pages": [
         "pages/index/index",
+        "pages/self/self",
+        "pages/refund/refund",
         "pages/me/me",
         "pages/addressList/addressList",
         "pages/settlement/settlement",
@@ -10,12 +12,12 @@
         "pages/buyPage/buyPage",
         "pages/booksList/booksList",
         "pages/shopDetail/shopDetail",
-        "pages/shopCart/shopCart",
-        "pages/refund/refund"
+        "pages/shopCart/shopCart"
     ],
     "window": {
         "navigationBarTitleText": "购书云",
-        "navigationBarBackgroundColor": "#1581D9"
+        "navigationBarBackgroundColor": "#1581D9",
+        "backgroundColor":"#EFF3F7"
     },
     "tabBar": {
         "color": "#bfbfbf",
@@ -33,7 +35,7 @@
             "iconPath": "images/cart.png",
             "selectedIconPath": "images/cart_focus.png"
         }, {
-            "pagePath": "pages/me/me",
+            "pagePath": "pages/self/self",
             "text": "我",
             "iconPath": "images/me.png",
             "selectedIconPath": "images/me_focus.png"

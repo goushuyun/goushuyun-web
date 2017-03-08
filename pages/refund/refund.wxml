@@ -1,51 +1,57 @@
-<scroll-view id="containt" class="body direction-column" scroll-y="true">
-
-  <view id="orderInfo" class="white-bc font5 padding10 box-shadow">
-    <view class="padding-lr5"><text>订单编号：</text><text>{{order.id}}</text></view>
-    <view class="padding-lr5"><text>下单时间：</text><text>{{order.time}}</text></view>
-    <view class="padding-lr5"><text>订单状态：</text><text>{{order.status.mark}}</text></view>
-  </view>
-
-  <view id="refundInfo" class="direction-column white-bc font5 padding-lr5 box-shadow">
-    <view class="padding10 border-bottom"><text class="font15 font0">退款说明</text></view>
-    <view class="padding-lr10">
-      <textarea class="font13" maxlength="300" fixed="true" placeholder="请输入退款说明"/>
-    </view>
-    <view class="padding10 justify-end"><text class="font12">{{n}}/300</text></view>
-  </view>
-
-  <view id="pictures" class="direction-column white-bc font5 padding-lr5 box-shadow">
-    <view class="padding10 border-bottom"><text class="font15 font0">上传照片</text></view>
-    <view class="direction-row padding10">
-      <view wx:for="{{images}}" class="padding5 box">
-        <view class="delet icon24" data-index="{{index}}" bindtap="deletPicture"><image class="icon24" src="/images/delet.png"/></view>
-        <view class="image"><image class="carts-image padding5" src="{{item}}" mode="aspectFill"/></view>
-      </view>
-      <view wx:if="{{images.length < 3}}" class="padding5" bindtap="addPicture">
-        <view class="image"><image class="carts-image padding5" src="/images/addPicture.png"></image></view>
-      </view>
-    </view>
-    <view class="padding10">
-      <text class="font12">为了帮助我们更好的解决问题，请上传照片，最多3张，每张不超过5M，支持JPG、BPM、PNG</text>
-    </view>
-  </view>
-
-  <view id="shopInfo" class="direction-column white-bc font15 font5 padding10 padding-tb5 box-shadow">
-      <view class="justify-between padding5 border-bottom">
-          <text class="left">联系商家</text>
-          <text class="center">点击右侧图标站内私信</text>
+<form bindsubmit="formSubmit">
+    <scroll-view id="containt" scroll-y="true">
+        <view id="orderInfo">
+          <view class="item">订单编号：{{present_order.order_id}}</view>
+          <view class="item">下单时间：{{present_order.order_at}}</view>
+          <view class="item">订单状态：{{order_status_description.mark}}</view>
+        </view>
+        <view id="refundInfo">
           <view>
-            <image class="right icon24 wrap" src="/images/shopDetail/message.png"></image>
+            <text class="item_title">退款说明</text>
+            <text class="text_flag">*</text>
           </view>
-      </view>
-      <view class="justify-between padding5 border-top">
-          <text class="left">客服电话</text>
-          <text class="center">{{tell}}</text>
-          <view>
-            <image class="right icon24 wrap" src="/images/shopDetail/tell.png" bindtap="callPhone"></image>
+          <view class="textarea">
+            <textarea name="content_desc" maxlength="300" placeholder="请输入退款说明" bindinput="listenN"/>
+            <view class="number">{{n}}/300</view>
           </view>
-      </view>
-  </view>
+        </view>
 
-</scroll-view>
-<view id="foot_btn" class="foot align-center justify-center white"><text>提交申请</text></view>
+        <view wx:if="{{order_status_description.code!=2}}" id="refundAmount">
+          <view class="border-bottom">
+            <text class="item_title">退款金额</text>
+            <text class="text_flag">*</text>
+            <text class="font8">(扣除5元运费,最多退款￥{{present_order.total_price}})</text>
+          </view>
+          <view class="input_area red">
+            <input name="require_refund_fee" class="item_price" type="digit" placeholder="请输入退款金额" bindblur="checkMaxAmount" value="{{input_price}}"/>
+          </view>
+        </view>
+
+        <view id="pictures">
+          <view>
+            <text class="item_title">上传照片</text>
+          </view>
+          <view class="direction-row">
+            <view wx:for="{{images}}" class="box">
+              <view class="delet icon24" data-index="{{index}}" bindtap="deletPicture"><image class="icon24" src="/images/delet.png"/></view>
+              <image class="carts-image" src="{{item}}" mode="aspectFill"/>
+            </view>
+            <view wx:if="{{images.length < 4}}" class="box" bindtap="addPicture">
+              <image class="carts-image" src="/images/addPicture.png"></image>
+            </view>
+          </view>
+          <view class="font12 des_area">
+            <text>为了帮助我们更好的解决问题，请上传照片，最多4张，每张不超过5M，支持JPG、BPM、PNG</text>
+          </view>
+        </view>
+
+        <view id="shopInfo" class="justify-between" bindtap="callPhone">
+          <text class="item_title">商家电话</text>
+          <text style="color:#888888">{{tel}}</text>
+          <view>
+            <image class="right icon24 wrap" src="/images/shopDetail/tell.png"></image>
+          </view>
+        </view>
+    </scroll-view>
+    <view id="unshow_button" class="foot"><button hover-class="color:#4794d4" formType="submit">提交申请</button></view>
+</form>

@@ -1,51 +1,97 @@
 #containt {
-  top: 0
+  /*position: fixed;*/
+  /*top: 0px;
+  bottom: 46px;*/
+  background-color: #EFF3F7
 }
-#orderInfo,#refundInfo,#pictures,#shopInfo {
-  margin-top: 6px
+#orderInfo,#refundInfo,#pictures,#shopInfo,#refundAmount {
+  margin: 6px 0;
+  background-color: #FFFFFF;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+  padding: 5px 15px;
+  font-size: 14px;
 }
-#foot_btn {
-  background-color: #1581D9
+#orderInfo .item {
+  line-height: 25px;
+  color: #888888
+}
+.item_title {
+  height: 40px;
+  line-height: 40px;
+  font-size: 15px;
+}
+.item_price {
+  height: 44px;
+}
+.text_flag {
+  padding-left: 3px;
+  color: #C60C1B
 }
 
-view.box{
+#refundInfo .textarea {
+  box-sizing: border-box;
+  margin-top: 3px;
+  width: 100%;
+  border: 1px solid #f4f3f3;
+  border-radius: 4px;
+  font-size: 13px;
+  background-color: #EFF3F7;
+  margin-bottom: 10px;
+}
+#refundInfo .number {
+  text-align: right;
+  padding: 5px;
+}
+#refundInfo textarea {
+  box-sizing: border-box;
+  margin-top: 3px;
+  height: 80px;
+  width: 100%;
+  padding: 5px 5px 0 5px;
+  background-color: #EFF3F7;
+}
+
+#refundAmount {
+  padding: 0 15px;
+  font-size: 14px;
+  line-height: 44px;
+}
+#shopInfo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 56px;
+}
+#pictures .box{
   position: relative;
+  margin-top: 3px;
 }
-
-.delet {
+#pictures .delet {
   z-index: 2;
   position: absolute;
-  right:-2px;
-  top: -2px;
+  right: 2px;
+  top: -12px;
 }
-.image {
-  z-index: 1
-}
-
-.left {
-  flex-basis:20%
-}
-.center {
-  flex-basis:60%
-}
-.right {
-  flex-basis:20%
-}
-.carts-image {
-  width: 58px;
-  height: 73px;
+#pictures .carts-image {
+  margin-right: 15px;
+  z-index: 1;
+  width: 140rpx;
+  height: 140rpx;
   border-radius: 4px;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+  /*box-shadow: 0 1px 1px rgba(0, 0, 0, .1);*/
 }
-
-textarea{
-    box-sizing: border-box;
-    margin: 12px 0;
-    height: 100px;
-    width: 100%;
-    border: 1px solid #f4f3f3;
-    border-radius: 4px;
-    font-size: 13px;
-    padding: 16px 12px;
-    background-color: #EFF3F7;
+#pictures .des_area {
+  color: #888888;
+  font-size: 12px;
+  line-height: 18px;
+  margin: 10px 0;
+}
+#unshow_button {
+   width: 780rpx;
+   left: -15rpx;
+}
+button{
+  background-color: #1581D9;
+  color: #FFFFFF;
+  height: 100%;
+  width: 100%;
 }

@@ -1,0 +1,59 @@
+<import src="order.wxml"/>
+<scroll-view id="body" scroll-y="true">
+  <view id="top">
+    <!-- <navigator class="address_mag" hover-class="none" url="https://www.baidu.com">地址管理</navigator> -->
+    <image class="head_img" src="{{avatar}}"/>
+  </view>
+  <view id="iconsTitle" data-category="0" bindtap="goToOrder">
+    <text>我的订单</text>
+    <view class="title_msg align-center">
+      <text class="font12 font8">查看更多订单</text>
+      <image class="icon24" src="/images/right_arrow.png"/>
+    </view>
+  </view>
+  <view id="status_icons">
+    <view class="category_icon" data-category="1" bindtap="goToOrder">
+        <view class="amount">1</view>
+        <image class="icon_img" src="/images/self/pay.png"></image>
+        <text class="category_name">待付款</text>
+    </view>
+    <view class="category_icon" data-category="2" bindtap="goToOrder">
+        <view class="amount">2</view>
+        <image class="icon_img" src="/images/self/send.png"></image>
+        <text class="category_name">待发货</text>
+    </view>
+    <view class="category_icon" data-category="3" bindtap="goToOrder">
+        <view class="amount">3</view>
+        <image class="icon_img" src="/images/self/deliver.png"></image>
+        <text class="category_name">待收货</text>
+    </view>
+    <view class="category_icon" data-category="4" bindtap="goToOrder">
+        <image class="icon_img" src="/images/self/evaluate.png"></image>
+        <text class="category_name">已完成</text>
+    </view>
+    <view class="category_icon" data-category="5">
+        <view class="amount">99</view>
+        <image class="icon_img" src="/images/self/recharge.png"></image>
+        <text class="category_name">售后</text>
+    </view>
+  </view>
+  <view id="iconsTitle" bindtap="toMe">
+    <text>常用工具</text>
+  </view>
+  <view id="tools_icons">
+    <view class="category_icon" data-category="1" bindtap="address_manage">
+        <image class="icon_img" src="/images/self/address_manage.png"></image>
+        <text class="category_name">地址管理</text>
+    </view>
+    <view class="category_icon" data-category="2" bindtap="shopInfo">
+        <image class="icon_img" src="/images/self/shop_info.png"></image>
+        <text class="category_name">商家信息</text>
+    </view>
+    <view class="category_icon" data-category="5" bindtap="shareApp">
+        <image class="icon_img" src="/images/self/share.png"></image>
+        <text class="category_name">环保接力</text>
+    </view>
+    <view class="category_icon" data-category="3" bindtap="">
+    </view>
+  </view>
+</scroll-view>

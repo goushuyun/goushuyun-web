@@ -1,37 +1,115 @@
-/* pages/me/me.wxss */
-view.top{
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: #1581D9;
+#body {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #EFF3F7
 }
 
-view.tabs{
-    margin-top: 2px;
+/* 头像部分 */
+#top{
+    height: 100px;
+    width: 100%;
+    background-color: #1581D9;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+}
+#top .address_mag{
+    color: white;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: right;
+    box-sizing: border-box;
+    padding: 0 12px;
+    color: #F9FAFC;
+}
+#top .head_img{
+    border-radius: 50%;
+    width: 52px;
+    height: 52px;
+    margin: 0 auto;
+    display: block;
+}
+
+/* icons list */
+#iconsTitle{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #F4F3F3;
+    height: 38px;
+    line-height: 38px;
+    font-size: 15px;
+    padding: 0 12px;
+    margin-top: 10px
+}
+#status_icons,#tools_icons{
+    background-color: #FFFFFF;
+    padding: 12px 0;
+    align-items: center;
     display: flex;
     justify-content: space-around;
-    font-size: 14px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .1)
 }
-.tab{
-    line-height: 42px;
-    color: #7DCFFF;
-    height: 42px;
-    box-sizing: border-box;
+#status_icons .amount{
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1.25px solid #1581D9;
+    background-color: #FFFFFF;
+    line-height: 14px;
+    text-align: center;
+    color: #1581D9;
+    position: absolute;
+    font-size: 10px;
+    right: -3px;
+    z-index: 2;
 }
-.currentTab{
-    border-bottom: 1px solid #FCFDFF;
-    color: #FCFDFF;
+#status_icons .category_icon{
+    position: relative;
+    text-align: center;
+    height: 49px;
+    width: 36px
+}
+#status_icons .category_name{
+    display: block;
+    text-align: center;
+    font-size: 12px;
+    color: #555;
+}
+#status_icons .icon_img{
+    padding: 4px 0 2px 0;
+    width: 24px;
+    height: 24px;
+}
+#tools_icons .category_icon{
+    position: relative;
+    text-align: center;
+    width: 50px
+}
+#tools_icons .category_name{
+    padding: 4px 0;
+    display: block;
+    text-align: center;
+    font-size: 12px;
+    color: #555;
+}
+#tools_icons .icon_img{
+    padding: 4px 0;
+    width: 30px;
+    height: 30px;
 }
 
 /* orders list */
 view#container{
     background-color: #EFF3F7;
-    top: 44px;
+    top: 124px;
     position: fixed;
     bottom: 0;
     width: 100%;
 }
-
 
 swiper{
     width: 100%;

@@ -1,8 +1,8 @@
 <import src="order.wxml"/>
 
 <view class="top">
-    <navigator class="address_mag" hover-class="none" url="/pages/addressList/addressList">地址管理</navigator>
-    <image class="head_img" src="{{avatar}}"/>
+    <!-- <navigator class="address_mag" hover-class="none" url="/pages/addressList/addressList">地址管理</navigator>
+    <image class="head_img" src="{{avatar}}"/> -->
 
     <view class="tabs" >
         <view class="tab {{currentPage == index ? 'currentTab': ''}}" wx:for="{{tabs}}" data-index="{{index}}" bindtap="goToPage" wx:key="*this">{{item}}</view>

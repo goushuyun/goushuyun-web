@@ -1,0 +1,61 @@
+var utils = require('../../libs/utils')
+var app = getApp()
+Page({
+    data: {
+        avatar: '',
+        user_id: ''
+    },
+    goToOrder(e) {
+        wx.navigateTo({
+            url:'/pages/me/me?currentPage=' + e.currentTarget.dataset.category
+        })
+    },
+    onLoad() {
+        var self = this
+        //页面初始加载后即刻拿到该用户【全部】类型的订单
+        var user = wx.getStorageSync('user')
+        var avatarUrl = ''
+        if (!user.avatarUrl) {
+            avatarUrl = '/images/default_avatar.png'
+        } else {
+            avatarUrl = user.avatarUrl
+        }
+        self.setData({
+            avatar: avatarUrl,
+            user_id: user.id
+        })
+        var shop = wx.getStorage({
+            key: 'shop',
+            success(res) {
+                self.setData({
+                    seller_tel: res.data.tel
+                })
+            }
+        })
+    },
+    address_manage(){
+      wx.navigateTo({
+        url:'/pages/addressList/addressList'
+      })
+    },
+    shopInfo(){
+      wx.navigateTo({
+        url:'/pages/shopDetail/shopDetail'
+      })
+    },
+    shareApp(e) {
+        var urls = []
+        urls.push('http://okxy9gsls.bkt.clouddn.com/qr_code.jpg')
+        wx.previewImage({
+            current: '', // 当前显示图片的http链接
+            urls: urls // 需要预览的图片http链接列表
+        })
+    },
+    onShareAppMessage(e) {
+      return {
+           title: app.shareTitle,
+           path: '/pages/index/index'
+       }
+    }
+
+})
