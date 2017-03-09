@@ -27,7 +27,7 @@
         </view>
         <view class="btns">
             <!-- 除未支付的订单外，显示申请售后按钮 -->
-            <button wx:if="{{order.order_status > 1 || order.order_status < 5}}" class="btn primary btn-small" hover-class="btnactive" data-id="{{order.order_id}}" bindtap="applyRefund">申请售后</button>
+            <button wx:if="{{order.order_status > 1 && order.order_status < 5}}" class="btn primary btn-small" hover-class="btnactive" data-id="{{order.order_id}}" bindtap="applyRefund">申请售后</button>
 
             <!-- 未支付的订单，显示去支付按钮 -->
             <button wx:if="{{order.order_status == 1}}" class="btn primary btn-small" hover-class="btnactive" data-id="{{order.order_id}}" bindtap="toPay">去支付</button>

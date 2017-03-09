@@ -111,21 +111,15 @@ Page({
             method: 'POST',
             data,
             success(res) {
-
                 var respData = res.data
-
                 if (respData.code == '00000') {
-
                     var orders = respData.data.map(el => {
                         el.total_price = (el.total_price / 100).toFixed(2)
                         el.freight = (el.freight / 100).toFixed(2)
-
                         for (var i = 0; i < el.items.length; i++) {
                             el.items[i].book_price = (el.items[i].book_price / 100).toFixed(2)
                         }
-
                         el.order_at_time = utils.unixTimestamp2DateStr(el.order_at)
-
                         return el
                     })
 
@@ -134,9 +128,7 @@ Page({
                     var wait_accept_orders = []
                     var accepted_orders = []
 
-
                     //每次拿到 orders 数据之后，根据订单状态将订单拆分
-
                     for (var i = 0; i < orders.length; i++) {
                         if (orders[i].order_status == 1) {
                             wait_pay_orders.push(orders[i])
@@ -152,19 +144,15 @@ Page({
                         total: respData.total,
                         orders: orders,
                     })
-
                     self.setData({
                         wait_pay_orders,
                         wait_send_orders,
                         wait_accept_orders,
                         accepted_orders
                     })
-
                 }
-
             }
         })
-
     },
     onLoad(options) {
         var self = this
@@ -176,7 +164,6 @@ Page({
         self.setData({
             user_id: user.id
         })
-
         var shop = wx.getStorage({
             key: 'shop',
             success(res) {
@@ -185,33 +172,16 @@ Page({
                 })
             }
         })
-
-
         //获取商户头像
         var shop = wx.getStorageSync('shop')
-
-        console.log(shop.logo)
-
         self.setData({
             shop_logo: shop.logo
         })
-
-        // wx.getStorage({
-        //     key: 'shop',
-        //     success(res){
-        //         console.log(res.data.logo)
-        //
-        //     }
-        // })
-
-
     },
 
     comfirmAccept(e) {
         let order_id = e.currentTarget.dataset.id,
             self = this
-        console.log(order_id)
-
         wx.request({
             url: app.url + '/v1/orders/accept_order',
             method: 'POST',
@@ -220,8 +190,6 @@ Page({
             },
             success(res) {
                 if (res.data.code == '00000') {
-                    console.log(res.data)
-
                     wx.navigateTo({
                         url: '/pages/orderInfo/orderInfo?order_id' + order_id
                     })
@@ -229,17 +197,13 @@ Page({
                 }
             }
         })
-
     },
-
-
     goToPage(e) {
         this.setData({
             currentPage: e.target.dataset.index
         })
     },
     callSeller() {
-
         wx.makePhoneCall({
             phoneNumber: this.data.seller_tel
         })
