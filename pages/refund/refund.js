@@ -8,117 +8,128 @@ Page({
         input_price: '',
         n: 0, //已输入字数
         images: [],
-        tel: '',
-        requestData: []
+        tel: ''
     },
     formSubmit: function(e) {
         var self = this
         var refund_info = e.detail.value
         var imgs = self.data.images
-        var count = 0
-        for (var i = 0; i < imgs.length; i++) {
-          (function(img) {
-              wx.pro.request({
-                  url: app.url + '/v1/mediastore/getUpToken',
-                  data: {
-                    zone: 1,
-                    key: i
-                  },
-                  method: "POST"
-              }).then(res => {
-                  console.log(res);
-                  // if (res.data.message=='ok') {
-                  //   wx.uploadFile({
-                  //     url: 'http://upload.qiniu.com/', //仅为示例，非真实的接口地址
-                  //     filePath: img,
-                  //     name: 'file',
-                  //     formData:{
-                  //       'user': 'test'
-                  //     },
-                  //     success: function(res){
-                  //       var data = res.data
-                  //       //do something
-                  //     }
-                  //   })
-                  // }
-              })
-          })(imgs[i])
+
+        if (!refund_info.content_desc) {
+            wx.showModal({
+                title: '请输入退款说明',
+                showCancel: false
+            })
+            return
         }
+        if (self.data.order_status_description.code != 2 && !refund_info.require_refund_fee) {
+            wx.showModal({
+                title: '请输入退款金额',
+                showCancel: false
+            })
+            return
+        }
+
+        wx.showToast({
+            title: '提交申请中...',
+            icon: 'loading',
+            duration: 10000
+        })
+
+        var keys = []
+
+        /* 上传图片 */
+        for (var i = 0; i < imgs.length; i++) {
+            (function(img) {
+                var present_key = self.data.present_order.order_id + '/' + i
+                keys.push(present_key)
+                wx.pro.request({
+                    url: app.url + '/v1/mediastore/getUpToken',
+                    data: {
+                        zone: 1,
+                        key: present_key
+                    },
+                    method: "POST"
+                }).then(res => {
+                    console.log(res);
+                    if (res.code == '00000') {
+                        var token = res.data.token
+                        var keys = self.data.keys
+                        wx.uploadFile({
+                            url: 'https://upload.qbox.me/', //仅为示例，非真实的接口地址
+                            filePath: img,
+                            name: 'file',
+                            formData: {
+                                'key': present_key,
+                                'token': token
+                            }
+                        })
+                    }
+                })
+            })(imgs[i])
+        }
+
+        /* 提交售后 */
+        wx.pro.request({
+            url: app.url + '/v1/orders/refund_apply',
+            data: {
+                "trade_code": self.data.present_order.trade_code,
+                "require_refund_fee": Number(self.data.order_status_description.code != 2 ? refund_info.require_refund_fee * 100 : self.data.present_order.total_price * 100),
+                "total_fee": Number(self.data.present_order.total_price * 100),
+                "content_desc": refund_info.content_desc,
+                "images": keys.join()
+            },
+            method: "POST"
+        }).then(res => {
+            if (res.code == '00000') {
+                wx.hideToast()
+                wx.navigateTo({
+                    url: '/pages/orderInfo/orderInfo?order_id=' + self.data.present_order.order_id
+                })
+            } else {
+                wx.showToast({
+                    title: '服务器出Bug了',
+                    icon: 'loading',
+                    duration: 1500
+                })
+            }
+        })
     },
     onLoad: function(option) {
-        // var order_id = option.order_id
-        // this.setData({
-        //     order_id: order_id
-        // })
-        // this.loadingOrder(order_id)
-        this.loadingOrder()
+        console.log(option);
+        var order_id = option.order_id
+        console.log('----------------');
+        console.log(order_id);
+        this.setData({
+            order_id: order_id
+        })
+        this.loadingOrder(order_id)
     },
     loadingOrder: function(order_id) {
         var self = this
-        // var order_id = order_id
-        // wx.request({
-        //     url: app.url + '/v1/orders/get_my_orders',
-        //     data: {
-        //         page: 1, //页数   required
-        //         size: 10, //每页大小  required
-        //         order_id: order_id, //订单号   （获取某一订单的时候必传）
-        //         user_id: wx.getStorageSync('user').id //用户ID  required
-        //     },
-        //     method: 'POST',
-        //     success: function(res) {
-        //         var present_order = res.data.data[0]
-
-                var present_order = {
-                            "user_id":"",
-                            "items":[
-                                {
-                                    "id":"934c780c-7352-4c2f-985f-eb9583c4510d",
-                                    "goods_id":"920c6ce1-bb17-49b6-b89c-dbb1b4d724bf",
-                                    "user_id":"",
-                                    "order_id":"",
-                                    "book_title":"Java编程思想 （第4版）",
-                                    "book_price":5000,      //书本价格
-                                    "number":1,             //下单数量
-                                    "type":1,
-                                    "isbn":"9787111213826",
-                                    "book_image":"",
-                                    "store_number":0,
-                                    "current_store_number":0,
-                                    "can_order":false
-                                }
-                            ],
-                            "address_info":{
-                                "name":"此刻女",
-                                "tel":"18817953402",
-                                "address":"北京市门头沟区军庄镇门头沟军庄中心灰峪小学_欧诺",
-                                "is_default":false,
-                                "id":""
-                            },
-                            "school":"剑盟雅思预备学院",
-                            "order_id":"17021500000042",                        //订单号
-                            "total_price":10000,                                    //总价格
-                            "total_amount":1,                                   //总数量
-                            "client_ip":"",
-                            "remark":"",
-                            "freight":600,                                      //运费
-                            "shop_id":"",
-                            "openid":"",
-                            "trade_code":"4008842001201702150033874081",        //交易号
-                            "pay_at":1487175316,        //支付时间
-                            "order_at":1487146492,      //下单时间
-                            "pay_status":1,
-                            "order_status":3
-                        }
-                present_order.total_price = (present_order.total_price / 100 - 5).toFixed(2)
+        var order_id = order_id
+        wx.request({
+            url: app.url + '/v1/orders/get_my_orders',
+            data: {
+                page: 1, //页数   required
+                size: 10, //每页大小  required
+                order_id: order_id, //订单号   （获取某一订单的时候必传）
+                user_id: wx.getStorageSync('user').id //用户ID  required
+            },
+            method: 'POST',
+            success: function(res) {
+                var present_order = res.data.data[0]
+                present_order.max_value = (present_order.total_price / 100).toFixed(2)
+                present_order.total_price = (present_order.total_price / 100).toFixed(2)
+                console.log(present_order);
                 present_order.order_at = utils.unixTimestamp2DateStr(present_order.order_at) //下单时间
                 var order_status_description = orderStatus.orderStatusDescription(present_order.order_status)
-
                 self.setData({
                     present_order: present_order,
                     order_status_description: order_status_description
                 })
-        //     }
-        // })
+            }
+        })
         wx.getStorage({
             key: 'shop',
             success: function(res) {
@@ -175,18 +186,18 @@ Page({
     checkMaxAmount(e) {
         var input = e.detail.value
         var input_num = Number(input * 100)
-        var max_value = Number(this.data.present_order.total_price * 100)
+        var max_value = Number(this.data.present_order.max_value * 100)
         var reg = /(^[1-9]([0-9]+)?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\.[0-9]([0-9])?$)/;
-        if (!reg.test(input.toString())) {
-          this.setData({
-              input_price: ''
-          })
-          return
+        if (!reg.test(input.toString()) || input == 0) {
+            this.setData({
+                input_price: ''
+            })
+            return
         }
         if (input_num > max_value) {
-          this.setData({
-              input_price: (max_value / 100).toFixed(2)
-          })
+            this.setData({
+                input_price: (max_value / 100).toFixed(2)
+            })
         }
     }
 })

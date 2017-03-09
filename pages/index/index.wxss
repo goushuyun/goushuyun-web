@@ -92,6 +92,7 @@ view#iconsList{
     align-items: center;
     display: flex;
     justify-content: space-around;
+    background-color: #FFFFFF
 }
 view#iconsList .category_icon{
     padding: 20rpx 0;

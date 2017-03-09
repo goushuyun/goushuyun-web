@@ -3,11 +3,13 @@ var app = getApp()
 Page({
     data: {
         avatar: '',
-        user_id: ''
+        user_id: '',
+        orders_amount: [],
+        in_after_sale_amount: 0
     },
     goToOrder(e) {
         wx.navigateTo({
-            url:'/pages/me/me?currentPage=' + e.currentTarget.dataset.category
+            url: '/pages/me/me?currentPage=' + e.currentTarget.dataset.category
         })
     },
     onLoad() {
@@ -32,16 +34,31 @@ Page({
                 })
             }
         })
+        wx.request({
+            url: app.url + '/v1/orders/get_orders_amount',
+            data: {
+                user_id: user.id
+            },
+            method: 'POST',
+            success(res) {
+                if (res.data.code=='00000') {
+                    self.setData({
+                        orders_amount: res.data.data,
+                        in_after_sale_amount: res.data.in_after_sale_amount
+                    })
+                }
+            }
+        })
     },
-    address_manage(){
-      wx.navigateTo({
-        url:'/pages/addressList/addressList'
-      })
+    address_manage() {
+        wx.navigateTo({
+            url: '/pages/addressList/addressList'
+        })
     },
-    shopInfo(){
-      wx.navigateTo({
-        url:'/pages/shopDetail/shopDetail'
-      })
+    shopInfo() {
+        wx.navigateTo({
+            url: '/pages/shopDetail/shopDetail'
+        })
     },
     shareApp(e) {
         var urls = []
@@ -52,10 +69,10 @@ Page({
         })
     },
     onShareAppMessage(e) {
-      return {
-           title: app.shareTitle,
-           path: '/pages/index/index'
-       }
+        return {
+            title: app.shareTitle,
+            path: '/pages/index/index'
+        }
     }
 
 })

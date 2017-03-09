@@ -14,20 +14,11 @@
     background-color: #1581D9;
     box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
 }
-#top .address_mag{
-    color: white;
-    font-size: 14px;
-    line-height: 24px;
-    text-align: right;
-    box-sizing: border-box;
-    padding: 0 12px;
-    color: #F9FAFC;
-}
+
 #top .head_img{
     border-radius: 50%;
     width: 52px;
     height: 52px;
-    margin: 0 auto;
     display: block;
 }
 
@@ -57,11 +48,11 @@
     width: 14px;
     height: 14px;
     border-radius: 50%;
-    border: 1.25px solid #1581D9;
-    background-color: #FFFFFF;
+    /*border: 1.25px solid #1581D9;*/
+    background-color: #fd0d3a;
     line-height: 14px;
     text-align: center;
-    color: #1581D9;
+    color: #FFFFFF;
     position: absolute;
     font-size: 10px;
     right: -3px;

@@ -20,7 +20,7 @@
           <view class="border-bottom">
             <text class="item_title">退款金额</text>
             <text class="text_flag">*</text>
-            <text class="font8">(扣除5元运费,最多退款￥{{present_order.total_price}})</text>
+            <text class="font8">(扣除5元运费,最多退款￥{{present_order.max_value}})</text>
           </view>
           <view class="input_area red">
             <input name="require_refund_fee" class="item_price" type="digit" placeholder="请输入退款金额" bindblur="checkMaxAmount" value="{{input_price}}"/>

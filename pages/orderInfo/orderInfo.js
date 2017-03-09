@@ -93,6 +93,11 @@ Page({
             url: '/pages/shopDetail/shopDetail'
         })
     },
+    apply_refund(e) {
+        wx.navigateTo({
+            url: '/pages/refund/refund?order_id=' + this.data.order_id
+        })
+    },
     cancel_order(e) {
         var self = this
         var order_id = self.data.order_id

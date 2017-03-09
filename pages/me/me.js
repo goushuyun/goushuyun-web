@@ -249,6 +249,11 @@ Page({
             currentPage: e.detail.current
         })
     },
+    applyRefund(e) {
+        wx.navigateTo({
+            url: '/pages/refund/refund?order_id=' + e.currentTarget.dataset.id
+        })
+    },
     cancel_order(e) {
         let order_id = e.currentTarget.dataset.id,
             self = this

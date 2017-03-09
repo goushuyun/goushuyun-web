@@ -87,11 +87,11 @@
 </scroll-view>
 
 <view id="order_foot" class="foot align-center justify-end padding-lr5">
+  <view wx:if="{{present_order.order_status>1 || present_order.order_status<5}}"><button size="mini" class="button-plain" hover-class="button-hover" bindtap="apply_refund">申请售后</button></view>
   <view wx:if="{{present_order.order_status==1}}"><button size="mini" class="button-plain" hover-class="button-hover" bindtap="cancel_order">取消订单</button></view>
   <view wx:if="{{present_order.order_status==1 && out_time>0}}"><button size="mini" class="button-plain" hover-class="button-hover" bindtap="toPay">去付款</button></view>
   <view wx:if="{{present_order.order_status==2 || present_order.order_status==5}}">
     <button size="mini" class="button-plain" hover-class="button-hover" bindtap="callSeller">联系商家</button>
   </view>
   <view wx:if="{{present_order.order_status==3}}"><button size="mini" class="button-plain" hover-class="button-hover" bindtap="comfirmAccept">确认收货</button></view>
-  <!-- <view wx:if="{{present_order.order_status==4}}"><button size="mini" class="button-plain" hover-class="button-hover">再来一单</button></view> -->
 </view>

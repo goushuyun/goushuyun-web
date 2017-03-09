@@ -1,6 +1,6 @@
 <import src="order.wxml"/>
 <scroll-view id="body" scroll-y="true">
-  <view id="top">
+  <view id="top" class="align-center justify-center">
     <!-- <navigator class="address_mag" hover-class="none" url="https://www.baidu.com">地址管理</navigator> -->
     <image class="head_img" src="{{avatar}}"/>
   </view>
@@ -13,17 +13,17 @@
   </view>
   <view id="status_icons">
     <view class="category_icon" data-category="1" bindtap="goToOrder">
-        <view class="amount">1</view>
+        <view wx:if="{{orders_amount[0].total > 0}}" class="amount">{{orders_amount[0].total}}</view>
         <image class="icon_img" src="/images/self/pay.png"></image>
         <text class="category_name">待付款</text>
     </view>
     <view class="category_icon" data-category="2" bindtap="goToOrder">
-        <view class="amount">2</view>
+        <view wx:if="{{orders_amount[1].total > 0}}" class="amount">{{orders_amount[1].total}}</view>
         <image class="icon_img" src="/images/self/send.png"></image>
         <text class="category_name">待发货</text>
     </view>
     <view class="category_icon" data-category="3" bindtap="goToOrder">
-        <view class="amount">3</view>
+        <view wx:if="{{orders_amount[2].total > 0}}" class="amount">{{orders_amount[2].total}}</view>
         <image class="icon_img" src="/images/self/deliver.png"></image>
         <text class="category_name">待收货</text>
     </view>
@@ -32,7 +32,7 @@
         <text class="category_name">已完成</text>
     </view>
     <view class="category_icon" data-category="5">
-        <view class="amount">99</view>
+        <view wx:if="{{in_after_sale_amount > 0}}" class="amount">{{in_after_sale_amount}}</view>
         <image class="icon_img" src="/images/self/recharge.png"></image>
         <text class="category_name">售后</text>
     </view>
