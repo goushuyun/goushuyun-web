@@ -31,7 +31,13 @@ view#container{
     bottom: 0;
     width: 100%;
 }
-
+.after_order_container {
+    background-color: #EFF3F7;
+    top: 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
 
 swiper{
     width: 100%;

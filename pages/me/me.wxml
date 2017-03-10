@@ -1,16 +1,13 @@
 <import src="order.wxml"/>
 
-<view class="top">
-    <!-- <navigator class="address_mag" hover-class="none" url="/pages/addressList/addressList">地址管理</navigator>
-    <image class="head_img" src="{{avatar}}"/> -->
-
+<view wx:if="{{!show_after_sale}}" class="top">
     <view class="tabs" >
         <view class="tab {{currentPage == index ? 'currentTab': ''}}" wx:for="{{tabs}}" data-index="{{index}}" bindtap="goToPage" wx:key="*this">{{item}}</view>
     </view>
 </view>
 
 <!-- orders list -->
-<view id="container">
+<view wx:if="{{!show_after_sale}}" id="container">
     <swiper current="{{currentPage}}" bindchange="pageChange" duration="300">
         <swiper-item>
             <scroll-view scroll-y="true" class="container">
@@ -35,6 +32,16 @@
         <swiper-item>
             <scroll-view scroll-y="true" class="container">
                 <template is="order" data="{{orders: accepted_orders, shop_logo}}"></template>
+            </scroll-view>
+        </swiper-item>
+    </swiper>
+</view>
+<!-- orders list -->
+<view wx:if="{{show_after_sale}}" class="after_order_container">
+    <swiper duration="300">
+        <swiper-item>
+            <scroll-view scroll-y="true" class="container">
+                <template is="order" data="{{orders: after_sale_orders, shop_logo}}"></template>
             </scroll-view>
         </swiper-item>
     </swiper>

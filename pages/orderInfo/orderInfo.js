@@ -7,7 +7,8 @@ Page({
         order_status_description: {},
         tel: '',
         out_time: 0,
-        order_id: ''
+        order_id: '',
+        after_sale: {}
     },
     onPullDownRefresh(e) {
         this.loadingOrder(this.data.order_id)
@@ -37,23 +38,6 @@ Page({
                 var my_date = new Date();
                 var out_time = ((30 * 60 - (my_date.getTime() / 1000 - present_order.order_at)) / 60).toFixed(0)
 
-                /* 在前端修改了操作限制，故注释该段代码 */
-                // if (out_time < 0 && present_order.order_status==1) {
-                //     var order_ids = [order_id]
-                //     wx.request({
-                //         url: app.url + '/v1/orders/cancel_order',
-                //         method: 'POST',
-                //         data: {
-                //             order_ids
-                //         },
-                //         success(res) {
-                //             if (res.data.code == '00000') {
-                //                 self.loadingOrder(order_id)
-                //             }
-                //         }
-                //     })
-                // }
-
                 for (var i = 0; i < present_order.items.length; i++) {
                     present_order.items[i].book_price = (present_order.items[i].book_price / 100).toFixed(2)
                 }
@@ -71,6 +55,27 @@ Page({
                     order_status_description: order_status_description,
                     out_time: out_time
                 })
+                if (present_order.after_sale_status > 0) {
+                    wx.request({
+                        url: app.url + '/v1/orders/GetAfterSaleInfo',
+                        method: 'POST',
+                        data: {
+                            id: present_order.after_sale_id
+                        },
+                        success(res) {
+                            if (res.data.code == '00000') {
+                                var after_sale = res.data.data
+                                after_sale.require_refund_fee = (after_sale.require_refund_fee / 100).toFixed(2)
+                                after_sale.actual_refund_fee = (after_sale.actual_refund_fee / 100).toFixed(2)
+                                after_sale.apply_at = utils.unixTimestamp2DateStr(after_sale.apply_at)
+                                after_sale.end_at = utils.unixTimestamp2DateStr(after_sale.end_at)
+                                self.setData({
+                                    after_sale: after_sale
+                                })
+                            }
+                        }
+                    })
+                }
             }
         })
         wx.getStorage({
@@ -188,9 +193,9 @@ Page({
         })
     },
     onShareAppMessage(e) {
-      return {
-           title: app.shareTitle,
-           path: '/pages/index/index'
-       }
+        return {
+            title: app.shareTitle,
+            path: '/pages/index/index'
+        }
     }
 })

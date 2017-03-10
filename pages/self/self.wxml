@@ -31,7 +31,7 @@
         <image class="icon_img" src="/images/self/evaluate.png"></image>
         <text class="category_name">已完成</text>
     </view>
-    <view class="category_icon" data-category="5">
+    <view class="category_icon" data-category="5" bindtap="goToAfterSale">
         <view wx:if="{{in_after_sale_amount > 0}}" class="amount">{{in_after_sale_amount}}</view>
         <image class="icon_img" src="/images/self/recharge.png"></image>
         <text class="category_name">售后</text>

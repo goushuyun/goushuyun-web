@@ -2,6 +2,7 @@ var utils = require('../../libs/utils')
 var app = getApp()
 Page({
     data: {
+        show_after_sale: false,
         tabs: ['全部', '待付款', '待发货', '待收货', '已完成'],
         currentPage: 0,
         seller_tel: '',
@@ -13,6 +14,7 @@ Page({
         wait_send_orders: [],
         wait_accept_orders: [],
         accepted_orders: [],
+        after_sale_orders: [],
         page: 1,
         size: 100,
         total: 0,
@@ -127,18 +129,24 @@ Page({
                     var wait_send_orders = []
                     var wait_accept_orders = []
                     var accepted_orders = []
+                    var after_sale_orders = []
 
                     //每次拿到 orders 数据之后，根据订单状态将订单拆分
                     for (var i = 0; i < orders.length; i++) {
-                        if (orders[i].order_status == 1) {
-                            wait_pay_orders.push(orders[i])
-                        } else if (orders[i].order_status == 2) {
-                            wait_send_orders.push(orders[i])
-                        } else if (orders[i].order_status == 3) {
-                            wait_accept_orders.push(orders[i])
-                        } else if (orders[i].order_status == 4) {
-                            accepted_orders.push(orders[i])
+                        if(orders[i].after_sale_status==0) {
+                            if (orders[i].order_status == 1) {
+                                wait_pay_orders.push(orders[i])
+                            } else if (orders[i].order_status == 2) {
+                                wait_send_orders.push(orders[i])
+                            } else if (orders[i].order_status == 3) {
+                                wait_accept_orders.push(orders[i])
+                            } else if (orders[i].order_status == 4) {
+                                accepted_orders.push(orders[i])
+                            }
+                        }else {
+                            after_sale_orders.push(orders[i])
                         }
+
                     }
                     self.setData({
                         total: respData.total,
@@ -148,7 +156,8 @@ Page({
                         wait_pay_orders,
                         wait_send_orders,
                         wait_accept_orders,
-                        accepted_orders
+                        accepted_orders,
+                        after_sale_orders
                     })
                 }
             }
@@ -156,9 +165,18 @@ Page({
     },
     onLoad(options) {
         var self = this
-        self.setData({
-          currentPage:options.currentPage
-        })
+        if (options.show_after_sale) {
+            wx.setNavigationBarTitle({
+              title: '售后订单'
+            })
+            self.setData({
+                show_after_sale:true
+            })
+        }else {
+            self.setData({
+                currentPage:options.currentPage
+            })
+        }
         //页面初始加载后即刻拿到该用户【全部】类型的订单
         var user = wx.getStorageSync('user')
         self.setData({

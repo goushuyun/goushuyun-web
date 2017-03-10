@@ -12,6 +12,11 @@ Page({
             url: '/pages/me/me?currentPage=' + e.currentTarget.dataset.category
         })
     },
+    goToAfterSale(e) {
+        wx.navigateTo({
+            url: '/pages/me/me?show_after_sale=true'
+        })
+    },
     onLoad() {
         var self = this
         //页面初始加载后即刻拿到该用户【全部】类型的订单
