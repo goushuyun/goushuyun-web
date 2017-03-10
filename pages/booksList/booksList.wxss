@@ -4,6 +4,7 @@ scroll-view#booksList{
     position: fixed;
     top: 44px;
     bottom: 0;
+    background-color: #EFF3F7
 }
 
 scroll-view#booksList .book{
@@ -24,7 +25,9 @@ scroll-view#booksList .book .book_info{
     padding-left: 18px;
     flex: 1;
 }
-
+.book {
+  background-color: #FFFFFF
+}
 scroll-view#booksList .book .book_info .book_title{
     color: #232323;
     font-size: 16px;

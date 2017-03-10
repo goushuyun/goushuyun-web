@@ -9,7 +9,7 @@ Page({
     },
     showBigPic(e) {
         var urls = []
-        urls.push(this.data.goods[0].book.pic)
+        urls.push(this.data.goods[0].book.pic?this.data.goods[0].book.pic:'http://okxy9gsls.bkt.clouddn.com/book.png')
         wx.previewImage({
             current: '', // 当前显示图片的http链接
             urls: urls // 需要预览的图片http链接列表

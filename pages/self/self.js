@@ -17,7 +17,7 @@ Page({
             url: '/pages/me/me?show_after_sale=true'
         })
     },
-    onLoad() {
+    onShow() {
         var self = this
         //页面初始加载后即刻拿到该用户【全部】类型的订单
         var user = wx.getStorageSync('user')
