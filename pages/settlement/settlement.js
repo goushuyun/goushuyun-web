@@ -179,7 +179,7 @@ Page({
                         signType: 'MD5',
                         paySign: payInfo.paySign,
                         complete: function(res) {
-                            wx.navigateTo({
+                            wx.redirectTo({
                                 url: '/pages/orderInfo/orderInfo?order_id=' + order_id
                             })
                         }

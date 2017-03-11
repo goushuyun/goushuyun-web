@@ -58,26 +58,6 @@
             </view>
         </view>
     </view>
-
-    <view id="order_about" class="white-bc">
-        <text class="header">订单信息</text>
-        <view class="about">
-            <text class="text_block">订单编号</text>
-            <text class="text_block content">{{present_order.order_id}}</text>
-        </view>
-        <view class="about">
-            <text class="text_block">下单时间</text>
-            <text class="text_block content">{{present_order.order_at}}</text>
-        </view>
-        <view class="about">
-            <text class="text_block">支付方式</text>
-            <text class="text_block content">微信支付</text>
-        </view>
-        <view class="about">
-            <text class="text_block">备注信息</text>
-            <text class="text_block content">{{present_order.remark}}</text>
-        </view>
-    </view>
     <view wx:if="{{present_order.after_sale_status}}" id="order_about" class="white-bc">
         <text class="header">售后信息</text>
         <view class="about">
@@ -103,6 +83,25 @@
         <view wx:if="{{after_sale.after_sale_progress==1 || after_sale.after_sale_progress==3}}" class="about">
             <text class="text_block">实退金额</text>
             <text class="text_block content">￥{{after_sale.actual_refund_fee}}</text>
+        </view>
+    </view>
+    <view id="order_about" class="white-bc">
+        <text class="header">订单信息</text>
+        <view class="about">
+            <text class="text_block">订单编号</text>
+            <text class="text_block content">{{present_order.order_id}}</text>
+        </view>
+        <view class="about">
+            <text class="text_block">下单时间</text>
+            <text class="text_block content">{{present_order.order_at}}</text>
+        </view>
+        <view class="about">
+            <text class="text_block">支付方式</text>
+            <text class="text_block content">微信支付</text>
+        </view>
+        <view class="about">
+            <text class="text_block">备注信息</text>
+            <text class="text_block content">{{present_order.remark}}</text>
         </view>
     </view>
 </scroll-view>

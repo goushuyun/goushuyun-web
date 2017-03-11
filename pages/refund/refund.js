@@ -38,10 +38,11 @@ Page({
 
         var keys = []
 
+        var order_id = self.data.present_order.order_id
         /* 上传图片 */
         for (var i = 0; i < imgs.length; i++) {
             (function(img) {
-                var present_key = self.data.present_order.order_id + '/' + i
+                var present_key = order_id + '/' + i
                 keys.push(present_key)
                 wx.pro.request({
                     url: app.url + '/v1/mediastore/getUpToken',
@@ -54,7 +55,6 @@ Page({
                     console.log(res);
                     if (res.code == '00000') {
                         var token = res.data.token
-                        var keys = self.data.keys
                         wx.uploadFile({
                             url: 'https://upload.qbox.me/', //仅为示例，非真实的接口地址
                             filePath: img,
@@ -68,29 +68,57 @@ Page({
                 })
             })(imgs[i])
         }
-
-        /* 提交售后 */
+        console.log('>>>>>>>>>>>>>>>>>>>>>>>>');
         wx.pro.request({
-            url: app.url + '/v1/orders/refund_apply',
+            url: app.url + '/v1/orders/get_my_orders',
             data: {
-                "trade_code": self.data.present_order.trade_code,
-                "require_refund_fee": Number(self.data.order_status_description.code != 2 ? refund_info.require_refund_fee * 100 : self.data.present_order.total_price * 100),
-                "total_fee": Number(self.data.present_order.total_price * 100),
-                "content_desc": refund_info.content_desc,
-                "images": keys.join()
+                page: 1, //页数   required
+                size: 10, //每页大小  required
+                order_id: order_id, //订单号   （获取某一订单的时候必传）
+                user_id: wx.getStorageSync('user').id //用户ID  required
             },
-            method: "POST"
+            method: 'POST'
         }).then(res => {
-            if (res.code == '00000') {
-                wx.hideToast()
-                wx.navigateTo({
-                    url: '/pages/orderInfo/orderInfo?order_id=' + self.data.present_order.order_id
+          console.log(res);
+            var present_order_status = res.data[0].order_status
+            var self_order_status = self.data.present_order.order_status
+            if (present_order_status != self_order_status) {
+                wx.showModal({
+                    title: '提示',
+                    content: '就在刚刚订单状态改变了，请您重新申请！',
+                    success: function(res) {
+                        if (res.confirm) {
+                             self.loadingOrder(order_id)
+                             wx.hideToast()
+                             return
+                        }
+                    }
                 })
             } else {
-                wx.showToast({
-                    title: '服务器出Bug了',
-                    icon: 'loading',
-                    duration: 1500
+                /* 提交售后 */
+                wx.pro.request({
+                    url: app.url + '/v1/orders/refund_apply',
+                    data: {
+                        "trade_code": self.data.present_order.trade_code,
+                        "require_refund_fee": Number(self.data.order_status_description.code != 2 ? refund_info.require_refund_fee * 100 : self.data.present_order.total_price * 100),
+                        "total_fee": Number(self.data.present_order.total_price * 100),
+                        "content_desc": refund_info.content_desc,
+                        "images": keys.join()
+                    },
+                    method: "POST"
+                }).then(res => {
+                    if (res.code == '00000') {
+                        wx.hideToast()
+                        wx.redirectTo({
+                            url: '/pages/orderInfo/orderInfo?order_id=' + self.data.present_order.order_id
+                        })
+                    } else {
+                        wx.showToast({
+                            title: '服务器出Bug了',
+                            icon: 'loading',
+                            duration: 1500
+                        })
+                    }
                 })
             }
         })
