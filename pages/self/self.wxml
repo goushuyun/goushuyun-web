@@ -1,12 +1,12 @@
 <import src="order.wxml"/>
 <scroll-view id="body" scroll-y="true">
-  <view id="top" class="align-center justify-center">
-    <image class="head_img" src="{{avatar}}"/>
-  </view>
-  <!-- <view id="top_img" class="align-center justify-center">
-    <image class="bc" src="http://okxy9gsls.bkt.clouddn.com/bc.png"/>
+  <!-- <view id="top" class="align-center justify-center">
     <image class="head_img" src="{{avatar}}"/>
   </view> -->
+  <view id="top_img" class="align-center justify-center">
+    <image class="bc" src="http://okxy9gsls.bkt.clouddn.com/bc1.png"/>
+    <image class="head_img" src="{{avatar}}"/>
+  </view>
   <view id="iconsTitle" data-category="0" bindtap="goToOrder">
     <text>我的订单</text>
     <view class="title_msg align-center">
