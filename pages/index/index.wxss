@@ -96,8 +96,9 @@ view#iconsList .icon_img{
 
 /* 推荐项 */
 #recommend{
-    padding: 6px 0;
-    background-color: #EFF3F7;
+    /*padding: 6px 0;
+    background-color: #EFF3F7;*/
+    margin-top: 6px;
 }
 
 .recommend_block .header{
