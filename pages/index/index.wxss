@@ -1,26 +1,11 @@
 /* pages/index/index.wxss */
-view#sticky{
-    position: fixed;
-    width: 100%;
-    top:0;
-    z-index: 2;
-}
-.top-bar{
-    background-color: #1581D9;
-    height: 44px;
-    padding: 0 12px;
-    display: flex;
-    align-items: center;
-}
-
-.top-bar image.location_icon{
-    height: 18px;
-    line-height: 44px;
-    width: 18px;
-}
-.scan{
-    width: 18px;
-    height: 18px;
+#body {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #EFF3F7
 }
 .scho_name{
     padding-left: 8px;
@@ -31,57 +16,56 @@ view#sticky{
     height: 44px;
     line-height: 44px;
 }
-.scan_qrcode{
-    text-align: right;
-    color: white;
-    font-size: 12px;
-    padding-right: 8px;
-}
 
 /* 搜索栏 */
-view.search{
+.search{
     background-color: #1581D9;
-    padding: 5px 20px;
-    height: 44px;
-    line-height: 44px;
-    box-sizing: border-box;
-    position: -webkit-sticky;
-}
-view.search_inner{
-    height: 34px;
-    padding: 6px 12px 6px 18px;
-    box-sizing: border-box;
-    background-color: white;
-    border-radius: 17px;
+    padding-right: 30rpx;
+    height: 50px;
+    line-height: 50px;
     display: flex;
     align-items: center;
 }
-input{
-    display: block;
-    box-sizing: border-box;
-    height: 22px;
-    font-size: 12px;
-    flex:1;
+.school_area {
+     height: 50px;
+     width: 100rpx;
+     padding: 0 20rpx;
 }
-view.search_btn{
-    min-width: 44px;
-    height: 100%;
+.school_img {
+    height: 30px;
+    width: 30px;
+}
+.search_inner{
+    height: 30px;
+    width: 620rpx;
+    background-color: white;
+    border-radius: 17px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.input_area {
+    width: 500rpx;
+}
+input{
+    font-size: 12px;
+}
+.search_btn,.scan_btn{
+    width: 44px;
+    height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.search_icon{
+.search_icon,.scan_icon{
     width: 18px;
     height: 18px;
 }
+
 .none_style{
     font-size: 12px;
 }
 
-/* 轮播图 */
-swiper{
-    padding-top: 88px;
-}
 .swiper_img{
     width: 100%;
     height: 100%;
@@ -111,7 +95,7 @@ view#iconsList .icon_img{
 }
 
 /* 推荐项 */
-view#recommend{
+#recommend{
     padding: 6px 0;
     background-color: #EFF3F7;
 }

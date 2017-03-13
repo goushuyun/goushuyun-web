@@ -74,7 +74,9 @@ Page({
                 self.setData({
                     'school': school
                 })
-
+                wx.setNavigationBarTitle({
+                    title: school
+                })
                 wx.setStorage({
                     key: "school",
                     data: school
