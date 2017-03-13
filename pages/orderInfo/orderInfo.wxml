@@ -33,7 +33,7 @@
     <!-- order info -->
     <view id="order_Info" class="white-bc">
         <view wx:for="{{present_order.items}}" class="book">
-            <image class="book_pic" src="{{item.book_image}}"></image>
+            <image class="book_pic" src="{{item.book_image?item.book_image:'http://okxy9gsls.bkt.clouddn.com/book.png'}}"></image>
             <view class="book_info">
                 <view class="text_block book_title">{{item.book_title}}
                     <view wx:if="{{item.type==1}}" class="type_new font12">新书</view>

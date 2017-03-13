@@ -61,7 +61,7 @@
             </view>
             <scroll-view scroll-x="true" class="books">
                 <view wx:for="{{topic.books}}" wx:for-item="book" class="book" data-isbn="{{book.isbn}}" bindtap="goBuyPage" wx:key="*this">
-                    <image class="book_img" src="{{book.book.pic}}"/>
+                    <image class="book_img" src="{{book.book.pic?book.book.pic:'http://okxy9gsls.bkt.clouddn.com/book.png'}}"/>
                     <text class="book_title">{{book.book.title}}</text>
                     <text class="book_author">{{book.book.author}}</text>
                 </view>
