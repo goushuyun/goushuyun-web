@@ -1,46 +1,44 @@
 <scroll-view id="body" scroll-y="true">
-    <view id="logo">
-        <view class="logo"><image class="shop_logo" src="http://okxy9gsls.bkt.clouddn.com/logofang.png"/></view>
-        <view class="shop_name">购书云</view>
-    </view>
-    <view id="top" class="align-center justify-center">
+    <view class="shop_name"><text>购书云</text></view>
+    <view class="shop_logo"><image class="icon30" src="{{'http://okxy9gsls.bkt.clouddn.com/logofang.png'}}"/></view>
+    <view id="top">
         <image class="head_img" src="{{avatar_url?avatar_url:'http://okxy9gsls.bkt.clouddn.com/logofang.png'}}"/>
     </view>
     <view id="order_info">
         <view class="header">
-            <text class="title font15">TA的订单</text>
+            <text class="title">TA 的 订 单</text>
         </view>
-        <scroll-view scroll-x="true" class="books">
+        <scroll-view scroll-x="true" class="books" style="padding-left:{{padding_left}}">
             <view class="book" wx:for="{{order.items}}">
                 <image class="book_img" src="{{item.book_image?item.book_image:'http://okxy9gsls.bkt.clouddn.com/book.png'}}"/>
-                <text class="book_title">{{item.book_title}}</text>
-                <text class="book_author">{{item.book_author}}</text>
+                <view class="book_title">{{item.book_title?'傻逼傻逼傻逼傻逼傻逼傻逼傻逼傻傻逼傻逼傻逼':''}}</view>
+                <!-- <text class="book_author">{{item.book_author}}</text> -->
             </view>
         </scroll-view>
+        <view id="order_id"><view class="order_id">订单编号：{{order_id}}</view></view>
     </view>
-    <view id="order_id">订单编号：{{order_id}}</view>
     <view id="fake_data">
-      <view class="category_icon">
-          <view class="align-center">
-              <image class="icon_img" src="/images/share/money.png"></image>
-              <text style="padding:0 5px;font-weight: bold;">￥{{50}}</text>
-          </view>
-          <text class="category_name">省钱</text>
-      </view>
-      <view class="category_icon">
-          <view class="align-center">
-              <image class="icon_img" src="/images/share/green.png"></image>
-              <text style="padding:0 5px;font-weight: bold;">{{500}}g</text>
-          </view>
-          <text class="category_name">节约碳排量</text>
-      </view>
-      <view class="category_icon">
-          <view class="align-center">
-              <image class="icon_img" src="/images/share/time.png"></image>
-              <text style="padding:0 5px;font-weight: bold;">{{50}}h</text>
-          </view>
-          <text class="category_name">省时间</text>
-      </view>
+        <view class="category_icon">
+            <view class="align-center">
+                <image class="icon_img" src="/images/share/money.png"></image>
+                <text style="padding:0 5px;font-weight: bold;">￥ {{50}}</text>
+            </view>
+            <text class="category_name">省钱</text>
+        </view>
+        <view class="category_icon">
+            <view class="align-center">
+                <image class="icon_img" src="/images/share/green.png"></image>
+                <text style="padding:0 5px;font-weight: bold;">{{500}} g</text>
+            </view>
+            <text class="category_name">节约碳排量</text>
+        </view>
+        <view class="category_icon">
+            <view class="align-center">
+                <image class="icon_img" src="/images/share/time.png"></image>
+                <text style="padding:0 5px;font-weight: bold;">{{50}} h</text>
+            </view>
+            <text class="category_name">省时间</text>
+        </view>
     </view>
 </scroll-view>
 <view id="foot" class="foot">
