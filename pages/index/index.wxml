@@ -1,71 +1,69 @@
-<scroll-view id="body" scroll-y="true">
-    <view id="sticky">
-        <!-- 搜索栏 -->
-        <view class="search">
-            <view class="school_area align-center justify-center">
-                <image bindtap="chooseAddress" class="school_img" src="/images/index/school.png"></image>
-            </view>
-            <view class="search_inner">
-                <view class="scan_btn" bindtap="scan">
-                    <image class="scan_icon" src="/images/index/scan.png" bindtap="scan"></image>
-                </view>
-                <view class="input_area">
-                    <input placeholder="搜索书名、作者或ISBN" bindconfirm="confrim_search" placeholder-class="none_style" bindchange="bindchange"></input>
-                </view>
-                <view class="search_btn" bindtap="search">
-                    <image class="search_icon" src="/images/index/search.png"></image>
-                </view>
+<view id="sticky">
+    <!-- 顶部栏 -->
+    <view class="top-bar">
+        <image bindtap="chooseAddress" class="location_icon" src="/images/location.png"></image>
+        <text bindtap="chooseAddress" class="scho_name">{{school}}</text>
+        <text class="scan_qrcode" bindtap="scan">扫码搜书</text>
+        <image class="scan" src="/images/scan.png" bindtap="scan"></image>
+    </view>
+
+    <!-- 搜索栏 -->
+    <view class="search">
+        <view class="search_inner">
+            <input placeholder="搜索书名、作者或ISBN" bindconfirm="confrim_search" placeholder-class="none_style" bindchange="bindchange"></input>
+            <view class="search_btn" bindtap="search">
+                <image class="search_icon" src="/images/search.png"></image>
             </view>
         </view>
     </view>
+</view>
 
-    <!-- 轮播图 -->
-    <swiper indicator-dots="true" autoplay="true">
-        <block wx:for="{{banners}}">
-          <swiper-item>
-            <image src="{{item}}" class="swiper_img"/>
-          </swiper-item>
-        </block>
-    </swiper>
+<!-- 轮播图 -->
+<swiper indicator-dots="true" autoplay="true">
+    <block wx:for="{{banners}}">
+      <swiper-item>
+        <image src="{{item}}" class="swiper_img"/>
+      </swiper-item>
+    </block>
+</swiper>
 
-    <!-- icons list -->
-    <view id="iconsList">
-        <view class="category_icon" data-category="1" bindtap="chooseCategory">
-            <image class="icon_img" src="../../images/Teaching_materials.png"></image>
-            <text class="category_name">教材</text>
-        </view>
-        <view class="category_icon" data-category="2" bindtap="chooseCategory">
-            <image class="icon_img" src="../../images/References.png"></image>
-            <text class="category_name">教辅</text>
-        </view>
-        <view class="category_icon" data-category="5" bindtap="chooseCategory">
-            <image class="icon_img" src="../../images/Certificate.png"></image>
-            <text class="category_name">考证</text>
-        </view>
-        <view class="category_icon" data-category="3" bindtap="chooseCategory">
-            <image class="icon_img" src="../../images/Foreign_languages.png"></image>
-            <text class="category_name">外语</text>
-        </view>
-        <view class="category_icon" data-category="4" bindtap="chooseCategory">
-            <image class="icon_img" src="../../images/Reading.png"></image>
-            <text class="category_name">阅读</text>
-        </view>
+<!-- icons list -->
+<view id="iconsList">
+    <view class="category_icon" data-category="1" bindtap="chooseCategory">
+        <image class="icon_img" src="../../images/Teaching_materials.png"></image>
+        <text class="category_name">教材</text>
     </view>
+    <view class="category_icon" data-category="2" bindtap="chooseCategory">
+        <image class="icon_img" src="../../images/References.png"></image>
+        <text class="category_name">教辅</text>
+    </view>
+    <view class="category_icon" data-category="5" bindtap="chooseCategory">
+        <image class="icon_img" src="../../images/Certificate.png"></image>
+        <text class="category_name">考证</text>
+    </view>
+    <view class="category_icon" data-category="3" bindtap="chooseCategory">
+        <image class="icon_img" src="../../images/Foreign_languages.png"></image>
+        <text class="category_name">外语</text>
+    </view>
+    <view class="category_icon" data-category="4" bindtap="chooseCategory">
+        <image class="icon_img" src="../../images/Reading.png"></image>
+        <text class="category_name">阅读</text>
+    </view>
+</view>
 
-    <!-- 推荐项 -->
-    <view id="recommend">
-        <view wx:for="{{topics}}" wx:for-item="topic" class="recommend_block" wx:key="*this">
-            <view class="header">
-                <text class="title">{{topic.title}}</text>
-                <navigator class="link" hover-class="none" url="/pages/booksList/booksList?topic_id={{topic.id}}">查看全部</navigator>
+<!-- 推荐项 -->
+<view id="recommend">
+    <view wx:for="{{topics}}" wx:for-item="topic" class="recommend_block" wx:key="*this">
+        <view class="header">
+            <text class="title">{{topic.title}}</text>
+            <navigator class="link" hover-class="none" url="/pages/booksList/booksList?topic_id={{topic.id}}">查看全部</navigator>
+        </view>
+        <scroll-view scroll-x="true" class="books">
+            <view wx:for="{{topic.books}}" wx:for-item="book" class="book" data-isbn="{{book.isbn}}" bindtap="goBuyPage" wx:key="*this">
+                <image class="book_img" src="{{book.book.pic?book.book.pic:'http://okxy9gsls.bkt.clouddn.com/book.png'}}"/>
+                <text class="book_title">{{book.book.title}}</text>
+                <text class="book_author">{{book.book.author}}</text>
             </view>
-            <scroll-view scroll-x="true" class="books">
-                <view wx:for="{{topic.books}}" wx:for-item="book" class="book" data-isbn="{{book.isbn}}" bindtap="goBuyPage" wx:key="*this">
-                    <image class="book_img" src="{{book.book.pic?book.book.pic:'http://okxy9gsls.bkt.clouddn.com/book.png'}}"/>
-                    <text class="book_title">{{book.book.title}}</text>
-                    <text class="book_author">{{book.book.author}}</text>
-                </view>
-            </scroll-view>
-        </view>
+        </scroll-view>
     </view>
-</scroll-view>
+</view>
