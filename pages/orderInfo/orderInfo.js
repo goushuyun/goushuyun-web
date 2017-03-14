@@ -194,8 +194,8 @@ Page({
     },
     onShareAppMessage(e) {
         return {
-            title: app.shareTitle,
-            path: '/pages/index/index'
+            title: '我在 [购书云] 完成了一次 [新书|二手书] 购买，快来围观吧！',
+            path: '/pages/share/share?order_id=' + this.data.order_id + '&user_id=' + wx.getStorageSync('user').id + '&avatar_url=' + wx.getStorageSync('user').avatarUrl
         }
     }
 })

@@ -107,13 +107,9 @@
 </scroll-view>
 
 <view id="order_foot" class="foot align-center justify-end padding-lr5">
-  <view wx:if="{{!present_order.after_sale_status && present_order.order_status>1 && present_order.order_status<5}}">
-    <button size="mini" class="button-plain" hover-class="button-hover" bindtap="apply_refund">申请售后</button>
-  </view>
-  <view wx:if="{{!present_order.after_sale_status && present_order.order_status==1}}"><button size="mini" class="button-plain" hover-class="button-hover" bindtap="cancel_order">取消订单</button></view>
-  <view wx:if="{{!present_order.after_sale_status && present_order.order_status==1 && out_time>0}}"><button size="mini" class="button-plain" hover-class="button-hover" bindtap="toPay">去付款</button></view>
-  <!-- <view wx:if="{{present_order.order_status==2 || present_order.order_status==5}}">
-  </view> -->
-  <view wx:if="{{!present_order.after_sale_status && present_order.order_status==3}}"><button size="mini" class="button-plain" hover-class="button-hover" bindtap="comfirmAccept">确认收货</button></view>
-  <button size="mini" class="button-plain" hover-class="button-hover" bindtap="callSeller">联系商家</button>
+    <button wx:if="{{!present_order.after_sale_status && present_order.order_status>1 && present_order.order_status<5}}" size="mini" class="button-plain" hover-class="button-hover" bindtap="apply_refund">申请售后</button>
+    <button wx:if="{{!present_order.after_sale_status && present_order.order_status==1}}" size="mini" class="button-plain" hover-class="button-hover" bindtap="cancel_order">取消订单</button>
+    <button wx:if="{{!present_order.after_sale_status && present_order.order_status==1 && out_time>0}}" size="mini" class="button-plain" hover-class="button-hover" bindtap="toPay">去付款</button>
+    <button wx:if="{{!present_order.after_sale_status && present_order.order_status==3}}" size="mini" class="button-plain" hover-class="button-hover" bindtap="comfirmAccept">确认收货</button>
+    <button size="mini" class="button-plain" hover-class="button-hover" bindtap="callSeller">联系商家</button>
 </view>

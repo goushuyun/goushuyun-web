@@ -1,0 +1,154 @@
+#body {
+    /*z-index: 1;*/
+    position: fixed;
+    top: 0;
+    bottom: 46px;
+    left: 0;
+    right: 0;
+    background-color: #EFF3F7
+}
+/* 头像部分 */
+#top{
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    height: 100px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.head_img{
+    border-radius: 50%;
+    width: 52px;
+    height: 52px;
+}
+
+#logo {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.logo {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    position: absolute;
+    left:85px;
+    z-index: 2;
+}
+.shop_logo {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+}
+.shop_name {
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    width: 100px;
+    text-align: center;
+    background-color: #3C4860;
+    color: #E7E8D3;
+}
+
+/* 订单信息 */
+#order_info {
+    background-color: white;
+    border-radius: 17px;
+}
+#order_id {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    width: 100%;
+    text-align: center;
+    height: 44px;
+    line-height: 44px;
+    font-size: 14px;
+    border: 1px dashed #888888;
+}
+.header {
+    height: 38px;
+    line-height: 38px;
+    font-size: 15px;
+    padding: 0 12px;
+    border-top: 1px solid #F4F3F3;
+    border-bottom: 1px solid #F4F3F3
+}
+.books {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px 0 20px 20px;
+    display: flex;
+    white-space: nowrap;
+}
+.books .book {
+    display: inline-block;
+    width: 200rpx;
+    padding-right: 10px;
+}
+.books .book_img {
+    width: 180rpx;
+    height: 230rpx;
+    display: block;
+    border-radius: 6px;
+}
+.book_title {
+    margin: 8px 0;
+    display: block;
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: bold;
+    color: #333;
+    width: 100%;
+    overflow : hidden;
+    text-overflow: ellipsis;
+}
+.book_author {
+    display: block;
+    font-size: 14px;
+    line-height: 18px;
+    color: #888888;
+    width: 100%;
+    overflow : hidden;
+    text-overflow: ellipsis;
+}
+
+#fake_data {
+    background-color: #FFFFFF;
+    padding: 30px 10px 20px 10px;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 15px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .1)
+}
+#fake_data .category_icon {
+    position: relative;
+    text-align: center;
+}
+#fake_data .category_name {
+    padding: 10px 0;
+    display: block;
+    text-align: center;
+    color: #888888;
+}
+#fake_data .icon_img {
+    padding: 4px 0;
+    width: 30px;
+    height: 30px;
+}
+#foot {
+    display: flex;
+    align-items: center;
+}
+.buy_btn {
+    width: 50%;
+    height: 46px;
+    line-height: 46px;
+    text-align: center;
+    font-weight: bold;
+    box-sizing:border-box;
+    color: #FFFFFF;
+}

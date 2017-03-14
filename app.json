@@ -1,6 +1,10 @@
 {
     "pages": [
+
         "pages/index/index",
+
+        "pages/share/share",
+
         "pages/self/self",
         "pages/refund/refund",
         "pages/me/me",
