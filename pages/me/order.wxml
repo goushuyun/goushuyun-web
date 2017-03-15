@@ -24,8 +24,8 @@
         <view class="detail" bindtap="viewOrderDetail" data-id="{{order.order_id}}">
             <view class="book" wx:for="{{order.items}}" wx:for-item="item" wx:key="*this">
                 <text class="text_inline_block book_title">{{item.book_title}}</text>
-                <text class="text_inline_block book_price">¥{{item.book_price}}</text>
-                <text class="text_inline_block book_amount">x{{item.number}}</text>
+                <text class="text_inline_block book_price padding-lr10">¥{{item.book_price}}</text>
+                <text class="text_inline_block book_amount padding-lr10">x{{item.number}}</text>
             </view>
         </view>
         <view class="fee">
