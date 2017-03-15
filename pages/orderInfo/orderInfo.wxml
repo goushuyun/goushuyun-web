@@ -1,3 +1,10 @@
+<view id="share" wx:if="{{!shareTips}}">
+    <image src="/images/orderInfo/share_bc.png"/>
+</view>
+<view  id="know" wx:if="{{!shareTips}}">
+    <image src="/images/orderInfo/know.png" bindtap="closeShareTips"/>
+</view>
+
 <view class="head align-center">
   <text wx:if="{{present_order.after_sale_status}}" class="font15">{{present_order.after_sale_status==1?'售后中':'售后完成'}}
     <text wx:if="{{after_sale.after_sale_progress==0}}" class="font12">等待商家处理</text>

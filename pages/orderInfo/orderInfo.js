@@ -8,7 +8,13 @@ Page({
         tel: '',
         out_time: 0,
         order_id: '',
-        after_sale: {}
+        after_sale: {},
+        shareTips: false
+    },
+    closeShareTips() {
+        this.setData({
+            shareTips: true //隐藏蒙版
+        })
     },
     onPullDownRefresh(e) {
         this.loadingOrder(this.data.order_id)
@@ -19,6 +25,18 @@ Page({
             order_id: order_id
         })
         this.loadingOrder(order_id)
+
+        /* 利用缓存机制，控制是否显示分享指引模板 */
+        var shareName = 's' + order_id //storage key
+        var shareTips = wx.getStorageSync('shareTips') ? wx.getStorageSync('shareTips') : {}
+        if (shareTips[shareName] && shareTips) {
+            this.setData({
+                shareTips: shareTips[shareName]
+            })
+        } else {
+            shareTips[shareName] = true
+            wx.setStorageSync('shareTips', shareTips)
+        }
     },
     loadingOrder: function(order_id) {
         var self = this
@@ -99,7 +117,7 @@ Page({
         })
     },
     apply_refund(e) {
-        wx.navigateTo({
+        wx.redirectTo({
             url: '/pages/refund/refund?order_id=' + this.data.order_id
         })
     },

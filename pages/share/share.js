@@ -11,8 +11,6 @@ Page({
         var avatar_url = options.avatar_url
         var user_id = options.user_id
         var self = this
-        order_id = '17031400000058'
-        user_id = 'dc02fa12-3a34-470e-bef9-60a6b29909ce'
         self.setData({
             order_id: order_id,
             avatar_url: avatar_url
@@ -41,16 +39,34 @@ Page({
         })
     },
     toShopCart() {
+        var self = this
         wx.showToast({
             title: '正在加入购物车......',
             icon: 'loading',
             duration: 10000
         })
-        setTimeout(() => {
-            wx.hideToast()
-            wx.switchTab({
-                url: '/pages/shopCart/shopCart'
+        wx.pro.request({
+                url: app.url + '/v1/orders/to_order_again',
+                method: 'POST',
+                data: {
+                    order_id: self.data.order_id,
+                    user_id: wx.getStorageSync('user').id
+                }
             })
-        }, 1500);
+            .then(res => {
+                if (res.code == '00000') {
+                    wx.hideToast()
+                    wx.switchTab({
+                        url: '/pages/shopCart/shopCart'
+                    })
+                }
+            })
+            .catch(err => {
+                wx.showToast({
+                    title: '服务器出bug了...',
+                    icon: 'loading',
+                    duration: 1500
+                })
+            })
     }
 })

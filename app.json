@@ -1,16 +1,13 @@
 {
     "pages": [
-
         "pages/index/index",
-
+        "pages/orderInfo/orderInfo",
         "pages/share/share",
-
         "pages/self/self",
         "pages/refund/refund",
         "pages/me/me",
         "pages/addressList/addressList",
         "pages/settlement/settlement",
-        "pages/orderInfo/orderInfo",
         "pages/remark/remark",
         "pages/addAddress/addAddress",
         "pages/buyPage/buyPage",
