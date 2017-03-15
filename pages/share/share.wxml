@@ -11,7 +11,7 @@
         <scroll-view scroll-x="true" class="books" style="padding-left:{{padding_left}}">
             <view class="book" wx:for="{{order.items}}">
                 <image class="book_img" src="{{item.book_image?item.book_image:'http://okxy9gsls.bkt.clouddn.com/book.png'}}"/>
-                <view class="book_title">{{item.book_title?'傻逼傻逼傻逼傻逼傻逼傻逼傻逼傻傻逼傻逼傻逼':''}}</view>
+                <view class="book_title">{{item.book_title}}</view>
                 <!-- <text class="book_author">{{item.book_author}}</text> -->
             </view>
         </scroll-view>
