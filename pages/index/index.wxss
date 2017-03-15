@@ -127,7 +127,9 @@ view#recommend{
 
 
 .recommend_block .title{
-    font-size: 15px;
+    font-size: 16px;
+    /*font-weight: bold;*/
+    /*font-family:"Microsoft YaHei";*/
 }
 .recommend_block .link{
     color: #1581D9;
@@ -138,23 +140,25 @@ view#recommend{
     background-color: white;
     width: 100%;
     box-sizing: border-box;
-    padding: 0 0 14px 16px;
+    /*padding: 0 0 14px 16px;*/
     display: flex;
     white-space: nowrap;
     box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
-    margin-bottom: 4px;
+    border-bottom: 1px solid #F4F3F3;
+    /*margin-bottom: 4px;*/
 }
 
 .books .book{
     display: inline-block;
     width: 200rpx;
-    padding-right: 10px;
+    padding-left: 10px;
 }
 .books .book_img{
-    width: 180rpx;
-    height: 230rpx;
+    width: 200rpx;
+    height: 266rpx;
     display: block;
     border-radius: 6px;
+    padding: 2px 0;
 }
 
 .book_title{
@@ -162,8 +166,8 @@ view#recommend{
     display: block;
     font-size: 12px;
     color: #333;
-    line-height: 18px;
-    font-weight: bold;
+    line-height: 16px;
+
     width: 100%;
     overflow: hidden;
     display: -webkit-box;
@@ -175,9 +179,10 @@ view#recommend{
 .book_author{
     display: block;
     font-size: 12px;
-    color: #777;
-    line-height: 30px;
+    color: #999;
+    line-height: 24px;
     width: 100%;
     overflow : hidden;
     text-overflow: ellipsis;
+    margin-bottom: 18px;
 }

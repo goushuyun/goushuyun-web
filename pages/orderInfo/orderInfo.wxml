@@ -1,9 +1,9 @@
-<view id="share" wx:if="{{!shareTips}}">
+<view id="share" wx:if="{{!shareTips}}" bindtap="closeShareTips">
     <image src="/images/orderInfo/share_bc.png"/>
 </view>
-<view  id="know" wx:if="{{!shareTips}}">
+<!-- <view  id="know" wx:if="{{!shareTips}}">
     <image src="/images/orderInfo/know.png" bindtap="closeShareTips"/>
-</view>
+</view> -->
 
 <view class="head align-center">
   <text wx:if="{{present_order.after_sale_status}}" class="font15">{{present_order.after_sale_status==1?'售后中':'售后完成'}}
@@ -80,7 +80,7 @@
           <text class="text_block content">{{after_sale.end_at}}</text>
         </view>
         <view class="about">
-            <text class="text_block">申退理由</text>
+            <text class="text_block flex-shrink">申退理由</text>
             <text class="text_block content">{{after_sale.content_desc}}</text>
         </view>
         <view class="about">
@@ -107,7 +107,7 @@
             <text class="text_block content">微信支付</text>
         </view>
         <view class="about">
-            <text class="text_block">备注信息</text>
+            <text class="text_block flex-shrink">备注信息</text>
             <text class="text_block content">{{present_order.remark}}</text>
         </view>
     </view>

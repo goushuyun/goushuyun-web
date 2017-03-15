@@ -11,7 +11,7 @@
   height: 100%
 }
 
-#know {
+/*#know {
   position: fixed;
   z-index: 6;
   bottom: 20px;
@@ -21,7 +21,7 @@
 #know image {
   width: 100px;
   height: 80px;
-}
+}*/
 
 .user_text_area,.user_text {
   height: 30px;
