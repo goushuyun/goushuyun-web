@@ -5,6 +5,14 @@ Page({
         avatar: '',
         user_id: '',
         orders_amount: [],
+        base_urls: [
+            'http://okxy9gsls.bkt.clouddn.com/qr_code.jpg',
+            'http://okxy9gsls.bkt.clouddn.com/QR_code1.jpg',
+            'http://okxy9gsls.bkt.clouddn.com/QR_code2.jpg',
+            'http://okxy9gsls.bkt.clouddn.com/QR_code3.jpg',
+            'http://okxy9gsls.bkt.clouddn.com/QR_code4.jpg',
+            'http://okxy9gsls.bkt.clouddn.com/QR_code5.jpg'
+        ],
         in_after_sale_amount: 0
     },
     goToOrder(e) {
@@ -46,7 +54,7 @@ Page({
             },
             method: 'POST',
             success(res) {
-                if (res.data.code=='00000') {
+                if (res.data.code == '00000') {
                     self.setData({
                         orders_amount: res.data.data,
                         in_after_sale_amount: res.data.in_after_sale_amount
@@ -66,8 +74,9 @@ Page({
         })
     },
     shareApp(e) {
+        var index = parseInt(6 * Math.random())
         var urls = []
-        urls.push('http://okxy9gsls.bkt.clouddn.com/qr_code.jpg')
+        urls.push(this.data.base_urls[index])
         wx.previewImage({
             current: '', // 当前显示图片的http链接
             urls: urls // 需要预览的图片http链接列表
