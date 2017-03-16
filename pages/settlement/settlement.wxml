@@ -16,7 +16,7 @@
         </view> -->
 
         <view wx:for="{{items}}" class="order_item">
-            <image class="book_image" src="{{item.book_image?item.book_image:'http://okxy9gsls.bkt.clouddn.com/book.png'}}"></image>
+            <image class="book_image" src="{{item.book_image?item.book_image:'http://okxy9gsls.bkt.clouddn.com/book.png' + '?imageView2/2/w/90/h/115/q/75|imageslim'}}"></image>
             <view class="book_info">
                 <view class="padding-tp20">
                   <view class="font16 margin-r20">{{item.book_title}}

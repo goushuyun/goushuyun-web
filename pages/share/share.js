@@ -4,7 +4,11 @@ Page({
         order: {},
         order_id: '',
         avatar_url: '',
-        padding_left: ''
+        fake_data: {
+            money: 0,
+            green: 0,
+            time: 0
+        }
     },
     onLoad: function(options) {
         var order_id = options.order_id
@@ -15,6 +19,7 @@ Page({
             order_id: order_id,
             avatar_url: avatar_url
         })
+
         wx.request({
             url: app.url + '/v1/orders/get_my_orders',
             data: {
@@ -26,9 +31,14 @@ Page({
             method: 'POST',
             success: function(res) {
                 var order = res.data.data[0]
+                var fake_data = {
+                    money: parseInt(order.items.length * 5),
+                    green: parseInt(order.items.length * 10),
+                    time: (order.items.length * 0.2).toFixed(1)
+                }
                 self.setData({
                     order: order,
-                    padding_left: order.items.length == 1 ? '140px' : '20px'
+                    fake_data: fake_data
                 })
             }
         })

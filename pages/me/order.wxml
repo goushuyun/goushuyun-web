@@ -2,7 +2,7 @@
     <view wx:if="{{orders.length==0}}" id="hava_no_items" class="font15 font8 justify-center align-center"><text>空空如也~快去寻宝吧~</text></view>
     <view class="order" wx:for="{{orders}}" wx:for-item="order" wx:key="*this" >
         <view class="top_part" data-id="{{order.order_id}}" bindtap="viewOrderDetail">
-            <image class="comp_logo shadow" src="{{shop_logo}}"></image>
+            <image class="comp_logo shadow" src="{{shop_logo + '?imageView2/2/w/42/h/42/q/75|imageslim'}}"></image>
             <view class="comp_info">
                 <text class="text_block compa_name">{{order.order_at_time}}</text>
                 <text class="text_block order_time">订单号: {{order.order_id}}</text>

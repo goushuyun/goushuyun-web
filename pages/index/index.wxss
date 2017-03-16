@@ -152,6 +152,7 @@ view#recommend{
     display: inline-block;
     width: 200rpx;
     padding-left: 10px;
+    vertical-align: top;
 }
 .books .book_img{
     width: 200rpx;

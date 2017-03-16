@@ -5,7 +5,7 @@
   </view> -->
   <image class="bc" src="http://okxy9gsls.bkt.clouddn.com/bc1.png"/>
   <view id="top" class="align-center justify-center">
-      <image class="head_img" src="{{avatar}}"/>
+      <image class="head_img" src="{{avatar + '?imageView2/2/w/42/h/42/q/75|imageslim'}}"/>
   </view>
   <!-- <view>
 

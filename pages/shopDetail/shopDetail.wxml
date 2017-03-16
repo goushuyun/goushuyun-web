@@ -2,7 +2,7 @@
     <view id="shopHead">
         <image id="shopBack" src="/images/shopDetail/shop_bc.png"></image>
         <view class="head1">
-            <image id="shopPic" src="{{shopImg}}"></image>
+            <image id="shopPic" src="{{shopImg + '?imageView2/2/w/42/h/42/q/75|imageslim'}}"></image>
             <text id="shopName">{{shopName}}</text>
         </view>
     </view>
