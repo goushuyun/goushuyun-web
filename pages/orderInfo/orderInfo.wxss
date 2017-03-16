@@ -109,6 +109,12 @@ view#order_Info .book{
     display: flex;
     border-bottom: 1px solid #F4F3F3;
 }
+.book_pic_area {
+    width: 58px;
+    height: auto;
+    display: flex;
+    align-items: center;
+}
 view#order_Info .book .book_pic{
     width: 58px;
     height: 73px;

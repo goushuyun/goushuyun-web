@@ -3,7 +3,7 @@ Page({
     data: {
         name: '',
         tel: '',
-        address_info: '点击选择',
+        address_info: '点击右侧按钮选择',
         house_num: '',
         address_id: '',
         id_default: false,

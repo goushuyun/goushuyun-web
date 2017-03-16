@@ -49,7 +49,7 @@
           <text class="item_title">商家电话</text>
           <text style="color:#888888">{{tel}}</text>
           <view>
-            <image class="right icon24 wrap" src="/images/shopDetail/tell.png"></image>
+            <image class="right icon18 wrap" src="/images/shopDetail/tell.png"></image>
           </view>
         </view>
     </scroll-view>

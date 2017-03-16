@@ -10,7 +10,7 @@
         <view class="item">
             <text class="left">客服电话</text>
             <text class="center" bindtap="callPhone">{{tell}}</text>
-            <view class="right justify-center align-center"><image class="icon24" src="/images/shopDetail/tell.png" bindtap="callPhone"></image></view>
+            <view class="right justify-center align-center"><image class="icon18" src="/images/shopDetail/tell.png" bindtap="callPhone"></image></view>
         </view>
         <view class="item">
             <text class="left">联系地址</text>
