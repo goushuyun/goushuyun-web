@@ -22,14 +22,14 @@
       </view>
       <!-- 图书图片 -->
       <view class="book_image_area align-center flex-shrink">
-        <image class="book_image" src="{{item.book_image?item.book_image:'http://okxy9gsls.bkt.clouddn.com/book.png' + '?imageView2/2/w/90/h/115/q/75|imageslim'}}" mode="aspectFill"/>
+        <image class="book_image" src="{{item.book_image?item.book_image:'http://okxy9gsls.bkt.clouddn.com/book.png' + '?imageView2/2/w/90/h/115/q/75|imageslim'}}" mode="aspectFill" data-isbn="{{item.isbn}}" bindtap="{{item.store_empty?'':'goBuyPage'}}"/>
       </view>
       <!-- 右边描述 -->
       <view class="item_right">
         <view class="deletarea align-center justify-center" data-index="{{index}}" bindtap="deletCart">
           <image class="icon24 flex-shrink" src="/images/shopCart/delet.png"/>
         </view>
-        <view class="name_isbn">
+        <view class="name_isbn" data-isbn="{{item.isbn}}" bindtap="{{item.store_empty?'':'goBuyPage'}}">
           <view class="font16 book_name">{{item.book_title}}
             <view wx:if="{{item.type==1}}" class="type_new font12">新书</view>
             <view wx:if="{{item.type==2}}" class="type_old font12">二手书</view>
@@ -37,7 +37,7 @@
           <view class="font12 font8">ISBN：{{item.isbn}}</view>
         </view>
         <view class="justify-between align-center">
-          <view class="price_area align-center">
+          <view class="price_area align-center" data-isbn="{{item.isbn}}" bindtap="{{item.store_empty?'':'goBuyPage'}}">
             <view class="font16 red">￥{{item.book_price}}</view>
           </view>
           <view wx:if="{{!item.store_empty}}" class="justify-end">

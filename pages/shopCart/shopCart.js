@@ -31,6 +31,14 @@ Page({
      onShow: function(e) {
          this.showGoods(e)
      },
+     goBuyPage(e) {
+         let isbn = e.currentTarget.dataset.isbn
+         console.log(isbn);
+         //跳转到 buyPage
+         wx.navigateTo({
+             url: "/pages/buyPage/buyPage?isbn=" + isbn
+         })
+     },
      showGoods(e) {
          var self = this;
          var user_id = wx.getStorageSync('user').id
