@@ -21,21 +21,21 @@
         <view class="category_icon">
             <view class="align-center">
                 <image class="icon_img" src="/images/share/money.png"></image>
-                <text style="padding:0 5px;font-weight: bold;">￥ {{50}}</text>
+                <text style="padding:0 5px;font-weight: bold;">￥ {{order.items.length * 5}}</text>
             </view>
             <text class="category_name">省钱</text>
         </view>
         <view class="category_icon">
             <view class="align-center">
                 <image class="icon_img" src="/images/share/green.png"></image>
-                <text style="padding:0 5px;font-weight: bold;">{{500}} g</text>
+                <text style="padding:0 5px;font-weight: bold;">{{order.items.length * 10}} g</text>
             </view>
             <text class="category_name">节约碳排量</text>
         </view>
         <view class="category_icon">
             <view class="align-center">
                 <image class="icon_img" src="/images/share/time.png"></image>
-                <text style="padding:0 5px;font-weight: bold;">{{50}} h</text>
+                <text style="padding:0 5px;font-weight: bold;">{{order.items.length * 0.2}} h</text>
             </view>
             <text class="category_name">省时间</text>
         </view>

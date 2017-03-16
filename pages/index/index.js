@@ -147,7 +147,7 @@ Page({
 
     chooseCategory(e) {
         wx.navigateTo({
-            url: '/pages/booksList/booksList?category=' + e.currentTarget.dataset.category
+            url: '/pages/booksList/booksList?category=' + e.currentTarget.dataset.category + '&title=' + e.currentTarget.dataset.title
         })
     },
     goBuyPage(e) {

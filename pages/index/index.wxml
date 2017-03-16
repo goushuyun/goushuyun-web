@@ -29,23 +29,23 @@
 
 <!-- icons list -->
 <view id="iconsList">
-    <view class="category_icon" data-category="1" bindtap="chooseCategory">
+    <view class="category_icon" data-category="1" data-title="教材" bindtap="chooseCategory">
         <image class="icon_img" src="../../images/Teaching_materials.png"></image>
         <text class="category_name">教材</text>
     </view>
-    <view class="category_icon" data-category="2" bindtap="chooseCategory">
+    <view class="category_icon" data-category="2" data-title="教辅" bindtap="chooseCategory">
         <image class="icon_img" src="../../images/References.png"></image>
         <text class="category_name">教辅</text>
     </view>
-    <view class="category_icon" data-category="5" bindtap="chooseCategory">
+    <view class="category_icon" data-category="5" data-title="考证" bindtap="chooseCategory">
         <image class="icon_img" src="../../images/Certificate.png"></image>
         <text class="category_name">考证</text>
     </view>
-    <view class="category_icon" data-category="3" bindtap="chooseCategory">
+    <view class="category_icon" data-category="3" data-title="外语" bindtap="chooseCategory">
         <image class="icon_img" src="../../images/Foreign_languages.png"></image>
         <text class="category_name">外语</text>
     </view>
-    <view class="category_icon" data-category="4" bindtap="chooseCategory">
+    <view class="category_icon" data-category="4" data-title="阅读" bindtap="chooseCategory">
         <image class="icon_img" src="../../images/Reading.png"></image>
         <text class="category_name">阅读</text>
     </view>
@@ -56,7 +56,7 @@
     <view wx:for="{{topics}}" wx:for-item="topic" class="recommend_block" wx:key="*this">
         <view class="header">
             <text class="title">{{topic.title}}</text>
-            <navigator class="link" hover-class="none" url="/pages/booksList/booksList?topic_id={{topic.id}}">查看全部</navigator>
+            <navigator class="link" hover-class="none" url="/pages/booksList/booksList?topic_id={{topic.id}}&title={{topic.title}}">查看全部</navigator>
         </view>
         <scroll-view scroll-x="true" class="books">
             <view wx:for="{{topic.books}}" wx:for-item="book" class="book" style="padding-left:{{index == 0 ? '18px;' : '12px;'}}; padding-right:{{index == topic.books.length - 1 ? '18px;' : '0;'}}" data-isbn="{{book.isbn}}" bindtap="goBuyPage" wx:key="*this">

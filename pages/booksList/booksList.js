@@ -67,6 +67,12 @@ Page({
     onLoad: function(options) {
         console.log(options)
         var self = this
+        var title = options.title
+        if (options.title) {
+            wx.setNavigationBarTitle({
+                title: options.title
+            })
+        }
         var search_input_default_val = ''
         var app = getApp(),
             data = {shop_id: app.shop_id}

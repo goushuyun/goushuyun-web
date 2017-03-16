@@ -31,7 +31,7 @@ Page({
         }
 
         wx.showToast({
-            title: '提交申请中...',
+            title: '正在核验数据...',
             icon: 'loading',
             duration: 10000
         })
@@ -56,7 +56,7 @@ Page({
                     if (res.code == '00000') {
                         var token = res.data.token
                         wx.uploadFile({
-                            url: 'https://upload.qbox.me/', //仅为示例，非真实的接口地址
+                            url: 'https://upload.qbox.me/',
                             filePath: img,
                             name: 'file',
                             formData: {
@@ -79,22 +79,27 @@ Page({
             },
             method: 'POST'
         }).then(res => {
-          console.log(res);
+            console.log(res);
             var present_order_status = res.data[0].order_status
             var self_order_status = self.data.present_order.order_status
+            wx.hideToast()
             if (present_order_status != self_order_status) {
                 wx.showModal({
                     title: '提示',
                     content: '就在刚刚订单状态改变了，请您重新申请！',
                     success: function(res) {
                         if (res.confirm) {
-                             self.loadingOrder(order_id)
-                             wx.hideToast()
-                             return
+                            self.loadingOrder(order_id)
+                            return
                         }
                     }
                 })
             } else {
+                wx.showToast({
+                    title: '提交申请中...',
+                    icon: 'loading',
+                    duration: 10000
+                })
                 /* 提交售后 */
                 wx.pro.request({
                     url: app.url + '/v1/orders/refund_apply',
@@ -107,8 +112,8 @@ Page({
                     },
                     method: "POST"
                 }).then(res => {
+                    wx.hideToast()
                     if (res.code == '00000') {
-                        wx.hideToast()
                         wx.redirectTo({
                             url: '/pages/orderInfo/orderInfo?order_id=' + self.data.present_order.order_id
                         })
