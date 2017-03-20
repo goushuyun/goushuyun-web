@@ -41,7 +41,7 @@
     <view id="order_Info" class="white-bc">
         <view wx:for="{{present_order.items}}" class="book">
             <view class="book_pic_area">
-                <image class="book_pic flex-shrink" src="{{item.book_image?item.book_image:'http://okxy9gsls.bkt.clouddn.com/book.png' + '?imageView2/2/w/42/h/42/q/75|imageslim'}}"></image>
+                <image class="book_pic flex-shrink" src="{{(item.book_image?item.book_image:'http://okxy9gsls.bkt.clouddn.com/book.png') + '?imageView2/2/w/42/h/42/q/75|imageslim'}}"></image>
             </view>
             <view class="book_info">
                 <view class="text_block book_title">{{item.book_title}}

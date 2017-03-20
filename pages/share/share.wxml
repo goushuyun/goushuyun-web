@@ -10,7 +10,7 @@
         </view>
         <scroll-view scroll-x="true" class="books {{order.items.length == 1 ? 'justify-center' : ''}}">
             <view class="book" wx:for="{{order.items}}" style="padding-left:{{index == 0 ? '18px;' : '12px;'}}; padding-right:{{index == order.items.length - 1 ? '18px;' : '0;'}}">
-                <image class="book_img" src="{{item.book_image?item.book_image:'http://okxy9gsls.bkt.clouddn.com/book.png' + '?imageView2/2/w/90/h/115/q/75|imageslim'}}"/>
+                <image class="book_img" src="{{(item.book_image?item.book_image:'http://okxy9gsls.bkt.clouddn.com/book.png') + '?imageView2/2/w/90/h/115/q/75|imageslim'}}"/>
                 <view class="book_title">{{item.book_title}}</view>
             </view>
         </scroll-view>

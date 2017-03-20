@@ -22,7 +22,7 @@
       </view>
       <!-- 图书图片 -->
       <view class="book_image_area align-center flex-shrink">
-        <image class="book_image" src="{{item.book_image?item.book_image:'http://okxy9gsls.bkt.clouddn.com/book.png' + '?imageView2/2/w/90/h/115/q/75|imageslim'}}" mode="aspectFill" data-isbn="{{item.isbn}}" bindtap="{{item.store_empty?'':'goBuyPage'}}"/>
+        <image class="book_image" src="{{(item.book_image?item.book_image:'http://okxy9gsls.bkt.clouddn.com/book.png') + '?imageView2/2/w/90/h/115/q/75|imageslim'}}" mode="aspectFill" data-isbn="{{item.isbn}}" bindtap="{{item.store_empty?'':'goBuyPage'}}"/>
       </view>
       <!-- 右边描述 -->
       <view class="item_right">
