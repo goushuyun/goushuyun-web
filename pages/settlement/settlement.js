@@ -154,7 +154,7 @@ Page({
             items: itemIds,
             address_info: self.data.address,
             school: wx.getStorageSync('school'),
-            // total_price: 1,
+            // total_price: 1, //测试
             total_price: parseInt(this.data.total_price * 100),
             total_amount: parseInt(this.data.total_number),
             remark: this.data.remark,

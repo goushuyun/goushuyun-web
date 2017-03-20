@@ -152,7 +152,8 @@ Page({
             method: 'POST',
             success: function(res) {
                 var present_order = res.data.data[0]
-                present_order.max_value = (present_order.total_price / 100).toFixed(2)
+                // present_order.max_value = (present_order.total_price / 100).toFixed(2) //测试
+                present_order.max_value = (present_order.total_price / 100 - 5).toFixed(2)
                 present_order.total_price = (present_order.total_price / 100).toFixed(2)
                 console.log(present_order);
                 present_order.order_at = utils.unixTimestamp2DateStr(present_order.order_at) //下单时间
