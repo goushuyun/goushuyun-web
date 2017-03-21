@@ -16,7 +16,7 @@
           </view>
         </view>
 
-        <view wx:if="{{order_status_description.code!=2}}" id="refundAmount">
+        <view wx:if="{{order_status_description.code!=2 && present_order.max_value>0}}" id="refundAmount">
           <view class="border-bottom">
             <text class="item_title">退款金额</text>
             <text class="text_flag">*</text>
@@ -24,6 +24,11 @@
           </view>
           <view class="input_area red">
             <input name="require_refund_fee" class="item_price" type="digit" placeholder="请输入退款金额" bindblur="checkMaxAmount" value="{{input_price}}"/>
+          </view>
+        </view>
+        <view wx:if="{{present_order.max_value<=0}}" id="refundAmount">
+          <view class="border-bottom">
+            <text class="item_title">实付金额不足商家垫付的运费，不能退款</text>
           </view>
         </view>
 
@@ -53,5 +58,5 @@
           </view>
         </view>
     </scroll-view>
-    <view id="unshow_button" class="foot"><button hover-class="color:#4794d4" formType="submit">提交申请</button></view>
+    <view id="unshow_button" class="foot"><button hover-class="color:#4794d4" formType="submit" disabled="{{present_order.max_value<=0}}">提交申请</button></view>
 </form>
