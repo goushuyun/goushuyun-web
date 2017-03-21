@@ -10,7 +10,11 @@ Page({
         page: 1,
         size: 10,
 
-        total_number: 0
+        total_number: 0,
+
+        // search forward
+        search_val_is_isbn: false,
+        search_val: ''
     },
 
     enterSearch(e){
@@ -26,6 +30,16 @@ Page({
         data.page = this.data.page
         data.size = this.data.size
         data.min_number = 1
+
+        // 添加搜索条件
+        if(this.data.search_val != ''){
+            if(this.data.search_val_is_isbn){
+                data.isbn = this.data.search_val
+            }else{
+                data.author = data.publisher = data.title = this.data.search_val
+            }
+        }
+
         var self = this
         wx.request({
             url: app.url + '/v1/books/listBooksHideSameIsbn',
@@ -34,7 +48,6 @@ Page({
             success(res) {
                 if (res.data.code == '00000') {
                     console.log(res.data.data)
-
                     // query data success
                     self.setData({
                         books: self.data.books.concat(res.data.data),
@@ -61,7 +74,6 @@ Page({
             })
 
             this.getData()
-            wx.hideToast()
         }
     },
     onLoad: function(options) {
@@ -106,10 +118,17 @@ Page({
             if (/^\d{10,13}$/.test(search_val)) {
                 //the value is isbn
                 data.isbn = search_val
+                self.setData({
+                    search_val_is_isbn: true
+                })
             } else {
                 //the value is text, maybe title, author, publisher
                 data.author = data.publisher = data.title = search_val
             }
+
+            self.setData({
+                search_val
+            })
 
             wx.request({
                 url: app.url + '/v1/books/listBooksHideSameIsbn',
@@ -118,14 +137,14 @@ Page({
                 success(res) {
                     //set new result books
                     self.setData({
-                        books: res.data.data
+                        books: res.data.data,
+                        total_number: res.data.total
                     })
                 }
             })
 
         }else {
             //类别罗列
-
             this.category = options.category
             this.getData()
         }
