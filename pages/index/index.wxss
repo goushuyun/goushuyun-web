@@ -112,6 +112,8 @@ view#iconsList .icon_img{
 
 /* 推荐项 */
 view#recommend{
+    width: 100%;
+    overflow-x: hidden;
     padding: 6px 0;
     background-color: #EFF3F7;
 }
@@ -128,8 +130,6 @@ view#recommend{
 
 .recommend_block .title{
     font-size: 16px;
-    /*font-weight: bold;*/
-    /*font-family:"Microsoft YaHei";*/
 }
 .recommend_block .link{
     color: #1581D9;
@@ -137,6 +137,7 @@ view#recommend{
 }
 
 .books{
+    overflow-x: scroll;
     background-color: white;
     width: 100%;
     box-sizing: border-box;
