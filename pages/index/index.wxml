@@ -51,6 +51,7 @@
     </view>
 </view>
 
+
 <!-- 推荐项 -->
 <view id="recommend">
     <view wx:for="{{topics}}" wx:for-item="topic" class="recommend_block" wx:key="*this">
