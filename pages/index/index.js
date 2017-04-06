@@ -106,9 +106,7 @@ Page({
                 })
             },
             fail: function(res) {
-                console.log('---------------------------')
                 console.log(res)
-                console.log('---------------------------')
             }
         })
     },
