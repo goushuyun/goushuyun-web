@@ -61,7 +61,7 @@
         </view>
         <scroll-view scroll-x="true" class="books">
             <view wx:for="{{topic.books}}" wx:for-item="book" class="book" style="padding-left:{{index == 0 ? '18px;' : '12px;'}}; padding-right:{{index == topic.books.length - 1 ? '18px;' : '0;'}}" data-isbn="{{book.isbn}}" bindtap="goBuyPage" wx:key="*this">
-                <image class="book_img" src="{{book.book.pic?(book.book.pic + '?imageView2/2/w/90/h/115/q/75'):'http://okxy9gsls.bkt.clouddn.com/book.png'}}"/>
+                <image class="book_img" src="{{book.book.pic?(book.book.pic + '?imageView2/2/w/180/h/230/q/75'):'http://okxy9gsls.bkt.clouddn.com/book.png'}}"/>
                 <view class="book_title">{{book.book.title}}</view>
                 <text class="book_author">{{book.book.author}}</text>
             </view>
