@@ -1,8 +1,10 @@
 <scroll-view id="body" scroll-y="true">
-    <view class="shop_name"><text>购书云</text></view>
-    <view class="shop_logo"><image class="icon30" src="{{'http://okxy9gsls.bkt.clouddn.com/logofang.png'}}"/></view>
     <view id="top">
-        <image class="head_img" src="{{avatar_url?avatar_url:'http://okxy9gsls.bkt.clouddn.com/logofang.png'}}"/>
+        <view class="shop_name"><text>购书云</text></view>
+        <view class="shop_logo"><image class="icon30" src="{{'http://okxy9gsls.bkt.clouddn.com/logofang.png'}}"/></view>
+        <view class="justify-center">
+          <image class="head_img" src="{{avatar_url?avatar_url:'http://okxy9gsls.bkt.clouddn.com/logofang.png'}}"/>
+        </view>
     </view>
     <view id="order_info">
         <view class="header">

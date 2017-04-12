@@ -1,5 +1,4 @@
 #body {
-    /*z-index: 1;*/
     position: fixed;
     top: 0;
     bottom: 46px;
@@ -8,8 +7,8 @@
     background-color: #EFF3F7
 }
 .shop_name {
-    margin-top: 15px;
-    position: fixed;
+    position: absolute;
+    top: 15px;
     z-index: 2;
     height: 30px;
     line-height: 30px;
@@ -22,10 +21,9 @@
     margin-left: 25px;
 }
 .shop_logo {
-    margin-top: 15px;
-    position: fixed;
+    position: absolute;
+    top: 15px;
     z-index: 3;
-    height: 40px;
 }
 .shop_logo image {
     width: 30px;
@@ -35,18 +33,17 @@
 }
 /* 头像部分 */
 #top{
-    position: fixed;
     z-index: 2;
     width: 100%;
-    display: flex;
-    justify-content: center;
+    position: relative;
 }
 
 .head_img {
+    position: absolute;
+    top: 30px;
     border-radius: 50%;
     width: 52px;
     height: 52px;
-    margin-top: 30px;
 }
 
 /* 订单信息 */
@@ -89,7 +86,6 @@
 .books {
     width: 100%;
     box-sizing: border-box;
-    /*padding: 20px 0 20px 20px;*/
     display: flex;
     white-space: nowrap;
     padding: 18px 0;
