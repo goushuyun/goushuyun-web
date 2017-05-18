@@ -6,12 +6,7 @@ Page({
         user_id: '',
         orders_amount: [],
         base_urls: [
-            'http://okxy9gsls.bkt.clouddn.com/qr_code.jpg',
-            'http://okxy9gsls.bkt.clouddn.com/QR_code1.jpg',
-            'http://okxy9gsls.bkt.clouddn.com/QR_code2.jpg',
-            'http://okxy9gsls.bkt.clouddn.com/QR_code3.jpg',
-            'http://okxy9gsls.bkt.clouddn.com/QR_code4.jpg',
-            'http://okxy9gsls.bkt.clouddn.com/QR_code5.jpg'
+            'http://okxy9gsls.bkt.clouddn.com/goushubao_QRcode.jpg'
         ],
         in_after_sale_amount: 0
     },
@@ -74,7 +69,7 @@ Page({
         })
     },
     shareApp(e) {
-        var index = parseInt(6 * Math.random())
+        var index = parseInt(this.data.base_urls.length * Math.random())
         var urls = []
         urls.push(this.data.base_urls[index])
         wx.previewImage({

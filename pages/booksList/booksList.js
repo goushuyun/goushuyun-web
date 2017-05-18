@@ -12,6 +12,9 @@ Page({
 
         total_number: 0,
 
+        // topic_id
+        topic_id: '',
+
         // search forward
         search_val_is_isbn: false,
         search_val: ''
@@ -22,6 +25,13 @@ Page({
     },
 
     getData() {
+        // 判断检索的是否是话题数据
+        if(this.topic_id != ''){
+            console.log('The topic id is : ' + this.data.topic_id);
+            this.getTopicData()
+            return
+        }
+
         //list all books of this category
         var app = getApp(),
             data = {}
@@ -76,6 +86,34 @@ Page({
             this.getData()
         }
     },
+
+    // 获取话题数据
+    getTopicData(){
+        let params = {
+            topic_id: this.data.topic_id,
+            page: this.data.page,
+            size: this.data.size,
+            min_number: 1,
+            shop_id: app.shop_id
+        }
+
+        var self = this
+        wx.request({
+            url: app.url + '/v1/books/listBooksHideSameIsbn',
+            data: params,
+            method: "POST",
+            success: function(res) {
+                self.setData({
+                    books: self.data.books.concat(res.data.data),
+                    total_number: res.data.total
+                })
+                wx.hideToast()
+            }
+        })
+
+    },
+
+
     onLoad: function(options) {
         console.log(options)
         var self = this
@@ -89,8 +127,12 @@ Page({
         var app = getApp(),
             data = {shop_id: app.shop_id}
         if (options.topic_id != undefined) {
-            //话题罗列
+            // 将 话题ID 写入 data
+            this.setData({
+                topic_id: options.topic_id
+            })
 
+            //话题罗列
             data.topic_id = options.topic_id
             data.page = this.data.page
             data.size = this.data.size
@@ -101,7 +143,8 @@ Page({
                 method: "POST",
                 success: function(res) {
                     self.setData({
-                        books: res.data.data
+                        books: res.data.data,
+                        total_number: res.data.total
                     })
                 }
             })
