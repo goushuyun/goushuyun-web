@@ -1,6 +1,6 @@
 <view id="container">
     <view id="bookInfo">
-        <image class="bookImage" src="{{goods[0].book.pic?(goods[0].book.pic + '?imageView2/2/w/140/h/197/q/75'):'http://okxy9gsls.bkt.clouddn.com/book.png'}}" bindtap="showBigPic"></image>
+        <image class="bookImage" src="{{goods[0].book.pic?(goods[0].book.pic + '?imageView2/2/w/180/h/230/q/75'):'http://okxy9gsls.bkt.clouddn.com/book.png'}}" bindtap="showBigPic"></image>
         <view class="bookDetail">
             <text class="text_block title">{{goods[0].book.title}}</text>
             <text class="text_block publisher">出版社：{{goods[0].book.publisher}}</text>

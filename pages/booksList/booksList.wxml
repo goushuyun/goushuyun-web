@@ -11,7 +11,7 @@
 <template is="wxSearch" data="{{wxSearchData}}"/>
 
 <!-- 图书列表项 -->
-<scroll-view id="booksList" scroll-y="true" bindscrolltolower="getMore" lower-threshold="50">
+<scroll-view id="booksList" scroll-y="true" bindscrolltolower="getMore" lower-threshold="100">
     <view wx:if="{{books.length==0}}" id="hava_no_items" class="font15 font8 justify-center align-center"><text>噢~未找到您要的宝贝~</text></view>
     <view class="book" wx:for="{{books}}" wx:key="isbn" data-isbn="{{item.isbn}}" bindtap="goBuyPage">
         <image class="book_pic" src="{{(item.book.pic?item.book.pic:'http://okxy9gsls.bkt.clouddn.com/book.png') + '?imageView2/2/w/180/h/230/q/75'}}"></image>
