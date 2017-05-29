@@ -26,7 +26,7 @@ Page({
 
     getData() {
         // 判断检索的是否是话题数据
-        if(this.topic_id != ''){
+        if(this.topic_id){
             console.log('The topic id is : ' + this.data.topic_id);
             this.getTopicData()
             return
@@ -232,7 +232,6 @@ Page({
                 self.setData({
                     wxSearchData: temData
                 });
-                console.log(res)
             }
         })
 
