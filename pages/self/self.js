@@ -6,7 +6,7 @@ Page({
         user_id: '',
         orders_amount: [],
         base_urls: [
-            'http://okxy9gsls.bkt.clouddn.com/goushubao_QRcode.jpg'
+            'http://okxy9gsls.bkt.clouddn.com/goushuyun_QRcode.jpg'
         ],
         in_after_sale_amount: 0
     },
